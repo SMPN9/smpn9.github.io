@@ -188,144 +188,33 @@ label {font-weight: normal;margin-top:8px;margin-bottom:0px}
   #ket_tabel th { padding: 2px 7px 2px 7px;text-align:center;background-color:rgba(0,0,0,0.7);color:white;font-weight: normal;font-size:13px;font-family:arial,tahoma}
   #ket_tabel td { padding:10px;text-align:center;color:black;font-size:13px;font-family:arial,tahoma}
   #ket_tabel tr:nth-child(even){background-color: #f2f2f2;}
+ 
+ #tabel tr  > *:nth-child(3), #tabel tr  > *:nth-child(4), #tabel tr  > *:nth-child(6) {
+    display: none;
+	}
+	
+#tabe	tr  > *:nth-child(1){font-weight:bold;}
+#tabe tr td{ 
+
+border-collapse:collapse;
+border:20px solid white
+}
+
  </style>
 <meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
 <meta name='google-adsense-platform-domain' content='blogspot.com'/>
 
 </head>
 <body>
-<div class='no-items section' id='ress'></div>
-<div class='main'>
-<div class='menu'>
-<div class='menu-header'>
-<img height='70px' src='https://unbk.kemdikbud.go.id/assets/img/logo.png'/>
-<span style='font-size:14px'>UPTD SMP NEGERI 9 SINJAI</span><br/>
-<span style='font-size:14px'>NPSN: 40304504</span>
-<ul>
-<li>
-<a class='js-menu' data-ajax='Y' data-class='Home' data-dialog='N' data-url='home' href='javascript:;' id='min'> Masuk sebagai Tamu
-                                 
-                            </a>
-</li>
-<li>
-<a class='js-menu' data-ajax='Y' data-class='UsersPengaturan' data-dialog='Y' data-url='users/pengaturan' href='javascript:;'>
-</a>
-</li>
-<li>
-<a class='btn-logout' href='javascript:;'>
-</a>
-</li>
-</ul>
-</div>
-<ul class='nav side-menu'>
-<li class='side-menu-label'>Menu Utama</li>
-<li>
-<a class='js-menu' data-ajax='Y' data-class='#' data-dialog='N' data-url='#' href='javascript:void(0)'>
-<span class='fa fa-desktop side-menu-icon'></span>
-<span class='side-menu-title'>NILAI RAPOR</span>
-<span class='caret'></span>
-</a>
-<ul class='nav sub-menu collapse'>
-<li onclick='kelas7b(1);'>
-<a class='js-menu' data-ajax='Y' data-class='PenjelasanShow' data-dialog='N' data-url='penjelasan/show' href='javascript:void(0)'>
-<span class='side-menu-title'><b>Kelas 7A</b>
-<br/>[Raden Sri Ernawati, S.Pd,M.Pd]</span>
-</a>
-</li>
-<li onclick='kelas7b(0);'>
-<a class='js-menu' data-ajax='Y' data-class='PenjelasanShow' data-dialog='N' data-url='penjelasan/show' href='javascript:void(0)'>
-<span class='side-menu-title'><b>Kelas 7B TP.2019/2020 </b><br/>[Irawati, S.Pd]</span>
-</a>
-</li>
-<li onclick='kelas7b(2);'>
-<a class='js-menu' data-ajax='Y' data-class='Server' data-dialog='N' data-url='server' href='javascript:void(0)'>
-<span class='side-menu-title'><b>Kelas 7B</b>
-<br/>[Rostinah,S.Pd]</span>
-</a>
-</li>
-<li onclick='kelas7b(3);'>
-<a class='js-menu' data-ajax='Y' data-class='Sesi' data-dialog='N' data-url='sesi' href='javascript:void(0)'>
-<span class='side-menu-title'><b>Kelas 8A</b><br/>[Heriyati,S.Pd]</span>
-</a>
-</li>
-<li onclick='kelas7b(4);'>
-<a class='js-menu' data-ajax='Y' data-class='SesiKelengkapan' data-dialog='N' data-url='sesi/kelengkapan' href='javascript:void(0)'>
-<span class='side-menu-title'><b>Kelas 8B</b>
-<br/>[Irawati, S.Pd]</span>
-</a>
-</li>
-<li onclick='kelas7b(5);'>
-<a class='js-menu' data-ajax='Y' data-class='Kartu' data-dialog='Y' data-url='kartu' href='javascript:void(0)'>
-<span class='side-menu-title'><b>Kelas 9A</b>
-<br/>[Muhammad Badrun,S.Pd]</span>
-</a>
-</li>
-<li onclick='kelas7b(6);'>
-<a class='js-menu' data-ajax='Y' data-class='AbsenCetak' data-dialog='Y' data-url='absen/cetak' href='javascript:void(0)'>
-<span class='side-menu-title'><b>Kelas 9B</b>
-<br/>[M. Syatir,S.Pd]</span>
-</a>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class='wrapper-main'>
-<div class='header'>
-<a class='toggle-menu' href='#' id='toggle-menu'>
-<span class='fa fa-bars side-menu-icon'></span>
-</a>
-<ul class='header-right'>
-<li>
-<a aria-expanded='false' class='dropdown-toggle' data-toggle='dropdown' href='#'>
-<span class='fa fa-bell'></span>
-<span class='label label-warning chat_count'>0</span>
-</a>
-<ul class='dropdown-menu'>
-<li>
-<a class='js-menu' data-ajax='Y' data-class='Home' data-dialog='N' data-url='home' href='javascript:void(0)' id='notif_chat'>
-<span class='fa fa-comments-o'></span>
-                                        Anda mendapatkan
-                                        <span class='chat_count'>0</span>
-                                        pesan belum dibaca
-                                    </a>
-</li>
-</ul>
-</li>
-<li class='user-menu'>
-<a aria-expanded='false' class='dropdown-toggle button-user' data-toggle='dropdown' href='#'>
-<img alt='' src='https://unbk.kemdikbud.go.id/assets/img/logo.png'/>
-<span class='userlogin' style='font-size:10px'>UPTD SMPN 9 SINJAI</span>
-<span class='caret'></span>
-</a>
-<ul class='dropdown-menu'>
-<div class='photo'>
-<img alt='' src='/api/v2/users/avatar?ajaxToken=1A61F09AB22A92E772CC6A3B77E247C3' width='100%'/>
-</div>
-<li onclick='tomin(1)'>
-<a class='js-menu' data-ajax='Y' data-class='UsersPengaturan' data-dialog='Y' data-url='users/pengaturan' href='javascript:void(0)'>
-<span class='fa fa-user'></span>
-                                        Masuk sebagai admin
-                                    </a>
-</li>
-<li onclick='tomin(0)'>
-<a class='btn-logout' href='javascript:void(0)'>
-<span class='fa fa-user'></span>
-                                        Masuk sebagai tamu</a>
-</li>
-<li onclick='tomin(0)'>
-<a class='btn-logout' href='javascript:void(0)' id='listt'>
-</a>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class='wrapper-content'>
+
+
+
+ 
+
+ 
 <div class='content imat' id='content'></div>
-</div>
-</div>
-</div>
+
+ 
 <!--tesss <script src='https://unbk.kemdikbud.go.id/vendor/jquery/jquery-3.2.1.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/jquery/jquery.slimscroll.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/bootstrap/js/bootstrap.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/chart/Chart.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/jquery/jquery-ui.min.js'/> -->
 <script src='https://smpn9.github.io/FILE_JS/vendor_jquery_jquery_3_2_1_min.js'></script>
 <script src='https://smpn9.github.io/FILE_JS/vendor_jquery_jquery_slimscroll_min.js'></script>
@@ -354,927 +243,90 @@ label {font-weight: normal;margin-top:8px;margin-bottom:0px}
         createComponent: function() {
             var me = this;
 
-            me.panelPengumuman = new Imat.Panel({
-                title: 'Pengumuman',
-                iconCls: 'bullhorn',
-                padding: false,
-                cols: 'col-sm-8',
-                tools: [{
-                    xtype: 'button',
-                    text: 'Tambah',
-                    iconCls: 'plus',
-                    cls: 'bg-aqua btn-xs',
-                    hidden: me.isHidden('create'),
-                    handler: function() {
-                       
-                    }
-                }, {
-                    xtype: 'button',
-                    text: 'Refresh',
-                    iconCls: 'sync-alt',
-                    cls: 'bg-aqua btn-xs',
-                    handler: function() {
-                        me.getPengumuma5n();
-                    }
-                }],
-                items: [{
-                    xtype: 'html',
-                    id: 'contentPengumuman',
-                    style: {
-                        'padding': '0px',
-                        'min-height': '0px'
-                    }
-                }]
-            });
-
-            me.panelDownload = new Imat.Panel({
-                title: 'Download Berkas',
-                iconCls: 'download',
-                padding: false,
-                cols: 'col-sm-4',
-                tools: [{
-                    xtype: 'button',
-                    cls: 'bg-aqua btn-xs',
-                    iconCls: 'upload',
-                    text: 'Upload',
-                    hidden: me.isHidden('upload'),
-                    handler: function() {
-                         
-                    }
-                }],
-                items: [{
-                    xtype: 'html',
-                    id: 'contentDownload',
-                    style: { 'min-height': '0px' },
-                }]
-            });
-
-            me.panelTop1 = new Imat.Panel({
-                cols: 'col-sm-4',
-                items: [{
-                    xtype: 'html',
-                    id: 'widget-top-1',
-                    style: { 'height': '280px' },
-                    content: /*html*/`
-                        <div class='widget-top'>
-                            <h3>Statistik Sekolah</h3>
-                            <h6>Jumlah Siswa Perkelas</h6>
-                            <div style='max-width: 350px'>
-                                <canvas id='chart-sek'></canvas>
-                            </div>
-                        </div>`
-                }]
-            });
-
-            me.panelTop2 = new Imat.Panel({
-                cols: 'col-sm-8',
-   padding: false,
-                items: [{
-                    xtype: 'html',
-                    id: 'widget-top-2',
-                    style: { 'height': 'auto','font-size':'14px'},
-                    content: `
-                        <div class='widget-top'>
-                            <h3>Visi  Misi Sekolah</h3>
-                             
-                           
-                                <div id='visi'></div>
-                            
-                        </div>
-                    `
-                }]
-            });
-
-            me.panelTop33 = new Imat.Panel({
-               cols: 'col-sm-12',
-                items: [{
-                    xtype: 'html',
-                    id: 'widget-top-4', 
-                     
-                    content:  `
-					 
-                        <div class='widget-top'>
-                           
-                       <h3>Surat Penyampaian <br/>ke Orang Tua/Wali Siswa </h3>    <button onclick='dwn();'>+</button>
-<button onclick='up();'>-</button>      <div class='col-sm-12' style='padding:0px;'>
-								   <div id='roster' style='overflow:auto'> 
-								 
-<img id='surat' src='https://1.bp.blogspot.com/-dipbRdCVXe4/X_u-bBm75VI/AAAAAAAAA0E/oU1pcmJiUSMbjVFrFMlgzLLAihtYAWaJQCNcBGAsYHQ/s0/SURAT%2BBDR-1.jpg '/>	    </div>								 
-								 </div>
-                          
-                          
-                          
-                           <h3>Jadwal Pembelajaran </h3>   <button onclick='dwn2();'>+</button>
-<button onclick='up2();'>-</button>      <div class='col-sm-12' style='padding:0px;'>
-								   <div id='roster' style='overflow:auto'> 
-								 
-<img id='jadd' src='https://1.bp.blogspot.com/-xN0McNG3-wo/X_u-Y7fAoTI/AAAAAAAAA0A/Com9CQTYXS4qIhNZ68nfZajVi--lz796QCNcBGAsYHQ/s0/JADWAL%2BPPJ-1.jpg '/>	    </div>								 
-								 </div>
-  
-  </div>
-                     
-                    `
-                }]
-            });
-
-
-    me.panelTop34 = new Imat.Panel({
-               cols: 'col-sm-12',
-                items: [{
-                    xtype: 'html',
-                    id: 'widget-top-4', 
-                     
-                    content:  `
-					 
-                        <div class='widget-top'>
-                           
-                       <h3>Rapor Mutu 2020 </h3>   <button onclick='dwn3();'>+</button>
-<button onclick='up3();'>-</button>      <div class='col-sm-12' style='padding:0px;'>
-								   <div id='roster' style='overflow:auto'> 
-								 
-<img id='rapor' src='https://1.bp.blogspot.com/-IXbEaDBM-OE/X_sm2YQfcqI/AAAAAAAAAzk/GwLls66kL1YheAHu4KDiRrFnT1po52qdQCNcBGAsYHQ/s0/pmp2020.jpg'/>	    </div>								 
-								 </div></div>
-                     
-                    `
-                }]
-            });
-
-  
-  
-  
+           
   
 me.panelTop3 = new Imat.Panel({
                 cols: 'col-sm-12',
                 items: [{
                     xtype: 'html',
                     id: 'widget-top-3',
+					
                      
                     content: `
-                        <div class='widget-top'>
-                                  <div id='datasekolah'>
-								  <div class='col-lg-3 col-sm-4'>
-<div class='circle-tile '>
-<a href='#siswa' onclick='dataku(5)'><div class='circle-tile-heading dark-blue'><i class='fa fa-users fa-fw fa-3x'></i></div>
-<div class='circle-tile-content dark-blue'>
-<div class='circle-tile-description text-faded'>SISWA</div>
-<div class='circle-tile-number text-faded '>147</div>
-<a class='circle-tile-footer' href='#siswa' onclick='dataku(1)'>Selengkapnya<i class='fa fa-chevron-circle-right'></i></a>
-</div></a>
-</div>
-  
-</div>
-<div class='col-lg-3 col-sm-4'>
-<div class='circle-tile '>
-<a href='#siswa' onclick='dataku(2)'><div class='circle-tile-heading red'><i class='fa fa-user fa-fw fa-3x'></i></div>
-<div class='circle-tile-content red'>
-<div class='circle-tile-description text-faded'> GURU </div>
-<div class='circle-tile-number text-faded '>20</div>
-<a class='circle-tile-footer' href='#siswa' onclick='dataku(2)'>Selengkapnya<i class='fa fa-chevron-circle-right'></i></a>
-</div></a>
-</div>
-</div>
-<div class='col-lg-3 col-sm-4'>
-<div class='circle-tile '>
-<a href='#siswa' onclick='dataku(3)'><div class='circle-tile-heading yellow '><i class='fa fa-user-circle fa-fw fa-3x'></i></div>
-<div class='circle-tile-content yellow'>
-<div class='circle-tile-description text-faded'> PEGAWAI </div>
-<div class='circle-tile-number text-faded '>4</div>
-<a class='circle-tile-footer' href='#siswa' onclick='dataku(3)'>Selengkapnya<i class='fa fa-chevron-circle-right'></i></a>
-</div></a>
-</div>
-</div>
-			
-     
-
-<div class='col-lg-3 col-sm-4'>
-<div class='circle-tile '>
-<a href='#siswa' onclick='dataku(4)'><div class='circle-tile-heading orange'><i class='fa fa-user fa-fw fa-3x'></i></div>
-<div class='circle-tile-content orange'>
-<div class='circle-tile-description text-faded'> WALI KELAS </div>
-<div class='circle-tile-number text-faded '>6</div>
-<a class='circle-tile-footer' href='#siswa' onclick='dataku(4)'>Selengkapnya<i class='fa fa-chevron-circle-right'></i></a>
-</div></a>
-</div>
-</div>                    
-                          
-                          </div>
-                            
-                        </div>
+                                  
+			<table  id="tabel" style="font-size:12px" class="table table-striped"><thead><tr><th>#</th><th>Nama</th><th style="text-align: center;">NIK</th><th style="text-align: right;">Tanggal Lahir</th><th style="text-align: right;">Jenis PTK</th><th style="text-align: center;">Partisipasi</th><th style="text-align: right;">Status</th></tr></thead><tbody><tr id="7307061511820001" class="ng-star-inserted" style="background-color: white;"><td>1</td><td>Muhammad Badrun</td><td style="text-align: center;">7307061511820001 </td><td style="text-align: right;">15-Nov-1982</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307060608880001" class="ng-star-inserted" style="background-color: white;"><td>2</td><td>Hermawan</td><td style="text-align: center;">7307060608880001 </td><td style="text-align: right;">06-Aug-1988</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307065206960003" class="ng-star-inserted" style="background-color: white;"><td>3</td><td>Risnawati</td><td style="text-align: center;">7307065206960003 </td><td style="text-align: right;">12-Jun-1996</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307065811910002" class="ng-star-inserted" style="background-color: white;"><td>4</td><td>Mustoafiah</td><td style="text-align: center;">7307065811910002 </td><td style="text-align: right;">18-Nov-1991</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307064509870002" class="ng-star-inserted" style="background-color: white;"><td>5</td><td>Ariyani</td><td style="text-align: center;">7307064509870002 </td><td style="text-align: right;">05-Sep-1987</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307067011850001" class="ng-star-inserted" style="background-color: white;"><td>6</td><td>Haslindah</td><td style="text-align: center;">7307067011850001 </td><td style="text-align: right;">30-Nov-1985</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307057003780003" class="ng-star-inserted" style="background-color: white;"><td>7</td><td>Irawati</td><td style="text-align: center;">7307057003780003 </td><td style="text-align: right;">30-Mar-1978</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307056412770001" class="ng-star-inserted" style="background-color: white;"><td>8</td><td>Haswati</td><td style="text-align: center;">7307056412770001 </td><td style="text-align: right;">24-Dec-1977</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307053112630087" class="ng-star-inserted" style="background-color: white;"><td>9</td><td>Appe</td><td style="text-align: center;">7307053112630087 </td><td style="text-align: right;">31-Dec-1963</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307064504650001" class="ng-star-inserted" style="background-color: white;"><td>10</td><td>Rostinah</td><td style="text-align: center;">7307064504650001 </td><td style="text-align: right;">05-Apr-1965</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307062107700002" class="ng-star-inserted" style="background-color: white;"><td>11</td><td>M. Syatir</td><td style="text-align: center;">7307062107700002 </td><td style="text-align: right;">21-Jul-1970</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307051403640001" class="ng-star-inserted" style="background-color: white;"><td>12</td><td>Nawar</td><td style="text-align: center;">7307051403640001 </td><td style="text-align: right;">14-Mar-1964</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307062512900001" class="ng-star-inserted" style="background-color: white;"><td>13</td><td>Bahri</td><td style="text-align: center;">7307062512900001 </td><td style="text-align: right;">25-Dec-1990</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307065107820002" class="ng-star-inserted" style="background-color: white;"><td>14</td><td>Herna Jaya</td><td style="text-align: center;">7307065107820002 </td><td style="text-align: right;">11-Jul-1982</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307055512690006" class="ng-star-inserted" style="background-color: white;"><td>15</td><td>Heriyati</td><td style="text-align: center;">7307055512690006 </td><td style="text-align: right;">15-Dec-1969</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307053112920114" class="ng-star-inserted" style="background-color: white;"><td>16</td><td>Zul Fadhli</td><td style="text-align: center;">7307053112920114 </td><td style="text-align: right;">31-Dec-1992</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307064412690002" class="ng-star-inserted" style="background-color: white;"><td>17</td><td>Raden Sri Ernawati</td><td style="text-align: center;">7307064412690002 </td><td style="text-align: right;">04-Dec-1969</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307056101860001" class="ng-star-inserted" style="background-color: white;"><td>18</td><td>A.sukma Puspita Sari</td><td style="text-align: center;">7307056101860001 </td><td style="text-align: right;">21-Jan-1986</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307054706750002" class="ng-star-inserted" style="background-color: white;"><td>19</td><td>Najmiati</td><td style="text-align: center;">7307054706750002 </td><td style="text-align: right;">07-Jun-1975</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><!----></tbody></table>            
+                         
+                           
+                        
                     `
                 }]
             });
 
 
-  me.panelTop4 = new Imat.Panel({
-                cols: 'col-sm-12',
-                items: [{
-                    xtype: 'html',
-                    id: 'widget-top-4', 
-                     
-                    content:  `
-					<section id='siswa'>
-                        <div class='widget-top'>
-                            <h3 id='judulku'>Data Siswa</h3>
 
-                                <div class='col-sm-12' style='padding:0px;'>
-								   <div id='dataku'> 
-								 
-
-								    </div>								 
-								 </div>
-                    
-                        </div>
-					</section>
-                    `
-					
-				      }]
-            });
-	
-					
-					
-
-            me.info = new Imat.Column({items: [ me.panelTop1, me.panelTop2 ]});
+           
 			 me.info1 = new Imat.Column({items: [ me.panelTop3 ]});
-             me.info2= new Imat.Column({items: [ me.panelTop33 ]});
-			  me.info4 = new Imat.Column({items: [ me.panelTop4 ]});
-             me.info5= new Imat.Column({items: [ me.panelTop34 ]});
-            me.column = new Imat.Column({items: [ me.panelPengumuman, me.panelDownload ]});
+             
+            
             me.layout = new Imat.Layout({
-                items: [ me.info,me.info2,me.info1,me.info4,me.info5,me.column ],
+                items: [ me.info1 ],
                 renderTo: '#content'
             })
 
-            
-            me.getDownload();
-            me.getPengumuman();
-			me.sek1();
-			me.visi();
-			
-        },
-		visi: function() {  
-		   var ctx2 = document.getElementById('visi');
-		        ctx2.innerHTML=` 
-<table border='0' id='tbl33'>
-<tr>
-<td height='50px' width='10px'><b>  VISI :</b>
-</td>
-<td colspan='2'>"BERPESTASI DAN BERKARAKTER SERTA BERWAWSAN IPTEK BERDASARKAN IMTAQ" </td>
-</tr>
-<tr>
-<td colspan='3' height='2px'>
-</td>
-</tr>
-<tr>
-<td width='40px'><b>  MISI :</b>
-</td>
-<td style='text-align:top;' width='30px'>1.</td>
-<td>Melaksanakan pembelajaran secara efektif dan efisien sehingga siswa dapat berprestasi;</td>
-</tr>
-<tr>
-<td>
-</td>
-<td>2.</td>
-<td>Memberdayakan Pendidik dan Tenaga Kependidikan sehingga menjadi Pendidik/Tenaga Pendidik profesional dalam menjalankan tugas-tugasnya;</td>
-</tr>
-<tr>
-<td>
-</td>
-<td>3.</td>
-<td>Menumbuhkan penghayatan terhadap ajaran Agama yang dianut dan buadaya Bangsa sehingga menjadi sumber kearifan dalam bertindak ;</td>
-</tr>
-<tr>
-<td>
-</td>
-<td>4.</td>
-<td>Menciptakan kesehatan sekolah yang asri sehingga nampak kenyamanan dalam melaksanakan aktifitas di sekolah;</td>
-</tr>
-<tr>
-<td>
-</td>
-<td>5.</td>
-<td>Melaksanankan manajemen partisipasi dengan melibatkan seluruh warga sekolah dan kelompok kepentingan yang terkait dengan sekolah</td>
-</tr>
-</table>`
-		   
-		   },
-          sek1: function() {  
-		   var ctx2 = document.getElementById('chart-sek');
-	  var dog = new Chart(ctx2, {
-                            type: 'doughnut',
-                            data: {
-                                datasets: [{
-                                    data: [50,52,45],
-                                    backgroundColor: [
-                                        '#0abb87',
-                                        '#5d78ff',
-                                        '#ffb822',
-									 
-                                    ],
-                                    borderWidth: 1
-                                }],
-
-                                labels: ['Kls 7','Kls 8','Kls 9']
-                            },
-                            options: {
-                                legend: {
-                                    display: true,
-                                    position: 'right'
-                                }
-                            }
-                        });
-		  
-		  },
-         
-        kls7b: function(d) {  
-		 
-		var jud='';var frame="";var link='';
-		
-		   switch (d) {
-		      case 0:
-		        jud='Nilai Rapor Kelas 7b Semster Genap TP. 2019/2020';
-		        frame="https://drive.google.com/embeddedfolderview?id=1WnKqk8LDq6QPfzB6h8i08eukE1BvfrCI#list";
-				link="javascipt:void(0)";
-				break;
-				
-			 case 1:
-		        jud='Nilai Rapor Kelas 7A';
-		        frame="https://drive.google.com/embeddedfolderview?id=1sg5vKavjxhIcaQqLYNQRnZ_K32WTLSYo#list";
-				link='https://drive.google.com/drive/folders/1sg5vKavjxhIcaQqLYNQRnZ_K32WTLSYo?usp=sharing';
-				break;	
-		     case 2:
-		        jud='Nilai Rapor Kelas 7B';
-		        frame="https://drive.google.com/embeddedfolderview?id=1Dr9q-Mq3cwOKuAl9S5Lss1DGwO6EJS0t#list";
-				link='https://drive.google.com/drive/folders/1Dr9q-Mq3cwOKuAl9S5Lss1DGwO6EJS0t?usp=sharing';
-				break;	
-			case 3:
-		        jud='Nilai Rapor Kelas 8A';
-		        frame="https://drive.google.com/embeddedfolderview?id=1djUaaITH8W4FkcwGnoiLTdULnHTitXXs#list";
-				link='https://drive.google.com/drive/folders/1djUaaITH8W4FkcwGnoiLTdULnHTitXXs?usp=sharing';
-				break;	
-			case 4:
-		        jud='Nilai Rapor Kelas 8B';
-		        frame="https://drive.google.com/embeddedfolderview?id=1xnY6kqzwwmlF95pBtPoFfVTZR7hYArE1#list";
-				link='https://drive.google.com/drive/folders/1xnY6kqzwwmlF95pBtPoFfVTZR7hYArE1?usp=sharing';
-				break;	
-			case 5:
-		        jud='Nilai Rapor Kelas 9A';
-		        frame="https://drive.google.com/embeddedfolderview?id=1vH6N4RFdvxsnywb8gI-0fLWuBzo1JYrl#list";
-				link='https://drive.google.com/drive/folders/1vH6N4RFdvxsnywb8gI-0fLWuBzo1JYrl?usp=sharing';
-				break;	
-			case 6:
-		        jud='Nilai Rapor Kelas 9B';
-		        frame="https://drive.google.com/embeddedfolderview?id=1b30auSE1AO2IMxnHqetBZ2LSLN5Ue_1u#list";
-				link='https://drive.google.com/drive/folders/1b30auSE1AO2IMxnHqetBZ2LSLN5Ue_1u?usp=sharing';
-				break;	
-				
-		   }
-        var html1=window.atob('PGRpdiBpZD0ibG9hZCIgPjxpIGNsYXNzPSJmYSBmYS1yZWZyZXNoIGZhLXNwaW4iIHN0eWxlPSJmb250LXNpemU6NTBweCI+PC9pPjwvZGl2PjxidXR0b24gY2xhc3M9ImJ0biI+PGEgaHJlZj0i')+link;
-		var html2=window.atob('InRhcmdldD0iX2JsYW5rIj4gVXBsb2FkIEZpbGUgUmFwb3I8L2E+PC9idXR0b24+PGlmcmFtZSBvbmxvYWQ9ImdvbG9hZCgpIiBzcmM9Ig==')+frame;
-		var html3=window.atob('IiBzdHlsZT0id2lkdGg6MTAwJTsgaGVpZ2h0OjYwMHB4OyBib3JkZXI6MDsiPjwvaWZyYW1lPg==');    
-        var html=html1+html2+html3;		
-		 
-		var me = this;
- 
-                        me.modalInfo = new Imat.Modal({
-						
-                            title: jud,
-                            iconCls: 'info-circle',
-							padding: true,
-                             
-                          height: 500,
-                size: 'modal-lg',
-                fullsize: true,
-                            items: [{
-                                xtype: 'html',
-                                content: html
-								
-                            }]
-                        });
-},
-                        
-        getDownload: function() {
-		var ctx2 = document.getElementById('contentDownload');
-			 ctx2.innerHTML=
-            `
-  
-  
-  <!--<ul class='download'>
-<li class=''>
-<div><img src='https://unbk.kemdikbud.go.id/assets/img/flaticon/pdf.png'><a class='download-folder' href='javascript:;' id='download-undefined' onclick='bukaline()'>Tdk ada file </a><a class='download-remove btn btn-xs btn-danger' href='javascript:;' style='display: none;'>X</a></img></div>
-<ul class='download-child' id='bukaline' style='display:none;'>
-<li><img src='https://unbk.kemdikbud.go.id/assets/img/flaticon/pdf.png'><a class='download-file' href='javascript:;' id='download-21' item='' onclick='bukaline1()'>Tidak ada file</a><a class='download-remove btn btn-xs btn-danger' href='javascript:;' style='display: none;'>X</a></img></li>
-</ul>
-</li>
-<li class=''>
-<div><img src='https://unbk.kemdikbud.go.id/assets/img/flaticon/pdf.png'><a class='download-file' href='javascript:;' id='download-33' onclick='bukaline1()' title='Simulasi CBT Daring'>tdk ada file</a><a class='download-remove btn btn-xs btn-danger' href='javascript:;' style='display: none;'>X</a></img>
-  </div></li></ul>-->`
-        },
-
-        getPengumuman: function() {
-            var me = this;
-			 var ctx2 = document.getElementById('contentPengumuman');
-			 ctx2.innerHTML=
-`<ul class='timeline '>
-   <li class='time-label'><span class='bg-blue'><b>Januari 2021</b></span></li>
-   
-   <li><i class='bg-blue fa fa-envelope'></i>
-<div class='timeline-item'>
-  <h3 class='timeline-header'><a href='javascript:;'>Rapor Mutu 2020</a><span class='timeline-user'></span><span class='time'><i class='fa fa-calendar'></i>03-01-2021<i class='fa fa-clock'></i><i class='fa fa-clock-o'></i>09:42 PM</span></h3> 
-<div class='timeline-body text-success' id='pmp2020'>
-  
-  
-  </div>
-<div class='timeline-footer'></div></div></li>
- <div class='timeline-footer'></div>
- 
-   
-   
-   
-   <li class='time-label'><span class='bg-blue'>Desember 2020</span></li> 
-   
-<li><i class='bg-blue fa fa-envelope'></i>
-<div class='timeline-item'>
-  <h3 class='timeline-header'><a href='javascript:;'>Pengumuman Libur Tahun Baru</a><span class='timeline-user'></span><span class='time'><i class='fa fa-calendar'></i>26-12-2020<i class='fa fa-clock'></i><i class='fa fa-clock-o'></i>11:42 AM</span></h3>
-  <div class='timeline-body text-success'><p>Libur dari  tgl 28 Desember 2020  s/d 10 Januari 2021 </p></div>
-<div class='timeline-footer'></div></div></li>
- <div class='timeline-footer'></div>
-  
-  
-  
-  <li class='time-label'><span class='bg-blue'>Oktober 2020</span></li> 
-  
-  <li><i class='bg-blue fa fa-envelope'></i>
-<div class='timeline-item'>
-  <h3 class='timeline-header'><a href='javascript:;'>Aplikasi Undangan</a><span class='timeline-user'></span><span class='time'><i class='fa fa-calendar'></i>05-10-2020<i class='fa fa-clock'></i><i class='fa fa-clock-o'></i>07:33 AM</span></h3>
-  <div class='timeline-body text-success'><p> <a href='https://bugislabel.blogspot.com/?m=1' target='_blank'>Aplikasi Cetak nama-nama undangan pernikahan <button>Buka</button></a></p></div>
-<div class='timeline-footer'></div></div></li>
- <div class='timeline-footer'></div>
-  
-  
-  
-<li> <i class='fa fa-clock-o'></i></li>
-</ul>`
            
-        },
+        }, 
 
         show: function() {
             this.createComponent();
         }
     }
 })(); Home.show();
-
-  function kelas7b(d){
-    Home.kls7b(d);
-	}
-	 function bukaline(){
-  var ab=document.querySelector("#bukaline").style;
+ 
+ 
+ 
    
-  if (ab.display==="none" ) {
-   ab.display="block"}
-   else {
-    ab.display="none"}
-}
-
-function goload(){ 
-var ab=document.querySelector("#load");
- ab.innerHTML="";
-
-}
-var ab=document.querySelector("#min")
-function tomin(n){
-  if (n==1){
- 
- setTimeout(function(){ topass(); }, 200);
- }
- 
- else {
-  setTimeout(function(){ new Imat.MessageBox({ size: 'modal-sm', type: 'success', title: 'Informasi', text: 'Anda Behasil Masuk Sebagai Tamu'}); }, 200);
-  ab.innerHTML="Masuk sebagai Tamu";
- }
-
-}
-function topass(){
-var msg = new Imat.MessageBox({
-					width: 350,
-					type: '',
-					title: 'Masuk Sebagai Admin',
-   text: "<label>Masukkan Password:</label><br/><input type='text'/>",
-					buttons: [{
-						xtype: 'button',
-						position: 'right',
-						iconCls: 'check-circle',
-						text: 'Ya',
-						handler: function(){
-						     ab.innerHTML="Masuk sebagai tamu";
-							 new Imat.MessageBox({ size: 'modal-sm', type: 'critical', title: 'Informasi', text: 'Password yang anda masukkan salah ...'});
-									msg.close();
-									 
-							 
-						}
-					}, {
-						xtype: 'button',
-						position: 'right',
-						iconCls: 'minus-circle',
-						text: 'Tidak',
-						handler: function(){
-						    
-							msg.close();
-						}
-					}]
-				});	
-
-}
-
-	function bukaline1(){new Imat.MessageBox({ size: 'modal-sm', type: 'critical', title: 'Informasi', text: 'Maaf file tidak ditemukan'});}
-
-  var tr=document.getElementById("pmp2020");
-   tr.innerHTML=window.atob('PHA+PGEgaHJlZj0iaHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xd2E4VlZ5cTlGTWJJdW5tT0lfRUxVT0xtUVR3QzdCUWgvdmlldz91c3A9c2hhcmluZyIgdGFyZ2V0PSJfYmxhbmsiPjxiPj4+IExpaGF0IFJhcG9yIE11dHUgMjAyMCA8L2I+PC9hPjxwLz48YSBocmVmPSJodHRwczovL2RyaXZlLmdvb2dsZS5jb20vdWM/ZXhwb3J0PWRvd25sb2FkJmlkPTF5b0VDdjZUVEhURzFVNXM3c1V0VlIxQVdSX2Eya21JUiI+PGI+Pj4gRG93bmxvYWQgUmFwb3IgTXV0dSAyMDIwIEV4Y2VsPC9iPjwvYT48L3A+');
-  
- 
-  
-  </script>
-</div>
-<script>
-  
-  var btll=document.getElementById('listt');  
-   btll.innerHTML='<br/>'+window.atob('PGF1ZGlvICBpZD0ncGx5cycgYXV0b3BsYXk9J3RydWUnIGNvbnRyb2xzPSd0cnVlJz48c291cmNlIHNyYz0naHR0cHM6Ly9zc2cuc3RyZWFtaW5nbXVyYWguY29tOjc3Nzcvc3RyZWFtJy8+IDwvYXVkaW8+');
-  
-  
- 
-    
-   
-   
-  </script>
-<script>
- var apa=0;
-    
-  function dataku(n){
- apa=n;
-       var jd=document.getElementById("judulku");
-	   var dt=document.getElementById("dataku");
-    dt.style.display="none";
-	   var judul="";
-	   var data="";
-    switch (n) {
-	case 1:
-	      judul="Data Siswa"
-           
-    
-    
-	      data=`<div id='tes' style='overflow:auto;height:auto;'><table cellspacing='0' class='table table-striped table-bordered' id='tabel-data' width='100%'><thead> <tr><th>No</th><th>Foto</th><th style='width:150px'>Nama</th><th>NIPD</th><th>JK</th><th>KLS</th><th>NISN</th><th>Tanggal Lahir</th><th>Alamat</th></tr></thead><tbody><tr><td>1</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>A. AQIL RIQIHLMY ANAS</td><td>2462</td><td>L</td><td>7A</td><td>86518054</td><td>SINJAI, 13-Januari-2008</td><td>Saharu</td></tr><tr><td>2</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>A. Aulia Rahman</td><td>2406</td><td>P</td><td>8A</td><td>61904797</td><td>Sinjai, 12-Nopember-2006</td><td>Sahoddi</td></tr><tr><td>3</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>A. Jumardin</td><td>2407</td><td>L</td><td>8A</td><td>74104061</td><td>Sinjai, 30-Maret-2007</td><td>Sahoddi</td></tr><tr><td>4</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>A. SRI SEVTI VANI</td><td>2463</td><td>P</td><td>7A</td><td>72999855</td><td>SINJAI, 03-September-2007</td><td>Mattirotangka</td></tr><tr><td>5</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Abd Khaliq</td><td>2408</td><td>L</td><td>8A</td><td>66397325</td><td>Sinjai, 08-September-2006</td><td>Sahoddi</td></tr><tr><td>6</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Adil Ramadan</td><td>2362</td><td>L</td><td>9A</td><td>51813379</td><td>Sinjai, 23-Oktober-2005</td><td>Saharu</td></tr><tr><td>7</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>ADRIANTO</td><td>2363</td><td>L</td><td>9A</td><td>55566254</td><td>SINJAI, 21-Desember-2005</td><td>SATENGAH</td></tr><tr><td>8</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>AFDAL SAPUTRA</td><td>2364</td><td>L</td><td>9A</td><td>62963549</td><td>SINJAI, 13-Oktober-2005</td><td>SATENGAH</td></tr><tr><td>9</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>AFDALUDDIN</td><td>2464</td><td>L</td><td>7A</td><td>87453045</td><td>SINJAI, 29-April-2008</td><td>BULU-BULU</td></tr><tr><td>10</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>AINUN HIDAYAT</td><td>2460</td><td>L</td><td>9A</td><td>52175250</td><td>SINJAI, 21-Nopember-2005</td><td>SATENGAH</td></tr><tr><td>11</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Ainun Rahima</td><td>2409</td><td>P</td><td>8A</td><td>69042711</td><td>Sinjai, 03-September-2006</td><td>Pt. Ponggawae</td></tr><tr><td>12</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>AIRIN NIZAR</td><td>2410</td><td>P</td><td>8A</td><td>68299677</td><td>SINJAI, 28-Mei-2006</td><td>Mattirowalie</td></tr><tr><td>13</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>AKMAL YUSRI</td><td>2465</td><td>L</td><td>7A</td><td>82187536</td><td>SINJAI, 27-Januari-2008</td><td>SAHODDI</td></tr><tr><td>14</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>AKSAN SETIAWAL</td><td>2365</td><td>L</td><td>9A</td><td>68019205</td><td>SINJAI, 21-Juli-2006</td><td>SATENGAH</td></tr><tr><td>15</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Alfianita</td><td>2411</td><td>P</td><td>8A</td><td>54445405</td><td>Sinjai, 03-Nopember-2005</td><td>Saharu</td></tr><tr><td>16</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>ALFIN ALFATTHAHU</td><td>2366</td><td>L</td><td>9A</td><td>68310008</td><td>SINJAI, 09-April-2006</td><td>satengah</td></tr><tr><td>17</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>AMALUDDIN</td><td>2412</td><td>L</td><td>8A</td><td>74680698</td><td>SINJAI, 15-Februari-2007</td><td>SATENGAH</td></tr><tr><td>18</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>ANDI BASO BINTANG</td><td>2413</td><td>L</td><td>8A</td><td>74925012</td><td>SINJAI, 05-Maret-2007</td><td>Mattirowalie</td></tr><tr><td>19</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>ANDI HAERIL PUTRA</td><td>2414</td><td>L</td><td>8A</td><td>74696663</td><td>SINJAI, 13-Desember-2007</td><td>Mattirowalie</td></tr><tr><td>20</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>ANDI MUH. FAREL AL-FAREZY</td><td>2467</td><td>L</td><td>7A</td><td>81711285</td><td>PALOPO, 20-Februari-2008</td><td>Sahoddi</td></tr><tr><td>21</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>ANDI REZKIAWAN</td><td>2415</td><td>L</td><td>8A</td><td>74536238</td><td>BONE, 01-Oktober-2007</td><td>Mattirowalie</td></tr><tr><td>22</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>ANDI ZASKIA</td><td>2468</td><td>P</td><td>7A</td><td>82602809</td><td>SINJAI, 13-Januari-2009</td><td>Mattirowalie</td></tr><tr><td>23</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>ANDI. ADRIAN</td><td>2466</td><td>L</td><td>7A</td><td>62139858</td><td>SINJAI, 19-Oktober-2006</td><td>Saharu</td></tr><tr><td>24</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Angga</td><td>2367</td><td>L</td><td>9A</td><td>64817899</td><td>Sinjai, 27-Juni-2006</td><td>Saharu</td></tr><tr><td>25</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Ardan Anas</td><td>2416</td><td>L</td><td>8A</td><td>67098894</td><td>Sinjai, 03-Mei-2006</td><td>Saharu</td></tr><tr><td>26</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Arfan Amir</td><td>2469</td><td>L</td><td>7A</td><td>85178229</td><td>Sinjai, 07-April-2008</td><td>Saharu</td></tr><tr><td>27</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Ari Sandi</td><td>2368</td><td>L</td><td>9A</td><td>44734606</td><td>Sinjai, 03-Desember-2004</td><td>Sahoddi</td></tr><tr><td>28</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Aril</td><td>2417</td><td>L</td><td>8A</td><td>78662812</td><td>Sinjai, 15-April-2007</td><td>Saharu</td></tr><tr><td>29</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Arini Aliyah Mustika</td><td>2470</td><td>P</td><td>7A</td><td>75077708</td><td>Makassar, 09-Nopember-2007</td><td>Saharu</td></tr><tr><td>30</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Asdar</td><td>2369</td><td>L</td><td>9A</td><td>63862476</td><td>Sinjai, 02-April-2006</td><td>marua</td></tr><tr><td>31</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>ASDAR</td><td>2384</td><td>L</td><td>9B</td><td>14583853</td><td>SINJAI, 06-Juni-2006</td><td>PARIA</td></tr><tr><td>32</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>ASHAR</td><td>2370</td><td>L</td><td>9A</td><td>68003662</td><td>SINJAI, 10-Juli-2005</td><td>PARIA</td></tr><tr><td>33</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Aswatullah</td><td>2418</td><td>L</td><td>8A</td><td>61168046</td><td>Sinjai, 17-Juli-2006</td><td>Saharu</td></tr><tr><td>34</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Awaluddin</td><td>2419</td><td>L</td><td>8A</td><td>64399724</td><td>Sinjai, 08-September-2006</td><td>Paria</td></tr><tr><td>35</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Ayu wahyuni</td><td>2371</td><td>P</td><td>9A</td><td>53645659</td><td>sinjai, 07-Oktober-2005</td><td>marua</td></tr><tr><td>36</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>DARMADIRAWAN</td><td>2420</td><td>L</td><td>8A</td><td>68250630</td><td>SINJAI, 11-Mei-2006</td><td>SATENGAH</td></tr><tr><td>37</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Della Auliana</td><td>2372</td><td>P</td><td>9A</td><td>54961856</td><td>Sinjai, 20-Nopember-2005</td><td>Saharu</td></tr><tr><td>38</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Deni sunandar</td><td>2381</td><td>L</td><td>9A</td><td>59468355</td><td>sinjai, 31-Desember-2005</td><td>sahoddi</td></tr><tr><td>39</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Efi</td><td>2471</td><td>P</td><td>7A</td><td>85242779</td><td>Sinjai, 07-Maret-2008</td><td>Paria</td></tr><tr><td>40</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Farhan Khalil Akbar</td><td>2472</td><td>L</td><td>7A</td><td>89287766</td><td>Sinjai, 27-Maret-2008</td><td>Dusun Bulu-Bulu</td></tr><tr><td>41</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>FINA WARDANI</td><td>2473</td><td>P</td><td>7A</td><td>83522275</td><td>SINJAI, 01-Januari-2008</td><td>JALAN KAKI</td></tr><tr><td>42</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Firdamayani</td><td>2373</td><td>P</td><td>9A</td><td>69742603</td><td>Sinjai, 03-Juli-2006</td><td>Hilalang</td></tr><tr><td>43</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>FIRDAUS</td><td>2374</td><td>L</td><td>9A</td><td>51137063</td><td>SINJAI, 07-September-2005</td><td>SATENGAH</td></tr><tr><td>44</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>HAIKAL</td><td>2422</td><td>L</td><td>8A</td><td>65193043</td><td>SINJAI, 13-Mei-2006</td><td>BOLA 1</td></tr><tr><td>45</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>HAIKAL</td><td>2474</td><td>L</td><td>7A</td><td>74456922</td><td>SINJAI, 06-September-2007</td><td>PARIA</td></tr><tr><td>46</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Hasriani</td><td>2375</td><td>P</td><td>9A</td><td>57827404</td><td>Sinjai, 09-Agustus-2005</td><td>Sahoddi</td></tr><tr><td>47</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>HERIADI</td><td>2475</td><td>L</td><td>7A</td><td>84364955</td><td>SINJAI, 12-Februari-2008</td><td>BULU-BULU</td></tr><tr><td>48</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Hikma al fira</td><td>2476</td><td>P</td><td>7A</td><td>83858088</td><td>SINJAI, 21-Maret-2008</td><td>SATENGAH</td></tr><tr><td>49</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>HILDAYANTI</td><td>2477</td><td>P</td><td>7A</td><td>86297808</td><td>SINJAI, 10-Maret-2008</td><td>PARIA</td></tr><tr><td>50</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Husnul Muawiah</td><td>2423</td><td>P</td><td>8A</td><td>65146381</td><td>Sinjai, 21-April-2006</td><td>Sahoddi</td></tr><tr><td>51</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>IKSAN AMAR</td><td>2376</td><td>L</td><td>9A</td><td>50677989</td><td>SINJAI, 08-Mei-2005</td><td>PARIA</td></tr><tr><td>52</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Inri Wijaya Putri</td><td>2424</td><td>P</td><td>8A</td><td>63400581</td><td>Sinjai, 04-Nopember-2006</td><td>Sahoddi</td></tr><tr><td>53</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Irfandi</td><td>2478</td><td>L</td><td>7A</td><td>67721548</td><td>Sinjai, 07-Juni-2006</td><td>Sahoddi</td></tr><tr><td>54</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Irfang Sul</td><td>2425</td><td>L</td><td>8A</td><td>61605301</td><td>Sinjai, 24-Januari-2006</td><td>Sahoddi</td></tr><tr><td>55</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>IRFANSYAH</td><td>2479</td><td>L</td><td>7A</td><td>75092366</td><td>SINJAI, 06-Juli-2007</td><td>SATENGAH</td></tr><tr><td>56</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>JUMIATI</td><td>2377</td><td>P</td><td>9A</td><td>52193327</td><td>SINJAI, 18-Agustus-2005</td><td>SATENGAH</td></tr><tr><td>57</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>JUSMAN</td><td>2480</td><td>L</td><td>7A</td><td>75319256</td><td>SINJAI, 26-Juni-2007</td><td>JALAN KAKI</td></tr><tr><td>58</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>KARDILLAH</td><td>2378</td><td>P</td><td>9A</td><td>52521552</td><td>SINJAI, 07-Juli-2005</td><td>PARIA</td></tr><tr><td>59</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>KHOIRUL AMAN</td><td>2379</td><td>L</td><td>9A</td><td>64902978</td><td>SINJAI, 21-Juni-2006</td><td>PARIA</td></tr><tr><td>60</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Laelah</td><td>2481</td><td>P</td><td>7A</td><td>74230417</td><td>Sinjai, 02-Oktober-2007</td><td>Saharu</td></tr><tr><td>61</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Lukman</td><td>2487</td><td>L</td><td>7B</td><td>63864691</td><td>Sinjai, 11-Nopember-2006</td><td>Saharu</td></tr><tr><td>62</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Lukman</td><td>2380</td><td>L</td><td>9A</td><td>59777649</td><td>Sinjai, 11-Juni-2005</td><td>Saharu</td></tr><tr><td>63</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>M RASYA</td><td>2433</td><td>L</td><td>8B</td><td>61535949</td><td>SINJAI, 11-Nopember-2006</td><td>BOLA 1</td></tr><tr><td>64</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>M. Hayyung</td><td>2426</td><td>L</td><td>8A</td><td>76780222</td><td>Sinjai, 12-April-2007</td><td>Saharu</td></tr><tr><td>65</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>M. Yahya</td><td>2382</td><td>L</td><td>9A</td><td>68351196</td><td>Sinjai, 14-Februari-2006</td><td>Saharu</td></tr><tr><td>66</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>MAULIDYA ALFI ZAHRANI</td><td>2427</td><td>P</td><td>8A</td><td>77342904</td><td>Sinjai, 13-April-2007</td><td>Sahoddi</td></tr><tr><td>67</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>MIRA</td><td>2482</td><td>P</td><td>7A</td><td>71549876</td><td>KONAWE, 28-Mei-2007</td><td>PARIA</td></tr><tr><td>68</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>MIRNAWATI</td><td>2483</td><td>P</td><td>7A</td><td>82182770</td><td>SINJAI, 08-Februari-2008</td><td>SATENGAH</td></tr><tr><td>69</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>MIRNAWATI MENTARI</td><td>2428</td><td>P</td><td>8A</td><td>61266781</td><td>SINJAI, 24-Nopember-2006</td><td>PARIA</td></tr><tr><td>70</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>MUH RIDWAN</td><td>2491</td><td>L</td><td>7B</td><td>76332125</td><td>SINJAI, 23-Agustus-2007</td><td>SATENGAH</td></tr><tr><td>71</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Muh. Afdal</td><td>2488</td><td>L</td><td>7B</td><td>79436589</td><td>Makassar, 10-Februari-2007</td><td>Jl. Poros Bulupoddo</td></tr><tr><td>72</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>MUH. ASWAR US</td><td>2386</td><td>L</td><td>9B</td><td>57053698</td><td>SINJAI, 25-April-2005</td><td>MATTIROWALIE</td></tr><tr><td>73</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Muh. Hajar Aswad</td><td>2492</td><td>L</td><td>7B</td><td>71855616</td><td>sinjai, 02-September-2007</td><td>Barang</td></tr><tr><td>74</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Muh. Ikbal</td><td>2494</td><td>L</td><td>7B</td><td>83201548</td><td>Sinjai, 20-September-2007</td><td>Dusun Bulu-Bulu</td></tr><tr><td>75</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Muh. Iksan</td><td>2387</td><td>L</td><td>9B</td><td>56666493</td><td>Sinjai, 30-Desember-2005</td><td>Bulu-Bulu</td></tr><tr><td>76</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Muh. Muhsin</td><td>2495</td><td>L</td><td>7B</td><td>84318316</td><td>Sinjai, 25-Februari-2008</td><td>Saharu</td></tr><tr><td>77</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Muh. Nazwan</td><td>2493</td><td>L</td><td>7B</td><td>72486806</td><td>Sinjai, 07-Nopember-2007</td><td>Saharu</td></tr><tr><td>78</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>MUH. RASYA REZKY</td><td>2434</td><td>L</td><td>8B</td><td>73132680</td><td>SINJAI, 16-Nopember-2007</td><td>PARIA</td></tr><tr><td>79</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Muh. Shafwan Aryudha Kumi</td><td>2496</td><td>L</td><td>7B</td><td>87393771</td><td>Sinjai, 02-Mei-2008</td><td>Sahoddi</td></tr><tr><td>80</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Muh.Ardianto Amjum</td><td>2489</td><td>L</td><td>7B</td><td>77807824</td><td>Sinjai, 24-Oktober-2007</td><td>Alehanuae</td></tr><tr><td>81</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>MUH.ARIEL</td><td>2490</td><td>L</td><td>7B</td><td>88607230</td><td>SINJAI, 03-Februari-2007</td><td>SATENGAH</td></tr><tr><td>82</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>MUH.YASIR</td><td>2435</td><td>L</td><td>8B</td><td>66226687</td><td>ALEHANUAE, 02-September-2006</td><td>LANGORI</td></tr><tr><td>83</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Muhammad Naufal Karim</td><td>2385</td><td>L</td><td>9B</td><td>68663252</td><td>Sinjai, 16-Juni-2006</td><td>Sahoddi</td></tr><tr><td>84</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Muhazzib</td><td>2388</td><td>L</td><td>9B</td><td>57185145</td><td>Sinjai, 20-Juli-2005</td><td>Saharu</td></tr><tr><td>85</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>MUHLIS</td><td>2436</td><td>L</td><td>8B</td><td>69985996</td><td>SINJAI, 25-September-2006</td><td>Paria</td></tr><tr><td>86</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>MULDATUL JANNA</td><td>2497</td><td>L</td><td>7B</td><td>72118529</td><td>BARRU, 07-September-2007</td><td>JALAN KAKI</td></tr><tr><td>87</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Mutawakkil</td><td>2389</td><td>L</td><td>9B</td><td>62335165</td><td>Sinjai, 01-Mei-2006</td><td>Sahoddi</td></tr><tr><td>88</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NADIA INSANI PUTRI</td><td>2429</td><td>P</td><td>8A</td><td>69112192</td><td>SINJAI, 20-Agustus-2006</td><td>Mattiro Tangka</td></tr><tr><td>89</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NELIA SAPUTRI</td><td>2484</td><td>P</td><td>7A</td><td>85288753</td><td>SINJAI, 17-Maret-2008</td><td>Mattirotangka</td></tr><tr><td>90</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NIAR</td><td>2383</td><td>P</td><td>9A</td><td>65229057</td><td>SINJAI, 05-Nopember-2006</td><td>SATENGAH</td></tr><tr><td>91</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NUR AFIKA RISKA</td><td>2485</td><td>P</td><td>7A</td><td>87937174</td><td>SINJAI, 25-Januari-2008</td><td>JALAN KAKI</td></tr><tr><td>92</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NUR AZIZAH</td><td>2486</td><td>P</td><td>7A</td><td>82370422</td><td>SINJAI, 15-Januari-2008</td><td>JALAN KAKI</td></tr><tr><td>93</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NUR REZKI AMALIA</td><td>2498</td><td>P</td><td>7B</td><td>78053935</td><td>SINJAI, 21-Oktober-2007</td><td>JALAN KAKI</td></tr><tr><td>94</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NURAINUN</td><td>2430</td><td>P</td><td>8A</td><td>73568572</td><td>SINJAI, 27-Januari-2007</td><td>SATENGAH</td></tr><tr><td>95</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Nurazizah</td><td>2499</td><td>P</td><td>7B</td><td>77298379</td><td>Sinjai, 02-Agustus-2007</td><td>Saharu</td></tr><tr><td>96</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NURMIANI</td><td>2431</td><td>P</td><td>8A</td><td>64530685</td><td>SINJAI, 10-Agustus-2006</td><td>Mattiro Walie</td></tr><tr><td>97</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NURSATRIYANI</td><td>2390</td><td>P</td><td>9B</td><td>51410526</td><td>SINJAI, 10-Nopember-2005</td><td>SATENGAH</td></tr><tr><td>98</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Nurul Afifa</td><td>2500</td><td>P</td><td>7B</td><td>81439747</td><td>Sinjai, 21-Februari-2008</td><td>Saharu</td></tr><tr><td>99</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Nurul Askiyah</td><td>2391</td><td>P</td><td>9B</td><td>68205352</td><td>Sinjai, 26-Oktober-2006</td><td>Sahoddi</td></tr><tr><td>100</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Nurul Hidaya</td><td>2432</td><td>P</td><td>8A</td><td>65440371</td><td>Sinjai, 28-Desember-2006</td><td>Saharu</td></tr><tr><td>101</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NURUL HIDAYAH</td><td>2437</td><td>P</td><td>8B</td><td>62029097</td><td>SINJAI, 24-Juni-2006</td><td>JL. korban 40.000 jiwa lr.3no.8</td></tr><tr><td>102</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NURUL HIDAYU</td><td>2438</td><td>P</td><td>8B</td><td>75174935</td><td>Sinjai, 06-Desember-2006</td><td>Barang 2</td></tr><tr><td>103</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Nurul Miftahuljanna</td><td>2501</td><td>P</td><td>7B</td><td>81822874</td><td>Sinjai, 08-Februari-2008</td><td>Barang</td></tr><tr><td>104</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Nurul Pratiwi Putri</td><td>2439</td><td>P</td><td>8B</td><td>62109027</td><td>Sinjai, 04-Desember-2006</td><td>Sahoddi</td></tr><tr><td>105</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>NURUL WAFIA</td><td>2502</td><td>P</td><td>7B</td><td>86222974</td><td>SINJAI, 01-Januari-2008</td><td>SATENGAH</td></tr><tr><td>106</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Putri Natasya</td><td>2392</td><td>P</td><td>9B</td><td>56809352</td><td>Sinjai, 12-Nopember-2005</td><td>Barang 1</td></tr><tr><td>107</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Rahman Saputra</td><td>2511</td><td>L</td><td>7B</td><td>77863316</td><td>Salapanrenge, 23-September-2007</td><td>Sahoddi</td></tr><tr><td>108</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Rahmaniar</td><td>2440</td><td>P</td><td>8B</td><td>63289318</td><td>Sinjai, 08-Agustus-2006</td><td>Paria</td></tr><tr><td>109</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>RAHMAT RIFALDI</td><td>2503</td><td>L</td><td>7B</td><td>81694130</td><td>SINJAI, 19-Februari-2008</td><td>SATENGAH</td></tr><tr><td>110</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Randi Arianto</td><td>2442</td><td>L</td><td>8B</td><td>75916821</td><td>Sinjai, 29-Maret-2007</td><td>Sahoddi</td></tr><tr><td>111</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Ravina</td><td>2393</td><td>P</td><td>9B</td><td>51303205</td><td>Sinjai, 15-Oktober-2005</td><td>Saharu</td></tr><tr><td>112</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>RIFATUL</td><td>2443</td><td>P</td><td>8B</td><td>74081325</td><td>SINJAI, 27-Januari-2007</td><td>SATENGAH</td></tr><tr><td>113</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Riska Sri Wahyuni</td><td>2444</td><td>P</td><td>8B</td><td>75610214</td><td>Sinjai, 16-Juni-2007</td><td>Paria II</td></tr><tr><td>114</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>RISWAN</td><td>2445</td><td>L</td><td>8B</td><td>138166412</td><td>SINJAI, 13-Februari-2007</td><td>SATENGAH</td></tr><tr><td>115</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Rivaldi</td><td>2395</td><td>L</td><td>9B</td><td>59600826</td><td>Sinjai, 08-Desember-2005</td><td>Saharu</td></tr><tr><td>116</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Rizky Amelia</td><td>2394</td><td>P</td><td>9B</td><td>66252047</td><td>Sinjai, 16-Januari-2006</td><td>Bulu-Bulu</td></tr><tr><td>117</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Rudianto</td><td>2396</td><td>L</td><td>9B</td><td>63144791</td><td>Sinjai, 03-Februari-2006</td><td>Saharu</td></tr><tr><td>118</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Rusli</td><td>2397</td><td>L</td><td>9B</td><td>49742703</td><td>Paria, 24-Desember-2004</td><td>Paria II</td></tr><tr><td>119</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>SAKINAH</td><td>2504</td><td>P</td><td>7B</td><td>87443765</td><td>SINJAI, 27-Januari-2008</td><td>SATENGAH</td></tr><tr><td>120</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Saktiawan</td><td>2446</td><td>L</td><td>8B</td><td>68320870</td><td>sinjai, 20-Oktober-2006</td><td>Paria II</td></tr><tr><td>121</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>SATRIALDI</td><td>2447</td><td>L</td><td>8B</td><td>74960969</td><td>SINJAI, 03-Februari-2007</td><td>Paria</td></tr><tr><td>122</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>SATRIANI</td><td>2448</td><td>P</td><td>8B</td><td>71250230</td><td>SINJAI, 20-Februari-2007</td><td>SATENGAH</td></tr><tr><td>123</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>SATRIANI</td><td>2505</td><td>P</td><td>7B</td><td>87495013</td><td>SINJAI, 01-Januari-2008</td><td>BULU-BULU</td></tr><tr><td>124</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>SINAR</td><td>2398</td><td>P</td><td>9B</td><td>58479598</td><td>SINJAI, 01-Juli-2004</td><td>PARIA</td></tr><tr><td>125</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Suci mulfiyana</td><td>2399</td><td>P</td><td>9B</td><td>53739647</td><td>Sinjai, 15-Juli-2005</td><td>alehanuae</td></tr><tr><td>126</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Suci Ramadani</td><td>2506</td><td>P</td><td>7B</td><td>71161353</td><td>sinjai, 12-Oktober-2007</td><td>Barang I</td></tr><tr><td>127</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Suci Ramadhan</td><td>2449</td><td>P</td><td>8B</td><td>78504953</td><td>Sinjai, 19-Mei-2007</td><td>Saharu</td></tr><tr><td>128</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Suci Ramadhani</td><td>2507</td><td>P</td><td>7B</td><td>76487106</td><td>Sinjai, 01-Juli-2007</td><td>Dusun Bulu-Bulu</td></tr><tr><td>129</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>SUDARMI</td><td>2450</td><td>P</td><td>8B</td><td>65032862</td><td>PARIA, 18-Agustus-2006</td><td>Paria II</td></tr><tr><td>130</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Sudirman</td><td>2451</td><td>L</td><td>8B</td><td>62332507</td><td>Sinjai, 30-April-2006</td><td>Saharu</td></tr><tr><td>131</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Sukmawati</td><td>2452</td><td>P</td><td>8B</td><td>66822734</td><td>Sinjai, 27-Juli-2006</td><td>Paria</td></tr><tr><td>132</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>SUPRIADI</td><td>2400</td><td>L</td><td>9B</td><td>51574262</td><td>SINJAI, 20-Desember-2005</td><td>PARIA</td></tr><tr><td>133</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>SYAMSUL</td><td>2453</td><td>L</td><td>8B</td><td>56525074</td><td>SINJAI, 26-Oktober-2005</td><td>SATENGAH</td></tr><tr><td>134</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>SYAMSUL HIDAYAT</td><td>2401</td><td>L</td><td>9B</td><td>45279898</td><td>SINJAI, 10-Oktober-2004</td><td>SATENGAH</td></tr><tr><td>135</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Syamsul Rizal</td><td>2402</td><td>L</td><td>9B</td><td>61119538</td><td>Sinjai, 01-Januari-2006</td><td>Saharu</td></tr><tr><td>136</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Tasya Muarikah</td><td>2454</td><td>P</td><td>8B</td><td>62144759</td><td>Sinjai, 09-Agustus-2006</td><td>Sahoddi</td></tr><tr><td>137</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Taufik Hidayah</td><td>2455</td><td>L</td><td>8B</td><td>61823188</td><td>Sinjai, 28-Oktober-2006</td><td>Dusun Bulu-Bulu</td></tr><tr><td>138</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Taufiqul Hakim</td><td>2456</td><td>L</td><td>8B</td><td>64491674</td><td>Sinjai, 17-Mei-2006</td><td>Saharu</td></tr><tr><td>139</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Taufiqur Rahman</td><td>2403</td><td>L</td><td>9B</td><td>53760579</td><td>Sinjai, 11-September-2005</td><td>Sahoddi</td></tr><tr><td>140</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Tri Suci Ramadhani</td><td>2457</td><td>P</td><td>8B</td><td>61357205</td><td>Sinjai, 11-Oktober-2006</td><td>Saharu</td></tr><tr><td>141</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>VEBRIANI</td><td>2508</td><td>P</td><td>7B</td><td>81618523</td><td>SINJAI, 01-Maret-2008</td><td>Saharu</td></tr><tr><td>142</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Wahdania</td><td>2458</td><td>P</td><td>8B</td><td>76925895</td><td>Sinjai, 09-Oktober-2007</td><td>Dusun Bulu-Bulu</td></tr><tr><td>143</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Wahdaniah</td><td>2509</td><td>P</td><td>7B</td><td>88069175</td><td>Sinjai, 06-Nopember-2008</td><td>Sahoddi</td></tr><tr><td>144</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Wahyuddin</td><td>2404</td><td>L</td><td>9B</td><td>56670376</td><td>Sinjai, 08-Agustus-2006</td><td>Saharu</td></tr><tr><td>145</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Yusrang</td><td>2459</td><td>L</td><td>8B</td><td>66982036</td><td>Sinjai, 18-Maret-2006</td><td>Paria</td></tr><tr><td>146</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>Yusriyani</td><td>2405</td><td>P</td><td>9B</td><td>53510075</td><td>Sinjai, 25-Nopember-2005</td><td>Sahoddi</td></tr><tr><td>147</td><td><img src='https://1.bp.blogspot.com/-oKaJceie4sc/X_TeES3a-pI/AAAAAAAAAss/6vze-sO7bgAWPpF04KRjCHaXcEk2sjALACNcBGAsYHQ/s320/user-siswa.png' width='50'/></td><td>ZALZA WANDAFIANA</td><td>2510</td><td>P</td><td>7B</td><td>83926825</td><td>SINJAI, 22-Januari-2008</td><td>Barang I</td></tr></tbody></table></div>`;
-    
-		  break;
-      case 2:
-	      judul="Data Guru"
-	      data= `<div id='tes' style='overflow:auto;height:auto;'><table cellspacing='0' class='table table-striped table-bordered display nowrap' id='tabel-data' width='100%'><thead> <tr><th>No</th><th>Foto</th><th style='width:150px'>Nama</th><th>JK</th><th>NIP</th><th>GOL</th><th>NPWP</th><th>NUPTK</th><th>Guru Mapel</th><th>Alamat</th><th style='width:200px'>Tanggal Lahir</th><th>Email</th> </tr></thead><tbody><tr><td>1</td><td><img src='https://1.bp.blogspot.com/-qNLS5zBiyko/X_UvFDOhdVI/AAAAAAAAAvk/bV2lDyV-OAsO1slGo-mDFlL1O95OGQt3ACNcBGAsYHQ/s200/nawar.jpg'/></td><td>Nawar, S.Pd</td><td>L</td><td>196403141985121001</td><td>IV/b</td><td>486980907806000</td><td>1646742643300052</td><td>TIK / Plt. Kepala Sekolah</td><td>Jl. Hos Cokroaminoto No.32</td><td>Macanre, 14-Maret-1964</td><td>nawarsmp1bpd@gmail.com</td></tr><tr><td>2</td><td><img src='https://1.bp.blogspot.com/-AmSNc30jXY0/X_UuBgaD8cI/AAAAAAAAAus/npRHZ-73cs08hmeX5nZBptrpScXvrJ25QCNcBGAsYHQ/s200/H_APPE.jpg'/></td><td>H. Appe, S.Pd</td><td>L</td><td>196312311986011035</td><td>IV/b</td><td>486981392806000</td><td>5563741643200043</td><td>Bahasa Inggris/Wakasek</td><td>Jl.markisa No.13 Kab Sinjai</td><td>Bontopedda, 31-Desember-1963</td><td>appesmp1bpd@gmail.com</td></tr><tr><td>3</td><td><img src='https://1.bp.blogspot.com/-YqHFknGYA64/X_Uup1BCpMI/AAAAAAAAAvE/N73Li_IHJg4bDwX61oyx2LsiAExAe-zGwCNcBGAsYHQ/s200/HROstinah.jpg'/></td><td>Hj. Rostinah, S.Pd</td><td>P</td><td>196504051986012002</td><td>IV/b</td><td>486981350806000</td><td>3737743644300002</td><td>Matematika</td><td>Bulupoddo</td><td>Bone, 05-April-1965</td><td>rostinahsmp1bpd@gmail.com</td></tr><tr><td>4</td><td><img src='https://1.bp.blogspot.com/--mo2bizmbjQ/X_UuCQ_n4NI/AAAAAAAAAu0/97EI_guWr2YiXccFmegaM-whZIOOo74MQCNcBGAsYHQ/s200/Heriyati.jpg'/></td><td>Heriyati, S.Pd</td><td>P</td><td>196912151998022003</td><td>IV/a</td><td>492498787806000</td><td>2547747649300003</td><td>PKn</td><td>Jln.jend.sudirman No 5</td><td>Sinjai, 15-Desember-1969</td><td>heriyatismp1bpd@gmail.com</td></tr><tr><td>5</td><td><img src='https://1.bp.blogspot.com/-Zmr-qlCaLhE/X_UvFMsg9UI/AAAAAAAAAvo/7NuL-WhukScyNZ1JRCHKCMt825gMxLbYgCNcBGAsYHQ/s200/raden.jpg'/></td><td>Raden Sri Ernawati, S.Pd</td><td>P</td><td>196912041991032004</td><td>IV/b</td><td>488199761806000</td><td>4536747649300003</td><td>Seni Budaya</td><td>Saharu</td><td>Pariangan, 04-Desember-1969</td><td>sriernawatiraden@gmail.com</td></tr><tr><td>6</td><td><img src='https://1.bp.blogspot.com/-rWrnD98fbpc/X_UuBqRFEWI/AAAAAAAAAuw/mtCeVKIX8ZQ-0Aqm6mP33NdDtb_yk_bNQCNcBGAsYHQ/s200/Haswati.jpg'/></td><td>Haswati, S.Pd</td><td>P</td><td>197712242005022007</td><td>IV/a</td><td>492727870806000</td><td>1556755656300003</td><td>Bahasa Indonesia</td><td>JL.G.Bawakaraeng No.78</td><td>Batu Lappa, 24-Desember-1977</td><td>haswatihammade@gmail.com</td></tr><tr><td>7</td><td><img src='https://1.bp.blogspot.com/-e1PbAT-l3DU/X_UuqYoSr6I/AAAAAAAAAvQ/m1wZ4veeryI4IRoz-MVQtqlFKda6PV7rgCNcBGAsYHQ/s200/irawati.jpg'/></td><td>Irawati, S.Pd</td><td>P</td><td>197803302006042017</td><td>IV/a</td><td>492402284806000</td><td>1662756658300002</td><td>IPS</td><td>Jl. Bulu Lasiai No. 86 Rt 02 Rw 01</td><td>Sinjai, 30-Maret-1978</td><td>irawatismp1bpd@gmail.com</td></tr><tr><td>8</td><td><img src='https://1.bp.blogspot.com/-FU2fUQyVQW0/X_UvjrNcF9I/AAAAAAAAAwU/jr-9g8Hkqvs0F3P2_1tDxkN_N31yPFkmgCNcBGAsYHQ/s200/Syatir.jpg'/></td><td>M. Syatir, S.Pd</td><td>L</td><td>197007212005011012</td><td>IV/a</td><td>492726575806000</td><td>2053748653200003</td><td>PENJASKES</td><td>Dusun Jerrung I</td><td>Sinjai, 21-Juli-1970</td><td>msyatirjihan@gmail.com</td></tr><tr><td>9</td><td><img src='https://tlgur.com/d/gm66DeL4'/></td><td>Muhammad Badrun, S.Pd</td><td>L</td><td>198211152010011018</td><td>III/d</td><td>164657835806000</td><td>8447760663110013</td><td>Matematika</td><td>Dusun Mangasa, Desa Lamatti Riaja, Kecamatan Bulupoddo</td><td>Sinjai, 15-Nopember-1982</td><td>badrunnena@gmail.com</td></tr><tr><td>10</td><td><img src='https://1.bp.blogspot.com/-0eN0fFcoNcM/X_Tp-mhFxQI/AAAAAAAAAts/XwPmDzUxlxohtKaoxhcRHlTM12Wt9S4kgCNcBGAsYHQ/s320/guru.png'/></td><td>Hasnah, S.Pd</td><td>P</td><td>197307052006042032</td><td>III/d</td><td>486980204806000</td><td>5037751653300003</td><td>Bahasa Indonesia</td><td>Jl. M. Yahya Mathan No. 3</td><td>Sinjai, 05-Juli-1973</td><td>hasnahyaman@gmail.com</td></tr><tr><td>11</td><td><img src='https://1.bp.blogspot.com/-wmxZoKmCDXs/X_UuBri6XKI/AAAAAAAAAuo/KX3xfzhmcq8RiFQB3CAEwo01ze0HsMv-ACNcBGAsYHQ/s200/Haslinda.jpg'/></td><td>Haslindah, S.Pd</td><td>P</td><td></td><td></td><td>550324743806000</td><td>5462763664300033</td><td>IPA</td><td>Sahoddi</td><td>Bulupoddo, 30-Nopember-1985</td><td>haslindahsmpn1bpd@gmail.com</td></tr><tr><td>12</td><td><img src='https://1.bp.blogspot.com/-j3sEAmMPSLU/X_Uvjt2GB0I/AAAAAAAAAwQ/THROFKGUmLIIeGiMlFTpKgqU2YJqIpfsACNcBGAsYHQ/s200/sukmawati.jpg'/></td><td>A.sukma Puspita Sari, S.Pd</td><td>P</td><td></td><td></td><td>550371389806000</td><td></td><td>Bahasa Indonesia</td><td>Teratai No. 21 A</td><td>SINJAI, 21-Januari-1986</td><td>skmpuspita@gmail.com</td></tr><tr><td>13</td><td><img src='https://1.bp.blogspot.com/-9Y_oEgW1wl4/X_UtuCgDacI/AAAAAAAAAuU/57V1yzD8U1cJzJDI8WBBBIPcgbSE4coegCNcBGAsYHQ/s200/ariyani.jpg'/></td><td>Ariyani, S.Pd</td><td>P</td><td></td><td></td><td>552380396806000</td><td></td><td>Bahasa Inggris</td><td>Sahoddi</td><td>sinjai, 05-September-1987</td><td>ariyani87.spd@gmail.com</td></tr><tr><td>14</td><td><img src='https://1.bp.blogspot.com/-0eN0fFcoNcM/X_Tp-mhFxQI/AAAAAAAAAts/XwPmDzUxlxohtKaoxhcRHlTM12Wt9S4kgCNcBGAsYHQ/s320/guru.png'/></td><td>Herna Jaya, S.Pd</td><td>P</td><td></td><td></td><td></td><td></td><td>Bahasa Inggris</td><td>Sahoddi</td><td>Larompong, 11-Juli-1982</td><td>hernajaya851@gmail.com</td></tr><tr><td>15</td><td><img src='https://1.bp.blogspot.com/-4hTDb611y9M/X_UtuKogHrI/AAAAAAAAAuY/z8R7W1S8mfYoUDuUmdvywOa172VpWcuowCNcBGAsYHQ/s200/Bahri.jpg'/></td><td>Bahri, S.Pd.I</td><td>L</td><td></td><td></td><td></td><td></td><td>PAI</td><td>Satengnga</td><td>Sinjai, 25-Desember-1990</td><td>Bahrismp66@gmail.com</td></tr><tr><td>16</td><td><img src='https://1.bp.blogspot.com/-r93iyvu6UJU/X_Uup2A8RtI/AAAAAAAAAvI/SKLPxDt1JWAeVhVM8CpMoV99rRNHzq2UgCNcBGAsYHQ/s200/Hermawan.jpg'/></td><td>Hermawan, S.Pd</td><td>L</td><td></td><td></td><td>550375489806000</td><td></td><td>PKn</td><td>Jerrung II</td><td>Sinjai, 06-Agustus-1988</td><td>hermawane817@gmail.com</td></tr><tr><td>17</td><td><img src='https://1.bp.blogspot.com/-0eN0fFcoNcM/X_Tp-mhFxQI/AAAAAAAAAts/XwPmDzUxlxohtKaoxhcRHlTM12Wt9S4kgCNcBGAsYHQ/s320/guru.png'/></td><td>Mustoafiah, S.Pd</td><td>P</td><td></td><td></td><td></td><td></td><td>Prakarya</td><td>SAHARU</td><td>SINJAI, 18-Nopember-1991</td><td>mustoafiahfia@gmail.com</td></tr><tr><td>18</td><td><img src='https://1.bp.blogspot.com/-0eN0fFcoNcM/X_Tp-mhFxQI/AAAAAAAAAts/XwPmDzUxlxohtKaoxhcRHlTM12Wt9S4kgCNcBGAsYHQ/s320/guru.png'/></td><td>Najmiati, S.Pd.I</td><td>P</td><td></td><td></td><td></td><td>939753657300012</td><td>PAI</td><td>Jl. Anggrek</td><td>Tompo bulu, 07-Juni-1975</td><td>najmiatinaisyah@gmail.com</td></tr><tr><td>19</td><td><img src='https://1.bp.blogspot.com/-0eN0fFcoNcM/X_Tp-mhFxQI/AAAAAAAAAts/XwPmDzUxlxohtKaoxhcRHlTM12Wt9S4kgCNcBGAsYHQ/s320/guru.png'/></td><td>Risnawati, S.Pd</td><td>P</td><td></td><td></td><td></td><td></td><td>Prakarya</td><td>Saharu</td><td>Sinjai, 12-Juni-1996</td><td>inharisnawati22@gmail.com</td></tr><tr><td>20</td><td><img src='https://1.bp.blogspot.com/-CJgoGICXAjQ/X_mAeGpxgdI/AAAAAAAAAx0/OgmbrkGQa4YNCnwEHoQ03sSr5YmCVIa0QCNcBGAsYHQ/s320/IMG-20210109-WA0005.jpg'/></td><td>Zul Fadhli, S.Pd</td><td>L</td><td></td><td></td><td></td><td></td><td>IPA</td><td>Jl. Bulu Lohe No. 26</td><td>Sinjai, 31-Desember-1992</td><td>alwaritsu02@gmail.com</td></tr></tbody></table></div>`;
-		  break;
-    case 3:
-	      judul="Data Pegawai"
-	      data=`<div id='tes' style='overflow:auto;height:auto;'><table cellspacing='0' class='table table-striped table-bordered display nowrap' id='tabel-data' width='100%'><thead> <tr><th>No</th><th>Foto</th><th style='width:150px'>Nama</th><th>JK</th><th>NIP</th><th>GOL</th><th>NPWP</th><th>NUPTK</th><th>Jenis PTKl</th><th>Alamat</th><th>Tanggal Lahir</th><th>Email</th> </tr></thead><tbody><tr><td>1</td><td><img src='https://1.bp.blogspot.com/-Vpjtw-pX3cw/X_UvF4gIHeI/AAAAAAAAAvw/2kVbfIfpHjcgLZOIuGuomhc32ZzA3gepQCNcBGAsYHQ/s200/sainuddin.jpg' width='50'/></td><td>H. Sainuddin, S.Sos</td><td>L</td><td>196412311986031211</td><td>III/d</td><td>486982135806000</td><td>3563742644200753</td><td>Tenaga Administrasi Sekolah</td><td>Satengah</td><td>Sinjai, 31-Desember-1964</td><td>sainuddin425@gmail.com</td></tr><tr><td>2</td><td><img src='https://1.bp.blogspot.com/-Q0Ajq9LdUNs/X_UvjkXIJRI/AAAAAAAAAwM/rGhp8dQvERAIO4JV48aLyqzIK3zT84HcwCNcBGAsYHQ/s200/USMAN.jpg' width='50'/></td><td>H. Usman</td><td>L</td><td>196512311986031135</td><td>III/b</td><td>491193447806000</td><td>8563743646200033</td><td>Tenaga Administrasi Sekolah</td><td>Baruttung</td><td>Biringere, 31-Desember-1965</td><td>usmansmp1bpd@gmail.com</td></tr><tr><td>3</td><td><img src='https://1.bp.blogspot.com/-Jj4V9ibv7CQ/X_UvFHFRGOI/AAAAAAAAAvs/LIgaxPtk5gMfwVkaP7_u_BElooId3uOAQCNcBGAsYHQ/s200/muhlis.jpg' width='50'/></td><td>Muhlis, Amd. Kom</td><td>L</td><td></td><td></td><td>913674644806000</td><td></td><td>Tenaga Administrasi Sekolah</td><td>Bulu Lasiai No. 86</td><td>Tompo Bulu, 05-Oktober-1980</td><td>muhlissmpn1bpd@gmail.com</td></tr><tr><td>4</td><td><img src='https://1.bp.blogspot.com/-hgdXK-bmbKE/X_UtjSsV6sI/AAAAAAAAAuQ/IU3hlWXE68E-rKH5FhdfuTrZvqBTVUMSQCNcBGAsYHQ/s200/annasufiana.jpg' width='50'/></td><td>Anna Sufiana, Amd. Pust</td><td>P</td><td></td><td></td><td>554828624806000</td><td></td><td>Tenaga Perpustakaan</td><td>Sahoddi</td><td>Sinjai, 01-Desember-1991</td><td>annasufiana455@gmail.com</td></tr></tbody></table></div>`;
-		  break;
-    case 4:
-	      judul="Data Wali Kelas"
-	      data=`<div id='tes' style='overflow:auto;height:auto;'><table cellspacing='0' class='table table-striped table-bordered display nowrap' id='tabel-data' width='100%'><thead> <tr><th style='width:20px'>No</th><th style='width:40px'>Foto</th><th>Wali/Guru Kelas</th><th>Kelas</th><th>Kurikulum</th></tr></thead><tbody><tr><td>1</td><td><img src='https://1.bp.blogspot.com/-Zmr-qlCaLhE/X_UvFMsg9UI/AAAAAAAAAvo/7NuL-WhukScyNZ1JRCHKCMt825gMxLbYgCNcBGAsYHQ/s200/raden.jpg' width='50'/></td><td>Raden Sri Ernawati, S.Pd,M.Pd</td><td>7A</td><td>Kurikulum SMP 2013</td></tr><tr><td>2</td><td><img src='https://1.bp.blogspot.com/-YqHFknGYA64/X_Uup1BCpMI/AAAAAAAAAvE/N73Li_IHJg4bDwX61oyx2LsiAExAe-zGwCNcBGAsYHQ/s200/HROstinah.jpg' width='50'/></td><td>Hj. Rostinah, S.Pd</td><td>7B</td><td>Kurikulum SMP 2013</td></tr><tr><td>3</td><td><img src='https://1.bp.blogspot.com/--mo2bizmbjQ/X_UuCQ_n4NI/AAAAAAAAAu0/97EI_guWr2YiXccFmegaM-whZIOOo74MQCNcBGAsYHQ/s200/Heriyati.jpg' width='50'/></td><td>Heriyati, S.Pd</td><td>8A</td><td>Kurikulum SMP 2013</td></tr><tr><td>4</td><td><img src='https://1.bp.blogspot.com/-e1PbAT-l3DU/X_UuqYoSr6I/AAAAAAAAAvQ/m1wZ4veeryI4IRoz-MVQtqlFKda6PV7rgCNcBGAsYHQ/s200/irawati.jpg' width='50'/></td><td>Irawati, S.Pd</td><td>8B</td><td>Kurikulum SMP 2013</td></tr><tr><td>5</td><td><img src='https://tlgur.com/d/gm66DeL4' width='50'/></td><td>Muhammad Badrun, S.Pd</td><td>9A</td><td>Kurikulum SMP 2013</td></tr><tr><td>6</td><td><img src='https://1.bp.blogspot.com/-FU2fUQyVQW0/X_UvjrNcF9I/AAAAAAAAAwU/jr-9g8Hkqvs0F3P2_1tDxkN_N31yPFkmgCNcBGAsYHQ/s200/Syatir.jpg' width='50'/></td><td>M. Syatir, S.Pd</td><td>9B</td><td>Kurikulum SMP 2013</td></tr></tbody></table></div>`;
-		  break;	
-  case 5:  
-    cc();
-    break;
-    
-}
-    if (apa!=5) {
-     jd.innerHTML=judul;
-	 dt.innerHTML=data;
-	 $(document).ready(function(){
-    $('#tabel-data').DataTable({
-     columnDefs: [
-	                { className: 'text-center', targets: [0,3] }
-                    
-				  ],
-    "oLanguage": {
-    "sLengthMenu": "Tampilkan _MENU_ data per Halaman",
-    "sSearch": "Pencarian: ",
-    "sZeroRecords": "Maaf, tidak ada data yang ditemukan",
-    "sInfo": "_START_ s/d _END_ dari _TOTAL_ data",
-    "sInfoEmpty": "Tidak ada data",
-    "sInfoFiltered": "(di filter dari _MAX_ total data)",
-    "oPaginate": {
-    "sFirst": "<<",
-    "sLast": ">>",
-    "sPrevious": "<",
-    "sNext": ">"
-    }}});
-    
-dt.style.display="block";
-	 
-  
-});
-
-    
-    $(document).ready(function() {
-    var table1 = $('#tabel-data').DataTable();
+   var table = document.getElementById("tabel");
+if (table) {
+  for (var i = 0;  table.rows.length > i; i++) {
+    table.rows[i].cells[6].onclick = function(){
      
-    $('#tabel-data tbody').on('click', 'tr', function () {
-        var data = table1.row( this ).data();
-       // alert(data[2]);
-       // dorr(data); 
-    } );
-} );
     
+      app(this.parentElement.rowIndex);
+    };
+  }
 }
-    }
  
-   function dorr(data){
-    var modalInfo = new Imat.Modal({
-                            title: 'Silahkan input data anda kemudian Simpan',
-                            iconCls: 'info-circle',
+   function app(add){
+    
+    new Imat.Modal({
+                            title: '>>',
+                            iconCls: '',
                             items: [{
                                 xtype: 'html',
     content: /*html*/` 
-    <form action='javascript:void(0);' id='formid' onsubmit='sblm_send(this)'>
-    <div class='form-group'>
-       <label for='nis'>NIS</label>
-        <input class='form-control' disabled='true' name='nis' style='background-color:#F0F8FF;' type='text' value='${data[8]}'/>
-        <label for='name'>Nama</label>
-        <input class='form-control' disabled='true' name='nama' style='background-color:#F0F8FF;' type='text' value='${data[1]}'/><br/>
-        <label for='name'>Berat Badan (KG)</label>
-        <input class='form-control' name='berat' type='text' value='${data[3]}'/>
-        <label for='name'>Tinggi Badan (cm)</label>
-        <input class='form-control' name='tinggi' type='text' value='${data[4]}'/>
-        <label for='name'>Lingkar Kepala (cm)</label>
-        <input class='form-control' name='lingkar' type='text' value='${data[5]}'/>
-      <label for='name'>Jumlah Saudara</label>
-        <input class='form-control' name='saudara' type='text' value='${data[6]}'/>
-      <label for='name'>Jarak rumah ke Sekolah (kilo meter atau meter )</label>
-        <input class='form-control' name='jarak' type='text' value='${data[7]}'/>
-      </div>
-      <p></p>
-     
-    <button id='btn'><i class='fa fa-save'></i>   Simpan</button>  
-      
-</form>	
-    
-       <div style='position:absolute; bottom:15px;right:15px'>
-      <button id='btn' onclick='cc()'><i class='fa fa-soccer-ball-o'></i>      Refres Tabel Siswa</button>
-      </div>
-     
+<div style="padding:10px;">	
+	<div style='font-size:18px;font-weight:bold;background-color:green;color:white;text-align:center;border-radius:10px'>Kartu Login - Survei Lingkungan Belajar - Guru</div>
+    <table id='tabe' style="font-size:14px;font-weight;bold" border='0'>
+	 
+<tr><td style="width:150px">Nama Sekolah</td><td style="width:20px">:</td><td>UPTD SMP NEGERI 9 SINJAI</td></tr>
+<tr><td>NPSN</td><td>:</td><td>40304504</td></tr>
+<tr><td>Token</td><td>:</td><td>973F3FE6A8</td></tr>
+<tr><td>NIK</td><td>:</td><td>${table.rows[add].cells[2].innerHTML}</td></tr>
+<tr><td>Nama</td><td>:</td><td>${table.rows[add].cells[1].innerHTML}</td></tr>
+<tr><td>Tgl Lahir</td><td>:</td><td>${table.rows[add].cells[3].innerHTML}</td></tr>
+  </table>  
+  <p/>
+ </div>
      `
        }] })
-    
-    $('#formid').on('keyup keypress', function(e) {
-  var keyCode = e.keyCode || e.which;
-  if (keyCode === 13) { 
-    e.preventDefault();
-    return false;
-  }
-});
-                      
-    }
-    
-    
-   var mul=900;
-var has="";
-function dwn(){
-mul=mul+30;
-has=""+mul.toString()+"px";
-document.getElementById("surat").style.width=has;
-}
-
-function up(){
-mul=mul-30;
-has=""+mul.toString()+"px";
-document.getElementById("surat").style.width=has;
-}
-
-    
-    
-    var mul2=900;
-var has="";
-function dwn2(){
-mul2=mul2+30;
-has=""+mul2.toString()+"px";
-document.getElementById("jadd").style.width=has;
-}
-
-function up2(){
-mul2=mul2-30;
-has=""+mul2.toString()+"px";
-document.getElementById("jadd").style.width=has;
-}
-
-    
-  var mul3=900;
-var has="";
-function dwn3(){
-mul3=mul3+30;
-has=""+mul3.toString()+"px";
-document.getElementById("rapor").style.width=has;
-}
-
-function up3(){
-mul3=mul3-30;
-has=""+mul3.toString()+"px";
-document.getElementById("rapor").style.width=has;
-}  
-    
-    
-  </script>
-<script>
-cc();
-    
-  function cc(){
-    
-    var jd=document.getElementById("judulku");
-	   var dt=document.getElementById("dataku");
-    dt.style.display="none";
-	
-    jd.innerHTML='Data Siswa';
-    
-    dt.innerHTML='mohon menunggu';
-    
-    
- $.ajax({
- url: 'https://script.google.com/macros/s/AKfycbwUKoElWk7am_aUQM4S4jCapzZewfgZqdQcN2aaGqVtN6vG0jHxWJHs/exec',
- method: 'GET',
- success: function(a) { 
-    dt.innerHTML=a;
-     jd.innerHTML='Data Siswa';
-    $(document).ready(function(){
-    $('#tabel-data').DataTable({
-     columnDefs: [
-	                { className: 'text-center', targets: [0,2,3,4,5,6,7,8,9,10] }
-				  ],
-    "oLanguage": {
-    "sLengthMenu": "Tampilkan _MENU_ data per Halaman",
-    "sSearch": "Pencarian: ",
-    "sZeroRecords": "Maaf, tidak ada data yang ditemukan",
-    "sInfo": "_START_ s/d _END_ dari _TOTAL_ data",
-    "sInfoEmpty": "Tidak ada data",
-    "sInfoFiltered": "(di filter dari _MAX_ total data)",
-    "oPaginate": {
-    "sFirst": "<<",
-    "sLast": ">>",
-    "sPrevious": "<",
-    "sNext": ">"
-    }}});
    
-   $(document).ready(function() {
-    var table1 = $('#tabel-data').DataTable();
-     
-    $('#tabel-data tbody').on('click', 'tr', function () {
-        var data = table1.row( this ).data();
-       // alert(data[2]);
-        dorr(data); 
-    
-    $( document ).ready(function() {  
-$(".form-control").keyup(function (event) {
+   
+   } 
  
-    if (event.keyCode == 13 || event.keyCode == 40) {
-	 
-        textboxes = $("input.form-control");
-        currentBoxNumber = textboxes.index(this);
-		 
-        if (textboxes[currentBoxNumber + 1] != null) {
-            nextBox = textboxes[currentBoxNumber + 1];
-            nextBox.focus();
-            nextBox.select();
-        }
-        event.preventDefault();
-        return false;
-    }
-	
-	 if (event.keyCode == 38) {
-	 
-        textboxes = $("input.form-control");
-        currentBoxNumber = textboxes.index(this);
-		 
-        if (textboxes[currentBoxNumber -1] != null) {
-            nextBox = textboxes[currentBoxNumber - 1];
-            nextBox.focus();
-            nextBox.select();
-        }
-        event.preventDefault();
-        return false;
-    }
-});});
-    
-    
-    
-    
-    
-    
-    } );
-
-    
-    
-    
-    
-    } );
-    
-    
-dt.style.display="block";
-	 
+   
   
-});
-    
-    },
- error: function(a) {  
-    new Imat.MessageBox({ size: 'modal-sm', type: 'critical', title: 'Informasi', text: 'Tidak ada koneksi internet'});
-    
-    
-    
-    }
- });}
- 
-	
-	function toform(form) {
-    
-		var obj = {};
-		var elements = form.querySelectorAll( "input" );
-    
-		for( var i = 0; elements.length> i; ++i ) {
-			var element = elements[i];
-			var name = element.name;
-			var value = element.value;
-
-			if( name ) {
-				obj[ name ] = value;
-			}
-		}
-    
-//new Imat.MessageBox({ size: 'modal-sm', type: 'critical', title: 'Informasi', text: 'Akses di tolak '});
-    
-		// alert(JSON.stringify( obj ));
-    
- // send(JSON.stringify( obj ));
-    send(obj)
-	}
-
-	
-
-  function send(nama1){
-     
-   // var nama1={"nis":"2504","check":"yes","select":"none","message":"as","email":"aas","password":"ye"}
-    $.ajax({
-            
-            method        : 'POST',
-            
-            url         : 'https://script.google.com/macros/s/AKfycbw0_vythg65rUiNOEQvkpDJOx6o7ucn4VadfC5tmQGge8V-dkATedHvpg/exec ', 
-                                
-  data: nama1,
-            success     : function(a) { 
-           var ab=(JSON.parse(a))
-	 //  alert(ab.icon)
-    var icon1=ab.icon;
-    var data1=ab.data;
-                                          new Imat.MessageBox({ size: 'modal-sm', type: icon1, title: 'Informasi', text:data1});  
-    
-                } ,
-    error: function(a){
-   
-     new Imat.MessageBox({ size: 'modal-sm', type: 'critical', title: 'Informasi', text: 'Tidak ada koneksi internet'});  
-    }
-        });
-    
-    
-    
-    
-    }
-    
-    
-    function sblm_send(data){
-var msg = new Imat.MessageBox({
-					width: 340,
-
-					type: 'confirm',
-					title: 'Konfirmasi',
-   text: "Yakin akan menyimpan data....?",
-					buttons: [{
-						xtype: 'button',
-						position: 'right',
-						iconCls: 'check-circle',
-						text: 'Ya',
-						handler: function(){toform(data);
-						    
-							 
-									msg.close();
-									 
-							 
-						}
-					}, {
-						xtype: 'button',
-						position: 'right',
-						iconCls: 'minus-circle',
-						text: 'Tidak',
-						handler: function(){
-						    
-							msg.close();
-						}
-					}]
-				});	
-
-}
-    
-</script>
+  </script> 
+  
 
 </body>
 </html>
