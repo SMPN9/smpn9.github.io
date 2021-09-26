@@ -338,7 +338,16 @@ if (table) {
  </div>
      `
        }] })
-   
+    var table = document.getElementById("tabe");
+if (table) {
+  
+    table.rows[2].cells[0].onclick = function(){
+     
+     table.rows[2].cells[2].innerText='Sabarki'
+     alert(this.parentElement.rowIndex);
+  
+  }
+}
    
    } 
  
