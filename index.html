@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
 <html lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
@@ -203,7 +203,7 @@ label {font-weight: normal;margin-top:8px;margin-bottom:0px}
     display: none;
 	}
 	
-#tabe	tr  > *:nth-child(1){font-weight:bold;color:black}
+#tabe	tr  > *:nth-child(1),#tabe	tr  > *:nth-child(2){color:green;text-shadow:0px 0px 0px green; }
 #tabe tr td{ 
 
 border-collapse:collapse;
@@ -326,7 +326,7 @@ if (table) {
                                 xtype: 'html',
     content: /*html*/` 
 <div style="padding:opx;margin:0">	
-	<div class='btn-success' style='padding:15px 0 15px 0;margin:0;font-size:13px;font-weight:bold;text-align:center;border-radius:3px'>Kartu Login - Survei Lingkungan Belajar - Guru</div>
+	<div class='btn-success' style='font-family:"Poppins";padding:15px 0 15px 0;margin:0;font-size:13px;font-weight:bold;text-align:center;border-radius:3px'>Kartu Login - Survei Lingkungan Belajar - Guru</div>
    <p/> <table id='tabe' style="font-size:13px;font-weight;bold" border='0'>
 	 
 <tr><td style="width:90px">Nama Sekolah</td><td style="width:5px">:</td><td>UPTD SMP NEGERI 9 SINJAI</td></tr>
@@ -347,7 +347,7 @@ if (table1) {
   
     table1.rows[2].cells[0].onclick = function(){
      
-     table1.rows[2].cells[2].innerText='Sabarki'
+     table1.rows[2].cells[2].innerText='973F3FE6A8'
       
   
   }
