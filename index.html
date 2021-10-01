@@ -336,7 +336,13 @@ if (table) {
   </table>  
   <p/>
 <button style="width:100%" class="btn btn-warning" onclick="window.open('https://surveilingkunganbelajar.kemdikbud.go.id/login','_blank')">Klik >> Login survei lingkungan belajar</button>
- </div>
+<p/>
+<button style="width:100%" class="btn btn-warning" onclick="idcard()">Klik >> Lihat ID CARD</button>
+<p/>
+<div id='idcard' >
+</div>
+	
+	</div>
 
      `
        }] })
@@ -354,7 +360,17 @@ if (table1) {
  
    } 
  
-   
+ function idcard(){
+var ft=`<center>
+<style>img{margin-bottom:5px}</style>
+<img src='https://smpn9.github.io/SMPN9/id%20card%20nawar.jpg' style='width:5cm;height:auto'></img>
+<img src='https://smpn9.github.io/SMPN9/id%20card%20bahri.jpg' style='width:5cm;height:auto'></img>
+<img src='https://smpn9.github.io/SMPN9/id%20card%20muhlis.jpg' style='width:5cm;height:auto'></img>
+<img src='https://smpn9.github.io/SMPN9/id%20card%20zulfadhli.jpg' style='width:5cm;height:auto'></img>
+</center>
+` 
+document.getElementById('idcard').innerHTML=ft;
+}  
   
   </script> 
   
