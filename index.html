@@ -309,10 +309,8 @@ me.panelTop3 = new Imat.Panel({
    var table = document.getElementById("tabel");
 if (table) {
   for (var i = 0;  table.rows.length > i; i++) {
-    table.rows[i].cells[6].onclick = function(){
-     
-    
-      app(this.parentElement.rowIndex);
+     table.rows[i].cells[6].childNodes[2].childNodes[0].onclick = function(){
+     app(this.parentNode.parentNode.parentNode.rowIndex);
     };
   }
 }
