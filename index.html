@@ -1,4 +1,4 @@
- 
+   
 <!DOCTYPE html>
 <html lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
@@ -229,7 +229,7 @@ border:10px solid white
  
 
  
-<div class='content imat' id='content'></div>
+<div class='content imat' id='content' style='display:none'></div>
 
  
 <!--tesss <script src='https://unbk.kemdikbud.go.id/vendor/jquery/jquery-3.2.1.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/jquery/jquery.slimscroll.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/bootstrap/js/bootstrap.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/chart/Chart.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/jquery/jquery-ui.min.js'/> -->
@@ -305,7 +305,6 @@ me.panelTop3 = new Imat.Panel({
  
  
  
-   
    var table = document.getElementById("tabel");
 if (table) {
   for (var i = 1;  table.rows.length > i; i++) {
@@ -347,11 +346,12 @@ if (table) {
      `
        }] })
   var table1 = document.getElementById("tabe");
+  table1.rows[2].cells[2].innerText=window.atob('OTczRjNGRTZBOA==')
 if (table1) {
   
     table1.rows[2].cells[0].onclick = function(){
      
-     table1.rows[2].cells[2].innerText='Sabar-sabarmaki dulu '+'OTczRjNGRTZBOA=='
+     table1.rows[2].cells[2].innerText=window.atob('OTczRjNGRTZBOA==')
       
   
   }
@@ -379,6 +379,33 @@ var ft=`<center>
 document.getElementById('idcard').innerHTML=ft;
 }  
   
+  
+  var mek=new Imat.Modal({
+                            title: `&nbsp;&nbsp;Masukkan Password`,
+                            iconCls: '',
+                            items: [{
+                                xtype: 'html',
+    content: /*html*/`
+<div style="padding:opx;margin:0">	
+	 <input id='inp' onchange='gome(this.value)' style='width:100%' type='text' autofocus></input>  
+  
+
+ 
+	</div>
+
+     `
+       }] }) ;
+	  var bbs=document.getElementById('content')
+	  var bbs1=document.getElementById('inp')
+	var bb=document.getElementsByClassName('modal-dialog')
+	     bb[0].style.width='20%';
+	 
+function gome(e){if(e==window.atob('YXBh')){mek.close()
+  bbs.style.display='block'; }else{
+   var data1=window.atob('UGFzc3dvcmQgc2FsYWg=');var inf=window.atob('SW5mb3JtYXNp');
+    new Imat.MessageBox({ size: 'modal-sm', type: 'critical', title: inf, text: data1}); 
+  var yy=document.getElementsByClassName('btn btn-default')
+  yy[0].onclick=function(){ bbs1.value='';bbs1.focus(); bbs1.select();}}}
   </script> 
   
 
