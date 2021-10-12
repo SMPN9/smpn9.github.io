@@ -620,16 +620,6 @@
    })
   
   
-	function printPage() { print(); }
-    	$('.qrcode').each(function(){
-    		new QRCode(document.getElementById($(this).attr('id')), {
-			    text: $(this).attr('data-value'),
-			    width: 50,
-			    height: 50,
-			    colorDark : "#000000",
-			    colorLight : "#ffffff",
-			    correctLevel : QRCode.CorrectLevel.H
-			});
-    	});
+	 
     </script>
 </body></html>
