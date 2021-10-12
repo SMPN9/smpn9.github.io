@@ -1,412 +1,141 @@
-   
+
 <!DOCTYPE html>
-<html lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
-<meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
-<title>SMP NEGERI 9 SINJAI</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-<link href='/assets/img/logo.png' rel='icon' sizes='32x32'/>
-<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' rel='stylesheet'/>
-<!--Vendor-->
-<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'/>
-<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'/>
-<!-- <link href='https://unbk.kemdikbud.go.id/vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet'/> <link href='https://unbk.kemdikbud.go.id/vendor/chart/Chart.min.css' rel='stylesheet'/> -->
-<!--<link href='https://smpn9.github.io/SMPN9/vendor_bootstrap_css_bootstrap_min.css' rel='stylesheet'/>
-
-<link href='https://smpn9.github.io/SMPN9/vendor_chart_Chart_min.css' rel='stylesheet'/>-->
-<!--Assets <link href='https://unbk.kemdikbud.go.id/assets/css/framework.min.css?_dc=20200520133028' rel='stylesheet'/> <link href='https://unbk.kemdikbud.go.id/assets/css/puspendik.min.css?_dc=20200520133028' rel='stylesheet'/> -->
-
-<link href='https://smpn9.github.io/SMPN9/assets_css_framework.min_css_13.css' rel='stylesheet'/>
-<link href='https://smpn9.github.io/SMPN9/assets_css_puss.min.css' rel='stylesheet'/><!--
-<link href='https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css' rel='stylesheet'/>
--->
-<!--
-<script src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>
-<script src='https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js'></script>
-<style id='page-skin-1' type='text/css'>
--->
-<!--
+<title>SMPN9 SINJAI</title>
+<style id='page-skin-1' type='text/css'><!--
 
 --></style>
 <style>
+* {
+  box-sizing: border-box;
+  font-family: 'Century Gothic', sans-serif;
+}
+  body{overflow:hiden}
+
  
-  
-   @media all and (min-width: 768px) {
-  #roster img {width:900px  
-   }
-   
-   }
-   
-   
-   
-   @media all and (min-width: 480px) and (max-width: 768px) { 
-  #roster img {width:900px !important;
-   }
-   }
-   
-   @media all and (max-width: 480px) {
-  #roster img {width:320px !important;
-   }
-   }
- img{border-radius:3px;width:60px;pointer-events : none;}
- #roster img {width:900px} 
-#myTable th{position:sticky;top:-1px}
+#myTable th{background-color:#808080;color:white}
 #myTable {white-space:nowrap;text-overflow:ellipsis;
-#ta4bel-data tr,th:hover{rgba(255, 255, 255, 0.3)}
   border-collapse: collapse;
-  width: 50%;
   
+  border: 1px solid #ddd;
   font-size: 12px;
-}
-  #tabel-data th{background-color:rgba(0,0,0,0.1)}
-#tabel-data tr{background-color:white}
-#tabel-data tr:hover{background-color:rgba(0,0,0,0.1)}
- .panel-body{ padding:10px !important;}
-.circle-tile {
-    margin-bottom: 15px;
-    text-align: center;
-   }
-.circle-tile-heading {
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 100%;
-    color: #FFFFFF;
-    height: 80px;
-    margin: 0 auto -40px;
-    position: relative;
-    transition: all 0.3s ease-in-out 0s;
-    width: 80px;
-    
-}
-.circle-tile-heading .fa {
-    line-height: 80px;
-}
-.circle-tile-content {
-    padding-top: 50px;
-    /*border-top-left-radius:20px;
-     border-top-right-radius:20px;*/
-}
-.circle-tile-number {
-    font-size: 30px;
-    font-weight: bold;
-    line-height: 1;
-    padding: 5px 0 15px;
-}
-.circle-tile-description {
-    text-transform: uppercase;
-    font-size: 16px;
-}
-.circle-tile-footer {
-    font-size: 10px;
-    background-color: rgba(0, 0, 0, 0.1);
-    color: rgba(255, 255, 255, 0.5);
-    display: block;
-    padding: 5px;
-    transition: all 0.3s ease-in-out 0s;
-}
-.circle-tile-footer:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-    color: rgba(255, 255, 255, 0.5);
-    text-decoration: none;
-}
-.circle-tile-heading.dark-blue:hover {
-    background-color: #2E4154;
-}
-.circle-tile-heading.green:hover {
-    background-color: #138F77;
-}
-.circle-tile-heading.orange:hover {
-    background-color: #DA8C10;
-}
-.circle-tile-heading.blue:hover {
-    background-color: #2473A6;
-}
-.circle-tile-heading.red:hover {
-    background-color: #CF4435;
-}
-.circle-tile-heading.purple:hover {
-    background-color: #7F3D9B;
-}
-.tile-img {
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9);
+  border-radius:3px;box-shadow:0px 1px 10px 0px rgb(0,0,0,0.3);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.dark-blue {
-    background-color: #34495E;
-}
-.green {
-    background-color: #16A085;
-}
-.blue {
-    background-color: #2980B9;
-}
-.orange {
-    background-color: #F39C12;
-}
-.red {
-    background-color: #E74C3C;
-}
-.purple {
-    background-color: #8E44AD;
-}
-.dark-gray {
-    background-color: #7F8C8D;
-}
-.gray {
-    background-color: #95A5A6;
-}
-.light-gray {
-    background-color: #BDC3C7;
-}
-.yellow {
-    background-color: #F1C40F;
-}
-.text-dark-blue {
-    color: #34495E;
-}
-.text-green {
-    color: #16A085;
-}
-.text-blue {
-    color: #2980B9;
-}
-.text-orange {
-    color: #F39C12;
-}
-.text-red {
-    color: #E74C3C;
-}
-.text-purple {
-    color: #8E44AD;
-}
-.text-faded {
-    color: rgba(255, 255, 255, 0.7);
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 3px;
 }
 
-#tbl33 td {vertical-align: top;}
-#btn {background-color:white;
-   border:1px solid rgba(0,0,0,0.3);
-    border-radius:3px;
-  padding:5px;
-  }
+#atas { margin:auto,padding:30px}  
+  #myTable th{position:sticky;top:-1px}
   
-label {font-weight: normal;margin-top:8px;margin-bottom:0px}
-  #btn:hover{background-color:rgba(0,0,0,0.1)}
-  #ket_tabel th { padding: 2px 7px 2px 7px;text-align:center;background-color:rgba(0,0,0,0.7);color:white;font-weight: normal;font-size:13px;font-family:arial,tahoma}
-  #ket_tabel td { padding:10px;text-align:center;color:black;font-size:13px;font-family:arial,tahoma}
-  #ket_tabel tr:nth-child(even){background-color: #f2f2f2;}
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
  
- #tabel tr  > *:nth-child(3), #tabel tr  > *:nth-child(4), #tabel tr  > *:nth-child(6) {
-    display: none;
-	}
-	
-#tabe	tr  > *:nth-child(1),#tabe	tr  > *:nth-child(2){color:green;text-shadow:0px 0px 0px green; }
-#tabe tr td{ 
-
-border-collapse:collapse;
-border:10px solid white
-}
-
-@media all and (min-width: 768px) {
-	.panel { max-width:50%;margin:auto}
-#tabe	tr  > *:nth-child(1){width:130px}
-
-
-}
-
- </style>
+#tes{border-radius:3px;box-shadow:0px 1px 10px 0px rgb(0,0,0,0.3);
+  overflow:scroll;font-family: Arial, Helvetica, sans-serif; width:100%;height:500px}
+h2,input{font-family: Arial, Helvetica, sans-serif}
+</style>
 <meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
 <meta name='google-adsense-platform-domain' content='blogspot.com'/>
 
 </head>
 <body>
+<div class='no-items section' id='contoh'></div>
 
-
-
- 
-
- 
-<div class='content imat' id='content' style='display:none'></div>
-
- 
-<!--tesss <script src='https://unbk.kemdikbud.go.id/vendor/jquery/jquery-3.2.1.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/jquery/jquery.slimscroll.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/bootstrap/js/bootstrap.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/chart/Chart.min.js'/> <script src='https://unbk.kemdikbud.go.id/vendor/jquery/jquery-ui.min.js'/> -->
-
-<script src='https://smpn9.github.io/FILE_JS/vendor_jquery_jquery_3_2_1_min.js'></script><!--
-<script src='https://smpn9.github.io/FILE_JS/vendor_jquery_jquery_slimscroll_min.js'></script>
-<script src='https://smpn9.github.io/FILE_JS/vendor_bootstrap_js_bootstrap_min.js'></script>
-<script src='https://smpn9.github.io/FILE_JS/vendor_chart_Chart_min.js'></script>-->
-<script src='https://smpn9.github.io/FILE_JS/vendor_jquery_jquery_ui_min.js'></script>
-
-<!-- <script src='https://unbk.kemdikbud.go.id/assets/js/framework.min.js?_dc=20200520133028'/> <script src='https://unbk.kemdikbud.go.id/assets/js/puspendik.min.js?_dc=20200520133028'/> -->
-
-<script src='https://smpn9.github.io/FILE_JS/assets_js_framework_min_js.js'></script><!--
-<script src='https://smpn9.github.io/FILE_JS/assets_js_pus.min.js'></script>
-<script src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>
-<script src='https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js'></script>-->
-
-<div class='script' id='script'>
-<script>
- 
-  var JS_PARAMS = [];
-    	var Home = (function() {
-   
-
-    return {
-        data: { },
-        pengumuman: [],
-        role: '676',
-        isHidden: function(role) {
-            return !Imat.getCrud(this.role, role);
-        },
-        createComponent: function() {
-            var me = this;
-
-           
-  
-me.panelTop3 = new Imat.Panel({
-                cols: 'col-sm-12',
-                items: [{
-                    xtype: 'html',
-                    id: 'widget-top-3',
-					
-                     
-                    content: `
-                        <div class='btn-success' style='font-size:18px;font-weight:bold;text-align:center;border-radius:10px'>SELAMAT DATANG DI<br/> UPTD SMP NEGERI 9 SINJAI</div>          
-			<br/><table  id="tabel" style="font-size:12px" class="table table-striped"><thead><tr><th>#</th><th>Nama</th><th style="text-align: center;">NIK</th><th style="text-align: right;">Tanggal Lahir</th><th style="text-align: right;">Jenis PTK</th><th style="text-align: center;">Partisipasi</th><th style="text-align: right;">Status</th></tr></thead><tbody><tr id="7307061511820001" class="ng-star-inserted" style="background-color: white;"><td>1</td><td>Muhammad Badrun</td><td style="text-align: center;">7307061511820001 </td><td style="text-align: right;">15-Nov-1982</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307060608880001" class="ng-star-inserted" style="background-color: white;"><td>2</td><td>Hermawan</td><td style="text-align: center;">7307060608880001 </td><td style="text-align: right;">06-Aug-1988</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307065206960003" class="ng-star-inserted" style="background-color: white;"><td>3</td><td>Risnawati</td><td style="text-align: center;">7307065206960003 </td><td style="text-align: right;">12-Jun-1996</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307065811910002" class="ng-star-inserted" style="background-color: white;"><td>4</td><td>Mustoafiah</td><td style="text-align: center;">7307065811910002 </td><td style="text-align: right;">18-Nov-1991</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307064509870002" class="ng-star-inserted" style="background-color: white;"><td>5</td><td>Ariyani</td><td style="text-align: center;">7307064509870002 </td><td style="text-align: right;">05-Sep-1987</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307067011850001" class="ng-star-inserted" style="background-color: white;"><td>6</td><td>Haslindah</td><td style="text-align: center;">7307067011850001 </td><td style="text-align: right;">30-Nov-1985</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307057003780003" class="ng-star-inserted" style="background-color: white;"><td>7</td><td>Irawati</td><td style="text-align: center;">7307057003780003 </td><td style="text-align: right;">30-Mar-1978</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307056412770001" class="ng-star-inserted" style="background-color: white;"><td>8</td><td>Haswati</td><td style="text-align: center;">7307056412770001 </td><td style="text-align: right;">24-Dec-1977</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307053112630087" class="ng-star-inserted" style="background-color: white;"><td>9</td><td>Appe</td><td style="text-align: center;">7307053112630087 </td><td style="text-align: right;">31-Dec-1963</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307064504650001" class="ng-star-inserted" style="background-color: white;"><td>10</td><td>Rostinah</td><td style="text-align: center;">7307064504650001 </td><td style="text-align: right;">05-Apr-1965</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307062107700002" class="ng-star-inserted" style="background-color: white;"><td>11</td><td>M. Syatir</td><td style="text-align: center;">7307062107700002 </td><td style="text-align: right;">21-Jul-1970</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307051403640001" class="ng-star-inserted" style="background-color: white;"><td>12</td><td>Nawar</td><td style="text-align: center;">7307051403640001 </td><td style="text-align: right;">14-Mar-1964</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307062512900001" class="ng-star-inserted" style="background-color: white;"><td>13</td><td>Bahri</td><td style="text-align: center;">7307062512900001 </td><td style="text-align: right;">25-Dec-1990</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307065107820002" class="ng-star-inserted" style="background-color: white;"><td>14</td><td>Herna Jaya</td><td style="text-align: center;">7307065107820002 </td><td style="text-align: right;">11-Jul-1982</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307055512690006" class="ng-star-inserted" style="background-color: white;"><td>15</td><td>Heriyati</td><td style="text-align: center;">7307055512690006 </td><td style="text-align: right;">15-Dec-1969</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307053112920114" class="ng-star-inserted" style="background-color: white;"><td>16</td><td>Zul Fadhli</td><td style="text-align: center;">7307053112920114 </td><td style="text-align: right;">31-Dec-1992</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307064412690002" class="ng-star-inserted" style="background-color: white;"><td>17</td><td>Raden Sri Ernawati</td><td style="text-align: center;">7307064412690002 </td><td style="text-align: right;">04-Dec-1969</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307056101860001" class="ng-star-inserted" style="background-color: white;"><td>18</td><td>A.sukma Puspita Sari</td><td style="text-align: center;">7307056101860001 </td><td style="text-align: right;">21-Jan-1986</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><tr id="7307054706750002" class="ng-star-inserted" style="background-color: white;"><td>19</td><td>Najmiati</td><td style="text-align: center;">7307054706750002 </td><td style="text-align: right;">07-Jun-1975</td><td style="text-align: right;">Guru</td><td style="text-align: center;"><!----><span class="ng-star-inserted">Tidak</span><!----></td><td style="text-align: right;"><!----><!----><span class="ng-star-inserted"><button type="button" class="btn btn-warning">lihat</button></span><!----></td></tr><!----></tbody></table>            
-                         
-                           
-                        
-                    `
-                }]
-            });
-
-
-
-           
-			 me.info1 = new Imat.Column({items: [ me.panelTop3 ]});
-             
-            
-            me.layout = new Imat.Layout({
-                items: [ me.info1 ],
-                renderTo: '#content'
-            })
-
-           
-        }, 
-
-        show: function() {
-            this.createComponent();
-        }
-    }
-})(); Home.show();
- 
- 
- 
-   var table = document.getElementById("tabel");
-if (table) {
-  for (var i = 1;  table.rows.length > i; i++) {
-     table.rows[i].cells[6].childNodes[2].childNodes[0].onclick = function(){
-     app(this.parentNode.parentNode.parentNode.rowIndex);
-    };
-  }
-}
- 
-   function app(add){
-    
-    new Imat.Modal({
-                            title: `<i style='font-size:20px' class="icon-left fa fa-user"></i><b style='font-size:19px'>${table.rows[add].cells[1].innerHTML}</b>`,
-                            iconCls: '',
-                            items: [{
-                                xtype: 'html',
-    content: /*html*/` 
-<div style="padding:opx;margin:0">	
-	<div class='btn-success' style='font-family:"Poppins";padding:15px 0 15px 0;margin:0;font-size:13px;font-weight:bold;text-align:center;border-radius:3px'>Kartu Login - Survei Lingkungan Belajar - Guru</div>
-   <p/> <table id='tabe' style="font-size:13px;font-weight;bold" border='0'>
-	 
-<tr><td style="width:90px">Nama Sekolah</td><td style="width:5px">:</td><td>UPTD SMP NEGERI 9 SINJAI</td></tr>
-<tr><td>NPSN</td><td>:</td><td>40304504</td></tr>
-<tr><td>Token</td><td>:</td><td><div class="animate__animated animate__swing animate__infinite	infinite">Maaf, tokennya saya sembunyikan dulu</div></td></tr>
-<tr><td>NIK</td><td>:</td><td>${table.rows[add].cells[2].innerHTML}</td></tr>
-<tr><td>Nama</td><td>:</td><td>${table.rows[add].cells[1].innerHTML}</td></tr>
-<tr><td>Tgl Lahir</td><td>:</td><td>${table.rows[add].cells[3].innerHTML}</td></tr>
-  </table>  
-  <p/>
-<button style="width:100%" class="btn btn-warning" onclick="window.open('https://surveilingkunganbelajar.kemdikbud.go.id/login','_blank')">Klik >> Login survei lingkungan belajar</button>
-<p/>
-<button style="width:100%" class="btn btn-info" onclick="idcard()">ID CARD PANITIA ANBK 2021</button>
-<p/>
-<div id='idcard' style='display:'none'>
-</div>
+<div id='atas'>
+<h2><center>Data Nama Murid SD yang Ikut Simulasi ANBK 2021</center></h2>
+ <div style="position:fixed;top:2px;background:Green;color:white;padding:5px;border-radius:5px;z-index:10000"><font color="yellow">Dari Operator </font>UPTD SMPN 9 SINJAI</div>
+<div id='tes'>
+<table   id="myTable"> 
+				<tr>
+					<th rowspan="1" width="30"><div style="width: 30px;">Cek</div></th>
+                    <th rowspan="1" width="30"><div style="width: 30px;">No</div></th>
+					<th rowspan="1" width="130"><div style="width: 130px;">Username</div></th>
+					<th rowspan="1" width="300"><div style="width: 300px;">Nama Peserta</div></th>
+					<th rowspan="1" width="80"><div style="width: 80px;">Status</div></th>
+					<th rowspan="1" width="250"><div style="width: 250px;">ID Proktor/Ruang</div></th>
+                    <th rowspan="1" width="100"><div style="width: 100px;">Gelombang</div></th>
+					<th colspan="1"><div>Sesi Pada <br>Hari Ke 1</div></th>
+					<th colspan="1"><div>Sesi Pada <br>Hari Ke 2</div></th>
+                    <th rowspan="1" width="300"><div style="width: 300px;">Sekolah Asal</div></th>
+					<th rowspan="1" width="*"><div></div></th>
+				</tr>
+			  <tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek0"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek0" id="cek01" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="1" style="text-align: right; width: 30px;">1</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600018" style="text-align: center; width: 130px;">D1915018600018</div></td><td align="left" width="300"><div class="table-cell" value="SUARDI" style="width: 300px;">SUARDI</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek1"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek1" id="cek11" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="2" style="text-align: right; width: 30px;">2</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600027" style="text-align: center; width: 130px;">D1915018600027</div></td><td align="left" width="300"><div class="table-cell" value="AINUL RUFIQ" style="width: 300px;">AINUL RUFIQ</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek2"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek2" id="cek21" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="3" style="text-align: right; width: 30px;">3</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600036" style="text-align: center; width: 130px;">D1915018600036</div></td><td align="left" width="300"><div class="table-cell" value="MUHAMMAD RIFAL" style="width: 300px;">MUHAMMAD RIFAL</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek3"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek3" id="cek31" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="4" style="text-align: right; width: 30px;">4</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600045" style="text-align: center; width: 130px;">D1915018600045</div></td><td align="left" width="300"><div class="table-cell" value="NURUL AULIA" style="width: 300px;">NURUL AULIA</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek4"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek4" id="cek41" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="5" style="text-align: right; width: 30px;">5</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600054" style="text-align: center; width: 130px;">D1915018600054</div></td><td align="left" width="300"><div class="table-cell" value="KASMAN" style="width: 300px;">KASMAN</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek5"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek5" id="cek51" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="6" style="text-align: right; width: 30px;">6</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600063" style="text-align: center; width: 130px;">D1915018600063</div></td><td align="left" width="300"><div class="table-cell" value="ANDI MUH. SUBAIR. M" style="width: 300px;">ANDI MUH. SUBAIR. M</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek6"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek6" id="cek61" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="7" style="text-align: right; width: 30px;">7</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600072" style="text-align: center; width: 130px;">D1915018600072</div></td><td align="left" width="300"><div class="table-cell" value="MUH ESA RADITIA" style="width: 300px;">MUH ESA RADITIA</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek7"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek7" id="cek71" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="8" style="text-align: right; width: 30px;">8</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600089" style="text-align: center; width: 130px;">D1915018600089</div></td><td align="left" width="300"><div class="table-cell" value="MUHAMMAD FADHIL AMRI" style="width: 300px;">MUHAMMAD FADHIL AMRI</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek8"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek8" id="cek81" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="9" style="text-align: right; width: 30px;">9</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600098" style="text-align: center; width: 130px;">D1915018600098</div></td><td align="left" width="300"><div class="table-cell" value="A. ZULFIKAR" style="width: 300px;">A. ZULFIKAR</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek9"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek9" id="cek91" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="10" style="text-align: right; width: 30px;">10</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600107" style="text-align: center; width: 130px;">D1915018600107</div></td><td align="left" width="300"><div class="table-cell" value="ISMHA MUTI'AH MALLO" style="width: 300px;">ISMHA MUTI'AH MALLO</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek10"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek10" id="cek101" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="11" style="text-align: right; width: 30px;">11</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600116" style="text-align: center; width: 130px;">D1915018600116</div></td><td align="left" width="300"><div class="table-cell" value="NUR ASIMA PUTRI" style="width: 300px;">NUR ASIMA PUTRI</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek11"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek11" id="cek111" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="12" style="text-align: right; width: 30px;">12</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600125" style="text-align: center; width: 130px;">D1915018600125</div></td><td align="left" width="300"><div class="table-cell" value="NURFADILLAH" style="width: 300px;">NURFADILLAH</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek12"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek12" id="cek121" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="13" style="text-align: right; width: 30px;">13</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600134" style="text-align: center; width: 130px;">D1915018600134</div></td><td align="left" width="300"><div class="table-cell" value="RISNA" style="width: 300px;">RISNA</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="center" width="50"><div class="table-cell" value="1" style="text-align: center; width: 50px;">1</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek13"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek13" id="cek131" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="14" style="text-align: right; width: 30px;">14</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600143" style="text-align: center; width: 130px;">D1915018600143</div></td><td align="left" width="300"><div class="table-cell" value="A. MUHAMMAD ALI AKBAR" style="width: 300px;">A. MUHAMMAD ALI AKBAR</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek14"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek14" id="cek141" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="15" style="text-align: right; width: 30px;">15</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600152" style="text-align: center; width: 130px;">D1915018600152</div></td><td align="left" width="300"><div class="table-cell" value="Muhammad Amrul Aiman" style="width: 300px;">Muhammad Amrul Aiman</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek15"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek15" id="cek151" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="16" style="text-align: right; width: 30px;">16</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600169" style="text-align: center; width: 130px;">D1915018600169</div></td><td align="left" width="300"><div class="table-cell" value="JUSNAWATI" style="width: 300px;">JUSNAWATI</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek16"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek16" id="cek161" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="17" style="text-align: right; width: 30px;">17</div></td><td align="center" width="130"><div class="table-cell" value="D1915018600178" style="text-align: center; width: 130px;">D1915018600178</div></td><td align="left" width="300"><div class="table-cell" value="ANDI MUH. FAKHRI AMIR" style="width: 300px;">ANDI MUH. FAKHRI AMIR</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 99 LAPPACINRANA" style="width: 300px;">SD NEGERI 99 LAPPACINRANA</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek17"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek17" id="cek171" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="18" style="text-align: right; width: 30px;">18</div></td><td align="center" width="130"><div class="table-cell" value="D1915019500018" style="text-align: center; width: 130px;">D1915019500018</div></td><td align="left" width="300"><div class="table-cell" value="Yusra Syahru Ramadan" style="width: 300px;">Yusra Syahru Ramadan</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 218 CONGKOE" style="width: 300px;">SD NEGERI 218 CONGKOE</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek18"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek18" id="cek181" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="19" style="text-align: right; width: 30px;">19</div></td><td align="center" width="130"><div class="table-cell" value="D1915019500027" style="text-align: center; width: 130px;">D1915019500027</div></td><td align="left" width="300"><div class="table-cell" value="Muh. Nur Izam" style="width: 300px;">Muh. Nur Izam</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 218 CONGKOE" style="width: 300px;">SD NEGERI 218 CONGKOE</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek19"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek19" id="cek191" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="20" style="text-align: right; width: 30px;">20</div></td><td align="center" width="130"><div class="table-cell" value="D1915019500036" style="text-align: center; width: 130px;">D1915019500036</div></td><td align="left" width="300"><div class="table-cell" value="Asdir" style="width: 300px;">Asdir</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 218 CONGKOE" style="width: 300px;">SD NEGERI 218 CONGKOE</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek20"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek20" id="cek201" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="21" style="text-align: right; width: 30px;">21</div></td><td align="center" width="130"><div class="table-cell" value="D1915019500045" style="text-align: center; width: 130px;">D1915019500045</div></td><td align="left" width="300"><div class="table-cell" value="Irna Erfiana" style="width: 300px;">Irna Erfiana</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 218 CONGKOE" style="width: 300px;">SD NEGERI 218 CONGKOE</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek21"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek21" id="cek211" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="22" style="text-align: right; width: 30px;">22</div></td><td align="center" width="130"><div class="table-cell" value="D1915019500054" style="text-align: center; width: 130px;">D1915019500054</div></td><td align="left" width="300"><div class="table-cell" value="Syahrani" style="width: 300px;">Syahrani</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 218 CONGKOE" style="width: 300px;">SD NEGERI 218 CONGKOE</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek22"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek22" id="cek221" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="23" style="text-align: right; width: 30px;">23</div></td><td align="center" width="130"><div class="table-cell" value="D1915019500063" style="text-align: center; width: 130px;">D1915019500063</div></td><td align="left" width="300"><div class="table-cell" value="Nur Azizah" style="width: 300px;">Nur Azizah</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 218 CONGKOE" style="width: 300px;">SD NEGERI 218 CONGKOE</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek23"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek23" id="cek231" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="24" style="text-align: right; width: 30px;">24</div></td><td align="center" width="130"><div class="table-cell" value="D1915019500072" style="text-align: center; width: 130px;">D1915019500072</div></td><td align="left" width="300"><div class="table-cell" value="Jusniati" style="width: 300px;">Jusniati</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 218 CONGKOE" style="width: 300px;">SD NEGERI 218 CONGKOE</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek24"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek24" id="cek241" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="25" style="text-align: right; width: 30px;">25</div></td><td align="center" width="130"><div class="table-cell" value="D1915019500089" style="text-align: center; width: 130px;">D1915019500089</div></td><td align="left" width="300"><div class="table-cell" value="Fajar" style="width: 300px;">Fajar</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 218 CONGKOE" style="width: 300px;">SD NEGERI 218 CONGKOE</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="center" width="30"><div class="table-cell" style="text-align: center; width: 30px; display: none;"></div><div class="table-editor align-center"><div class="check cek" id="cek25"><div class="checkbox-inline"><input class="styled cek" type="checkbox" name="cek25" id="cek251" value="1" style="margin-right: 0px; " disabled></div></div></div></td><td align="right" width="30"><div class="table-cell" value="26" style="text-align: right; width: 30px;">26</div></td><td align="center" width="130"><div class="table-cell" value="D1915019500098" style="text-align: center; width: 130px;">D1915019500098</div></td><td align="left" width="300"><div class="table-cell" value="Muh Aiman" style="width: 300px;">Muh Aiman</div></td><td align="left" width="80"><div class="table-cell" value="S" style="width: 80px;">Sampling</div></td><td align="left" width="250"><div class="table-cell" value="P19150004-BT3-1" style="width: 250px;">P19150004-BT3D / Ruang ANBK</div></td><td align="center" width="100"><div class="table-cell" value="1" style="text-align: center; width: 100px;">Gelombang 1</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="center" width="50"><div class="table-cell" value="2" style="text-align: center; width: 50px;">2</div></td><td align="left" width="300"><div class="table-cell" value="SD NEGERI 218 CONGKOE" style="width: 300px;">SD NEGERI 218 CONGKOE</div></td><td align="left"><div class="table-cell"></div></td></tr></table>
+			  </div> 
+	<p/>
+<strong>Ket. Gelombang 1 :</strong>
 	
-	</div>
+<table id="myTable" border="1" width="548" cellpadding="1">
 
-     `
-       }] })
-  var table1 = document.getElementById("tabe");
-  table1.rows[2].cells[2].innerText=window.atob('OTczRjNGRTZBOA==')
-if (table1) {
-  
-    table1.rows[2].cells[0].onclick = function(){
-     
-     table1.rows[2].cells[2].innerText=window.atob('OTczRjNGRTZBOA==')
-      
-  
-  }
-}
+<tr>
+<th style=" text-align: center;" width="38">
+<strong>NO.</strong>
+</td>
+<th style="text-align: center;" width="191">
+<strong>TANGGAL</strong>
+</td>
+<th style="text-align: center;" width="319">
+<strong>KEGIATAN</strong>
+</td>
+</tr>
+<tr>
+<td style="padding: 5px; text-align: center;" width="38">
+1.
+</td>
+<td style="padding: 5px; text-align: left;" width="191">
+18-19 Oktober 2021
+</td>
+<td style="padding: 5px; text-align: left;" width="319">
+Simulasi Pelaksanan ANBK
+</td>
+</tr>
+<tr>
+<td style="padding: 5px; text-align: center;" width="38">
+2.
+</td>
+<td style="padding: 5px; text-align: left;" width="191">
+25 – 26 Oktober 2021
+</td>
+<td style="padding: 5px; text-align: left;" width="319">
+Gladi Bersih Pelaksanan ANBK
+</td>
+</tr>
+ 
+<tr>
+<td style="padding: 5px; text-align: center;" width="38">
+3.
+</td>
+<td style="padding: 5px; text-align: left;" width="191">
+8 - 9 November 2021
+</td>
+<td style="padding: 5px; text-align: left;" width="319">
+Pelaksanaan ANBK
+</td>
+</tr>
+
+</table>
+<p>
+
+<script>
    
- 
-   } 
- 
- function idcard(){
-var bb=document.getElementById('idcard')   
- if( bb.style.display=='block'){
- bb.style.display='none'
- }
- else {
- bb.style.display='block'
- }
-var ft=`<center>
-<style>img{margin-bottom:5px;margin-left:5px;pointer-events:auto}</style>
-<img  src='https://smpn9.github.io/SMPN9/id%20card%20kepsek.jpg' style='width:5cm;height:auto'></img>
-<img  src='https://smpn9.github.io/SMPN9/id%20card%20bahri.jpg' style='width:5cm;height:auto'></img>
-<img  src='https://smpn9.github.io/SMPN9/id%20card%20asri.jpg' style='width:5cm;height:auto'></img>
-<img  src='https://smpn9.github.io/SMPN9/id%20card%20muhlis.jpg' style='width:5cm;height:auto'></img>
-<img  src='https://smpn9.github.io/SMPN9/id%20card%20zulfadhli.jpg' style='width:5cm;height:auto'></img>
-</center>
-` 
-document.getElementById('idcard').innerHTML=ft;
-}  
+var ab=document.getElementById("tes");
+  ab.style.height=(window.innerHeight-80).toString()+"px"  
+window.onresize=function(){
+  ab.style.height=(window.innerHeight-80).toString()+"px"  
+}
   
-  
-  var mek=new Imat.Modal({
-                            title: `&nbsp;&nbsp;Masukkan Password`,
-                            iconCls: '',
-                            items: [{
-                                xtype: 'html',
-    content: /*html*/`
-<div style="padding:opx;margin:0">	
-	 <input id='inp' onchange='gome(this.value)' style='width:100%' type='text' autofocus></input>  
-  
-
- 
-	</div>
-
-     `
-       }] }) ;
-	  var bbs=document.getElementById('content')
-	  var bbs1=document.getElementById('inp')
-		 
-function gome(e){if(e==window.atob('YXBh')){mek.close()
-  bbs.style.display='block'; }else{
-   var data1=window.atob('UGFzc3dvcmQgc2FsYWg=');var inf=window.atob('SW5mb3JtYXNp');
-    new Imat.MessageBox({ size: 'modal-sm', type: 'critical', title: inf, text: `<div class="animate__animated animate__pulse animate__infinite	infinite"><img style='width:200px' src='https://smpn9.github.io/SMPN9/error1.jpg'></img></div>`}); 
-  var yy=document.getElementsByClassName('btn btn-default')
-  yy[0].onclick=function(){ bbs1.value='';bbs1.focus(); bbs1.select();}}}
-  </script> 
-  
+</script>
 
 </body>
 </html>
