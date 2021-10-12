@@ -1,9 +1,12 @@
-
+ 
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
 <title>SMPN9 SINJAI</title>
+
+
+
 <style id='page-skin-1' type='text/css'><!--
 
 --></style>
@@ -47,8 +50,7 @@ button{background:Green;color:white;padding:5px;border-radius:5px; border: none;
 h2,input{font-family: Arial, Helvetica, sans-serif}
 body{overflow:hidden}
 </style>
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+ 
 
 </head>
 <body>
@@ -129,12 +131,29 @@ Pelaksanaan ANBK
 
 </table>
 <br>
+<iframe id="ctk" style="width:70%;height:100%" src="https://smpn9.github.io/kartu_loginSD.html" ></iframe>
+<br>
+<button id="dodol7" onclick="cetak()" style="margin-left:10px">Cetak kartu Login</button>
+
+<p>
 <button id="dodol7" onclick="window.open(&quot;https://bugislabel.blogspot.com/&quot;,&quot;_blank&quot;)" style="margin-left:10px">Gratis, Cetak Nama Undangan Online/Offline</button>
-			  </div> 
+		
+
+
+		</div> 
 	<p>
 
+
+
 <script>
-   
+var ch = new BroadcastChannel('tes')
+  
+  
+ function cetak(){
+   ch.postMessage('gabb')
+ }
+ 
+ 
 var ab=document.getElementById("tes");
   ab.style.height=(window.innerHeight-80).toString()+"px"  
 window.onresize=function(){
