@@ -732,7 +732,7 @@
                                 for (x = 0; x < data.items.length; x++) {
                                     var item = data.items[x];
                                     var itemMarkup = $('<li>'),
-                                        itemIcon   = $('<img>', { src: baseURL + 'assets/img/flaticon/' + item.ext + '.png' }),
+                                        itemIcon   = $('<img>', { src: baseURL + 'css/' + item.ext + '.png' }),
                                         itemButton = $('<a>', { href: 'javascript:;', class: 'download-file', id: 'download-' + item.id, text: item.filename,  item: data.keterangan, domain: item.domain }),
                                         itemRemove = $('<a>', { href: 'javascript:;', class: 'download-remove btn btn-xs btn-danger', text: 'X'});
 
