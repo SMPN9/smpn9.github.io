@@ -722,7 +722,7 @@
                             var data = a.data[i];
                             var markup = $('<div>'),
                                 listDw   = $('<li>'),
-                                icon   = $('<img>', { src: baseURL + 'assets/img/flaticon/' + data.ext + '.png' });
+                                icon   = $('<img>', { src: baseURL + 'css/' + data.ext + '.png' });
 
                             button = $('<a>', { href: 'javascript:;', class: 'download-file', id: 'download-' + data.id, text: data.filename,  title: data.keterangan, domain: data.domain });
                             remove = $('<a>', { href: 'javascript:;', class: 'download-remove btn btn-xs btn-danger', text: 'X'});
