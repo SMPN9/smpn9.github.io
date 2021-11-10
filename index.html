@@ -364,8 +364,10 @@
             });
 
 
-            me.kanan = new Imat.Layout({ cols: 'col-sm-4', items: [ me.panelTop3, me.panelDownload, me.panelVideo ]});
-            //me.info = new Imat.Column({items: [ me.panelTop1, me.panelTop2, me.panelTop3 ]});
+           // me.kanan = new Imat.Layout({ cols: 'col-sm-4', items: [ me.panelTop3, me.panelDownload, me.panelVideo ]});
+ me.kanan = new Imat.Layout({ cols: 'col-sm-4', items: [ me.panelTop3 ]});
+
+		//me.info = new Imat.Column({items: [ me.panelTop1, me.panelTop2, me.panelTop3 ]});
             me.column = new Imat.Column({
                 renderTo: '#content',
                 items: [ me.kanan, me.panelPengumuman 
