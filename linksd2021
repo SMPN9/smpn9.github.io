@@ -1,0 +1,1302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+       <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <title>Asesmen Nasional - Tahun 2021</title>
+        <link rel="icon" href="/assets/img/logo.png" sizes="32x32" />
+
+        <!--Vendor-->
+        <link href="css/poppins.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/jquery-ui.min.css" />
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/all.min.css" />
+        <link rel="stylesheet" href="css/select2.min.css" />
+        <link rel="stylesheet" href="css/Chart.min.css" />
+
+        <link href="css/leaflet.css" rel="stylesheet">
+        <link href="css/MarkerCluster.css" rel="stylesheet">
+        <link href="css/MarkerCluster.Default.css" rel="stylesheet">
+
+        <!--Assets-->
+        <link rel="stylesheet" href="css/framework.min.css" />
+        <link rel="stylesheet" href="css/puspendik.min.css" />
+		<style>
+		* {font-family: 'Poppins';}
+		
+		</style>
+    </head>
+    <body>
+        <div class="main">
+            <div class="menu">
+                <div class="menu-header">
+                    <img src="css/logo.png" height="70px" />
+                    <span style="font-size:14px">UPTD SMP NEGERI 9 SINJAI</span>
+                    
+                    <ul>
+                        <li>
+                            <a href="javascript:;" onclick="goto1()" class="js-menu" data-class="Home" data-url="home" data-ajax="Y" data-dialog="N"> 
+                                <span class="fas fa-home fa-lg"></span><br />Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="js-menu" data-class="UsersPengaturan" data-url="users/pengaturan" data-ajax="Y" data-dialog="Y"> 
+                                <span class="fas fa-user-cog fa-lg"></span><br />Pengaturan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="btn-logout"> <span class="fas fa-sign-out-alt fa-lg"></span><br />Keluar</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav side-menu">                    <li class="side-menu-label">Menu Utama</li>                <!--       <li>
+                      <a href="javascript:void(0)" class="js-menu" data-class="Home" data-url="home" data-ajax="Y" data-dialog="N">
+                           <span class="fa fa-tachometer-alt side-menu-icon"></span>
+                            <span class="side-menu-title">Dashboard</span>                        </a>                    </li>                    <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Sekolah" data-url="sekolah" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-school side-menu-icon"></span>
+                            <span class="side-menu-title">Data Sekolah</span>                        </a>                    </li>                    <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Biodata" data-url="biodata" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-user-graduate side-menu-icon"></span>
+                            <span class="side-menu-title">Biodata Siswa</span>                        </a>                    </li>          -->       
+							<li>
+							
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">  
+                            <span class="fa fa-desktop side-menu-icon"></span>
+                            <span class="side-menu-title">ANBK SD</span>                            <span class="caret"></span>                        </a>                        <ul class="nav sub-menu collapse">                           
+							<li>
+                               <!-- <a href="javascript:void(0)" onclick="goto2()" class="js-menu" data-class="PenjelasanShow" data-url="penjelasan/show" data-ajax="Y" data-dialog="N"> -->
+		<a href="javascript:void(0)" onclick="goto2()" class="js-menu" data-class="Home" data-url="home" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Pengaturan Sesi</span>
+                                </a>
+                            </li>                                                                             </ul>                    </li>                    <li>
+                       <!-- <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-chart-bar side-menu-icon"></span>
+                            <span class="side-menu-title">Rekap</span>                            <span class="caret"></span>                        </a>                        <ul class="nav sub-menu collapse">                            <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Report" data-url="report" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Rekap Upload Peserta</span>
+                                </a>
+                            </li>                        </ul>                    </li>                    <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-signal side-menu-icon"></span>
+                            <span class="side-menu-title">Sekolah Blank Spot</span>                            <span class="caret"></span>                        </a>                        <ul class="nav sub-menu collapse">                            <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="OfflinePenjelasan" data-url="offline/penjelasan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Penjelasan</span>
+                                </a>
+                            </li>                            <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Token" data-url="token" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Token Sekolah Blank Spot</span>
+                                </a>
+                            </li>                        </ul>                    </li>                    <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-calendar side-menu-icon"></span>
+                            <span class="side-menu-title">Gladi Bersih SD</span>                            <span class="caret"></span>                        </a>                        <ul class="nav sub-menu collapse">                            <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="SimulasiGladi" data-url="simulasi/gladi" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Komputer Proktor</span>
+                                </a>
+                            </li>                            <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Sinkronisasi" data-url="sinkronisasi" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Jadwal Sinkronisasi</span>
+                                </a>
+                            </li>                            <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="SimulasiKartu" data-url="simulasi/kartu" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Data Peserta</span>
+                                </a>
+                            </li>                        </ul>                    </li>                    <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Ticket" data-url="ticket" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-ticket-alt side-menu-icon"></span>
+                            <span class="side-menu-title">Tiket Bantuan</span>                        </a>                    </li>                -->    <li class="side-menu-label">Pengaturan</li>                    <li>
+            
+			 <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="users2" data-ajax="Y" data-dialog="Y">
+                            <span class="fa fa-user-cog side-menu-icon"></span>
+                            <span class="side-menu-title">Pengaturan Akun</span>                        </a>                    </li>                </ul>
+            </div>
+            <div class="wrapper-main">
+                <div class="header">
+                    <a href="#" class="toggle-menu" id="toggle-menu">
+                        <span class="fa fa-bars side-menu-icon"></span>
+                    </a>
+                    <ul class="header-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="far fa-bell"></span>
+                                <span class="label label-warning chat_count">0</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="javascript:void(0)" class="js-menu" id="notif_chat" data-class="Home" data-url="home" data-ajax="Y" data-dialog="N">
+                                        <span class="fa fa-comments-o"></span>
+                                        Anda mendapatkan
+                                        <span class="chat_count">0</span>
+                                        pesan belum dibaca
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="user-menu">
+                            <a href="#" class="dropdown-toggle button-user" data-toggle="dropdown" aria-expanded="false">
+                                <img alt="" src="css/avatar.htm" />
+                                <span class="userlogin">UPTD SMPN 9 SINJAI</span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <div class="photo">
+                                    <img alt="" src="/api/v2/users/avatar?ajaxToken=1A61F09AB22A92E772CC6A3B77E247C3" width="100%" />
+                                </div>
+                                <li>
+                                    <a href="javascript:void(0)" class="js-menu" data-class="UsersPengaturan" data-url="users/pengaturan" data-ajax="Y" data-dialog="Y">
+                                        <span class="fa fa-user"></span>
+                                        Pengaturan Akun
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="btn-logout">
+                                        <span class="fa fa-sign-out-alt"></span>
+                                        Keluar</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="wrapper-content">
+                    <div class="content imat" id="content"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var baseURL = '/';
+            var uniqueID = '36b7eb23f8486256d193308683a4e2f7';
+        </script>
+
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/jquery.form.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.slimscroll.min.js"></script>
+        <script src="js/select2.min.js"></script>
+        <script src="js/plupload.full.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/tinymce.min.js"></script>
+        <script src="js/jquery.tinymce.min.js"></script>
+        <script src="js/Chart.min.js"></script>
+
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.markercluster.js"></script>
+        <script src="js/leaflet.colormarkers.js"></script>
+        
+        <!--Assets-->
+        <script src="js/refrensi.js"></script>
+        <script src="js/framework.min.js"></script>
+        <script src="js/puspendik.min.js"></script>
+        <!--<script src="/vendor/dev-tools/dev-tools.js"></script>-->
+
+        <div class="script" id="script">    <script>
+		
+    	var JS_PARAMS =[];var Home = (function() {
+    var BASE = baseURL + 'api/v2/home/';
+    var URL = {
+        getInfo: BASE + 'getInfo',
+        getDownload: BASE + 'getDownload',
+        removeDownload: BASE + 'removeDownload',
+        saveInfo: BASE + 'saveInfo',
+        savePengumuman: BASE + 'savePengumuman',
+        getPengumuman: BASE + 'getPengumuman',
+        removePengumuman: BASE + 'removePengumuman',
+        saveUpload: BASE + 'saveUpload',
+        helpdesk: BASE + 'getHelpdesk',
+        group: baseURL + 'api/v2/group/getCombo',
+    }
+
+    return {
+        data: { },
+        pengumuman: [],
+        role: '73721eyJjcmVhdGUiOmZhbHNlLCJyZWFkIjp0cnVlLCJ1cGRhdGUiOmZhbHNlLCJkZWxldGUiOmZhbHNlLCJwcmludCI6ZmFsc2UsInVwbG9hZCI6ZmFsc2UsImRvd25sb2FkIjpmYWxzZX0=',
+        isHidden: function(role) {
+            return !Imat.getCrud(this.role, role);
+        },
+        createComponent: function() {
+            var me = this;
+
+            me.panelPengumuman = new Imat.Panel({
+                title: 'Pengumuman',
+                iconCls: 'bullhorn',
+                padding: false,
+                cols: 'col-sm-8',
+                tools: [{
+                    xtype: 'button',
+                    text: 'Tambah',
+                    iconCls: 'plus',
+                    cls: 'bg-aqua btn-xs',
+                    hidden: me.isHidden('create'),
+                    handler: function() {
+                        me.data = {};
+                        me.data.id = '';
+                        me.createPengumuman();
+                    }
+                }, {
+                    xtype: 'button',
+                    text: 'Refresh',
+                    iconCls: 'sync-alt',
+                    cls: 'bg-aqua btn-xs',
+                    handler: function() {
+                        me.getPengumuman();
+                    }
+                }],
+                items: [{
+                    xtype: 'html',
+                    id: 'contentPengumuman',
+                    style: {
+                        'padding': '10px',
+                        'min-height': '568px'
+                    }
+                }]
+            });
+
+            me.panelDownload = new Imat.Panel({
+                title: 'Download Berkas',
+                iconCls: 'download',
+                padding: false,
+                tools: [{
+                    xtype: 'button',
+                    cls: 'bg-aqua btn-xs',
+                    iconCls: 'upload',
+                    text: 'Upload',
+                    hidden: me.isHidden('upload'),
+                    handler: function() {
+                        me.createUpload();
+                    }
+                }],
+                items: [{
+                    xtype: 'html',
+                    id: 'contentDownload',
+                    style: { 'min-height': '300px' },
+                }]
+            });
+
+            me.panelVideo = new Imat.Panel({
+                title: 'Video Tutorial',
+                iconCls: 'video',
+                padding: false,
+                items: [{
+                    xtype: 'html',
+                    id: 'contentVideo',
+                    content: `
+                        <select id="video-select" class="form-control">
+                            <option value="https://smpn9.github.io/files/01. Moda ANBK 2021.mp4">Moda ANBK</option>
+                            <option value="https://smpn9.github.io/files/02. Exambrowser 2021.mp4">Exam Browser</option>
+                            <option value="https://smpn9.github.io/files/03. MSAT 2021.mp4">MSAT</option>
+                            <option value="https://smpn9.github.io/files/04. Model Soal MSAT.mp4">Model Soal MSAT</option>
+                            <option value="https://smpn9.github.io/files/05. Pembuatan Mesin Virtual (VHD)_REV.mp4">Pembuatan Mesin Virtual</option>
+                            <option value="https://smpn9.github.io/files/06. Transfer Response_REV.mp4">Transfer Response</option>
+                        </select>
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <video controls class="embed-responsive-item" src="https://smpn9.github.io/files/01. Moda ANBK 2021.mp4"  id="video" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>`,
+                    style: { 'min-height': '268px' },
+                }]
+            });
+
+
+            me.panelTop1 = new Imat.Panel({
+                cols: 'col-sm-4',
+                items: [{
+                    xtype: 'html',
+                    id: 'widget-top-1',
+                    style: { 'height': '260px' },
+                    content: /*html*/`
+                        <div class="widget-top">
+                            <h3>Statistik Sekolah</h3>
+                            <h6>Sekolah Berdasarkan Pelaksanaan</h6>
+                            <div style="max-width: 350px">
+                                <canvas id="chart-sek"></canvas>
+                            </div>
+                        </div>`
+                }]
+            });
+
+            me.panelTop2 = new Imat.Panel({
+                cols: 'col-sm-4',
+                items: [{
+                    xtype: 'html',
+                    id: 'widget-top-2',
+                   // style: { 'height': '260px' },
+                    content: /*html*/`
+                        <div class="widget-top">
+                            <h3>Jadwal ANBK</h3>
+                           
+                           <!-- <div style="max-width: 350px">
+                                <canvas id="chart-pes"></canvas>
+                            </div>-->
+                           <ul class="contact">
+                           <img style="width:100%" src="https://smpn9.github.io/SMPN9/jadwalAnsd2021.jpg"></img>
+                            </ul>
+                        </div>
+                    `
+                }]
+            });
+
+            me.panelTop3 = new Imat.Panel({
+                cols: 'col-sm-4',
+                items: [{
+                    xtype: 'html',
+                    id: 'widget-top-3',
+                    //style: { 'height': '300px' },
+                    content: /*html*/`
+                        <div class="widget-top">
+                            <h3>Panitia ANBK 2021</h3>
+                            <!--<h6>Internal Teknis - Jangan Dishare Ke Publik</h6>-->
+                            <ul class="contact">
+                                <li><img src="https://smpn9.github.io/css/support-custom.png" class="success"><a href="javascript:;" data-jenis="K">Penanggung Jawab</a>
+								</li><img style="width:5cm" src="https://smpn9.github.io/SMPN9/id%20card%20kepsek.jpg"></img>
+                                <li><img src="https://smpn9.github.io/css/support-custom.png" class="info"><a href="javascript:;" data-jenis="C">Proktor</a></li>
+								<img style="width:5cm" src="https://smpn9.github.io/SMPN9/id%20card%20muhlis.jpg"></img>
+                                <li><img src="https://smpn9.github.io/css/support-custom.png" class="primary"><a href="javascript:;" data-jenis="P">Tekhnisi</a></li>
+								<img style="width:5cm" src="https://smpn9.github.io/SMPN9/id%20card%20zulfadhli.jpg"></img>
+                                <li><img src="https://smpn9.github.io/css/support-custom.png" class="warning"><a href="javascript:;" data-jenis="X">Pengawas 1</a></li>
+				                                <img style="width:5cm" src="https://smpn9.github.io/SMPN9/id%20card%20mardawiyah.jpg"></img>
+								<img style="width:5cm" src="https://smpn9.github.io/SMPN9/id%20card%20asrianti.jpg"></img>
+                                <li><img src="https://smpn9.github.io/css/support-custom.png" class="danger"><a href="javascript:;" data-jenis="Z">Pengawas 2</a></li>
+								<img style="width:5cm" src="https://smpn9.github.io/SMPN9/id%20card%20syamsiah.jpg"></img>
+                            </ul>
+                        </div>
+                    `
+                }]
+            });
+
+
+           // me.kanan = new Imat.Layout({ cols: 'col-sm-4', items: [ me.panelTop3, me.panelDownload, me.panelVideo ]});
+ me.kanan = new Imat.Layout({ cols: 'col-sm-4', items: [ me.panelTop2,me.panelTop3 ]});
+
+		//me.info = new Imat.Column({items: [ me.panelTop1, me.panelTop2, me.panelTop3 ]});
+            me.column = new Imat.Column({
+                renderTo: '#content',
+                items: [ me.kanan, me.panelPengumuman 
+            ]});
+            /*
+            me.layout = new Imat.Layout({
+                items: [ me.info, me.column ],
+                renderTo: '#content'
+            })
+            */
+
+            me.getInfo();
+            me.getDownload();
+            me.getPengumuman();
+
+            $('#video-select').change(function() {
+                var video = document.getElementById('video');
+                video.setAttribute('src', $(this).val());
+                video.load();
+            })
+        },
+
+        createUpload: function() {
+            var me = this;
+
+            me.formUpload = new Imat.Form({
+                type: 'horizontal',
+                url: URL.saveUpload,
+                labelWidth: 'col-sm-2',
+                items: [
+                    { xtype: 'textbox', fieldLabel: 'Filename', dataIndex: 'upload', size: 'col-sm-10', type: 'file', allowBlank: false },
+                    { xtype: 'textbox', fieldLabel: 'Folder', dataIndex: 'folder', size: 'col-sm-10' },
+                    { xtype: 'textbox', fieldLabel: 'Keterangan', dataIndex: 'keterangan', size: 'col-sm-10' },
+                    {
+                        xtype: 'combobox',
+                        fieldLabel: 'Peruntukan',
+                        dataIndex: 'group_id',
+                        emptyText: 'Semua',
+                        size: 'col-sm-5',
+                        select2: false,
+                        datasource: {
+                            type: 'ajax',
+                            url: URL.group
+                        }
+                    }
+                ]
+            });
+
+            me.modalUpload = new Imat.Modal({
+                title: 'Upload',
+                iconCls: 'upload',
+                footer: {
+                    xtype: 'navbar',
+                    collapse: 'none',
+                    items: [{
+                        xtype: 'button',
+                        iconCls: 'upload',
+                        text: 'Upload',
+                        position: 'right',
+                        handler: function() {
+                            if (me.formUpload.isValid()) {
+                                me.formUpload.submit({
+                                    success: function(a) {
+                                        new Imat.MessageBox({ size: 'modal-sm', type: 'success', title: 'Informasi', text: a.msg});
+
+                                        me.modalUpload.close();
+                                        me.getDownload();
+                                    }
+                                });
+                            } else {
+                                new Imat.MessageBox({ width: 350, type: 'critical', title: 'Peringatan', text: 'Silahkan lengkapi form yang bertanda merah'});
+                            }
+                        }
+                    }]
+                },
+                items: [me.formUpload]
+            });
+        },
+
+        createPengumuman: function() {
+            var me = this;
+
+            me.formPengumuman = new Imat.Form({
+                url: URL.savePengumuman,
+                items: [
+                    { xtype: 'textbox', fieldLabel: 'Judul', dataIndex: 'judul', allowBlank: false },
+                    { xtype: 'tinymce', fieldLabel: 'Pengumuman', dataIndex: 'pengumuman', simple: true, rows: '5', allowBlank: false },
+                    {
+                        xtype: 'checkbox',
+                        type: 'radio',
+                        fieldLabel: 'Tetap Diatas',
+                        dataIndex: 'pin',
+                        inline: true,
+                        datasource: {
+                            type: 'array',
+                            data: [
+                                { key: '1', value: 'Ya' },
+                                { key: '2', value: 'Tidak' },
+                            ]
+                        }
+                    }
+                ]
+            });
+
+            me.modalPengumuman = new Imat.Modal({
+                title: 'Tambah dan Edit Pengumuman',
+                iconCls: 'edit',
+                items: [me.formPengumuman],
+                footer: {
+                    xtype: 'navbar',
+                    collapse: 'none',
+                    items: [{
+                        xtype: 'button',
+                        iconCls: 'save',
+                        text: 'Simpan',
+                        position: 'right',
+                        handler: function() {
+                            if (me.formPengumuman.isValid()) {
+                                me.formPengumuman.submit({
+                                    data: { id: me.data.id },
+                                    success: function(a) {
+                                        if (a.success) {
+                                            new Imat.MessageBox({ size: 'modal-sm', type: 'success', title: 'Informasi', text: a.msg});
+
+                                            me.modalPengumuman.close();
+                                            me.getPengumuman();
+                                        } else {
+                                            new Imat.MessageBox({ size: 'modal-sm', type: 'warning', title: 'Peringatan', text: a.msg});
+                                        }
+                                    }
+                                });
+                            } else {
+                                new Imat.MessageBox({ width: 350, type: 'critical', title: 'Peringatan', text: 'Silahkan lengkapi form yang bertanda merah'});
+                            }
+                        }
+                    }]
+                }
+            });
+
+            me.modalPengumuman.afterShow(function() {
+                me.formPengumuman.showValue(me.data);
+            });
+        },
+
+        createContact:function(jenis){
+            var me = this;
+
+            me.tableContact = new Imat.DataTable({
+                title:'Daftar Kontak',
+                id: 'table-contact-helpdesk',
+                fullSize: true,
+                pagination: 'advanced',
+                fixedHeader: true,
+                headerAlign: 'center',
+                wrap: true,
+                columns:[
+                    {header: 'Nama Wilayah', dataIndex:'wilayah', width: 150},
+                    {header: 'Nama', dataIndex:'nama', width: 200},
+                    {header: 'Telepon', dataIndex:'telepon', width: 90},
+                    {header: 'Keterangan', dataIndex:'nm_teknis', width: 300},
+                    {header: 'Email', dataIndex:'email', width: 250},
+                    {header: '', dataIndex:'', width: '*'},
+                ],
+                store: {
+                    type: 'json',
+                    url: URL.helpdesk,
+                    params: { start:0, limit:50, jenis: jenis, kata: '' }
+                }
+            });
+
+            me.modalContact = new Imat.Modal({
+                title: 'Kontak Tim Teknis',
+                iconCls: 'phone',
+                padding: false,
+                height: 500,
+                size: 'modal-lg',
+                fullsize: true,
+                items: [me.tableContact]
+            });
+
+            me.modalContact.afterShow(function() {
+                me.tableContact.store.afterLoad(function() {
+                    $('.table-fixed, .table-wrapper').find('#table-contact-helpdesk').find('tr').each(function () {
+                        $('td:eq(0), th:eq(0)', this).toggle()[ jenis == 'X' || jenis == 'Z' ? 'hide' : 'show']();
+                    });
+                });
+                me.tableContact.store.load();
+            });
+        },
+
+        getInfo: function() {
+            var me = this;
+
+            $.ajax({
+                url: URL.getInfo,
+                method: 'POST',
+                dataType: 'json',
+                success: function(a) {
+                    $('#contentKontak').html(a.informasi);
+                    $('.contact').find('a').click(function() {
+                        var jenis = $(this).attr('data-jenis');
+                        me.createContact(jenis);
+                    });
+
+                    //createPie
+                    /*
+                    var ctx = document.getElementById('chart-sek');
+                    if (a.group >= 900) {
+                        
+                        if (a.valid) {
+                            alert = '';
+                        } else {
+                            alert = '<div class="alert alert-danger" role="alert"><strong>Silahkan Segera Lengkapi Kelengkapan Data !</strong></div>';
+                        }
+
+                        
+                        me.modalInfo = new Imat.Modal({
+                            title: 'Informasi',
+                            iconCls: 'info-circle',
+                            items: [{
+                                xtype: 'html',
+                                content: `
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <th colspan="6">Ceklis Kelengkapan Data</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td>Penarikan Biodata dari BIOUN</td><td>${a.cek1}</td></tr>
+                                            <tr><td>Penempatan Peserta ke Server</td><td>${a.cek2}</td></tr>
+                                            <tr><td>Pengaturan Sesi Hari Ke-1</td><td>${a.cek3}</td></tr>
+                                            <tr><td>Pengaturan Sesi Hari Ke-2</td><td>${a.cek4}</td></tr>
+                                            <tr><td>Pengaturan Sesi Hari Ke-3</td><td>${a.cek5}</td></tr>
+                                            <tr><td>Pengaturan Sesi Hari Ke-4</td><td>${a.cek6}</td></tr>
+                                        </tbody>
+                                    </table>${alert}`
+                            }]
+                        });
+                        
+
+                        var dog = new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                datasets: [{
+                                    data: a.dataSek,
+                                    backgroundColor: [
+                                        '#0abb87',
+                                        '#5d78ff',
+                                        '#ffb822'
+                                    ],
+                                    borderWidth: 1
+                                }],
+
+                                labels: a.labelSek
+                            },
+                            options: {
+                                legend: {
+                                    display: true,
+                                    position: 'right'
+                                }
+                            }
+                        });
+                    } else {
+                        $('#widget-top-1').find('h6').html('Sekolah Berdasarkan Kelengkapan - <a id="detail-lengkap" href="javascript:;">Detail</a>');
+                        $('#detail-lengkap').click(function() {
+                            App.loadPage({ clsName: 'RekapKelengkapan', url: 'rekap/kelengkapan', script: '' });
+                        });
+
+                        var persen = new Chart(ctx, {
+                            type: 'horizontalBar',
+                            data: {
+                                labels: a.labelKelengkapan,
+                                datasets: [{ 
+                                    data: a.dataLengkap[1],
+                                    backgroundColor: '#1cc000',
+                                    label: 'Lengkap',
+                                }, { 
+                                    data: a.dataLengkap[2],
+                                    backgroundColor: '#E92B04',
+                                    label: 'Belum Lengkap',
+                                }]
+                            },
+                            options: {
+                                maintainAspectRatio: true,
+                                legend: {
+                                    display: true,
+                                    position: 'right'
+                                },
+                                scales: {
+                                    xAxes: [{
+                                        stacked: true,
+                                    }],
+                                    yAxes: [{
+                                        stacked: true,
+                                    }]
+                                },
+                            }
+                        });
+                    }
+                    
+                    //createBar
+                    var ctx2 = document.getElementById('chart-pes');
+                    var chart = new Chart(ctx2, {
+                        type: 'bar',
+                        data: {
+                            labels: a.labelJenjang,
+                            datasets: [{ 
+                                data: a.dataJenjang[1],
+                                backgroundColor: '#0abb87',
+                                label: 'Mandiri',
+                            }, { 
+                                data: a.dataJenjang[2],
+                                backgroundColor: '#5d78ff',
+                                label: 'Menumpang',
+                            }, { 
+                                data: a.dataJenjang[3],
+                                backgroundColor: '#ffb822',
+                                label: 'Belum Ditetapkan',
+                            }]
+                        },
+                        options: {
+                            maintainAspectRatio: true,
+                            legend: {
+                                display: true,
+                                position: 'right'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    stacked: true,
+                                }],
+                                yAxes: [{
+                                    display: false,
+                                    stacked: true,
+                                }]
+                            },
+                        }
+                    });
+                    
+                    */
+                }
+            });
+        },
+
+        getDownload: function() {
+            var me = this;
+
+            $.ajax({
+                url: 'https://script.google.com/macros/s/AKfycbwSOBjp8l7i_XNtxeE6pPEcIxo_QQFeVnh9Do4iNZ2lqOodn0E/exec?send=3',
+                method: 'POST',
+                dataType: 'json',
+                success: function(a) {
+                    if (a.success) {
+                        var download = $('<ul>', { class: 'download' });
+                        for (i = 0; i < a.data.length; i++) {
+                            var data = a.data[i];
+                            var markup = $('<div>'),
+                                listDw   = $('<li>'),
+                                icon   = $('<img>', { src: baseURL + 'css/' + data.ext + '.png' });
+
+                            button = $('<a>', { href: 'javascript:;', class: 'download-file', id: 'download-' + data.id, text: data.filename,  title: data.keterangan, domain: data.domain });
+                            remove = $('<a>', { href: 'javascript:;', class: 'download-remove btn btn-xs btn-danger', text: 'X'});
+
+                            if (data.items.length > 0) {
+                                var sub = $('<ul>', { class: 'download-child' });
+                                for (x = 0; x < data.items.length; x++) {
+                                    var item = data.items[x];
+                                    var itemMarkup = $('<li>'),
+                                        itemIcon   = $('<img>', { src: baseURL + 'css/' + item.ext + '.png' }),
+                                        itemButton = $('<a>', { href: 'javascript:;', class: 'download-file', id: 'download-' + item.id, text: item.filename,  item: data.keterangan, domain: item.domain }),
+                                        itemRemove = $('<a>', { href: 'javascript:;', class: 'download-remove btn btn-xs btn-danger', text: 'X'});
+
+                                    itemMarkup.append(itemIcon).append(itemButton).append(itemRemove).appendTo(sub);
+                                    if (me.isHidden('upload')) itemRemove.hide();
+                                }
+
+                                button.removeClass('download-file').addClass('download-folder');
+                                icon.attr('src', baseURL + 'css/folder.png');
+                                remove.hide();
+
+                                sub.appendTo(listDw);
+                                sub.hide();
+                            }
+
+                            markup.prepend(remove).prepend(button).prepend(icon).prependTo(listDw);
+                            listDw.appendTo(download);
+                            if (me.isHidden('upload')) remove.hide();
+                        }
+
+                        $('#contentDownload').html(download);
+
+                        $('.download-file').unbind('click');
+                        $('.download-file').click(function(){
+                            if (!empty($(this).attr('domain'))) {
+                                window.open($(this).attr('domain') + $(this).text(), '_self');
+                            } else {
+                                window.open(baseURL + 'user/home/download/' + $(this).attr('id').replace('download-', ''), '_self');
+                            }
+                        });
+
+                        $('.download-folder').unbind('click');
+                        $('.download-folder').click(function(){
+                            $('.download > li > a.download-folder').not($(this)).parent().find('ul').slideUp(200);
+                            $('.download > li > a.download-folder').not($(this)).parent().removeClass('active');
+
+                            if ($(this).parent().parent().hasClass('active')) {
+                                $(this).parent().parent().find('ul').slideUp(200);
+                                $(this).parent().parent().removeClass('active');
+                            } else {
+                                $(this).parent().parent().find('ul').slideDown(200);
+                                $(this).parent().parent().addClass('active');
+                            }
+                        });
+
+                        $('.download-remove').click(function(){
+                            var id = $(this).parent().children('.download-file').attr('id').replace('download-', '');
+
+                            var msg = new Imat.MessageBox({
+                                width: 350,
+                                type: 'confirm',
+                                title: 'Konfirmasi',
+                                text: 'Yakin akan menghapus berkas tersebut ?',
+                                buttons: [{
+                                    xtype: 'button',
+                                    position: 'right',
+                                    iconCls: 'check-circle',
+                                    text: 'Ya',
+                                    handler: function(){
+                                        $.ajax({
+                                            url: URL.removeDownload,
+                                            method: 'POST',
+                                            global: false,
+                                            dataType: 'json',
+                                            data: { id: id },
+                                            success: function(a) {
+                                                me.getDownload();
+                                                msg.close();
+                                            }
+                                        });
+                                    }
+                                }, {
+                                    xtype: 'button',
+                                    position: 'right',
+                                    iconCls: 'minus-circle',
+                                    text: 'Tidak',
+                                    handler: function(){
+                                        msg.close();
+                                    }
+                                }]
+                            });
+                        });
+                    }
+                }
+            });
+        },
+
+        getPengumuman: function() {
+            var me = this;
+
+            $.ajax({
+                url: 'https://script.google.com/macros/s/AKfycbwSOBjp8l7i_XNtxeE6pPEcIxo_QQFeVnh9Do4iNZ2lqOodn0E/exec?send=2',
+                method: 'POST',
+                dataType: 'json',
+                success: function(a) {
+                    if (a.success) {
+                        me.showPengumuman(a.data);
+                    }
+                }
+            });
+        },
+
+        showPengumuman: function(data) {
+            var me = this;
+            var timeLine = $('<ul>', { class: 'timeline' });
+            var data = data;
+
+            me.pengumuman = data;
+
+            for (i = 0; i < data.length; i++) {
+                var item = data[i];
+                if (item.timeline) {
+                    var timeLabel = $('<li>', { class: 'time-label' });
+                    var timeTitle = $('<span>', { class: 'bg-' + item.color, text: item.judul });
+
+                    timeLabel.append(timeTitle).appendTo(timeLine);
+                } else {
+                    var itemContainer = $('<li>');
+                    var itemIcon = $('<i>', { class: 'bg-blue fa fa-envelope' });
+                    var itemDiv = $('<div>', { class: 'timeline-item' });
+                    var itemSpan = $('<span>', { class: 'time' });
+                    var itemClock = $('<i>', { class: 'far fa-clock' });
+                    var itemCalendar = $('<i>', { class: 'far fa-calendar' });
+                    var itemHeader = $('<h3>', { class: 'timeline-header' });
+                    var itemLink = $('<a>', { href: 'javascript:;', text: item.judul });
+                    var itemBody = $('<div>', { class: 'timeline-body', html: item.pengumuman });
+                    var itemFooter = $('<div>', { class: 'timeline-footer' });
+                    var itemEdit = $('<a>', { class: 'btn btn-primary btn-xs', text: 'Edit', 'data-id': i });
+                    var itemRemove = $('<a>', { class: 'btn btn-danger btn-xs', text: 'Hapus', 'data-id': i });
+
+                    if (!me.isHidden('update')) {
+                        itemFooter.append(itemEdit).append(itemRemove);
+                    }
+
+                    itemSpan.append(itemCalendar).append(item.tanggal).append(itemClock).append(item.jam);
+                    itemHeader.append(itemLink).append($('<span>', { text: item.nm_user, class: 'timeline-user' })).append(itemSpan);
+                    itemDiv.append(itemHeader).append(itemBody).append(itemFooter);
+                    itemContainer.append(itemIcon).append(itemDiv).appendTo(timeLine);
+
+                    itemEdit.off('click');
+                    itemEdit.click(function() {
+                        me.data = me.pengumuman[parseInt($(this).attr('data-id'))];
+                        me.createPengumuman();
+                    });
+
+                    itemRemove.off('click');
+                    itemRemove.click(function() {
+                        var rec = me.pengumuman[parseInt($(this).attr('data-id'))];
+                        var msg = new Imat.MessageBox({
+                            width: 350,
+                            type: 'confirm',
+                            title: 'Konfirmasi',
+                            text: 'Yakin akan menghapus pengumuman "' + rec.judul + '" ?',
+                            buttons: [{
+                                xtype: 'button',
+                                position: 'right',
+                                iconCls: 'check-circle',
+                                text: 'Ya',
+                                handler: function(){
+                                    $.ajax({
+                                        url: URL.removePengumuman,
+                                        method: 'POST',
+                                        dataType: 'json',
+                                        data: { id: rec.id },
+                                        success: function() {
+                                            msg.close();
+                                            me.getPengumuman();
+                                        }
+                                    });
+                                }
+                            }, {
+                                xtype: 'button',
+                                position: 'right',
+                                iconCls: 'minus-circle',
+                                text: 'Tidak',
+                                handler: function(){
+                                    msg.close();
+                                }
+                            }]
+                        });
+                    });
+                }
+            }
+
+            timeLine.append($('<li><i class="far fa-clock"></i></li>'));
+            $('#contentPengumuman').html(timeLine);
+        },
+
+        show: function() {
+            this.createComponent();
+        }
+    }
+})(); Home.show();
+
+
+
+function sesi(){
+    	var JS_PARAMS =[];var Biodata = (function() {
+    var BASE = baseURL + 'api/v2/biodata/';
+     
+    return {
+         
+        createComponent: function() {
+            var me = this;
+            me.header = /*html*/`
+				<tr>
+					<th rowspan="2" width="30">Cek</th>
+                    <th rowspan="2" width="30">No</th>
+					<th rowspan="2" width="130">Username</th>
+					<th rowspan="2" width="300">Nama Peserta</th>
+					<th rowspan="2" width="80">Status</th>
+					<th rowspan="2" width="100">ID Proktor</th>
+					<th rowspan="2" width="100">Gelombang</th>
+					<th colspan="2">Sesi Pada Hari Ke</th>
+                    <th rowspan="2" width="300">Sekolah Asal</th>
+					<th rowspan="2" width="*"></th>
+				</tr>
+				<tr>
+					<th width="50">1</th>
+					<th width="50">2</th>
+				</tr>`;
+
+            me.table = new Imat.DataTable({
+                autoLoad: false,
+                fixedHeader: true,
+                customHeader: me.header,
+                headerAlign: 'center',
+                top: 30,
+                sort: 'remote',
+                fullSize: true,
+                columns: [
+                    { header: 'Cek', dataIndex: 'cek', width: 30, align: 'center', sort: false, editor: { xtype: 'checkbox', data: { key: '1', value: '' }}},
+                    { header: 'No', dataIndex: 'no', width: 30, align: 'right' },
+                    { header: 'Username', dataIndex: 'username', width: 130, align: 'center' },
+                    { header: 'Nama Siswa', dataIndex: 'nm_pes', width: 300 },
+                    { header: 'Status', dataIndex: 'status', width: 80, data: referensi.status_sampling },
+					{ header: 'Ruang', dataIndex: 'kd_server_x', width: 100},
+                   { header: 'Gelombang', dataIndex: 'gelombang', width: 100, align: 'center', editor: { xtype: 'combobox', emptyText: '-',  datasource: { type: 'array', data: referensi.gelombang }}},
+                    { header: 'Sesi 1', dataIndex: 'sesi_1', width: 50, align: 'center', editor: { xtype: 'textbox', type: 'number', maxlength: 1, min: 1, max: 2 }},
+                    { header: 'Sesi 2', dataIndex: 'sesi_2', width: 50, align: 'center', editor: { xtype: 'textbox', type: 'number', maxlength: 1, min: 1, max: 2 }},
+                    { header: 'Sekolah Asal', dataIndex: 'nm_sek', width: 300 },
+                    { header: '', dataIndex: '' },
+                ],
+                store: {
+                    type: 'json',
+                    url: 'https://script.google.com/macros/s/AKfycbwSOBjp8l7i_XNtxeE6pPEcIxo_QQFeVnh9Do4iNZ2lqOodn0E/exec?send=1'
+                }
+            });me.table.clear();
+ me.table.store.load({params: {"kd_jenjang":"P","kd_prop":"19","kd_rayon":"15","kd_sek":"0004","kd_studi":"","kata":""}});
+       
+  me.bar = new Imat.NavBar({
+                items: [{
+                    xtype: 'button',
+                    id: 'cek',
+                    iconCls: 'far square',
+                    handler: function() {
+                        if ($('#cek').find('.far').hasClass('fa-square')) {
+                            $('#cek').find('.far').removeClass('fa-square');
+                            $('#cek').find('.far').addClass('fa-check-square');
+
+                            $('.cek').not('.disabled').prop('checked', false);
+                            $('.cek').not('.disabled').click();
+                        } else {
+                            $('#cek').find('.far').removeClass('fa-check-square');
+                            $('#cek').find('.far').addClass('fa-square');
+
+                            $('.cek').not('.disabled').prop('checked', true);
+                            $('.cek').not('.disabled').click();
+                        }
+                    }
+                }, {
+                    xtype: 'button',
+                    id: 'simpan',
+                    text: 'Simpan',
+                    iconCls: 'save',
+                    handler: function() {
+                        me.onSave();
+                    }
+                }, {
+                    xtype: 'button',
+                    id: 'edit',
+                    text: 'Edit',
+                    iconCls: 'edit',
+                    handler: function() {
+                        me.onEdit();
+                    }
+                }, {
+                    xtype: 'dropdown',
+                    id: 'rekap',
+                    text: 'Rekap',
+                    iconCls: 'table',
+                    items: [{
+                        xtype: 'button',
+                        iconCls: 'download',
+                        text: 'Download Excel',
+                        handler: function() {
+                            if (!empty(me.params.kd_sek) && !empty(me.params.kd_ujian)) {
+                                document.location = tools.generateURL(URL.table, $.extend({ download: 'Y', isAjax: true }, me.params));
+                            } else {
+                                new Imat.MessageBox({ width: 350, type: 'critical', title: 'Peringatan', text: 'Silahkan pilih sekolah dan ujian'});
+                            }
+                        }
+                    }, {
+                        xtype: 'button',
+                        iconCls: 'print',
+                        text: 'Lihat Rekap',
+                        handler: function() {
+                            if (!empty(me.params.kd_sek)) {
+                                me.panel.hide();
+                                me.panelCetak.show();
+                                me.frameCetak.navigate(URL.rekap, $.extend({ isAjax: true }, me.params));
+                            } else {
+                                new Imat.MessageBox({ width: 350, type: 'critical', title: 'Peringatan', text: 'Silahkan pilih sekolah'});
+                            }
+                        }
+                    }]
+                }, {
+                    xtype: 'combobox',
+                    dataIndex: 'kd_jenjang',
+                    emptyText: 'Pilih',
+                    position: 'right',
+                    select2: false,
+                    datasource: {
+                        type: 'array',
+                        data: [{"key":"P","value":"SD"}]
+                    },
+                    onChange: function(){
+                        me.params.kd_jenjang = this.getValue();
+                        me.bar.getItem('kd_prop').change();
+                    },
+                    onLoad: function(){ this.change(); }
+                }, {
+                    xtype: 'combobox',
+                    dataIndex: 'kd_prop',
+                    emptyText: 'Pilih Provinsi',
+                    position: 'right',
+                    select2: false,
+                    width: '100',
+                    datasource: {
+                        type: 'ajax',
+                        url: URL.provinsi
+                    },
+                    onChange: function(){
+                        if (!empty(me.default.kd_prop)) this.setValue(me.default.kd_prop);
+
+                        me.params.kd_prop = this.getValue();
+                        if (!empty(me.params.kd_prop)) {
+                            me.bar.getItem('kd_rayon').setDataSource({
+                                type: 'ajax',
+                                params: me.params,
+                                url: URL.rayon
+                            });
+                        } else {
+                            me.bar.getItem('kd_rayon').setDataSource({ type: 'array', data: []});
+                        }
+                    },
+                    onLoad: function(){ this.change(); }
+                }, {
+                    xtype: 'combobox',
+                    dataIndex: 'kd_rayon',
+                    emptyText: 'Pilih Kota/Kab.',
+                    position: 'right',
+                    select2: false,
+                    width: '110',
+                    datasource: {},
+                    onChange: function(){
+                        if (!empty(me.default.kd_rayon)) this.setValue(me.default.kd_rayon);
+
+                        me.params.kd_rayon = this.getValue();
+                        if (!empty(me.params.kd_rayon)) {
+                            me.bar.getItem('kd_sek').setDataSource({
+                                type: 'ajax',
+                                params: $.extend({ pelaksana: 1 }, me.params),
+                                url: URL.sekolah
+                            });
+                        } else {
+                            me.bar.getItem('kd_sek').setDataSource({ type: 'array', data: []});
+                        }
+                    },
+                    onLoad: function(){ this.change(); }
+                }, {
+                    xtype: 'combobox',
+                    dataIndex: 'kd_sek',
+                    emptyText: 'Pilih Sekolah',
+                    position: 'right',
+                    datasource: {},
+                    width: 120,
+                    onChange: function(){
+                        if (!empty(me.default.kd_sek)) this.setValue(me.default.kd_sek);
+
+                        me.params.kd_sek = this.getValue();
+                        me.hasLoad.ujian = false;
+
+                        if (me.params.kd_sek) {
+                            me.bar.getItem('kd_ujian').setDataSource({
+                                type: 'ajax',
+                                params: me.params,
+                                url: URL.ujian
+                            });
+                        } else {
+                            me.bar.getItem('kd_ujian').clear();
+                        }
+                    },
+                    onLoad: function(){ this.change(); }
+                }, {
+                    xtype: 'combobox',
+                    dataIndex: 'kd_ujian',
+                    emptyText: 'Pilih Peserta',
+                    position: 'right',
+                    width: '120',
+                    datasource: {},
+                    onChange: function(){
+                        me.params.kd_ujian = this.getValue();
+                        me.hasLoad.ujian = true;
+                        me.hasLoad.server = false;
+
+                        if (!empty(me.params.kd_sek) && !empty(me.params.kd_ujian)) {
+                            me.bar.getItem('kd_server').setDataSource({
+                                type: 'ajax',
+                                params: $.extend({ kosong: true }, me.params),
+                                url: URL.server
+                            });
+
+                            me.table.setComboDataSource('kd_server_s', {
+                                type: 'ajax',
+                                url: URL.server,
+                                params: me.params
+                            });
+                        } else {
+                            me.bar.getItem('kd_server').clear();
+                        }
+
+                        me.getData();
+                    },
+                    onLoad: function(){ this.change(); }
+                }, {
+                    xtype: 'combobox',
+                    dataIndex: 'kd_server',
+                    emptyText: 'Semua',
+                    position: 'right',
+                    width: '120',
+                    datasource: {},
+                    onChange: function(){
+                        me.params.kd_server = this.getValue();
+                        me.hasLoad.server = true;
+                        me.getData();
+                    },
+                    onLoad: function(){ this.change(); }
+                }, {
+                    xtype: 'textbox',
+                    dataIndex: 'kata',
+                    position: 'right',
+                    width: '60',
+                    onSubmit: function() {
+                        var value = me.bar.getValue('kata');
+                        if ((value.length == 9 || value.length == 14) && $.inArray(cookie.get('GROUP'), ['99', '100']) != -1 && $.inArray(value.substring(0, 1), ['D', 'P', 'U', 'K', 'X', 'Q']) != -1) {
+                            var jenjang = value.substring(0, 1);
+                            var kd_prop = value.substring(1, 3);
+                            var kd_rayon = value.substring(3, 5);
+                            var kd_sek = value.substring(5, 9);
+
+                            me.default.kd_jenjang = jenjang;
+                            me.default.kd_prop = kd_prop;
+                            me.default.kd_rayon = kd_rayon;
+                            me.default.kd_sek = kd_sek;
+
+                            me.bar.getItem('kd_jenjang').setValue(jenjang);
+                            me.bar.getItem('kd_jenjang').change();
+
+                            //me.bar.setValue('kata', '');
+                        } else {
+                            me.getData();
+                        }
+                    }
+                }, {
+                    xtype: 'button',
+                    id: 'cari',
+                    text: 'Cari',
+                    position: 'right',
+                    iconCls: 'search',
+                    handler: function() {
+                        var value = me.bar.getValue('kata');
+                        if ((value.length == 9 || value.length == 14) && $.inArray(cookie.get('GROUP'), ['99', '100']) != -1 && $.inArray(value.substring(0, 1), ['D', 'P', 'U', 'K', 'X', 'Q']) != -1) {
+                            var jenjang = value.substring(0, 1);
+                            var kd_prop = value.substring(1, 3);
+                            var kd_rayon = value.substring(3, 5);
+                            var kd_sek = value.substring(5, 9);
+
+                            me.default.kd_jenjang = jenjang;
+                            me.default.kd_prop = kd_prop;
+                            me.default.kd_rayon = kd_rayon;
+                            me.default.kd_sek = kd_sek;
+
+                            me.bar.getItem('kd_jenjang').setValue(jenjang);
+                            me.bar.getItem('kd_jenjang').change();
+
+                            if (value.length == 9) {
+                                me.bar.setValue('kata', '');
+                            }
+                        } else {
+                            me.getData();
+                        }
+                        
+                        me.getData();
+                    }
+                }]
+            });
+
+	   
+            me.panel = new Imat.Panel({
+                title: 'Biodata',
+                fullSize: true,
+                iconCls: 'user',
+                renderTo: '#content',
+                padding: false,
+                items: [me.bar, me.table]
+            });
+        },
+
+       
+
+        
+
+        show: function() {
+            this.createComponent();
+        }
+    }
+})(); Biodata.show();
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function goto1(){
+
+setTimeout(function() {$("#content").html('')	;Home.show();},500)
+}
+
+function goto2(){
+
+setTimeout(function() {$("#content").html('')	;sesi()},500)
+}
+
+    </script></div>
+    </body>
+</html>
