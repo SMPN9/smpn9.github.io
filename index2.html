@@ -159,8 +159,9 @@ Pelaksanaan ANBK
 var ch = new BroadcastChannel('tes')
   
   
- function cetak(){
-   ch.postMessage('gabb')
+ function cetak(){ var bb=document.getElementById('ctk')
+  bb.contentWindow.print()
+   //ch.postMessage('gabb')
  }
  
  
