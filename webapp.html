@@ -17,14 +17,14 @@ halo
 <button onclick="send()">bbtess</button>
 <script>
 
-
+var song = new Audio();
+song.src = 'https://smpn9.github.io/bugislabel/suarahati.m4a';
+song.play();
 function send(){ 
 window.Telegram.WebApp.sendData("tes")
 }
 </script>
-var song = new Audio();
-song.src = 'https://smpn9.github.io/bugislabel/suarahati.m4a';
-song.play();
+
 
 </body>
 </html>
