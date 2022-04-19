@@ -16,11 +16,15 @@ Your browser does not support the audio element.
 halo
 <button onclick="send()">bbtess</button>
 <script>
+
+
 function send(){ 
 window.Telegram.WebApp.sendData("tes")
 }
 </script>
-
+var song = new Audio();
+song.src = 'https://smpn9.github.io/bugislabel/suarahati.m4a';
+song.play();
 
 </body>
 </html>
