@@ -1,21 +1,143 @@
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-       <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />-->
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-        <title>Simpan File</title>
- 
-
+<html>
+<title>Cek Kuota SMP</title>
+<style>
+th{padding:5px;background:black;color:white}
+table{ white-space:;text-overflow:ellipsis;
+  border-collapse: collapse;
+  padding:3px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  border-radius:3px;box-shadow:0px 1px 10px 0px rgb(0,0,0,0.3);
+  font-family: Arial, Helvetica, sans-serif;  }
+</style>
 <body>
- 
+<div id='hs' style='display:none'>ttt</div>
+<label><b>Kecamatan Bulupoddo</b></label><br/><table id='tb' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>Kecamatan Sinjai Utara</b></label><br/><table id='tb1' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>Kecamatan Sinjai Timur</b></label><br/><table id='tb2' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>Kecamatan Sinjai Tengah</b></label><br/><table id='tb3' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>Kecamatan Sinjai Selatan</b></label><br/><table id='tb4' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>Kecamatan Sinjai Barat</b></label><br/><table id='tb5' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>Kecamatan Sinjai Borong</b></label><br/><table id='tb6' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>Kecamatan Tellu Limpoe</b></label><br/><table id='tb7' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>Kecamatan Pulau Sembilang</b></label><br/><table id='tb8' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+
 <script>
-        setTimeout(function(){location.href="https://disdiksinjaikab-my.sharepoint.com/:f:/g/personal/muhlis8005001_macca_id/ElTVg8niWEFAo5-sLIAqpSEBXF1GMCIFHXnGMfjMjY99cw?e=3hLXBc"} , 200);
+var hs='';
+var yy=document.getElementById('hs');
+var tbb=document.getElementById('tb')
+var tbb1=document.getElementById('tb1')
+var tbb2=document.getElementById('tb2')
+var tbb3=document.getElementById('tb3')
+var tbb4=document.getElementById('tb4')
+var tbb5=document.getElementById('tb5')
+var tbb6=document.getElementById('tb6')
+var tbb7=document.getElementById('tb7')
+var tbb8=document.getElementById('tb8')
 
-   
-    </script>
- </body>
+
+
+var nom=0
+var js=['40304504',
+'40304534','40304518','40304523','69758213']
+	for( var i=0;i<js.length;i++){go(js[i])}
+
+var js1=['40304517','40315301','40304519','40304535']
+for( var j=0;j<js1.length;j++){go(js1[j])}
+
+var js2=['40304525','40304533','40304526','69964052']
+for( var k=0;k<js2.length;k++){go(js2[k])}
+
+var js3=['40304527','40316285','40316286','40314324','40304532']
+for( var l=0;l<js3.length;l++){go(js3[l])}
+
+var js4=['40304528','40304521','40304531','40310366','40316288','40317640','40318571']
+for( var m=0;m<js4.length;m++){go(js4[m])}
+
+var js5=['40304536','40304520','40316283','40316284','40304529','69906011']
+for( var n=0;n<js5.length;n++){go(js5[n])}
+
+var js6=['40304530','40314325','69867959']
+for( var o=0;o<js6.length;o++){go(js6[o])}
+var js7=['40304522','40304524','40304537','40314377']
+for( var p=0;p<js7.length;p++){go(js7[p])}
+var js8=['40304516','40314326','40314327']
+for( var q=0;q<js8.length;q++){go(js8[q])}
+
+
+function go(url){
+	
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {hs=xhttp.responseText;yy.innerHTML=hs;
+//var mm=document.getElementById("hs")
+var mm=document.getElementById("content-page")
+var nm=	mm.getElementsByTagName('h5')
+var nm1=mm.getElementsByTagName('h4')
+var nm2=mm.getElementsByTagName('h3')
+if(js.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb.insertRow(-1);nom+=1
+}
+if(js1.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb1.insertRow(-1);nom+=1
+}
+if(js2.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb2.insertRow(-1);nom+=1
+}
+
+if(js3.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb3.insertRow(-1);nom+=1
+}
+if(js4.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb4.insertRow(-1);nom+=1
+}
+if(js5.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb5.insertRow(-1);nom+=1
+}
+if(js6.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb6.insertRow(-1);nom+=1
+}
+if(js7.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb7.insertRow(-1);nom+=1
+}
+if(js8.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb8.insertRow(-1);nom+=1
+}
+var cell1 = row.insertCell(0);
+var cell2 = row.insertCell(1);
+var cell3 = row.insertCell(2);
+var cell4 = row.insertCell(3);
+cell1.innerHTML = nm[0].innerText;
+cell2.innerHTML = nm1[0].innerHTML;
+cell3.innerHTML = nm2[0].innerText;
+cell4.innerHTML = nm2[1].innerHTML;
+
+
+yy.innerHTML=''	
+	
+   }
+xhttp.onerror=function(){alert('tidak ada jaringan internet')}
+xhttp.open("GET", "https://ppdb.sinjaikab.go.id/sekolah/profil/"+url);
+xhttp.send();
+}
+
+function mktb(){
+var table = document.createElement("table");
+       table.border = "1";
+
+       //Add the header row.
+       var row = table.insertRow(-1);
+
+       //Add the header cells.
+       var headerCell = document.createElement("TH");
+       headerCell.innerHTML = "Kode";
+       row.appendChild(headerCell);
+
+
+
+
+}
+
+</script>
+</body>
+
 </html>
-
