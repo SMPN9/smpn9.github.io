@@ -1,9 +1,10 @@
 <html>
 <title>Cek Kuota SMP</title>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
+<meta name="theme-color" content="#037afb">
 
 <style>
-* {font-family: Tahoma,Arial, Helvetica, sans-serif;  }
+* {font-family: Tahoma, Helvetica, sans-serif;  }
 
 th{padding:5px;background:black;color:white}
 table{ white-space:;text-overflow:ellipsis;
@@ -12,19 +13,27 @@ table{ white-space:;text-overflow:ellipsis;
   border: 1px solid #ddd;
   font-size: 14px;
   border-radius:3px;box-shadow:0px 1px 10px 0px rgb(0,0,0,0.3);
-}
-  </style>
+ }
+table tr {
+ border: 1px solid #ddd;
+ }
+table td:nth-child(1) {  font-weight:bold;
+ }
+ table th:nth-child(1) { border-top-left-radius:5px;
+ }
+ table th:nth-child(4) { border-top-right-radius:5px;
+ </style>
 <body>
 <div id='hs' style='display:none'>ttt</div>
-<label><b>Kecamatan Bulupoddo</b></label><br/><table id='tb' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>Kecamatan Sinjai Utara</b></label><br/><table id='tb1' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>Kecamatan Sinjai Timur</b></label><br/><table id='tb2' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>Kecamatan Sinjai Tengah</b></label><br/><table id='tb3' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>Kecamatan Sinjai Selatan</b></label><br/><table id='tb4' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>Kecamatan Sinjai Barat</b></label><br/><table id='tb5' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>Kecamatan Sinjai Borong</b></label><br/><table id='tb6' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>Kecamatan Tellu Limpoe</b></label><br/><table id='tb7' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>Kecamatan Pulau Sembilang</b></label><br/><table id='tb8' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>1). Kecamatan Bulupoddo</b></label><br/><table id='tb' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>2). Kecamatan Sinjai Utara</b></label><br/><table id='tb1' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>3). Kecamatan Sinjai Timur</b></label><br/><table id='tb2' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>4). Kecamatan Sinjai Tengah</b></label><br/><table id='tb3' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>5). Kecamatan Sinjai Selatan</b></label><br/><table id='tb4' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>6). Kecamatan Sinjai Barat</b></label><br/><table id='tb5' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>7). Kecamatan Sinjai Borong</b></label><br/><table id='tb6' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>8). Kecamatan Tellu Limpoe</b></label><br/><table id='tb7' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>9). Kecamatan Pulau Sembilang</b></label><br/><table id='tb8' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
 
 <script>
 var hs='';
@@ -119,27 +128,10 @@ cell4.innerHTML = nm2[1].innerHTML;
 yy.innerHTML=''	
 	
    }
-xhttp.onerror=function(){alert('tidak ada jaringan internet')}
+xhttp.onerror=function(e){alert('tidak ada jaringan internet'+e)}
 xhttp.open("GET", "https://script.google.com/macros/s/AKfycbyiekSHDKLvBb40dcg2ROGghLJUtzf6iVLscdGml2vyL3zP-Upm/exec?type="+url);
-
+ 
 xhttp.send();
-}
-
-function mktb(){
-var table = document.createElement("table");
-       table.border = "1";
-
-       //Add the header row.
-       var row = table.insertRow(-1);
-
-       //Add the header cells.
-       var headerCell = document.createElement("TH");
-       headerCell.innerHTML = "Kode";
-       row.appendChild(headerCell);
-
-
-
-
 }
 
 </script>
