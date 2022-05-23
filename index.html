@@ -5,6 +5,8 @@
 
 <style>
 * {font-family: Tahoma, Helvetica, sans-serif;  }
+button{border:none;background:black;color:white;border-radius:5px;padding:5px}
+button:hover{border:none;background:orange;color:white;border-radius:5px;padding:5px}
 
 th{padding:5px;background:black;color:white}
 table{ white-space:;text-overflow:ellipsis;
@@ -24,7 +26,10 @@ table td:nth-child(1) {  font-weight:bold;
  table th:nth-child(4) { border-top-right-radius:5px;
  </style>
 <body>
+<div id='err' style='display:none;margin-top:100px'><b>Maaf, Tidak ada jaringan internet</b><p/><button onclick="window.location.href='https://smpn9.github.io'">Coba Refresh</button></div>
+
 <div id='hs' style='display:none'>ttt</div>
+<div id='nerr'>
 <label><b>1). Kecamatan Bulupoddo</b></label><br/><table id='tb' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
 <label><b>2). Kecamatan Sinjai Utara</b></label><br/><table id='tb1' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
 <label><b>3). Kecamatan Sinjai Timur</b></label><br/><table id='tb2' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
@@ -34,9 +39,11 @@ table td:nth-child(1) {  font-weight:bold;
 <label><b>7). Kecamatan Sinjai Borong</b></label><br/><table id='tb6' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
 <label><b>8). Kecamatan Tellu Limpoe</b></label><br/><table id='tb7' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
 <label><b>9). Kecamatan Pulau Sembilang</b></label><br/><table id='tb8' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-
+</div>
 <script>
 var hs='';
+var err=document.getElementById('err');
+var nerr=document.getElementById('nerr');
 var yy=document.getElementById('hs');
 var tbb=document.getElementById('tb')
 var tbb1=document.getElementById('tb1')
@@ -128,7 +135,7 @@ cell4.innerHTML = nm2[1].innerHTML;
 yy.innerHTML=''	
 	
    }
-xhttp.onerror=function(e){alert('tidak ada jaringan internet'+e)}
+xhttp.onerror=function(e){err.style.display='block';nerr.style.display='none'}
 xhttp.open("GET", "https://script.google.com/macros/s/AKfycbyiekSHDKLvBb40dcg2ROGghLJUtzf6iVLscdGml2vyL3zP-Upm/exec?type="+url);
  
 xhttp.send();
