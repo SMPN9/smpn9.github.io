@@ -9,16 +9,52 @@
 #b1:hover{border:none;background:blue;color:white;border-radius:5px;padding:5px;font-size:35px}
 #b2{width:300px;border:none;background:orange;color:white;border-radius:5px;padding:5px;font-size:30px}
 #b2:hover{border:none;background:blue;color:white;border-radius:5px;padding:5px;font-size:35px}
- 
+ #bb{padding:10px;border:none;background:orange;color:white;border-radius:5px;font-size:25px}
+#bc{padding:10px;border:none;background:green;color:white;border-radius:5px;font-size:25px}
+#bb:hover{padding:17px;border:none;background:black;color:white;border-radius:5px;font-size:25px}
+#bc:hover{padding:13px;border:none;background:black;color:white;border-radius:5px;font-size:25px}
+#bd{padding:10px;border:none;background:orange;color:white;border-radius:5px;font-size:25px}
+#bd:hover{padding:13px;border:none;background: black;color:white;border-radius:5px;font-size:25px}
+#be{padding:10px;border:none;background:blue;color:white;border-radius:5px;font-size:25px}
+#be:hover{padding:13px;border:none;background: black;color:white;border-radius:5px;font-size:25px}
+
  </style>
 <body>
  <div style='margin:30px'><center>
 <button id='b1' style="cursor: pointer" onclick="window.location.href='https://smpn9.github.io/smp/'">Cek Kuota SMP</button><p/>
 <button id='b2' style="cursor: pointer" onclick="window.location.href='https://smpn9.github.io/sd/'">Cek Kuota SD</button> <p/>
 <img src="https://smpn9.github.io/ppdb/dance.gif" width="300" ></img>
+button id="bd" onclick="go(1)">Prambors</button>
+							
+							<button id="bc" onclick="go(3)" >Madama</button>
+							<button id="be" onclick="go(2)" >Gamasi</button><br/>
 </center>
 
 </div>	 
+<div id="rd" style="display:none"></div>
+
+<script>
+function go(no){
+var rd=document.getElementById("rd");
+var sg=window.atob('aHR0cHM6Ly9zc2cuc3RyZWFtaW5nbXVyYWguY29tOjgyMjgvc3RyZWFtP3R5cGU9aHR0cCZhbXA7bm9jYWNoZT0yNTI3MA==')
+var sg1=window.atob('aHR0cHM6Ly9zdHJlYW0uc3VhbnRlbi5jb20vcmFkaW8vODAzNS9yYWRpby5tcDM=');
+var sg2=window.atob('aHR0cHM6Ly9zMy52aW5ob3N0bWVkaWEuY29tLzk1MDQvOw==');
+switch (no){
+  case 1:
+       sg=sg1;
+	   break;
+   case 2:
+       sg=sg2;
+	   break;
+    
+}
+rd.innerHTML='<video id="rdi" controls="" autoplay="" name="media"><source src="'+sg+'" type="audio/mpeg"></video>'						
+document.getElementById("um").style.display="block";
+document.getElementById("bb").style.display="none";
+}
+</script>
+
+
 </body>
 
 </html>
