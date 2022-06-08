@@ -25,7 +25,8 @@ img{border-radius:10px}
  <div style='margin:30px'><center>
 <button id='b1' style="cursor: pointer" onclick="window.location.href='https://smpn9.github.io/smp/'">Cek Kuota SMP</button><p/>
 <button id='b2' style="cursor: pointer" onclick="window.location.href='https://smpn9.github.io/sd/'">Cek Kuota SD</button> <p/>
-<img src="https://smpn9.github.io/ppdb/dance.gif" width="300" ></img><br/>
+<img id="gb1" style="display:none" src="https://smpn9.github.io/ppdb/dance.gif" width="300" ></img><br/>
+<img id="gb2" src="off.jpg" width="300" ></img><br/>
 <button id="bd" onclick="go(1)">Prambors</button><p/>
 							
 							<button id="bc" onclick="go(3)" >Madama</button><p/>
@@ -50,10 +51,16 @@ switch (no){
 	   break;
     
 }
-rd.innerHTML='<video id="rdi" controls="" autoplay=""   onplay="alert(888)"   name="media"><source src="'+sg+'" type="audio/mpeg"></video>'						
+rd.innerHTML='<video id="rdi" controls="" autoplay=""   onplay="gbr()"   name="media"><source src="'+sg+'" type="audio/mpeg"></video>'						
 document.getElementById("um").style.display="block";
 document.getElementById("bb").style.display="none";
 }
+
+function gbr(){
+document.getElementById("gb1").style.display="block";
+document.getElementById("gb2").style.display="none";
+}
+
 </script>
 
 
