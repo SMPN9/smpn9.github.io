@@ -1,4 +1,5 @@
 
+
 <html>
 <title>Cek Kuota SMP</title>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
@@ -30,10 +31,10 @@ img{border-radius:10px}
 
 <style>
 * {font-family: Tahoma, Helvetica, sans-serif;  }
-button{border:none;background:black;color:white;border-radius:5px;padding:5px}
-button:hover{border:none;background:orange;color:white;border-radius:5px;padding:5px}
+button{border:none;background:orange;color:white;border-radius:5px;padding:5px;font-size:14px}
+button:hover{border:none;background:red;color:white;border-radius:5px;padding:5px}
 
-th{padding:5px;background:green;color:white}
+th{padding:5px;background:black;color:white}
 table{ white-space:;text-overflow:ellipsis;
   border-collapse: collapse;
   padding:3px;
@@ -41,6 +42,7 @@ table{ white-space:;text-overflow:ellipsis;
   font-size: 14px;
   border-radius:3px;box-shadow:0px 1px 10px 0px rgb(0,0,0,0.3);
  }
+ 
 table tr {
  border: 1px solid #ddd;
  }
@@ -56,15 +58,16 @@ table td:nth-child(1) {  font-weight:bold;
 <div id='hs' style='display:none'>ttt</div>
 <div id='nerr'>
 <button id="bss" onclick="gosmpkk(this)">Klik disini</button><br/>
-<label><b>1). Kecamatan Bulupoddo</b></label><br/><table id='tb' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>2). Kecamatan Sinjai Utara</b></label><br/><table id='tb1' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>3). Kecamatan Sinjai Timur</b></label><br/><table id='tb2' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>4). Kecamatan Sinjai Tengah</b></label><br/><table id='tb3' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>5). Kecamatan Sinjai Selatan</b></label><br/><table id='tb4' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>6). Kecamatan Sinjai Barat</b></label><br/><table id='tb5' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>7). Kecamatan Sinjai Borong</b></label><br/><table id='tb6' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>8). Kecamatan Tellu Limpoe</b></label><br/><table id='tb7' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
-<label><b>9). Kecamatan Pulau Sembilang</b></label><br/><table id='tb8' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<table id='tb' border='1'><tr><th style="background:green;text-align:left" colspan="4">1). Kecamatan Bulupoddo</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/><br/>
+<table id='tb1' border='1'><tr><th style="background:green;text-align:left" colspan="4">2). Kecamatan Sinjai Utara</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/><br/>
+<table id='tb2' border='1'><tr><th style="background:green;text-align:left" colspan="4">3). Kecamatan Sinjai Timur</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/><br/>
+<table id='tb3' border='1'><tr><th style="background:green;text-align:left" colspan="4">4). Kecamatan Sinjai Tengah</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/><br/>
+<table id='tb4' border='1'><tr><th style="background:green;text-align:left" colspan="4">5). Kecamatan Sinjai Selatan</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/><br/>
+<table id='tb5' border='1'><tr><th style="background:green;text-align:left" colspan="4">6). Kecamatan Sinjai Barat</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/><br/>
+<table id='tb6' border='1'><tr><th style="background:green;text-align:left" colspan="4">7). Kecamatan Sinjai Borong</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/><br/>
+<table id='tb7' border='1'><tr><th style="background:green;text-align:left" colspan="4">8). Kecamatan Tellu Limpoe</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/><br/>
+<table id='tb8' border='1'><tr><th style="background:green;text-align:left" colspan="4">9). Kecamatan Pulau Sembilang</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/><br/>
+
 </div>
 <script>
 var hs='';
@@ -102,15 +105,15 @@ document.getElementById('datasd').style.display="none";
 }
 function gosmpkk(bgg){
 bgg.style.display="none"
-document.getElementById('tb').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
-document.getElementById('tb1').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
-document.getElementById('tb2').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
-document.getElementById('tb3').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
-document.getElementById('tb4').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
-document.getElementById('tb5').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
-document.getElementById('tb6').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
-document.getElementById('tb7').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
-document.getElementById('tb8').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">1). Kecamatan Bulupoddo</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb1').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">2). Kecamatan Sinjai Utara</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb2').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">3). Kecamatan Sinjai Timur</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb3').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">4). Kecamatan Sinjai Tengah</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb4').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">5). Kecamatan Sinjai Selatan</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb5').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">6). Kecamatan Sinjai Barat</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb6').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">7). Kecamatan Sinjai Borong</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb7').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">8). Kecamatan Tellu Limpoe</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb8').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">9). Kecamatan Pulau Sembilang</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
 
 
  jsa=['40304504',
@@ -203,24 +206,13 @@ xhttp.send();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <div id="datasd" style="display:none">
 <style>
 * {font-family: Tahoma, Helvetica, sans-serif;color:white  }
-button{border:none;background:green;color:white;border-radius:5px;padding:5px}
-button:hover{border:none;background:orange;color:white;border-radius:5px;padding:5px}
+button{border:none;background:orange;color:white;border-radius:5px;padding:5px}
+button:hover{border:none;background:red;color:white;border-radius:5px;padding:5px}
 
-th{padding:5px;background:green;color:white}
+th{padding:5px;background:black;color:white}
 table{ white-space:;text-overflow:ellipsis;
   border-collapse: collapse;
   padding:3px;
@@ -239,15 +231,15 @@ table td:nth-child(1) {  font-weight:bold;
  </style>
 
 <div id='nerr'>
-<label><b>1). Kecamatan Bulupoddo</b></label><br/><table id='tba' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(0,this)">Klik disini</button></td></tr></table><p/>
-<label><b>2). Kecamatan Sinjai Utara</b></label><br/><table id='tb1a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(1,this)">Klik disini</button></td></tr></table><p/> 
-<label><b>3). Kecamatan Sinjai Timur</b></label><br/><table id='tb2a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(2,this)">Klik disini</button></td></tr></table> <p/>
-<label><b>4). Kecamatan Sinjai Tengah</b></label><br/><table id='tb3a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(3,this)">Klik disini</button></td></tr></table> <p/>
-<label><b>5). Kecamatan Sinjai Selatan</b></label><br/><table id='tb4a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(4,this)">Klik disini</button></td></tr></table> <p/>
-<label><b>6). Kecamatan Sinjai Barat</b></label><br/><table id='tb5a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(5,this)">Klik disini</button></td></tr></table> <p/>
-<label><b>7). Kecamatan Sinjai Borong</b></label><br/><table id='tb6a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(6,this)">Klik disini</button></td></tr></table> <p/>
-<label><b>8). Kecamatan Tellu Limpoe</b></label><br/><table id='tb7a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(7,this)">Klik disini</button></td></tr></table> <p/>
-<label><b>9). Kecamatan Pulau Sembilang</b></label><br/><table id='tb8a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(8,this)">Klik disini</button></td></tr></table><p/>
+<table id='tba' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(0,this)">Klik disini</button></td></tr></table><p/><br/>
+<table id='tb1a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(1,this)">Klik disini</button></td></tr></table><p/><br/> 
+<table id='tb2a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(2,this)">Klik disini</button></td></tr></table> <p/><br/>
+<table id='tb3a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(3,this)">Klik disini</button></td></tr></table> <p/><br/>
+<table id='tb4a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(4,this)">Klik disini</button></td></tr></table> <p/><br/>
+<table id='tb5a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(5,this)">Klik disini</button></td></tr></table> <p/><br/>
+<table id='tb6a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(6,this)">Klik disini</button></td></tr></table> <p/><br/>
+<table id='tb7a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(7,this)">Klik disini</button></td></tr></table> <p/><br/>
+<table id='tb8a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(8,this)">Klik disini</button></td></tr></table><p/><br/>
 
 </div>
 <script>
@@ -274,17 +266,15 @@ var tb8a=document.getElementById('tb8a')
 function gosd(){
 document.getElementById('datasmp').style.display="none";
 document.getElementById('datasd').style.display="block";
- document.getElementById('tba').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(0,this)">Klik disini</button></td></tr>'
-  document.getElementById('tb1a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(1,this)">Klik disini</button></td></tr>'
- document.getElementById('tb2a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(2,this)">Klik disini</button></td></tr>'
- document.getElementById('tb3a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(3,this)">Klik disini</button></td></tr>'
- document.getElementById('tb4a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(4,this)">Klik disini</button></td></tr>'
- document.getElementById('tb5a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(5,this)">Klik disini</button></td></tr>'
- document.getElementById('tb6a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(6,this)">Klik disini</button></td></tr>'
- document.getElementById('tb7a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(7,this)">Klik disini</button></td></tr>'
- document.getElementById('tb8a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(8,this)">Klik disini</button></td></tr>'
-
-
+ document.getElementById('tba').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">1). Kecamatan Bulupoddo</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(0,this)">Klik disini</button></td></tr>'
+  document.getElementById('tb1a').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">2). Kecamatan Sinjai Utara</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(1,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb2a').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">3). Kecamatan Sinjai Timur</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(2,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb3a').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">4). Kecamatan Sinjai Tengah</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(3,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb4a').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">5). Kecamatan Sinjai Selatan</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(4,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb5a').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">6). Kecamatan Sinjai Barat</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(5,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb6a').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">7). Kecamatan Sinjai Borong</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(6,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb7a').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">8). Kecamatan Tellu Limpoe</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(7,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb8a').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">9). Kecamatan Pulau Sembilang</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(8,this)">Klik disini</button></td></tr>'
 }
 
 
@@ -668,15 +658,7 @@ xhttp.send();
 </div>
 
 
-
-
-
-
-
-
-
-
-
+ 
 
 
 
