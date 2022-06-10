@@ -1,10 +1,11 @@
+
 <html>
 <title>Cek Kuota SMP</title>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
 <meta name="theme-color" content="black">
 
 <style>
-* {font-family: Tahoma, Helvetica, sans-serif;  font-size:20px}
+* {font-family: Tahoma, Helvetica, sans-serif;  font-size:13px;color:white}
 body{background-color:black}
 img{border-radius:10px}
 #b1{width:300px;border:none;background:green;color:white;border-radius:5px;padding:5px;font-size:30px}
@@ -23,21 +24,676 @@ img{border-radius:10px}
  </style>
 <body>
  <div style='margin:30px'><center>
-<button id='b1' style="cursor: pointer" onclick="window.location.href='https://smpn9.github.io/smp/'">Cek Kuota SMP</button><p/>
-<button id='b2' style="cursor: pointer" onclick="window.location.href='https://smpn9.github.io/sd/'">Cek Kuota SD</button> <p/>
+<button id="b1" style="cursor: pointer" onclick="gosmp()">Cek Kuota SMP</button><p/>
+<button id="b2" style="cursor: pointer" onclick="gosd()">Cek Kuota SD</button> <p/>
+<div id="datasmp" style="display:none">
+
+<style>
+* {font-family: Tahoma, Helvetica, sans-serif;  }
+button{border:none;background:black;color:white;border-radius:5px;padding:5px}
+button:hover{border:none;background:orange;color:white;border-radius:5px;padding:5px}
+
+th{padding:5px;background:black;color:white}
+table{ white-space:;text-overflow:ellipsis;
+  border-collapse: collapse;
+  padding:3px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  border-radius:3px;box-shadow:0px 1px 10px 0px rgb(0,0,0,0.3);
+ }
+table tr {
+ border: 1px solid #ddd;
+ }
+table td:nth-child(1) {  font-weight:bold;
+ }
+ table th:nth-child(1) { border-top-left-radius:5px;
+ }
+ table th:nth-child(4) { border-top-right-radius:5px;
+ </style>
+<body>
+<div id='err' style='display:none;margin-top:100px'><b>Maaf, Tidak ada jaringan internet</b><p/><button onclick="window.location.href='https://smpn9.github.io/smp/'">Coba Refresh</button></div>
+
+<div id='hs' style='display:none'>ttt</div>
+<div id='nerr'>
+<button id="bss" onclick="gosmpkk(this)">Klik disini</button><br/>
+<label><b>1). Kecamatan Bulupoddo</b></label><br/><table id='tb' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>2). Kecamatan Sinjai Utara</b></label><br/><table id='tb1' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>3). Kecamatan Sinjai Timur</b></label><br/><table id='tb2' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>4). Kecamatan Sinjai Tengah</b></label><br/><table id='tb3' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>5). Kecamatan Sinjai Selatan</b></label><br/><table id='tb4' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>6). Kecamatan Sinjai Barat</b></label><br/><table id='tb5' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>7). Kecamatan Sinjai Borong</b></label><br/><table id='tb6' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>8). Kecamatan Tellu Limpoe</b></label><br/><table id='tb7' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+<label><b>9). Kecamatan Pulau Sembilang</b></label><br/><table id='tb8' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr></table><p/>
+</div>
+<script>
+var hs='';
+var err=document.getElementById('err');
+var nerr=document.getElementById('nerr');
+var yy=document.getElementById('hs');
+var tbb=document.getElementById('tb')
+var tbb1=document.getElementById('tb1')
+var tbb2=document.getElementById('tb2')
+var tbb3=document.getElementById('tb3')
+var tbb4=document.getElementById('tb4')
+var tbb5=document.getElementById('tb5')
+var tbb6=document.getElementById('tb6')
+var tbb7=document.getElementById('tb7')
+var tbb8=document.getElementById('tb8')
+var jsa=[];
+var js1a=[];
+var js2a=[];
+var js3a=[];
+var js4a=[];
+var js5a=[];
+var js6a=[];
+var js7a=[];
+var js8a=[];
+
+
+
+var nom=0
+
+function gosmp(){
+document.getElementById("bss").style.display="block"
+document.getElementById('datasmp').style.display="block";
+document.getElementById('datasd').style.display="none";
+
+}
+function gosmpkk(bgg){
+bgg.style.display="none"
+document.getElementById('tb').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb1').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb2').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb3').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb4').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb5').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb6').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb7').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+document.getElementById('tb8').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
+
+
+ jsa=['40304504',
+'40304534','40304518','40304523','69758213']
+	for( var i=0;i<jsa.length;i++){gosmp1(jsa[i])}
+
+ js1a=['40304517','40315301','40304519','40304535']
+for( var j=0;j<js1a.length;j++){gosmp1(js1a[j])}
+
+ js2a=['40304525','40304533','40304526','69964052']
+for( var k=0;k<js2a.length;k++){gosmp1(js2a[k])}
+
+ js3a=['40304527','40316285','40316286','40314324','40304532']
+for( var l=0;l<js3a.length;l++){gosmp1(js3a[l])}
+
+ js4a=['40304528','40304521','40304531','40310366','40316288','40317640','40318571']
+for( var m=0;m<js4a.length;m++){gosmp1(js4a[m])}
+
+ js5a=['40304536','40304520','40316283','40316284','40304529','69906011']
+for( var n=0;n<js5a.length;n++){gosmp1(js5a[n])}
+
+ js6a=['40304530','40314325','69867959']
+for( var o=0;o<js6a.length;o++){gosmp1(js6a[o])}
+ js7a=['40304522','40304524','40304537','40314377']
+for( var p=0;p<js7a.length;p++){gosmp1(js7a[p])}
+ js8a=['40304516','40314326','40314327']
+for( var q=0;q<js8a.length;q++){gosmp1(js8a[q])}
+}
+
+function gosmp1(url){
+	
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {hs=xhttp.responseText;yy.innerHTML=hs;
+//var mm=document.getElementById("hs")
+var mm=document.getElementById("content-page")
+var nm=	mm.getElementsByTagName('h5')
+var nm1=mm.getElementsByTagName('h4')
+var nm2=mm.getElementsByTagName('h3')
+if(jsa.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb.insertRow(-1);nom+=1
+}
+if(js1a.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb1.insertRow(-1);nom+=1
+}
+if(js2a.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb2.insertRow(-1);nom+=1
+}
+
+if(js3a.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb3.insertRow(-1);nom+=1
+}
+if(js4a.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb4.insertRow(-1);nom+=1
+}
+if(js5a.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb5.insertRow(-1);nom+=1
+}
+if(js6a.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb6.insertRow(-1);nom+=1
+}
+if(js7a.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb7.insertRow(-1);nom+=1
+}
+if(js8a.indexOf(nm[0].innerText.trim())>-1){
+var row = tbb8.insertRow(-1);nom+=1
+}
+var cell1 = row.insertCell(0);
+var cell2 = row.insertCell(1);
+var cell3 = row.insertCell(2);
+var cell4 = row.insertCell(3);
+cell1.innerHTML = nm[0].innerText;
+cell2.innerHTML = nm1[0].innerHTML;
+cell3.innerHTML = nm2[0].innerText;
+cell4.innerHTML = nm2[1].innerHTML;
+
+
+yy.innerHTML=''	
+	
+   }
+xhttp.onerror=function(e){err.style.display='block';nerr.style.display='none'}
+xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwy1Szy85MoIlnAU05B3uYg6x7qjVrFoE2S_iDIFxzGn4wiisp2/exec?type="+url);
+ 
+xhttp.send();
+}
+
+</script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="datasd" style="display:none">
+<style>
+* {font-family: Tahoma, Helvetica, sans-serif;color:white  }
+button{border:none;background:green;color:white;border-radius:5px;padding:5px}
+button:hover{border:none;background:orange;color:white;border-radius:5px;padding:5px}
+
+th{padding:5px;background:black;color:white}
+table{ white-space:;text-overflow:ellipsis;
+  border-collapse: collapse;
+  padding:3px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  border-radius:3px;box-shadow:0px 1px 10px 0px rgb(0,0,0,0.3);
+ }
+table tr {
+ border: 1px solid #ddd;
+ }
+table td:nth-child(1) {  font-weight:bold;
+ }
+ table th:nth-child(1) { border-top-left-radius:5px;
+ }
+ table th:nth-child(4) { border-top-right-radius:5px;
+ </style>
+
+<div id='nerr'>
+<label><b>1). Kecamatan Bulupoddo</b></label><br/><table id='tba' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(0,this)">Klik disini</button></td></tr></table><p/>
+<label><b>2). Kecamatan Sinjai Utara</b></label><br/><table id='tb1a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(1,this)">Klik disini</button></td></tr></table><p/> 
+<label><b>3). Kecamatan Sinjai Timur</b></label><br/><table id='tb2a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(2,this)">Klik disini</button></td></tr></table> <p/>
+<label><b>4). Kecamatan Sinjai Tengah</b></label><br/><table id='tb3a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(3,this)">Klik disini</button></td></tr></table> <p/>
+<label><b>5). Kecamatan Sinjai Selatan</b></label><br/><table id='tb4a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(4,this)">Klik disini</button></td></tr></table> <p/>
+<label><b>6). Kecamatan Sinjai Barat</b></label><br/><table id='tb5a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(5,this)">Klik disini</button></td></tr></table> <p/>
+<label><b>7). Kecamatan Sinjai Borong</b></label><br/><table id='tb6a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(6,this)">Klik disini</button></td></tr></table> <p/>
+<label><b>8). Kecamatan Tellu Limpoe</b></label><br/><table id='tb7a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(7,this)">Klik disini</button></td></tr></table> <p/>
+<label><b>9). Kecamatan Pulau Sembilang</b></label><br/><table id='tb8a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(8,this)">Klik disini</button></td></tr></table><p/>
+
+</div>
+<script>
+
+var hs=''; var totm=0;var toth=0; var hit=0,bcek=0;
+var err=document.getElementById('err');
+var nerr=document.getElementById('nerr');
+var yy=document.getElementById('hs');
+var tba=document.getElementById('tba')
+var tb1a=document.getElementById('tb1a')
+var tb2a=document.getElementById('tb2a')
+var tb3a=document.getElementById('tb3a')
+var tb4a=document.getElementById('tb4a')
+var tb5a=document.getElementById('tb5a')
+var tb6a=document.getElementById('tb6a')
+var tb7a=document.getElementById('tb7a')
+var tb8a=document.getElementById('tb8a')
+
+
+
+
+
+
+function gosd(){
+document.getElementById('datasmp').style.display="none";
+document.getElementById('datasd').style.display="block";
+ document.getElementById('tba').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(0,this)">Klik disini</button></td></tr>'
+  document.getElementById('tb1a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(1,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb2a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(2,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb3a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(3,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb4a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(4,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb5a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(5,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb6a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(6,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb7a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(7,this)">Klik disini</button></td></tr>'
+ document.getElementById('tb8a').innerHTML='<tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(8,this)">Klik disini</button></td></tr>'
+
+
+}
+
+
+
+
+
+
+var nom=0
+var js=['40304632',
+'40304617',
+'40304621',
+'40304736',
+'40304742',
+'40304731',
+'40304749',
+'40304711',
+'40304592',
+'40304452',
+'40304463',
+'40304486',
+'40304487',
+'40304489',
+'40304416',
+'40304573',
+'40304591',
+'40304496',
+'40304515',
+'40304490',
+'40304763',
+'40304625',
+'40304582',
+'40314323'
+]
+
+var js1=['40304407',
+'40304412',
+'40304431',
+'40304450',
+'40304465',
+'40304477',
+'40304538',
+'40304547',
+'40304559',
+'40304572',
+'40304579',
+'40304615',
+'40304616',
+'40304623',
+'40304624',
+'40304630',
+'40304631',
+'40304681',
+'40304707',
+'40304723',
+'40304724',
+'40304725',
+'40304726',
+'40304733',
+'40304734',
+'40304750',
+'40304751',
+'40304754',
+'40304762',
+'69758953',
+'69964321',
+'69980595',
+'69995967'
+]
+
+var js2=['40304618',
+'40304728',
+'40304730',
+'40304693',
+'40304694',
+'40304696',
+'40304698',
+'40304699',
+'40304700',
+'40304708',
+'40304710',
+'40304455',
+'40304401',
+'40304403',
+'40304404',
+'40304405',
+'40304406',
+'40304419',
+'40304420',
+'40304432',
+'40304435',
+'40304436',
+'40304574',
+'40304508',
+'40304509',
+'40304433',
+'40304434'
+]
+var js3=['40304739',
+'40304732',
+'40304744',
+'40304748',
+'40304714',
+'40304716',
+'40304719',
+'40304471',
+'40304457',
+'40304458',
+'40304459',
+'40304460',
+'40304481',
+'40304482',
+'40304409',
+'40304556',
+'40304557',
+'40304558',
+'40304550',
+'40304549',
+'40304548',
+'40304540',
+'40304541',
+'40304542',
+'40304543',
+'40304544',
+'40304494',
+'40304510',
+'40304680',
+'40304717',
+'40304576'
+]
+var js4=['40304620',
+'40304622',
+'40304737',
+'40304738',
+'40304735',
+'40304745',
+'40304758',
+'40304682',
+'40304683',
+'40304684',
+'40304688',
+'40304689',
+'40304701',
+'40304715',
+'40304470',
+'40304464',
+'40304462',
+'40304453',
+'40304493',
+'40304478',
+'40304417',
+'40304418',
+'40304429',
+'40304421',
+'40304422',
+'40304423',
+'40304424',
+'40304425',
+'40304426',
+'40304551',
+'40304552',
+'40304553',
+'40304575',
+'40304757',
+'40304554'
+]
+var js5=['40304759',
+'40304760',
+'40304720',
+'40304721',
+'40304713',
+'40304712',
+'40304472',
+'40304461',
+'40304474',
+'40304451',
+'40304411',
+'40304413',
+'40304408',
+'40304545',
+'40304546',
+'40304570',
+'40304571',
+'40304583',
+'40304584',
+'40304585',
+'40304586',
+'40304587',
+'40304577',
+'40304513',
+'40304741',
+'40304473',
+'40304410'
+]
+var js6=['40304633',
+'40304740',
+'40304743',
+'40304761',
+'40304747',
+'40304703',
+'40304704',
+'40304705',
+'40304491',
+'40304492',
+'40304485',
+'40304484',
+'40304483',
+'40304414',
+'40304415',
+'40304399',
+'40304400',
+'40304402',
+'40304588',
+'40304589',
+'40304590',
+'40304580',
+'40304578',
+'40304514',
+'40304581'
+]
+var js7=['40304619',
+'40304634',
+'40304729',
+'40304764',
+'40304765',
+'40304756',
+'40304755',
+'40304746',
+'40304692',
+'40304691',
+'40304685',
+'40304687',
+'40304702',
+'40304709',
+'40304722',
+'40304467',
+'40304468',
+'40304469',
+'40304475',
+'40304479',
+'40304480',
+'40304437',
+'40304438',
+'40304430',
+'40304495',
+'40304511',
+'40304512',
+'40304476',
+'40304428',
+'40304439',
+'40304427',
+'40304539'
+]
+var js8=['40304727',
+'40304752',
+'40304639',
+'40304686',
+'40304718',
+'40304706',
+'40304488',
+'40304753',
+'40304454',
+'40304466'
+]
+//cek2(0)
+function cek2(n,apa){
+if(bcek==1){alert("Maaf proses sibuk");return false}
+else {apa.style.display='none'}
+
+switch (n){
+ case 0 :
+for( var i=0;i<js.length;i++){go(js[i])}
+totm=js.length;
+toth=1;
+break;
+case 1 :
+for( var i=0;i<js1.length;i++){go(js1[i])}
+totm=js1.length;
+toth=1;
+break;
+case 2 :
+for( var i=0;i<js2.length;i++){go(js2[i])}
+totm=js2.length;
+toth=1;
+break;
+case 3 :
+for( var i=0;i<js3.length;i++){go(js3[i])}
+totm=js3.length;
+toth=1;
+break;
+case 4 :
+for( var i=0;i<js4.length;i++){go(js4[i])}
+totm=js4.length;
+toth=1;
+break;
+case 5 :
+for( var i=0;i<js5.length;i++){go(js5[i])}
+totm=js5.length;
+toth=1;
+break;
+case 6 :
+for( var i=0;i<js6.length;i++){go(js6[i])}
+totm=js6.length;
+toth=1;
+break;
+case 7 :
+for( var i=0;i<js7.length;i++){go(js7[i])}
+totm=js7.length;
+toth=1;
+break;
+case 8 :
+for( var i=0;i<js8.length;i++){go(js8[i])}
+totm=js8.length;
+toth=1;
+break;
+}
+}
+
+function go(url){
+
+	bcek=1	
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {hs=xhttp.responseText;yy.innerHTML=hs;
+//var mm=document.getElementById("hs")
+var mk=toth++;
+//console.log(mk+' '+totm)
+var mm=document.getElementById("content-page")
+var nm=	mm.getElementsByTagName('h5')
+var nm1=mm.getElementsByTagName('h4')
+var nm2=mm.getElementsByTagName('h3')
+if(js.indexOf(nm[0].innerText.trim())>-1){
+var row = tba.insertRow(-1);nom+=1
+}
+if(js1.indexOf(nm[0].innerText.trim())>-1){
+var row = tb1a.insertRow(-1);nom+=1
+}
+if(js2.indexOf(nm[0].innerText.trim())>-1){
+var row = tb2a.insertRow(-1);nom+=1
+}
+
+if(js3.indexOf(nm[0].innerText.trim())>-1){
+var row = tb3a.insertRow(-1);nom+=1
+}
+if(js4.indexOf(nm[0].innerText.trim())>-1){
+var row = tb4a.insertRow(-1);nom+=1
+}
+if(js5.indexOf(nm[0].innerText.trim())>-1){
+var row = tb5a.insertRow(-1);nom+=1
+}
+if(js6.indexOf(nm[0].innerText.trim())>-1){
+var row = tb6a.insertRow(-1);nom+=1
+}
+if(js7.indexOf(nm[0].innerText.trim())>-1){
+var row = tb7a.insertRow(-1);nom+=1
+}
+if(js8.indexOf(nm[0].innerText.trim())>-1){
+var row = tb8a.insertRow(-1);nom+=1
+}
+var cell1 = row.insertCell(0);
+var cell2 = row.insertCell(1);
+var cell3 = row.insertCell(2);
+var cell4 = row.insertCell(3);
+cell1.innerHTML = nm[0].innerText;
+cell2.innerHTML = nm1[0].innerHTML;
+cell3.innerHTML = nm2[0].innerText;
+cell4.innerHTML = nm2[1].innerHTML;
+
+
+yy.innerHTML=''	
+	
+	
+if (totm==toth){ hit++;bcek=0	
+}}
+xhttp.onerror=function(e){err.style.display='block';}
+xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwy1Szy85MoIlnAU05B3uYg6x7qjVrFoE2S_iDIFxzGn4wiisp2/exec?type="+url);
+ 
+xhttp.send();
+}
+
+</script>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <img id="gb1" style="display:none" src="https://smpn9.github.io/ppdb/dance.gif" width="250" ></img><br/>
 <img id="gb2" src="off.jpg" width="200" ></img><br/>
-<button id="bd" onclick="go(1)">Prambors</button><p/>
+<button id="bd" onclick="msk(1)">Prambors</button><p/>
 							
-							<button id="bc" onclick="go(3)" >Madama</button><p/>
-							<button id="be" onclick="go(2)" >Gamasi</button><br/>
+							<button id="bc" onclick="msk(3)" >Madama</button><p/>
+							<button id="be" onclick="msk(2)" >Gamasi</button><br/>
 </center>
 
 </div>	 
 <div id="rd" style="display:none"></div>
 
 <script>
-function go(no){
+function msk(no){
 var rd=document.getElementById("rd");
 var sg=window.atob('aHR0cHM6Ly9zc2cuc3RyZWFtaW5nbXVyYWguY29tOjgyMjgvc3RyZWFtP3R5cGU9aHR0cCZhbXA7bm9jYWNoZT0yNTI3MA==')
 var sg1=window.atob('aHR0cHM6Ly9zdHJlYW0uc3VhbnRlbi5jb20vcmFkaW8vODAzNS9yYWRpby5tcDM=');
