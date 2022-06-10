@@ -1,5 +1,3 @@
-
-
 <html>
 <title>Cek Kuota SMP</title>
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
@@ -24,6 +22,7 @@ img{border-radius:10px}
 
  </style>
 <body>
+<div id="per" style="display:none;margin:0px;position:fixed;right:5px;top:3px;font-size:20px;background:green;color:white;border-radius:5px;padding:10px"></div>
  <div style='margin:30px 0px'><center>
 <button id="b1" style="cursor: pointer" onclick="gosmp()">Cek Kuota SMP</button><p/>
 <button id="b2" style="cursor: pointer" onclick="gosd()">Cek Kuota SD</button> <p/>
@@ -70,7 +69,7 @@ table td:nth-child(1) {  font-weight:bold;
 
 </div>
 <script>
-var hs='';
+var hs=''; cmul=0;cend=0;
 var err=document.getElementById('err');
 var nerr=document.getElementById('nerr');
 var yy=document.getElementById('hs');
@@ -83,6 +82,7 @@ var tbb5=document.getElementById('tb5')
 var tbb6=document.getElementById('tb6')
 var tbb7=document.getElementById('tb7')
 var tbb8=document.getElementById('tb8')
+var per=document.getElementById("per")
 var jsa=[];
 var js1a=[];
 var js2a=[];
@@ -114,39 +114,55 @@ document.getElementById('tb5').innerHTML='<tr><th style="background:green;text-a
 document.getElementById('tb6').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">7). Kecamatan Sinjai Borong</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
 document.getElementById('tb7').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">8). Kecamatan Tellu Limpoe</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
 document.getElementById('tb8').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">9). Kecamatan Pulau Sembilang</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
-
-
+cend=0;
+cmul=0;
  jsa=['40304504',
 '40304534','40304518','40304523','69758213']
+cmul=cmul+jsa.length;
 	for( var i=0;i<jsa.length;i++){gosmp1(jsa[i])}
 
  js1a=['40304517','40315301','40304519','40304535']
+ cmul=cmul+jsa.length;
 for( var j=0;j<js1a.length;j++){gosmp1(js1a[j])}
 
  js2a=['40304525','40304533','40304526','69964052']
+ cmul=cmul+jsa.length;
 for( var k=0;k<js2a.length;k++){gosmp1(js2a[k])}
 
  js3a=['40304527','40316285','40316286','40314324','40304532']
+ cmul=cmul+jsa.length;
 for( var l=0;l<js3a.length;l++){gosmp1(js3a[l])}
 
  js4a=['40304528','40304521','40304531','40310366','40316288','40317640','40318571']
+ cmul=cmul+jsa.length;
 for( var m=0;m<js4a.length;m++){gosmp1(js4a[m])}
 
  js5a=['40304536','40304520','40316283','40316284','40304529','69906011']
+ cmul=cmul+jsa.length;
 for( var n=0;n<js5a.length;n++){gosmp1(js5a[n])}
 
  js6a=['40304530','40314325','69867959']
+ cmul=cmul+jsa.length;
 for( var o=0;o<js6a.length;o++){gosmp1(js6a[o])}
  js7a=['40304522','40304524','40304537','40314377']
+ cmul=cmul+jsa.length;
 for( var p=0;p<js7a.length;p++){gosmp1(js7a[p])}
  js8a=['40304516','40314326','40314327']
+ cmul=cmul+jsa.length;
 for( var q=0;q<js8a.length;q++){gosmp1(js8a[q])}
 }
-
+cmul=41;
 function gosmp1(url){
 	
 const xhttp = new XMLHttpRequest();
 xhttp.onload = function() {hs=xhttp.responseText;yy.innerHTML=hs;
+cend++;
+cmul=41;
+if(cend>=1 && cend<=2){per.style.display="block"}
+per.innerHTML=parseInt((cend/cmul)*100)+" %";
+if(cend>=41){
+setTimeout(function(){per.style.display="none"},500)
+}
 //var mm=document.getElementById("hs")
 var mm=document.getElementById("content-page")
 var nm=	mm.getElementsByTagName('h5')
@@ -257,7 +273,7 @@ var tb5a=document.getElementById('tb5a')
 var tb6a=document.getElementById('tb6a')
 var tb7a=document.getElementById('tb7a')
 var tb8a=document.getElementById('tb8a')
-
+var per=document.getElementById("per")
 
 
 
@@ -643,7 +659,11 @@ cell4.innerHTML = nm2[1].innerHTML;
 
 
 yy.innerHTML=''	
-	
+if(mk>=1 && mk<=2){per.style.display="block"}
+per.innerHTML=parseInt((mk/totm)*100)+" %";
+if(mk>=totm){
+setTimeout(function(){per.style.display="none"},500)
+}
 	
 if (totm==toth){ hit++;bcek=0	
 }}
