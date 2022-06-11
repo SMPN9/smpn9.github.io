@@ -161,8 +161,8 @@ cend++;
 cmul=41;
 if(cend>=1 && cend<=2){per.style.display="block"}
 per.innerHTML=parseInt((cend/cmul)*100)+" %";
-if(cend>=41){prosm();
-setTimeout(function(){per.style.display="none"},500)
+if(cend>=41){
+setTimeout(function(){per.style.display="none";prosm()},500)
 }
 //var mm=document.getElementById("hs")
 var mm=document.getElementById("content-page")
