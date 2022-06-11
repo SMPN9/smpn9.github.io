@@ -748,8 +748,8 @@ yy.innerHTML=''
 if(mk>=1 && mk<=2){per.style.display="block"}
 
 per.innerHTML=parseInt((mk/totm)*100)+" %";
-if(mk>=totm){urut();
-setTimeout(function(){per.style.display="none"},500)
+if(mk>=totm){
+setTimeout(function(){per.style.display="none";urut()},500)
 }
 	
 if (totm==toth){ hit++;bcek=0	
