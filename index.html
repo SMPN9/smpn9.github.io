@@ -246,8 +246,9 @@ table td:nth-child(1) {  font-weight:bold;
  }
  table th:nth-child(4) { border-top-right-radius:5px;
  </style>
+<div id='berr' style='display:none;margin-top:100px'><b>Maaf, Tidak ada jaringan internet</b></div>
 
-<div id='nerr'>
+<div id='bnerr'>
 <table id='tba' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(0,this)">Klik disini</button></td></tr></table><p/><br/>
 <table id='tb1a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(1,this)">Klik disini</button></td></tr></table><p/><br/> 
 <table id='tb2a' border='1'><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><td colspan="4" style="text-align:center"><button onclick="cek2(2,this)">Klik disini</button></td></tr></table> <p/><br/>
@@ -262,8 +263,8 @@ table td:nth-child(1) {  font-weight:bold;
 <script>
 
 var hs=''; var totm=0;var toth=0; var hit=0,bcek=0;
-var err=document.getElementById('err');
-var nerr=document.getElementById('nerr');
+var berr=document.getElementById('err');
+var bnerr=document.getElementById('nerr');
 var yy=document.getElementById('hs');
 var tba=document.getElementById('tba')
 var tb1a=document.getElementById('tb1a')
@@ -283,6 +284,8 @@ var per=document.getElementById("per")
 function gosd(){
 totm=0;
 toth=0;
+berr.style.display='none';
+bnerr.style.display='block';
 document.getElementById('datasmp').style.display="none";
 document.getElementById('datasd').style.display="block";
  document.getElementById('tba').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">1). Kecamatan Bulupoddo</th></tr><tr><th>NPSN</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr><tr><td colspan="4" style="text-align:center"><button onclick="cek2(0,this)">Klik disini</button></td></tr>'
@@ -670,7 +673,7 @@ setTimeout(function(){per.style.display="none"},500)
 	
 if (totm==toth){ hit++;bcek=0	
 }}
-xhttp.onerror=function(e){err.style.display='block';}
+xhttp.onerror=function(e){berr.style.display='block';bnerr.style.display='none';}
 xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwy1Szy85MoIlnAU05B3uYg6x7qjVrFoE2S_iDIFxzGn4wiisp2/exec?type="+url);
  
 xhttp.send();
