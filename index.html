@@ -794,29 +794,17 @@ function urut() {
 </script>
 
 </div>
-
-
- 
-
-
-
-
 <img id="gb1" style="display:none" src="https://smpn9.github.io/ppdb/dance.gif" width="250" ></img><br/>
 <img id="gb2" src="off.jpg" width="200" ></img><br/>
 <button id="bd" onclick="msk(1)"><img style='vertical-align:middle; display:inline;' width='160' src="prambors.png"></img>
 Prambors</button><p/>
-							
-							<button id="bc" onclick="msk(3)" ><img style='vertical-align:middle; display:inline;' width='58' src="madama.png"></img>
+<button id="bc" onclick="msk(3)" ><img style='vertical-align:middle; display:inline;' width='58' src="madama.png"></img>
  Madama</button><p/>
-							<button id="be" onclick="msk(2)" ><img style='vertical-align:middle; display:inline;' width='58' src="gamasi.png"></img>
+<button id="be" onclick="msk(2)" ><img style='vertical-align:middle; display:inline;' width='58' src="gamasi.png"></img>
  Gamasi</button><br/>
-<button id="be" onclick="msk(4)" ><img style='vertical-align:middle; display:inline;' width='58' src="gamasi.png"></img>
- SBFM</button><br/>
 </center>
-
 </div>	 
 <div id="rd" style="display:none"></div>
-
 <script>
 function msk(no){
 var rd=document.getElementById("rd");
@@ -831,27 +819,17 @@ switch (no){
    case 2:
        sg=sg2;
 	   break;
-    case 4:
-       sg=sg3;
-	   break;
-    
 }
 document.getElementById("gb1").style.display="none";
 document.getElementById("gb2").style.display="block";
-
 rd.innerHTML='<video id="rdi" controls="" autoplay=""   onplay="gbr()"   name="media"><source src="'+sg+'" type="audio/mpeg"></video>'						
 document.getElementById("um").style.display="block";
 document.getElementById("bb").style.display="none";
 }
-
 function gbr(){
 document.getElementById("gb1").style.display="block";
 document.getElementById("gb2").style.display="none";
 }
-
 </script>
-
-
 </body>
-
 </html>
