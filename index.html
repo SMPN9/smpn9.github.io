@@ -165,7 +165,7 @@ xhttp.onload = function() {hs=xhttp.responseText;yy.innerHTML=hs;
 cend++;
 cmul=41;
 if(cend>=1 && cend<=2){per.style.display="block"}
-per.innerHTML=parseInt((cend/cmul)*100)+" %";
+per.innerHTML="SMP : "+parseInt((cend/cmul)*100)+" %";
 if(cend>=41){
 setTimeout(function(){per.style.display="none";prosm()},500)
 }
@@ -754,7 +754,7 @@ cell4.innerHTML = nm2[1].innerHTML;
 yy.innerHTML=''	
 if(mk>=1 && mk<=2){per.style.display="block"}
 
-per.innerHTML=parseInt((mk/totm)*100)+" %";
+per.innerHTML="SD : "+parseInt((mk/totm)*100)+" %";
 if(mk>=totm){
 setTimeout(function(){per.style.display="none";urut()},500)
 }
