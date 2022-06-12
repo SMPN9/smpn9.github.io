@@ -107,6 +107,9 @@ nerr.style.display='block'
 err.style.display='none'
 }
 function gosmpkk(bgg){
+per.style.display="block"
+per.innerHTML='<font size="3">Harap menunggu, Sedang di proses ...</font>'
+
 bgg.style.display="none"
 document.getElementById('tb').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">1). Kecamatan Bulupoddo</th></tr><tr><th>No</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
 document.getElementById('tb1').innerHTML='<tr><th style="background:green;text-align:left" colspan="4">2). Kecamatan Sinjai Utara</th></tr><tr><th>No</th><th>Nama Sekolah</th><th>Kuota</th><th>Terdaftar</th></tr>'
@@ -227,7 +230,7 @@ cell4.innerHTML = nm2[1].innerHTML;
 yy.innerHTML=''	
 	
    }
-xhttp.onerror=function(e){err.style.display='block';nerr.style.display='none'}
+xhttp.onerror=function(e){err.style.display='block';nerr.style.display='none';per.style.display="none"}
 xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwy1Szy85MoIlnAU05B3uYg6x7qjVrFoE2S_iDIFxzGn4wiisp2/exec?type="+url);
  
 xhttp.send();
@@ -619,6 +622,8 @@ var js8=['40304727',
 function cek2(n,apa){
 if(bcek==1){alert("Maaf proses sibuk");return false}
 else {apa.style.display='none'}
+per.style.display="block"
+per.innerHTML='<font size="3">Harap menunggu, Sedang di proses ...</font>'
 
 switch (n){
  case 0 :
@@ -756,7 +761,7 @@ setTimeout(function(){per.style.display="none";urut()},500)
 	
 if (totm==toth){ hit++;bcek=0	
 }}
-xhttp.onerror=function(e){bcek=0;berr.style.display='block';bnerr.style.display='none';}
+xhttp.onerror=function(e){bcek=0;berr.style.display='block';bnerr.style.display='none';per.style.display="none"}
 xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwy1Szy85MoIlnAU05B3uYg6x7qjVrFoE2S_iDIFxzGn4wiisp2/exec?type="+url);
  
 xhttp.send();
