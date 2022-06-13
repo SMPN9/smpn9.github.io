@@ -794,6 +794,7 @@ function urut() {
 </script>
 
 </div>
+<div style="display:none;position:fixed;bottom:2px;lefth:2px;border-radius:5px;padding:3px;border:1px solid white;border-left:5px solid yellow;" id="sp"></div>
 <img id="gb1" style="display:none" src="https://smpn9.github.io/ppdb/dance.gif" width="250" ></img><br/>
 <img id="gb2" src="off.jpg" width="200" ></img><br/>
 <button id="bd" onclick="msk(1)"><img style='vertical-align:middle; display:inline;' width='160' src="prambors.png"></img>
@@ -812,14 +813,18 @@ var sg=window.atob('aHR0cHM6Ly9zc2cuc3RyZWFtaW5nbXVyYWguY29tOjgyMjgvc3RyZWFtP3R5
 var sg1=window.atob('aHR0cHM6Ly9zdHJlYW0uc3VhbnRlbi5jb20vcmFkaW8vODAzNS9yYWRpby5tcDM=');
 var sg2=window.atob('aHR0cHM6Ly9zMy52aW5ob3N0bWVkaWEuY29tLzk1MDQvOw==');
 var sg3='http://223.25.102.73:8000/sbfm'
+var nmf='Madama'
 switch (no){
   case 1:
        sg=sg1;
+       nmf='Prambors'
 	   break;
    case 2:
        sg=sg2;
+       nmf='Gamasi'
 	   break;
 }
+document.getElementById("sp").style.display="none";
 document.getElementById("gb1").style.display="none";
 document.getElementById("gb2").style.display="block";
 rd.innerHTML='<video id="rdi" controls="" autoplay=""   onplay="gbr()"   name="media"><source src="'+sg+'" type="audio/mpeg"></video>'						
@@ -829,6 +834,7 @@ document.getElementById("bb").style.display="none";
 function gbr(){
 document.getElementById("gb1").style.display="block";
 document.getElementById("gb2").style.display="none";
+document.getElementById("sp").style.display="block";
 }
 </script>
 </body>
