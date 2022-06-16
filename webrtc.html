@@ -71,16 +71,18 @@ video#remote {
 
 var pesan='apa'
 var ch = new BroadcastChannel('tes')
-   ch.onmessage=(function(msg){ 
+   ch.onmessage=(function(msg){ alert(9999)
    
-    console.log('Got message', msg.data)
-
+   // console.log('Got message', msg.data)
+   
+  
   const data = JSON.parse(msg.data);
-   alert(data)
+ 
   document.querySelector('textarea#tx1').value+=JSON.stringify(data)+'\n\n';
 
   switch (data.type) {
     case 'login':
+	 
       handleLogin(data.success)
       break
     case 'offer':
@@ -158,6 +160,8 @@ document.querySelector('button#login').addEventListener('click', event => {
 })
 
 const handleLogin = async success => {
+
+   alert('login')
   if (success === false) {
     alert('😞 Username already taken')
   } else {
@@ -172,7 +176,7 @@ const handleLogin = async success => {
       })
     } catch (error) {
       alert(`${error.name}`)
-      console.error(error)
+      
     }
 
     document.querySelector('video#local').srcObject = localStream
