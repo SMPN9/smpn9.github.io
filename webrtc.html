@@ -77,9 +77,9 @@ var ch = new BroadcastChannel('tes')
    
   
   const data = JSON.parse(msg.data);
- 
-  document.querySelector('textarea#tx1').value+=JSON.stringify(data)+'\n\n';
+ document.querySelector('textarea#tx1').value+=JSON.stringify(data)+'\n\n\tambah:';
 
+   
   switch (data.type) {
     case 'login':
 	 
