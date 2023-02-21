@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Scan QR</title>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <script src="jsQR.js"></script>
  <!-- <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">-->
   <style>
@@ -119,8 +120,8 @@ var sound = document.getElementById('Audio');
     sound.play()
 let hh=code.data
       var mdata=	`<iframe frameborder='0' height='7737' id='soal' marginheight='0' marginwidth='0' onload='gop()' src='`+hh+`' style='margin:auto' width='100%'>Memuat&#8230;</iframe>`
-   
-   document.body.innerHTML=mdata     
+   setTimeout(function(){  document.body.innerHTML=mdata },1000)
+ return
         //  outputData.innerText = code.data;
         } else {
         // outputMessage.hidden = false;
