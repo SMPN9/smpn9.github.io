@@ -54,7 +54,10 @@
   </style>
 </head>
 <body>
-  
+  <audio id="Audio" >
+        <source src="https://www.soundjay.com/misc/censor-beep-01.mp3"
+        type="audio/mpeg">
+    </audio>
  
   <div id="loadingMessage">?? Unable to access video stream (please make sure you have a webcam enabled)</div>
   <canvas id="canvas" hidden></canvas>
@@ -63,6 +66,8 @@
     <div hidden><b>Data:</b> <span id="outputData"></span></div>
   </div>
   <script>
+var sound = document.getElementById('Audio');
+    
     var video = document.createElement("video");
     var canvasElement = document.getElementById("canvas");
     var canvas = canvasElement.getContext("2d");
@@ -109,7 +114,9 @@
        //   drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
       //  outputMessage.hidden = true;
         //  outputData.parentElement.hidden = false;
-         alert( code.data)
+         
+    sound.play()
+alert( code.data)
         //  outputData.innerText = code.data;
         } else {
         // outputMessage.hidden = false;
