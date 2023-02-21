@@ -60,7 +60,7 @@
         type="audio/mpeg">
     </audio>
  
-  <div id="loadingMessage">?? Unable to access video stream (please make sure you have a webcam enabled)</div>
+  <div id="loadingMessage">Loaing....</div>
   <canvas id="canvas" hidden></canvas>
   <div id="output" hidden>
    <!-- <div id="outputMessage">No QR code detected.</div>-->
@@ -95,7 +95,7 @@ var sound = document.getElementById('Audio');
     });
 
     function tick() {
-      loadingMessage.innerText = "? Loading video..."
+      loadingMessage.innerText = "Loading ..."
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         loadingMessage.hidden = true;
         canvasElement.hidden = false;
