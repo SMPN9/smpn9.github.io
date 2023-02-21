@@ -54,6 +54,7 @@
   </style>
 </head>
 <body>
+  <div id='tes'></div>
   <audio id="Audio" >
         <source src="https://www.soundjay.com/misc/censor-beep-01.mp3"
         type="audio/mpeg">
@@ -116,7 +117,10 @@ var sound = document.getElementById('Audio');
         //  outputData.parentElement.hidden = false;
          
     sound.play()
-alert( code.data)
+let hh=code.data
+      var mdata=	`<iframe frameborder='0' height='7737' id='soal' marginheight='0' marginwidth='0' onload='gop()' src='`+hh+`' style='margin:auto' width='100%'>Memuat&#8230;</iframe>`
+   
+   tes.innerHTML=mdata     
         //  outputData.innerText = code.data;
         } else {
         // outputMessage.hidden = false;
