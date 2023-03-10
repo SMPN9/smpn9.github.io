@@ -5,7 +5,7 @@
 <p>Click on the button to copy the text from the text field. Try to paste the text (e.g. ctrl+v) afterwards in a different window, to see the effect.</p>
 
 <input type="text" value="Hello 7777777 World" id="myInput">
-<button onclick="myFunction()">Copy text</button>
+<button id="btn" onclick="myFunction()">Copy text</button>
 
 <script>
 function myFunction() {
@@ -22,6 +22,15 @@ function myFunction() {
   // Alert the copied text
   alert("Copied the text: " + copyText.value);
 }
+var hit=0;
+setTimeout(function() {
+hit++;
+let bb="apa" +hit
+copyText.value=hit
+navigator.clipboard.writeText(copyText.value);
+
+}, 1000)
+
 </script>
 
 </body>
