@@ -26,13 +26,28 @@ function myFunction() {
 
 copyText.value="eueueuue"
 var hit=0;
+var bar='' 
+function makeid(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return ('Nyontek Ya ? :'+result);
+}
+
+
+
 gol()
 function gol(){
 setTimeout(function() {
 hit++;
 
-let bb="apa"+hit
-copyText.value=bb
+ bar=makeid(20)
+copyText.value=bar
 copyText.select();
   copyText.setSelectionRange(0, 99999); // For mobile devices
 
