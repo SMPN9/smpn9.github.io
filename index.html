@@ -169,6 +169,7 @@ cend++;
 cmul=41;
 if(cend>=1 && cend<=2){per.style.display="block"}
 per.innerHTML="SMP : "+parseInt((cend/cmul)*100)+" %";
+			   if( parseInt((mk/totm)*100)>=90){urut();bcek=0	}
 if(cend>=41){
 setTimeout(function(){per.style.display="none";prosm()},500)
 }
@@ -760,6 +761,7 @@ yy.innerHTML=''
 if(mk>=1 && mk<=2){per.style.display="block"}
 
 per.innerHTML="SD : "+parseInt((mk/totm)*100)+" %";
+if( parseInt((mk/totm)*100)>=90){urut();bcek=0	}			   
 if(mk>=totm){
 setTimeout(function(){per.style.display="none";urut()},500)
 }
