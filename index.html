@@ -1,3 +1,4 @@
+ 
 <html>
 <title>Cek Kuota Sekolah</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -128,45 +129,57 @@ cmul=0;
  jsa=['40304504',
 '40304534','40304518','40304523','69758213']
 cmul=cmul+jsa.length;
-	for( var i=0;i<jsa.length;i++){gosmp1(jsa[i])}
+	for( var i=0;i<jsa.length;i++){gosmp1(jsa[i],function(response){console.log("Received users data:", response);gosek(response);})}
 
  js1a=['40304517','40315301','40304519','40304535']
  cmul=cmul+jsa.length;
-for( var j=0;j<js1a.length;j++){gosmp1(js1a[j])}
+for( var j=0;j<js1a.length;j++){gosmp1(js1a[j],function(response){console.log("Received users data:", response);gosek(response);})}
 
  js2a=['40304525','40304533','40304526','69964052']
  cmul=cmul+jsa.length;
-for( var k=0;k<js2a.length;k++){gosmp1(js2a[k])}
+for( var k=0;k<js2a.length;k++){gosmp1(js2a[k],function(response){console.log("Received users data:", response);gosek(response);})}
 
  js3a=['40304527','40316285','40316286','40314324','40304532']
  cmul=cmul+jsa.length;
-for( var l=0;l<js3a.length;l++){gosmp1(js3a[l])}
+for( var l=0;l<js3a.length;l++){gosmp1(js3a[l],function(response){console.log("Received users data:", response);gosek(response);})}
 
  js4a=['40304528','40304521','40304531','40310366','40316288','40317640','40318571']
  cmul=cmul+jsa.length;
-for( var m=0;m<js4a.length;m++){gosmp1(js4a[m])}
+for( var m=0;m<js4a.length;m++){gosmp1(js4a[m],function(response){console.log("Received users data:", response);gosek(response);})}
 
  js5a=['40304536','40304520','40316283','40316284','40304529','69906011']
  cmul=cmul+jsa.length;
-for( var n=0;n<js5a.length;n++){gosmp1(js5a[n])}
+for( var n=0;n<js5a.length;n++){gosmp1(js5a[n],function(response){console.log("Received users data:", response);gosek(response);})}
 
  js6a=['40304530','40314325','69867959']
  cmul=cmul+jsa.length;
-for( var o=0;o<js6a.length;o++){gosmp1(js6a[o])}
+for( var o=0;o<js6a.length;o++){gosmp1(js6a[o],function(response){console.log("Received users data:", response);gosek(response);})}
  js7a=['40304522','40304524','40304537','40314377']
  cmul=cmul+jsa.length;
-for( var p=0;p<js7a.length;p++){gosmp1(js7a[p])}
+for( var p=0;p<js7a.length;p++){gosmp1(js7a[p],function(response){console.log("Received users data:", response);gosek(response);})}
  js8a=['40304516','40314326','40314327']
  cmul=cmul+jsa.length;
-for( var q=0;q<js8a.length;q++){gosmp1(js8a[q])}
+for( var q=0;q<js8a.length;q++){gosmp1(js8a[q],function(response){console.log("Received users data:", response);gosek(response);})}
 }
 cmul=41;
-function gosmp1(url){
+
+
+var requests = {};  
+var requestId = 0; 
+function gosek(rul){
+gosmp1(rul,function(response){console.log("Received users data:", response)})
+}
+function gosmp1(url,callback){
 	
 const xhttp = new XMLHttpRequest();
+var id = requestId++;
+requests[id] = { xhttp: xhttp, callback: callback }
 xhttp.onload = function() {hs=xhttp.responseText;yy.innerHTML=hs;
 cend++;
 cmul=41;
+ delete requests[id]; // remove the request from the requests object
+
+	  
 if(cend>=1 && cend<=2){per.style.display="block"}
 per.innerHTML="SMP : "+parseInt((cend/cmul)*100)+" %";
 			 //  if ( parseInt((cend/cmul)*100)   >=90){prosm()	}
@@ -235,8 +248,11 @@ yy.innerHTML=''
 	
    }
 xhttp.onerror=function(e){
+ delete requests[id];
+ callback(url)
 	//err.style.display='block';nerr.style.display='none';per.style.display="none"
 }
+ 
 xhttp.open("GET", "https://script.google.com/macros/s/AKfycbwy1Szy85MoIlnAU05B3uYg6x7qjVrFoE2S_iDIFxzGn4wiisp2/exec?type="+url);
  
 xhttp.send();
