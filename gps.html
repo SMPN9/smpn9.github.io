@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPS Refresh</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f9;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .output {
+      margin-top: 20px;
+      font-size: 14px;
+      word-wrap: break-word;
+      background: #ffffff;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Refresh GPS</h1>
+    <p>Klik tombol di bawah untuk mendapatkan lokasi akurat.</p>
+    <button onclick="getLocation()">Refresh GPS</button>
+    <div class="output" id="output">Koordinat akan muncul di sini.</div>
+  </div>
+
+  <script>
+    function getLocation() {
+      const output = document.getElementById('output');
+
+      if (!navigator.geolocation) {
+        output.innerText = "Geolocation tidak didukung oleh browser Anda.";
+        return;
+      }
+
+      output.innerText = "Mengambil lokasi...";
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude, accuracy } = position.coords;
+          output.innerHTML = `
+            <strong>Lokasi Anda:</strong><br>
+            Latitude: ${latitude}<br>
+            Longitude: ${longitude}<br>
+            Akurasi: ${accuracy} meter
+          `;
+        },
+        (error) => {
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              output.innerText = "Izin lokasi ditolak oleh pengguna.";
+              break;
+            case error.POSITION_UNAVAILABLE:
+              output.innerText = "Informasi lokasi tidak tersedia.";
+              break;
+            case error.TIMEOUT:
+              output.innerText = "Permintaan lokasi melebihi batas waktu.";
+              break;
+            default:
+              output.innerText = "Terjadi kesalahan tak dikenal.";
+              break;
+          }
+        },
+        {
+          enableHighAccuracy: true, // Meminta lokasi yang lebih akurat
+          timeout: 10000, // Maksimal waktu tunggu (dalam ms)
+          maximumAge: 0 // Memaksa untuk mengambil data baru
+        }
+      );
+    }
+
+
+window.addEventListener("blur", function(){alert('waduh'});
+
+    
+  </script>
+</body>
+</html>
