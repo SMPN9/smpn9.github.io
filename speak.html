@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Speaker Mode</title>
+</head>
+<body>
+    <h2>WebRTC Multi Speaker</h2>
+    <button onclick="createOffer()">Buat Offer</button>
+    <button onclick="createAnswer()">Buat Answer</button>
+    <button onclick="setAnswer()">Set Answer</button>
+    <textarea id="sdp" placeholder="Tempel SDP di sini" rows="10" cols="50"></textarea>
+
+    <h3>Mode</h3>
+    <button id="startStream" onclick="startStreaming()" disabled>Mulai Streaming</button>
+    <button onclick="startTalking()">Mulai Bicara</button>
+    <button onclick="stopTalking()">Berhenti Bicara</button>
+
+    <h3>Audio</h3>
+    <input type="file" id="fileInput" accept="audio/mp3" />
+    <audio id="localAudio" controls></audio>
+    <audio id="remoteAudio" controls autoplay></audio>
+
+    <script>
+        let peers = {}; // Simpan koneksi WebRTC untuk tiap peer
+        let localStream = new MediaStream();
+        let micStream = null;
+        let audioElement = document.getElementById('localAudio');
+
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            let file = event.target.files[0];
+            if (file) {
+                let url = URL.createObjectURL(file);
+                audioElement.src = url;
+                document.getElementById('startStream').disabled = false;
+                alert("File dipilih! Klik 'Mulai Streaming' setelah play.");
+            }
+        });
+
+        async function startStreaming() {
+            if (audioElement.src) {
+                localStream = await audioElement.captureStream();
+                document.getElementById('startStream').disabled = true;
+                alert("Streaming MP3 siap! Sekarang buat offer.");
+            } else {
+                alert("Pilih file MP3 dulu!");
+            }
+        }
+
+        async function startTalking() {
+            micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            for (let peerId in peers) {
+                let pc = peers[peerId];
+                micStream.getTracks().forEach(track => pc.addTrack(track, micStream));
+            }
+            alert("Kamu sekarang bisa berbicara!");
+        }
+
+        function stopTalking() {
+            if (micStream) {
+                micStream.getTracks().forEach(track => track.stop());
+                micStream = null;
+                alert("Kamu berhenti bicara.");
+            }
+        }
+
+        async function setupConnection(peerId) {
+            let pc = new RTCPeerConnection({
+                iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+            });
+
+            pc.onicecandidate = event => {
+                if (!event.candidate) {
+                    document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
+                    alert("SDP siap! Salin dan kirim ke peer " + peerId);
+                }
+            };
+
+            pc.oniceconnectionstatechange = () => {
+                alert("ICE State (" + peerId + "): " + pc.iceConnectionState);
+            };
+
+            pc.ontrack = event => {
+                document.getElementById('remoteAudio').srcObject = event.streams[0];
+                alert("Audio diterima dari " + peerId);
+            };
+
+            if (localStream.getTracks().length > 0) {
+                localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+            }
+
+            peers[peerId] = pc;
+        }
+
+        async function createOffer() {
+            let peerId = prompt("Masukkan ID peer (misal: B atau C)");
+            if (!peerId) return;
+            await setupConnection(peerId);
+            let pc = peers[peerId];
+
+            try {
+                let offer = await pc.createOffer();
+                await pc.setLocalDescription(offer);
+            } catch (error) {
+                alert("Error saat membuat Offer: " + error.message);
+            }
+        }
+
+        async function createAnswer() {
+            let peerId = prompt("Masukkan ID peer yang memberi offer");
+            if (!peerId) return;
+            await setupConnection(peerId);
+            let pc = peers[peerId];
+
+            try {
+                let sdp = JSON.parse(document.getElementById('sdp').value);
+                await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+
+                let answer = await pc.createAnswer();
+                await pc.setLocalDescription(answer);
+            } catch (error) {
+                alert("Error saat membuat Answer: " + error.message);
+            }
+        }
+
+        async function setAnswer() {
+            let peerId = prompt("Masukkan ID peer yang memberi answer");
+            if (!peerId || !peers[peerId]) {
+                alert("Peer belum ada!");
+                return;
+            }
+            let pc = peers[peerId];
+
+            try {
+                let sdp = JSON.parse(document.getElementById('sdp').value);
+                await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+                alert("Answer diterapkan! Koneksi dengan " + peerId + " siap digunakan.");
+            } catch (error) {
+                alert("Error saat menerapkan Answer: " + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
