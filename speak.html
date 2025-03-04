@@ -18,13 +18,13 @@
     <button onclick="stopTalking()">Berhenti Bicara</button>
 
     <h3>Audio</h3>
-    <input type="file" id="fileInput"  />
+    <input type="file" id="fileInput" accept="audio/mp3" />
     <audio id="localAudio" controls></audio>
     <audio id="remoteAudio" controls autoplay></audio>
 
     <script>
         let peers = {}; // Simpan koneksi WebRTC untuk tiap peer
-        let localStream = new MediaStream();
+        let mixedStream = new MediaStream();
         let micStream = null;
         let audioElement = document.getElementById('localAudio');
 
@@ -40,7 +40,18 @@
 
         async function startStreaming() {
             if (audioElement.src) {
-                localStream = await audioElement.captureStream();
+                let mp3Stream = await audioElement.captureStream();
+
+                // Gabungkan audio MP3 dengan mic
+                let audioContext = new AudioContext();
+                let dest = audioContext.createMediaStreamDestination();
+
+                let mp3Source = audioContext.createMediaStreamSource(mp3Stream);
+                mp3Source.connect(dest);
+
+                // Simpan mixedStream untuk dikirim ke peer
+                mixedStream = dest.stream;
+
                 document.getElementById('startStream').disabled = true;
                 alert("Streaming MP3 siap! Sekarang buat offer.");
             } else {
@@ -50,10 +61,27 @@
 
         async function startTalking() {
             micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+            let audioContext = new AudioContext();
+            let dest = audioContext.createMediaStreamDestination();
+
+            // Tambahkan MP3 jika sudah ada
+            if (mixedStream.getTracks().length > 0) {
+                let mp3Source = audioContext.createMediaStreamSource(mixedStream);
+                mp3Source.connect(dest);
+            }
+
+            // Tambahkan mic
+            let micSource = audioContext.createMediaStreamSource(micStream);
+            micSource.connect(dest);
+
+            mixedStream = dest.stream;
+
             for (let peerId in peers) {
                 let pc = peers[peerId];
-                micStream.getTracks().forEach(track => pc.addTrack(track, micStream));
+                mixedStream.getTracks().forEach(track => pc.addTrack(track, mixedStream));
             }
+
             alert("Kamu sekarang bisa berbicara!");
         }
 
@@ -86,8 +114,8 @@
                 alert("Audio diterima dari " + peerId);
             };
 
-            if (localStream.getTracks().length > 0) {
-                localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+            if (mixedStream.getTracks().length > 0) {
+                mixedStream.getTracks().forEach(track => pc.addTrack(track, mixedStream));
             }
 
             peers[peerId] = pc;
