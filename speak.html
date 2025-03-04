@@ -9,7 +9,7 @@
     <h2>WebRTC Streaming MP3 + Mic</h2>
 
     <h3>Host (A)</h3>
-    <input type="file" id="fileInput" />
+    <input type="file" id="fileInput" accept="audio/mp3">
     <button id="startStream" onclick="startStreaming()" disabled>Mulai Streaming</button>
     <button id="startTalking" onclick="startTalking()">Mulai Bicara</button>
     <button id="stopTalking" onclick="stopTalking()">Berhenti Bicara</button>
@@ -23,9 +23,10 @@
     <audio id="remoteAudio" controls autoplay></audio>
 
     <script>
-        let peers = {}; // Simpan semua koneksi WebRTC untuk tiap peer
+        let peers = {}; // Simpan koneksi untuk tiap peer
         let mixedStream = new MediaStream();
         let micStream = null;
+        let mp3Stream = null;
         let audioElement = document.getElementById('localAudio');
 
         document.getElementById('fileInput').addEventListener('change', function(event) {
@@ -40,15 +41,8 @@
 
         async function startStreaming() {
             if (audioElement.src) {
-                let mp3Stream = await audioElement.captureStream();
-                let audioContext = new AudioContext();
-                let dest = audioContext.createMediaStreamDestination();
-
-                let mp3Source = audioContext.createMediaStreamSource(mp3Stream);
-                mp3Source.connect(dest);
-
-                mixedStream = dest.stream;
-
+                mp3Stream = audioElement.captureStream();
+                updateMixedStream();
                 alert("Streaming MP3 siap! Sekarang buat offer.");
             } else {
                 alert("Pilih file MP3 dulu!");
@@ -57,17 +51,35 @@
 
         async function startTalking() {
             micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            updateMixedStream();
+            alert("Mic aktif dan dikirim ke semua peer!");
+        }
 
+        function stopTalking() {
+            if (micStream) {
+                micStream.getTracks().forEach(track => track.stop());
+                micStream = null;
+                updateMixedStream();
+                alert("Mic dimatikan.");
+            }
+        }
+
+        function updateMixedStream() {
             let audioContext = new AudioContext();
             let dest = audioContext.createMediaStreamDestination();
 
-            if (mixedStream.getTracks().length > 0) {
-                let mp3Source = audioContext.createMediaStreamSource(mixedStream);
+            if (mp3Stream) {
+                let mp3Source = audioContext.createMediaStreamSource(mp3Stream);
                 mp3Source.connect(dest);
             }
 
-            let micSource = audioContext.createMediaStreamSource(micStream);
-            micSource.connect(dest);
+            if (micStream) {
+                let micSource = audioContext.createMediaStreamSource(micStream);
+                let gainNode = audioContext.createGain();
+                gainNode.gain.value = 1.5; // Naikkan volume mic
+                micSource.connect(gainNode);
+                gainNode.connect(dest);
+            }
 
             mixedStream = dest.stream;
 
@@ -78,18 +90,7 @@
 
                 mixedStream.getTracks().forEach(track => pc.addTrack(track, mixedStream));
 
-                let offer = await pc.createOffer();
-                await pc.setLocalDescription(offer);
-            }
-
-            alert("Mic aktif dan dikirim ke semua peer!");
-        }
-
-        function stopTalking() {
-            if (micStream) {
-                micStream.getTracks().forEach(track => track.stop());
-                micStream = null;
-                alert("Mic dimatikan.");
+                pc.createOffer().then(offer => pc.setLocalDescription(offer));
             }
         }
 
