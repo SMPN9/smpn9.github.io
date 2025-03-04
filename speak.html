@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebRTC Speaker Mode</title>
+    <title>WebRTC Streaming MP3 + Mic</title>
 </head>
 <body>
-    <h2>WebRTC Multi Speaker</h2>
+    <h2>WebRTC Streaming MP3 + Mic</h2>
+
+    <h3>Host (A)</h3>
+    <input type="file" id="fileInput" />
+    <button id="startStream" onclick="startStreaming()" disabled>Mulai Streaming</button>
+    <button id="startTalking" onclick="startTalking()">Mulai Bicara</button>
+    <button id="stopTalking" onclick="stopTalking()">Berhenti Bicara</button>
+    <audio id="localAudio" controls></audio>
+
+    <h3>Peer (B, C, ...)</h3>
     <button onclick="createOffer()">Buat Offer</button>
     <button onclick="createAnswer()">Buat Answer</button>
     <button onclick="setAnswer()">Set Answer</button>
     <textarea id="sdp" placeholder="Tempel SDP di sini" rows="10" cols="50"></textarea>
-
-    <h3>Mode</h3>
-    <button id="startStream" onclick="startStreaming()" disabled>Mulai Streaming</button>
-    <button onclick="startTalking()">Mulai Bicara</button>
-    <button onclick="stopTalking()">Berhenti Bicara</button>
-
-    <h3>Audio</h3>
-    <input type="file" id="fileInput"  />
-    <audio id="localAudio" controls></audio>
     <audio id="remoteAudio" controls autoplay></audio>
 
     <script>
-        let peers = {}; // Simpan koneksi WebRTC untuk tiap peer
+        let peers = {}; // Simpan semua koneksi WebRTC untuk tiap peer
         let mixedStream = new MediaStream();
         let micStream = null;
         let audioElement = document.getElementById('localAudio');
@@ -41,18 +41,14 @@
         async function startStreaming() {
             if (audioElement.src) {
                 let mp3Stream = await audioElement.captureStream();
-
-                // Gabungkan audio MP3 dengan mic
                 let audioContext = new AudioContext();
                 let dest = audioContext.createMediaStreamDestination();
 
                 let mp3Source = audioContext.createMediaStreamSource(mp3Stream);
                 mp3Source.connect(dest);
 
-                // Simpan mixedStream untuk dikirim ke peer
                 mixedStream = dest.stream;
 
-                document.getElementById('startStream').disabled = true;
                 alert("Streaming MP3 siap! Sekarang buat offer.");
             } else {
                 alert("Pilih file MP3 dulu!");
@@ -65,13 +61,11 @@
             let audioContext = new AudioContext();
             let dest = audioContext.createMediaStreamDestination();
 
-            // Tambahkan MP3 jika sudah ada
             if (mixedStream.getTracks().length > 0) {
                 let mp3Source = audioContext.createMediaStreamSource(mixedStream);
                 mp3Source.connect(dest);
             }
 
-            // Tambahkan mic
             let micSource = audioContext.createMediaStreamSource(micStream);
             micSource.connect(dest);
 
@@ -79,17 +73,23 @@
 
             for (let peerId in peers) {
                 let pc = peers[peerId];
+
+                pc.getSenders().forEach(sender => pc.removeTrack(sender));
+
                 mixedStream.getTracks().forEach(track => pc.addTrack(track, mixedStream));
+
+                let offer = await pc.createOffer();
+                await pc.setLocalDescription(offer);
             }
 
-            alert("Kamu sekarang bisa berbicara!");
+            alert("Mic aktif dan dikirim ke semua peer!");
         }
 
         function stopTalking() {
             if (micStream) {
                 micStream.getTracks().forEach(track => track.stop());
                 micStream = null;
-                alert("Kamu berhenti bicara.");
+                alert("Mic dimatikan.");
             }
         }
 
@@ -103,10 +103,6 @@
                     document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
                     alert("SDP siap! Salin dan kirim ke peer " + peerId);
                 }
-            };
-
-            pc.oniceconnectionstatechange = () => {
-                alert("ICE State (" + peerId + "): " + pc.iceConnectionState);
             };
 
             pc.ontrack = event => {
@@ -127,12 +123,8 @@
             await setupConnection(peerId);
             let pc = peers[peerId];
 
-            try {
-                let offer = await pc.createOffer();
-                await pc.setLocalDescription(offer);
-            } catch (error) {
-                alert("Error saat membuat Offer: " + error.message);
-            }
+            let offer = await pc.createOffer();
+            await pc.setLocalDescription(offer);
         }
 
         async function createAnswer() {
@@ -141,15 +133,11 @@
             await setupConnection(peerId);
             let pc = peers[peerId];
 
-            try {
-                let sdp = JSON.parse(document.getElementById('sdp').value);
-                await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+            let sdp = JSON.parse(document.getElementById('sdp').value);
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
 
-                let answer = await pc.createAnswer();
-                await pc.setLocalDescription(answer);
-            } catch (error) {
-                alert("Error saat membuat Answer: " + error.message);
-            }
+            let answer = await pc.createAnswer();
+            await pc.setLocalDescription(answer);
         }
 
         async function setAnswer() {
@@ -160,13 +148,9 @@
             }
             let pc = peers[peerId];
 
-            try {
-                let sdp = JSON.parse(document.getElementById('sdp').value);
-                await pc.setRemoteDescription(new RTCSessionDescription(sdp));
-                alert("Answer diterapkan! Koneksi dengan " + peerId + " siap digunakan.");
-            } catch (error) {
-                alert("Error saat menerapkan Answer: " + error.message);
-            }
+            let sdp = JSON.parse(document.getElementById('sdp').value);
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+            alert("Answer diterapkan! Koneksi dengan " + peerId + " siap digunakan.");
         }
     </script>
 </body>
