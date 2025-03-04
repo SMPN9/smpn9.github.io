@@ -3,102 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebRTC Penyiar & Pendengar</title>
+    <title>WebRTC DataChannel Copy-Paste</title>
 </head>
 <body>
-    <h2>🎤 WebRTC Streaming Audio 🎶</h2>
-
-    <h3>Penyiar (Broadcaster)</h3>
-    <button id="startBroadcast">Mulai Siaran</button>
-    <input type="file" id="audioFile" accept="audio/*">
-    <audio id="audioPlayer" controls></audio>
-
-    <h3>Pendengar (Listener)</h3>
-    <button id="startListening">Sambungkan ke Siaran</button>
-    <audio id="listenerPlayer" controls autoplay></audio>
+    <h2>WebRTC DataChannel Copy-Paste</h2>
+    <button onclick="createOffer()">Buat Offer</button>
+    <button onclick="createAnswer()">Buat Answer</button>
+    <button onclick="setAnswer()">Set Answer</button>
+    <textarea id="sdp" placeholder="Tempel SDP di sini" rows="10" cols="50"></textarea>
+    
+    <h3>Chat</h3>
+    <input id="message" placeholder="Ketik pesan..." onkeypress="sendMessage(event)">
+    <div id="chat"></div>
 
     <script>
-        let pc = new RTCPeerConnection({
-            iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
-        });
+        let pc = new RTCPeerConnection();
+        let dataChannel = pc.createDataChannel("chat");
+        
+        dataChannel.onmessage = event => {
+            let chatBox = document.getElementById('chat');
+            chatBox.innerHTML += `<p>Peer: ${event.data}</p>`;
+        };
 
-        let isBroadcaster = false;
-
-        document.getElementById("startBroadcast").onclick = async function() {
-            isBroadcaster = true;
-            let micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-
-            let fileInput = document.getElementById("audioFile");
-            fileInput.onchange = async () => {
-                let file = fileInput.files[0];
-                if (!file) return;
-
-                let audioPlayer = document.getElementById("audioPlayer");
-                audioPlayer.src = URL.createObjectURL(file);
-                
-                await audioPlayer.play().catch(() => {
-                    alert("Klik tombol play untuk memutar lagu.");
-                });
-
-                let audioContext = new AudioContext();
-                let micSource = audioContext.createMediaStreamSource(micStream);
-                let songSource = audioContext.createMediaElementSource(audioPlayer);
-                let destination = audioContext.createMediaStreamDestination();
-
-                micSource.connect(destination);
-                songSource.connect(audioContext.destination);
-                songSource.connect(destination);
-
-                let mixedStream = destination.stream;
-                mixedStream.getTracks().forEach(track => pc.addTrack(track, mixedStream));
-
-                pc.onicecandidate = (event) => {
-                    if (event.candidate) {
-                        console.log("📡 Penyiar mengirim ICE:", event.candidate);
-                        localStorage.setItem("webrtc_ice_candidate", JSON.stringify(event.candidate));
-                    }
-                };
-
-                let offer = await pc.createOffer();
-                await pc.setLocalDescription(offer);
-                localStorage.setItem("webrtc_offer", JSON.stringify(offer));
-
-                alert("✅ Siaran dimulai! Klik 'Sambungkan ke Siaran' di tab lain.");
+        pc.ondatachannel = event => {
+            dataChannel = event.channel;
+            dataChannel.onmessage = event => {
+                let chatBox = document.getElementById('chat');
+                chatBox.innerHTML += `<p>Peer: ${event.data}</p>`;
             };
         };
 
-        document.getElementById("startListening").onclick = async function() {
-            let offer = JSON.parse(localStorage.getItem("webrtc_offer"));
-            if (!offer) {
-                alert("❌ Belum ada siaran tersedia.");
-                return;
-            }
+        async function createOffer() {
+            let offer = await pc.createOffer();
+            await pc.setLocalDescription(offer);
+            document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
+        }
 
-            await pc.setRemoteDescription(offer);
+        async function createAnswer() {
+            let sdp = JSON.parse(document.getElementById('sdp').value);
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
             let answer = await pc.createAnswer();
             await pc.setLocalDescription(answer);
-            localStorage.setItem("webrtc_answer", JSON.stringify(answer));
+            document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
+        }
 
-            let iceCandidate = JSON.parse(localStorage.getItem("webrtc_ice_candidate"));
-            if (iceCandidate) {
-                console.log("📥 Pendengar menerima ICE dari penyiar:", iceCandidate);
-                await pc.addIceCandidate(new RTCIceCandidate(iceCandidate));
+        async function setAnswer() {
+            let sdp = JSON.parse(document.getElementById('sdp').value);
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+        }
+
+        function sendMessage(event) {
+            if (event.key === "Enter" && dataChannel.readyState === "open") {
+                let message = document.getElementById('message').value;
+                dataChannel.send(message);
+                document.getElementById('chat').innerHTML += `<p>You: ${message}</p>`;
+                document.getElementById('message').value = "";
             }
-
-            pc.ontrack = (event) => {
-                console.log("🎧 Menerima audio stream:", event.streams);
-                let audioPlayer = document.getElementById("listenerPlayer");
-                audioPlayer.srcObject = event.streams[0];
-
-                setTimeout(() => {
-                    audioPlayer.play().catch(() => {
-                        alert("Klik tombol play di pendengar untuk mendengar suara.");
-                    });
-                }, 500);
-            };
-
-            alert("✅ Terhubung ke siaran! Dengarkan audio sekarang.");
-        };
+        }
     </script>
 </body>
 </html>
