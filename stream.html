@@ -20,41 +20,46 @@
         let pc;
         let dataChannel;
 
-        function setupConnection() {
+        function setupConnection(isCaller) {
             pc = new RTCPeerConnection();
 
             pc.onicecandidate = event => {
-                if (event.candidate) return;
-                console.log("Final SDP:", JSON.stringify(pc.localDescription));
-                document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
+                if (!event.candidate) {
+                    document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
+                    alert("SDP siap! Salin dan kirim ke peer.");
+                }
             };
 
-            pc.ondatachannel = event => {
-                dataChannel = event.channel;
-                console.log("DataChannel diterima!");
-                setupDataChannel();
+            pc.onconnectionstatechange = () => {
+                alert("Koneksi berubah: " + pc.connectionState);
             };
+
+            if (isCaller) {
+                dataChannel = pc.createDataChannel("chat");
+                setupDataChannel();
+            } else {
+                pc.ondatachannel = event => {
+                    dataChannel = event.channel;
+                    setupDataChannel();
+                };
+            }
         }
 
         function setupDataChannel() {
-            dataChannel.onopen = () => console.log("DataChannel terbuka!");
+            dataChannel.onopen = () => alert("DataChannel Terbuka! Bisa mulai chat.");
             dataChannel.onmessage = event => {
-                let chatBox = document.getElementById('chat');
-                chatBox.innerHTML += `<p>Peer: ${event.data}</p>`;
+                document.getElementById('chat').innerHTML += `<p>Peer: ${event.data}</p>`;
             };
         }
 
         async function createOffer() {
-            setupConnection();
-            dataChannel = pc.createDataChannel("chat");
-            setupDataChannel();
-
+            setupConnection(true);
             let offer = await pc.createOffer();
             await pc.setLocalDescription(offer);
         }
 
         async function createAnswer() {
-            setupConnection();
+            setupConnection(false);
             let sdp = JSON.parse(document.getElementById('sdp').value);
             await pc.setRemoteDescription(new RTCSessionDescription(sdp));
 
@@ -63,9 +68,13 @@
         }
 
         async function setAnswer() {
+            if (!pc) {
+                alert("RTCPeerConnection belum dibuat!");
+                return;
+            }
             let sdp = JSON.parse(document.getElementById('sdp').value);
             await pc.setRemoteDescription(new RTCSessionDescription(sdp));
-            console.log("Answer diterapkan!");
+            alert("Answer diterapkan! Koneksi siap digunakan.");
         }
 
         function sendMessage(event) {
