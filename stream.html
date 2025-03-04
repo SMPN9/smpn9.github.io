@@ -17,43 +17,59 @@
     <div id="chat"></div>
 
     <script>
-        let pc = new RTCPeerConnection();
-        let dataChannel = pc.createDataChannel("chat");
-        
-        dataChannel.onmessage = event => {
-            let chatBox = document.getElementById('chat');
-            chatBox.innerHTML += `<p>Peer: ${event.data}</p>`;
-        };
+        let pc;
+        let dataChannel;
 
-        pc.ondatachannel = event => {
-            dataChannel = event.channel;
+        function setupConnection() {
+            pc = new RTCPeerConnection();
+
+            pc.onicecandidate = event => {
+                if (event.candidate) return;
+                console.log("Final SDP:", JSON.stringify(pc.localDescription));
+                document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
+            };
+
+            pc.ondatachannel = event => {
+                dataChannel = event.channel;
+                console.log("DataChannel diterima!");
+                setupDataChannel();
+            };
+        }
+
+        function setupDataChannel() {
+            dataChannel.onopen = () => console.log("DataChannel terbuka!");
             dataChannel.onmessage = event => {
                 let chatBox = document.getElementById('chat');
                 chatBox.innerHTML += `<p>Peer: ${event.data}</p>`;
             };
-        };
+        }
 
         async function createOffer() {
+            setupConnection();
+            dataChannel = pc.createDataChannel("chat");
+            setupDataChannel();
+
             let offer = await pc.createOffer();
             await pc.setLocalDescription(offer);
-            document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
         }
 
         async function createAnswer() {
+            setupConnection();
             let sdp = JSON.parse(document.getElementById('sdp').value);
             await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+
             let answer = await pc.createAnswer();
             await pc.setLocalDescription(answer);
-            document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
         }
 
         async function setAnswer() {
             let sdp = JSON.parse(document.getElementById('sdp').value);
             await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+            console.log("Answer diterapkan!");
         }
 
         function sendMessage(event) {
-            if (event.key === "Enter" && dataChannel.readyState === "open") {
+            if (event.key === "Enter" && dataChannel?.readyState === "open") {
                 let message = document.getElementById('message').value;
                 dataChannel.send(message);
                 document.getElementById('chat').innerHTML += `<p>You: ${message}</p>`;
