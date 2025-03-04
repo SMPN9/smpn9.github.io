@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC DataChannel Copy-Paste</title>
+</head>
+<body>
+    <h2>WebRTC DataChannel Copy-Paste</h2>
+    <button onclick="createOffer()">Buat Offer</button>
+    <button onclick="createAnswer()">Buat Answer</button>
+    <button onclick="setAnswer()">Set Answer</button>
+    <textarea id="sdp" placeholder="Tempel SDP di sini" rows="10" cols="50"></textarea>
+    
+    <h3>Chat</h3>
+    <input id="message" placeholder="Ketik pesan..." onkeypress="sendMessage(event)">
+    <div id="chat"></div>
+
+    <script>
+        let pc;
+        let dataChannel;
+
+        function setupConnection(isCaller) {
+            pc = new RTCPeerConnection({
+                iceServers: [
+                    { urls: "stun:stun.l.google.com:19302" } // STUN server Google
+                ]
+            });
+
+            pc.onicecandidate = event => {
+                if (!event.candidate) {
+                    document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
+                    alert("SDP siap! Salin dan kirim ke peer.");
+                }
+            };
+
+            pc.oniceconnectionstatechange = () => {
+                alert("ICE State: " + pc.iceConnectionState);
+            };
+
+            if (isCaller) {
+                dataChannel = pc.createDataChannel("chat");
+                setupDataChannel();
+            } else {
+                pc.ondatachannel = event => {
+                    dataChannel = event.channel;
+                    setupDataChannel();
+                };
+            }
+        }
+
+        function setupDataChannel() {
+            dataChannel.onopen = () => alert("DataChannel Terbuka! Bisa mulai chat.");
+            dataChannel.onmessage = event => {
+                document.getElementById('chat').innerHTML += `<p>Peer: ${event.data}</p>`;
+            };
+        }
+
+        async function createOffer() {
+            setupConnection(true);
+            let offer = await pc.createOffer();
+            await pc.setLocalDescription(offer);
+        }
+
+        async function createAnswer() {
+            setupConnection(false);
+            let sdp = JSON.parse(document.getElementById('sdp').value);
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+
+            let answer = await pc.createAnswer();
+            await pc.setLocalDescription(answer);
+        }
+
+        async function setAnswer() {
+            if (!pc) {
+                alert("RTCPeerConnection belum dibuat!");
+                return;
+            }
+            let sdp = JSON.parse(document.getElementById('sdp').value);
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+            alert("Answer diterapkan! Koneksi siap digunakan.");
+        }
+
+        function sendMessage(event) {
+            if (event.key === "Enter" && dataChannel?.readyState === "open") {
+                let message = document.getElementById('message').value;
+                dataChannel.send(message);
+                document.getElementById('chat').innerHTML += `<p>You: ${message}</p>`;
+                document.getElementById('message').value = "";
+            }
+        }
+    </script>
+</body>
+</html>
