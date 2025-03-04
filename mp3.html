@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Stream MP3</title>
+</head>
+<body>
+    <h2>WebRTC Stream MP3</h2>
+    <button onclick="createOffer()">Buat Offer</button>
+    <button onclick="createAnswer()">Buat Answer</button>
+    <button onclick="setAnswer()">Set Answer</button>
+    <textarea id="sdp" placeholder="Tempel SDP di sini" rows="10" cols="50"></textarea>
+
+    <h3>Audio</h3>
+    <input type="file" id="fileInput" accept="audio/mp3" />
+    <audio id="localAudio" controls></audio>
+    <audio id="remoteAudio" controls></audio>
+
+    <script>
+        let pc;
+        let localStream = new MediaStream();
+
+        function setupConnection(isCaller) {
+            pc = new RTCPeerConnection({
+                iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+            });
+
+            pc.onicecandidate = event => {
+                if (!event.candidate) {
+                    document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
+                    alert("SDP siap! Salin dan kirim ke peer.");
+                }
+            };
+
+            pc.ontrack = event => {
+                document.getElementById('remoteAudio').srcObject = event.streams[0];
+                alert("Streaming MP3 diterima!");
+            };
+
+            localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+        }
+
+        async function createOffer() {
+            setupConnection(true);
+            let offer = await pc.createOffer();
+            await pc.setLocalDescription(offer);
+        }
+
+        async function createAnswer() {
+            setupConnection(false);
+            let sdp = JSON.parse(document.getElementById('sdp').value);
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+
+            let answer = await pc.createAnswer();
+            await pc.setLocalDescription(answer);
+        }
+
+        async function setAnswer() {
+            if (!pc) {
+                alert("RTCPeerConnection belum dibuat!");
+                return;
+            }
+            let sdp = JSON.parse(document.getElementById('sdp').value);
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+            alert("Answer diterapkan! Koneksi siap digunakan.");
+        }
+
+        document.getElementById('fileInput').addEventListener('change', async function(event) {
+            let file = event.target.files[0];
+            if (file) {
+                let audio = document.getElementById('localAudio');
+                let url = URL.createObjectURL(file);
+                audio.src = url;
+
+                let stream = audio.captureStream();
+                stream.getAudioTracks().forEach(track => localStream.addTrack(track));
+            }
+        });
+    </script>
+</body>
+</html>
