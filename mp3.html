@@ -14,14 +14,41 @@
 
     <h3>Audio</h3>
     <input type="file" id="fileInput"  />
+    <button id="startStream" onclick="startStreaming()" disabled>Mulai Streaming</button>
     <audio id="localAudio" controls></audio>
-    <audio id="remoteAudio" controls></audio>
+    <audio id="remoteAudio" controls autoplay></audio>
 
     <script>
         let pc;
         let localStream = new MediaStream();
+        let audioElement = document.getElementById('localAudio');
+
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            let file = event.target.files[0];
+            if (file) {
+                let url = URL.createObjectURL(file);
+                audioElement.src = url;
+                document.getElementById('startStream').disabled = false;
+                alert("File dipilih! Klik 'Mulai Streaming' setelah play.");
+            }
+        });
+
+        async function startStreaming() {
+            if (audioElement.src) {
+                localStream = await audioElement.captureStream();
+                document.getElementById('startStream').disabled = true;
+                alert("Streaming MP3 siap! Sekarang buat offer.");
+            } else {
+                alert("Pilih file MP3 dulu!");
+            }
+        }
 
         async function setupConnection(isCaller) {
+            if (localStream.getTracks().length === 0) {
+                alert("Belum ada audio yang siap dikirim! Klik 'Mulai Streaming' dulu.");
+                return;
+            }
+
             pc = new RTCPeerConnection({
                 iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
             });
@@ -42,15 +69,12 @@
                 alert("Streaming MP3 diterima!");
             };
 
-            if (localStream.getTracks().length > 0) {
-                localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
-            } else {
-                alert("Belum ada audio yang dipilih!");
-            }
+            localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
         }
 
         async function createOffer() {
             await setupConnection(true);
+            if (!pc) return;
             try {
                 let offer = await pc.createOffer();
                 await pc.setLocalDescription(offer);
@@ -61,6 +85,7 @@
 
         async function createAnswer() {
             await setupConnection(false);
+            if (!pc) return;
             try {
                 let sdp = JSON.parse(document.getElementById('sdp').value);
                 await pc.setRemoteDescription(new RTCSessionDescription(sdp));
@@ -85,20 +110,6 @@
                 alert("Error saat menerapkan Answer: " + error.message);
             }
         }
-
-        document.getElementById('fileInput').addEventListener('change', async function(event) {
-            let file = event.target.files[0];
-            if (file) {
-                let audio = document.getElementById('localAudio');
-                let url = URL.createObjectURL(file);
-                audio.src = url;
-
-                let stream = await audio.captureStream();
-                stream.getAudioTracks().forEach(track => localStream.addTrack(track));
-
-                alert("Audio MP3 siap untuk dikirim!");
-            }
-        });
     </script>
 </body>
 </html>
