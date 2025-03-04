@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebRTC Streaming Audio</title>
+    <title>WebRTC Penyiar & Pendengar</title>
 </head>
 <body>
     <h2>🎤 WebRTC Streaming Audio 🎶</h2>
@@ -18,15 +18,14 @@
     <audio id="listenerPlayer" controls autoplay></audio>
 
     <script>
-        let pcBroadcaster, pcListener;
-        let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        let pc = new RTCPeerConnection({
+            iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+        });
+
+        let isBroadcaster = false;
 
         document.getElementById("startBroadcast").onclick = async function() {
-            await audioContext.resume();
-            pcBroadcaster = new RTCPeerConnection({
-                iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
-            });
-
+            isBroadcaster = true;
             let micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
             let fileInput = document.getElementById("audioFile");
@@ -41,6 +40,7 @@
                     alert("Klik tombol play untuk memutar lagu.");
                 });
 
+                let audioContext = new AudioContext();
                 let micSource = audioContext.createMediaStreamSource(micStream);
                 let songSource = audioContext.createMediaElementSource(audioPlayer);
                 let destination = audioContext.createMediaStreamDestination();
@@ -50,21 +50,17 @@
                 songSource.connect(destination);
 
                 let mixedStream = destination.stream;
-                mixedStream.getTracks().forEach(track => pcBroadcaster.addTrack(track, mixedStream));
+                mixedStream.getTracks().forEach(track => pc.addTrack(track, mixedStream));
 
-                pcBroadcaster.onicecandidate = (event) => {
+                pc.onicecandidate = (event) => {
                     if (event.candidate) {
                         console.log("📡 Penyiar mengirim ICE:", event.candidate);
                         localStorage.setItem("webrtc_ice_candidate", JSON.stringify(event.candidate));
                     }
                 };
 
-                pcBroadcaster.oniceconnectionstatechange = () => {
-                    alert("ICE Connection State Penyiar: " + pcBroadcaster.iceConnectionState);
-                };
-
-                let offer = await pcBroadcaster.createOffer();
-                await pcBroadcaster.setLocalDescription(offer);
+                let offer = await pc.createOffer();
+                await pc.setLocalDescription(offer);
                 localStorage.setItem("webrtc_offer", JSON.stringify(offer));
 
                 alert("✅ Siaran dimulai! Klik 'Sambungkan ke Siaran' di tab lain.");
@@ -78,11 +74,18 @@
                 return;
             }
 
-            pcListener = new RTCPeerConnection({
-                iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
-            });
+            await pc.setRemoteDescription(offer);
+            let answer = await pc.createAnswer();
+            await pc.setLocalDescription(answer);
+            localStorage.setItem("webrtc_answer", JSON.stringify(answer));
 
-            pcListener.ontrack = (event) => {
+            let iceCandidate = JSON.parse(localStorage.getItem("webrtc_ice_candidate"));
+            if (iceCandidate) {
+                console.log("📥 Pendengar menerima ICE dari penyiar:", iceCandidate);
+                await pc.addIceCandidate(new RTCIceCandidate(iceCandidate));
+            }
+
+            pc.ontrack = (event) => {
                 console.log("🎧 Menerima audio stream:", event.streams);
                 let audioPlayer = document.getElementById("listenerPlayer");
                 audioPlayer.srcObject = event.streams[0];
@@ -93,34 +96,6 @@
                     });
                 }, 500);
             };
-
-            pcListener.onicecandidate = (event) => {
-                if (event.candidate) {
-                    console.log("🎧 Pendengar mengirim ICE:", event.candidate);
-                    localStorage.setItem("webrtc_listener_ice", JSON.stringify(event.candidate));
-                }
-            };
-
-            pcListener.oniceconnectionstatechange = () => {
-                alert("ICE Connection State Pendengar: " + pcListener.iceConnectionState);
-            };
-
-            await pcListener.setRemoteDescription(offer);
-            let answer = await pcListener.createAnswer();
-            await pcListener.setLocalDescription(answer);
-            localStorage.setItem("webrtc_answer", JSON.stringify(answer));
-
-            let iceCandidate = JSON.parse(localStorage.getItem("webrtc_ice_candidate"));
-            if (iceCandidate) {
-                console.log("📥 Pendengar menerima ICE dari penyiar:", iceCandidate);
-                await pcListener.addIceCandidate(new RTCIceCandidate(iceCandidate));
-            }
-
-            let listenerIce = JSON.parse(localStorage.getItem("webrtc_listener_ice"));
-            if (listenerIce) {
-                console.log("📥 Penyiar menerima ICE dari pendengar:", listenerIce);
-                await pcBroadcaster.addIceCandidate(new RTCIceCandidate(listenerIce));
-            }
 
             alert("✅ Terhubung ke siaran! Dengarkan audio sekarang.");
         };
