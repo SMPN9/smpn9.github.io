@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebRTC Streaming MP3 + Mic</title>
+    <title>WebRTC 5 Streaming MP3 + Mic</title>
 </head>
 <body>
-    <h2>WebRTC verb4 Streaming MP3 + Mic</h2>
+    <h2>WebRTC Streaming MP3 + Mic</h2>
 
     <h3>Host (A)</h3>
     <input type="file" id="fileInput" />
@@ -23,12 +23,10 @@
     <audio id="remoteAudio" controls autoplay></audio>
 
     <script>
-        let peers = {};
-        let audioContext = new AudioContext();
+        let pc;
         let mixedStream = new MediaStream();
         let micStream = null;
         let mp3Stream = null;
-        let silentTrack = audioContext.createMediaStreamDestination().stream.getAudioTracks()[0];
 
         document.getElementById('fileInput').addEventListener('change', function(event) {
             let file = event.target.files[0];
@@ -41,8 +39,9 @@
         });
 
         async function startStreaming() {
-            if (document.getElementById('localAudio').src) {
-                mp3Stream = document.getElementById('localAudio').captureStream();
+            let localAudio = document.getElementById('localAudio');
+            if (localAudio.src) {
+                mp3Stream = localAudio.captureStream();
                 updateMixedStream();
                 alert("Streaming MP3 siap!");
             } else {
@@ -57,30 +56,24 @@
         }
 
         function stopTalking() {
-            micStream = new MediaStream([silentTrack]); // Menggunakan track kosong agar tidak terputus
+            micStream = null; // Matikan mic
             updateMixedStream();
             alert("Mic dimatikan, MP3 tetap berjalan.");
         }
 
         function updateMixedStream() {
-            let dest = audioContext.createMediaStreamDestination();
+            mixedStream = new MediaStream();
 
             if (mp3Stream) {
-                let mp3Source = audioContext.createMediaStreamSource(mp3Stream);
-                mp3Source.connect(dest);
+                mp3Stream.getAudioTracks().forEach(track => mixedStream.addTrack(track));
             }
 
             if (micStream) {
-                let micSource = audioContext.createMediaStreamSource(micStream);
-                micSource.connect(dest);
+                micStream.getAudioTracks().forEach(track => mixedStream.addTrack(track));
             }
 
-            mixedStream = dest.stream;
-
-            for (let peerId in peers) {
-                let pc = peers[peerId];
-
-                let sender = pc.getSenders().find(s => s.track.kind === "audio");
+            if (pc) {
+                let sender = pc.getSenders().find(s => s.track?.kind === "audio");
                 if (sender) {
                     sender.replaceTrack(mixedStream.getAudioTracks()[0]); // Ganti track tanpa putus koneksi
                 } else {
@@ -89,46 +82,34 @@
             }
         }
 
-        async function setupConnection(peerId) {
-            let pc = new RTCPeerConnection({
+        async function setupConnection() {
+            pc = new RTCPeerConnection({
                 iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
             });
 
             pc.onicecandidate = event => {
                 if (!event.candidate) {
                     document.getElementById('sdp').value = JSON.stringify(pc.localDescription);
-                    alert("SDP siap! Salin dan kirim ke peer " + peerId);
+                    alert("SDP siap! Salin dan kirim ke peer.");
                 }
             };
 
             pc.ontrack = event => {
                 document.getElementById('remoteAudio').srcObject = event.streams[0];
-                alert("Audio diterima dari " + peerId);
+                alert("Audio diterima dari peer!");
             };
 
-            if (mixedStream.getTracks().length > 0) {
-                mixedStream.getTracks().forEach(track => pc.addTrack(track, mixedStream));
-            }
-
-            peers[peerId] = pc;
+            mixedStream.getTracks().forEach(track => pc.addTrack(track, mixedStream));
         }
 
         async function createOffer() {
-            let peerId = prompt("Masukkan ID peer (misal: B atau C)");
-            if (!peerId) return;
-            await setupConnection(peerId);
-            let pc = peers[peerId];
-
+            await setupConnection();
             let offer = await pc.createOffer();
             await pc.setLocalDescription(offer);
         }
 
         async function createAnswer() {
-            let peerId = prompt("Masukkan ID peer yang memberi offer");
-            if (!peerId) return;
-            await setupConnection(peerId);
-            let pc = peers[peerId];
-
+            await setupConnection();
             let sdp = JSON.parse(document.getElementById('sdp').value);
             await pc.setRemoteDescription(new RTCSessionDescription(sdp));
 
@@ -137,16 +118,13 @@
         }
 
         async function setAnswer() {
-            let peerId = prompt("Masukkan ID peer yang memberi answer");
-            if (!peerId || !peers[peerId]) {
-                alert("Peer belum ada!");
+            if (!pc) {
+                alert("RTCPeerConnection belum dibuat!");
                 return;
             }
-            let pc = peers[peerId];
-
             let sdp = JSON.parse(document.getElementById('sdp').value);
             await pc.setRemoteDescription(new RTCSessionDescription(sdp));
-            alert("Answer diterapkan! Koneksi dengan " + peerId + " siap digunakan.");
+            alert("Answer diterapkan! Koneksi siap digunakan.");
         }
     </script>
 </body>
