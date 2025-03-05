@@ -6,7 +6,7 @@
     <title>WebRTC Streaming Kosong Saat Mic & MP3 Mati</title>
 </head>
 <body>
-    <h2>WebRTC 8 Streaming MP3 + Mic</h2>
+    <h2>WebRTC 9 Streaming MP3 + Mic</h2>
 
     <h3>Host (A)</h3>
     <input type="file" id="fileInput" />
@@ -51,23 +51,28 @@
         }
 
         async function startTalking() {
-
-if (micStream) {
-        micStream.getTracks().forEach(track => track.stop()); // Hentikan track mic
+    if (micStream) {
+        micStream.getTracks().forEach(track => track.stop()); // Hentikan semua track lama
         micStream = null;
     }
-            
-    micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
-    let newMicTrack = micStream.getAudioTracks()[0]; // Ambil track baru dari mic
-    
-    
-        sender.replaceTrack(newMicTrack); // Ganti track kosong dengan track baru
-    
-    
+    // Ambil stream baru dari mic
+    micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    let newMicTrack = micStream.getAudioTracks()[0];
+
+    // Cari sender untuk audio
+    let sender = pc.getSenders().find(s => s.track?.kind === "audio");
+
+    if (sender) {
+        await sender.replaceTrack(newMicTrack); // Ganti track lama dengan track baru
+    } else {
+        pc.addTrack(newMicTrack, micStream); // Tambahkan jika belum ada
+    }
 
     updateMixedStream();
+    alert("Mic aktif kembali!");
 }
+
 
 
         function stopTalking() {
@@ -78,12 +83,13 @@ if (micStream) {
 
     let sender = pc.getSenders().find(s => s.track?.kind === "audio");
     if (sender) {
-        sender.replaceTrack(silentTrack); // Ganti track dengan suara kosong
+        sender.replaceTrack(null); // Hapus track mic, tapi tetap menjaga koneksi aktif
     }
 
     updateMixedStream();
     alert("Mic dimatikan, suara mic di peer seharusnya berhenti.");
 }
+
 
 
         function createSilentAudioTrack() {
