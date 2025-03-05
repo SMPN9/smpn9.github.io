@@ -50,7 +50,7 @@
 
     // Ambil audio dari mic dengan echoCancellation
     micStream = await navigator.mediaDevices.getUserMedia({ 
-        audio: { echoCancellation: true } 
+        audio: { echoCancellation: true,  noiseSuppression: true  } 
     });
     micTrack = micStream.getAudioTracks()[0];
 
