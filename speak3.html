@@ -6,7 +6,7 @@
     <title>WebRTC Peer Streaming (Mic + MP3)</title>
 </head>
 <body>
-    <h2>WebRTC2 Peer Streaming (Mic + MP3)</h2>
+    <h2>WebRTC 3 Peer Streaming (Mic + MP3)</h2>
     
     <h3>Pilih MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" accept="audio/mp3">
@@ -17,7 +17,6 @@
     <button id="toggleMic" onclick="toggleMic()">Matikan Mic</button>
     <button id="toggleMp3" onclick="toggleMp3()" disabled>Matikan MP3</button>
 
-    <h3>Stream MP3 Lokal</h3>
     <audio id="mp3Player" controls></audio>
 
     <textarea id="sdpInput" placeholder="Tempel SDP dari A di sini" rows="6" cols="50"></textarea>
@@ -40,7 +39,7 @@
                 let objectURL = URL.createObjectURL(file);
                 mp3Player.src = objectURL;
                 mp3Player.play();
-                mp3Player.onplay = setupMp3Stream; // Setup stream saat MP3 mulai diputar
+                setupMp3Stream();
             }
         });
 
@@ -58,13 +57,7 @@
                 mp3Source.connect(dest);
             }
 
-            let combinedStream = dest.stream;
-            if (combinedStream.getAudioTracks().length === 0) {
-                alert("Tidak ada track audio. Pastikan mikrofon menyala atau MP3 diputar!");
-                return;
-            }
-
-            sender = pc.addTrack(combinedStream.getAudioTracks()[0], combinedStream);
+            sender = pc.addTrack(dest.stream.getAudioTracks()[0], dest.stream);
 
             pc.onicecandidate = event => {
                 if (!event.candidate) {
@@ -85,10 +78,6 @@
 
         function setupMp3Stream() {
             let mp3StreamObj = mp3Player.captureStream();
-            if (mp3StreamObj.getAudioTracks().length === 0) {
-                alert("MP3 tidak memiliki track audio.");
-                return;
-            }
             mp3Stream = mp3StreamObj;
             mp3Track = mp3StreamObj.getAudioTracks()[0];
             mp3Source = audioContext.createMediaStreamSource(mp3Stream);
