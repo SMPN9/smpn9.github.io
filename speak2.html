@@ -6,15 +6,21 @@
     <title>WebRTC Peer Streaming</title>
 </head>
 <body>
-    <h2>WebRTC Peer 5 Streaming (B, C, atau D)</h2>
+    <h2>WebRTC 1 Peer Streaming (B, C, atau D)</h2>
     
     <h3>Kirim Stream</h3>
     <textarea id="sdpInput" placeholder="Tempel SDP dari A di sini" rows="6" cols="50"></textarea>
     <button onclick="startStreaming()">Buat Offer</button>
     <button onclick="handleAnswer()">Set Answer</button>
 
+    <h3>Kontrol Mic</h3>
+    <button id="toggleMic" onclick="toggleMic()">Matikan Mic</button>
+
     <script>
         let pc;
+        let micStream;
+        let micTrack;
+        let sender;
         let peerId = prompt("Masukkan ID Anda (B, C, D)");
 
         async function startStreaming() {
@@ -22,8 +28,10 @@
                 iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
             });
 
-            let stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-            stream.getTracks().forEach(track => pc.addTrack(track, stream, stream));
+            micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            micTrack = micStream.getAudioTracks()[0];
+
+            sender = pc.addTrack(micTrack, micStream);
 
             pc.onicecandidate = event => {
                 if (!event.candidate) {
@@ -40,6 +48,12 @@
             let sdp = JSON.parse(document.getElementById('sdpInput').value);
             await pc.setRemoteDescription(new RTCSessionDescription(sdp));
             alert("Koneksi berhasil!");
+        }
+
+        function toggleMic() {
+            if (!micTrack) return;
+            micTrack.enabled = !micTrack.enabled;
+            document.getElementById("toggleMic").innerText = micTrack.enabled ? "Matikan Mic" : "Nyalakan Mic";
         }
     </script>
 </body>
