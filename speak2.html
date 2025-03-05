@@ -23,7 +23,7 @@
             });
 
             let stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-            stream.getTracks().forEach(track => pc.addTrack(track, stream));
+            stream.getTracks().forEach(track => pc.addTrack(track, stream, stream));
 
             pc.onicecandidate = event => {
                 if (!event.candidate) {
