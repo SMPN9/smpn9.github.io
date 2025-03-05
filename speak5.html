@@ -7,7 +7,7 @@
     <title>WebRTC Peer Streaming (Mic + MP3)</title>
 </head>
 <body>
-    <h2>WebRTC 4 Peer Streaming (Mic + MP3)</h2>
+    <h2>WebRTC 44 Peer Streaming (Mic + MP3)</h2>
     
     <h3>Pilih MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
@@ -31,6 +31,7 @@
         let audioContext;
         let mixedStream;
         let mp3Player = document.getElementById("mp3Player");
+let mp4Player = document.getElementById("mp4Player");
 
         document.getElementById("mp3Input").addEventListener("change", function(event) {
             let file = event.target.files[0];
@@ -102,6 +103,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
         }
 
         mp3Player.onplay = async () => {
+            mp4Player.pause() ;
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
             }
@@ -129,6 +131,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
 
 
       mp4Player.onplay = async () => {
+          mp3Player.pause() ;
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
             }
