@@ -6,7 +6,7 @@
     <title>WebRTC Streaming Kosong Saat Mic & MP3 Mati</title>
 </head>
 <body>
-    <h2>WebRTC 7 Streaming MP3 + Mic</h2>
+    <h2>WebRTC 8 Streaming MP3 + Mic</h2>
 
     <h3>Host (A)</h3>
     <input type="file" id="fileInput" />
@@ -51,19 +51,22 @@
         }
 
         async function startTalking() {
+
+if (micStream) {
+        micStream.getTracks().forEach(track => track.stop()); // Hentikan track mic
+        micStream = null;
+    }
+            
     micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
     let newMicTrack = micStream.getAudioTracks()[0]; // Ambil track baru dari mic
-    let sender = pc.getSenders().find(s => s.track?.kind === "audio");
     
-    if (sender) {
+    
         sender.replaceTrack(newMicTrack); // Ganti track kosong dengan track baru
-    } else {
-        pc.addTrack(newMicTrack, mixedStream);
-    }
+    
+    
 
     updateMixedStream();
-    alert("Mic aktif kembali!");
 }
 
 
