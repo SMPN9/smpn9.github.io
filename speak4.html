@@ -6,7 +6,7 @@
     <title>WebRTC Peer Streaming (Mic + MP3)</title>
 </head>
 <body>
-    <h2>WebRTC 4 Peer Streaming (Mic + MP3)</h2>
+    <h2>WebRTC pp Peer Streaming (Mic + MP3)</h2>
     
     <h3>Pilih MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
@@ -50,7 +50,7 @@
 
     // Ambil audio dari mic dengan echoCancellation
     micStream = await navigator.mediaDevices.getUserMedia({ 
-        audio: { echoCancellation: true,  noiseSuppression: true  } 
+        audio: { echoCancellation: true } 
     });
     micTrack = micStream.getAudioTracks()[0];
 
