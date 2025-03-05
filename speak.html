@@ -6,7 +6,7 @@
     <title>WebRTC Streaming Kosong Saat Mic & MP3 Mati</title>
 </head>
 <body>
-    <h2>WebRTC 5 Streaming MP3 + Mic</h2>
+    <h2>WebRTC 6 Streaming MP3 + Mic</h2>
 
     <h3>Host (A)</h3>
     <input type="file" id="fileInput" />
@@ -57,10 +57,20 @@
         }
 
         function stopTalking() {
-            micStream = null; // Matikan mic
-            updateMixedStream();
-            alert("Mic dimatikan, MP3 tetap berjalan.");
-        }
+    if (micStream) {
+        micStream.getTracks().forEach(track => track.stop()); // Hentikan track mic
+        micStream = null;
+    }
+
+    let sender = pc.getSenders().find(s => s.track?.kind === "audio");
+    if (sender) {
+        sender.replaceTrack(silentTrack); // Ganti track dengan suara kosong
+    }
+
+    updateMixedStream();
+    alert("Mic dimatikan, suara mic di peer seharusnya berhenti.");
+}
+
 
         function createSilentAudioTrack() {
             let ctx = new AudioContext();
