@@ -6,13 +6,16 @@
     <title>WebRTC Peer Streaming</title>
 </head>
 <body>
-    <h2>WebRTC Peer Streaming</h2>
-    <p>Peer B / C / D (Mengirim stream ke A)</p>
-    <button onclick="startStreaming()">Mulai Streaming</button>
+    <h2>WebRTC Peer Streaming (B, C, atau D)</h2>
+    
+    <h3>Kirim Stream</h3>
+    <textarea id="sdpInput" placeholder="Tempel SDP dari A di sini" rows="6" cols="50"></textarea>
+    <button onclick="startStreaming()">Buat Offer</button>
+    <button onclick="handleAnswer()">Set Answer</button>
 
     <script>
         let pc;
-        let peerId = prompt("Masukkan ID Anda (contoh: B, C, D)");
+        let peerId = prompt("Masukkan ID Anda (B, C, D)");
 
         async function startStreaming() {
             pc = new RTCPeerConnection({
@@ -23,8 +26,9 @@
             stream.getTracks().forEach(track => pc.addTrack(track, stream));
 
             pc.onicecandidate = event => {
-                if (event.candidate) {
-                    console.log(`Kirim SDP ke A:`, JSON.stringify(pc.localDescription));
+                if (!event.candidate) {
+                    alert("Salin dan kirim SDP ke A:");
+                    document.getElementById('sdpInput').value = JSON.stringify(pc.localDescription);
                 }
             };
 
@@ -32,8 +36,10 @@
             await pc.setLocalDescription(offer);
         }
 
-        function handleAnswer(answer) {
-            pc.setRemoteDescription(new RTCSessionDescription(answer));
+        async function handleAnswer() {
+            let sdp = JSON.parse(document.getElementById('sdpInput').value);
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+            alert("Koneksi berhasil!");
         }
     </script>
 </body>
