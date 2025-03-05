@@ -6,9 +6,14 @@
     <title>WebRTC Multi-Peer Streaming</title>
 </head>
 <body>
-    <h2>WebRTC Multi-Peer Streaming</h2>
-    <p>Peer A (Menerima stream dari B, C, dan D)</p>
-    <div id="audio-container"></div>
+    <h2>WebRTC Multi-Peer Streaming (A)</h2>
+    
+    <h3>Terima Stream</h3>
+    <textarea id="sdpInput" placeholder="Tempel SDP dari peer di sini" rows="6" cols="50"></textarea>
+    <button onclick="handleOffer()">Set Offer</button>
+
+    <h3>Audio dari Peer</h3>
+    <div id="audioContainer"></div>
 
     <script>
         let peerConnections = {};
@@ -30,14 +35,15 @@
                     audioElement = document.createElement("audio");
                     audioElement.id = `audio-${peerId}`;
                     audioElement.autoplay = true;
-                    document.getElementById("audio-container").appendChild(audioElement);
+                    document.getElementById("audioContainer").appendChild(audioElement);
                 }
                 audioElement.srcObject = remoteStreams[peerId];
             };
 
             pc.onicecandidate = event => {
-                if (event.candidate) {
-                    console.log(`Kirim SDP ke ${peerId}:`, JSON.stringify(pc.localDescription));
+                if (!event.candidate) {
+                    alert("Salin dan kirim SDP ke peer:");
+                    document.getElementById('sdpInput').value = JSON.stringify(pc.localDescription);
                 }
             };
 
@@ -45,13 +51,18 @@
             return pc;
         }
 
-        function handleOffer(peerId, offer) {
+        async function handleOffer() {
+            let peerId = prompt("Masukkan ID Peer (B, C, D)");
+            let sdp = JSON.parse(document.getElementById('sdpInput').value);
+            
             let pc = createPeerConnection(peerId);
-            pc.setRemoteDescription(new RTCSessionDescription(offer)).then(async () => {
-                let answer = await pc.createAnswer();
-                await pc.setLocalDescription(answer);
-                console.log(`Kirim jawaban ke ${peerId}:`, JSON.stringify(answer));
-            });
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+
+            let answer = await pc.createAnswer();
+            await pc.setLocalDescription(answer);
+
+            alert("Salin dan kirim SDP jawaban ke peer:");
+            document.getElementById('sdpInput').value = JSON.stringify(pc.localDescription);
         }
     </script>
 </body>
