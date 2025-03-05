@@ -9,7 +9,7 @@
     <h2>WebRTC Streaming MP3 + Mic</h2>
 
     <h3>Host (A)</h3>
-    <input type="file" id="fileInput" />
+    <input type="file" id="fileInput" accept="audio/mp3">
     <button id="startStream" onclick="startStreaming()" disabled>Mulai Streaming</button>
     <button id="startTalking" onclick="startTalking()">Mulai Bicara</button>
     <button id="stopTalking" onclick="stopTalking()">Berhenti Bicara</button>
@@ -23,7 +23,7 @@
     <audio id="remoteAudio" controls autoplay></audio>
 
     <script>
-        let peers = {}; // Simpan koneksi untuk tiap peer
+        let peers = {}; 
         let mixedStream = new MediaStream();
         let micStream = null;
         let mp3Stream = null;
@@ -43,7 +43,7 @@
             if (audioElement.src) {
                 mp3Stream = audioElement.captureStream();
                 updateMixedStream();
-                alert("Streaming MP3 siap! Sekarang buat offer.");
+                alert("Streaming MP3 siap!");
             } else {
                 alert("Pilih file MP3 dulu!");
             }
@@ -60,7 +60,7 @@
                 micStream.getTracks().forEach(track => track.stop());
                 micStream = null;
                 updateMixedStream();
-                alert("Mic dimatikan.");
+                alert("Mic dimatikan, MP3 tetap berjalan.");
             }
         }
 
@@ -76,7 +76,7 @@
             if (micStream) {
                 let micSource = audioContext.createMediaStreamSource(micStream);
                 let gainNode = audioContext.createGain();
-                gainNode.gain.value = 1.5; // Naikkan volume mic
+                gainNode.gain.value = 1.5; 
                 micSource.connect(gainNode);
                 gainNode.connect(dest);
             }
