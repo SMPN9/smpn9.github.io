@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebRTC 5 Streaming MP3 + Mic</title>
+    <title>WebRTC Streaming Kosong Saat Mic & MP3 Mati</title>
 </head>
 <body>
-    <h2>WebRTC Streaming MP3 + Mic</h2>
+    <h2>WebRTC 5 Streaming MP3 + Mic</h2>
 
     <h3>Host (A)</h3>
     <input type="file" id="fileInput" />
@@ -27,6 +27,7 @@
         let mixedStream = new MediaStream();
         let micStream = null;
         let mp3Stream = null;
+        let silentTrack = createSilentAudioTrack();
 
         document.getElementById('fileInput').addEventListener('change', function(event) {
             let file = event.target.files[0];
@@ -61,6 +62,14 @@
             alert("Mic dimatikan, MP3 tetap berjalan.");
         }
 
+        function createSilentAudioTrack() {
+            let ctx = new AudioContext();
+            let oscillator = ctx.createOscillator();
+            let dst = oscillator.connect(ctx.createMediaStreamDestination());
+            oscillator.start();
+            return dst.stream.getAudioTracks()[0];
+        }
+
         function updateMixedStream() {
             mixedStream = new MediaStream();
 
@@ -70,6 +79,10 @@
 
             if (micStream) {
                 micStream.getAudioTracks().forEach(track => mixedStream.addTrack(track));
+            }
+
+            if (!mp3Stream && !micStream) {
+                mixedStream.addTrack(silentTrack); // Tambahkan suara kosong jika tidak ada sumber audio
             }
 
             if (pc) {
