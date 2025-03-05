@@ -17,7 +17,6 @@
 
     <script>
         let peerConnections = {};
-        let remoteStreams = {};
 
         function createPeerConnection(peerId) {
             let pc = new RTCPeerConnection({
@@ -25,11 +24,6 @@
             });
 
             pc.ontrack = event => {
-                if (!remoteStreams[peerId]) {
-                    remoteStreams[peerId] = new MediaStream();
-                }
-                remoteStreams[peerId].addTrack(event.track);
-
                 let audioElement = document.getElementById(`audio-${peerId}`);
                 if (!audioElement) {
                     audioElement = document.createElement("audio");
@@ -37,7 +31,8 @@
                     audioElement.autoplay = true;
                     document.getElementById("audioContainer").appendChild(audioElement);
                 }
-                audioElement.srcObject = remoteStreams[peerId];
+                audioElement.srcObject = event.streams[0];
+                console.log(`Stream dari ${peerId} diterima.`);
             };
 
             pc.onicecandidate = event => {
