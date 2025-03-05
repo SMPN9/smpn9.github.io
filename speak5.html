@@ -7,20 +7,24 @@
     <title>WebRTC Peer Streaming (Mic + MP3)</title>
 </head>
 <body>
-    <h2>WebRTC 44 Peer Streaming (Mic + MP3)</h2>
+    <h2>WebRTC 45 Peer Streaming (Mic + MP3)</h2>
     
     <h3>Pilih MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
+    <audio id="mp3Player" controls></audio>
+    <input type="file" id="mp4Input" >
+        
+<audio id="mp4Player" controls></audio>
+</br>
     <button onclick="startStreaming()">Buat Offer</button>
     <button onclick="handleAnswer()">Set Answer</button>
 
     <h3>Kontrol Mic & MP3</h3>
     <button id="toggleMic" onclick="toggleMic()" disabled>Matikan Mic</button>
     <button id="toggleMp3" onclick="toggleMp3()" disabled>Matikan MP3</button>
-<input type="file" id="mp4Input" >
+
     <h3>Audio Output</h3>
-    <audio id="mp3Player" controls></audio>
-<audio id="mp4Player" controls></audio>
+
     <textarea id="sdpInput" placeholder="Tempel SDP dari A di sini" rows="6" cols="50"></textarea>
 
     <script>
