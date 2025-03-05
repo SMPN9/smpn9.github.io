@@ -6,10 +6,10 @@
     <title>WebRTC Streaming Kosong Saat Mic & MP3 Mati</title>
 </head>
 <body>
-    <h2>WebRTC 9 Streaming MP3 + Mic</h2>
+    <h2>WebRTC 10 Streaming MP3 + Mic</h2>
 
     <h3>Host (A)</h3>
-    <input type="file" id="fileInput" />
+    <input type="file" id="fileInput" accept="audio/mp3">
     <button id="startStream" onclick="startStreaming()" disabled>Mulai Streaming</button>
     <button id="startTalking" onclick="startTalking()">Mulai Bicara</button>
     <button id="stopTalking" onclick="stopTalking()">Berhenti Bicara</button>
@@ -51,46 +51,16 @@
         }
 
         async function startTalking() {
-    if (micStream) {
-        micStream.getTracks().forEach(track => track.stop()); // Hentikan semua track lama
-        micStream = null;
-    }
-
-    // Ambil stream baru dari mic
-    micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    let newMicTrack = micStream.getAudioTracks()[0];
-
-    // Cari sender untuk audio
-    let sender = pc.getSenders().find(s => s.track?.kind === "audio");
-
-    if (sender) {
-        await sender.replaceTrack(newMicTrack); // Ganti track lama dengan track baru
-    } else {
-        pc.addTrack(newMicTrack, micStream); // Tambahkan jika belum ada
-    }
-
-    updateMixedStream();
-    alert("Mic aktif kembali!");
-}
-
-
+            micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            updateMixedStream();
+            alert("Mic aktif dan dikirim ke semua peer!");
+        }
 
         function stopTalking() {
-    if (micStream) {
-        micStream.getTracks().forEach(track => track.stop()); // Hentikan track mic
-        micStream = null;
-    }
-
-    let sender = pc.getSenders().find(s => s.track?.kind === "audio");
-    if (sender) {
-        sender.replaceTrack(null); // Hapus track mic, tapi tetap menjaga koneksi aktif
-    }
-
-    updateMixedStream();
-    alert("Mic dimatikan, suara mic di peer seharusnya berhenti.");
-}
-
-
+            micStream = null; // Matikan mic
+            updateMixedStream();
+            alert("Mic dimatikan, MP3 tetap berjalan.");
+        }
 
         function createSilentAudioTrack() {
             let ctx = new AudioContext();
