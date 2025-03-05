@@ -6,7 +6,7 @@
     <title>WebRTC Multi-Peer Streaming</title>
 </head>
 <body>
-    <h2>WebRTC Multi-Peer Streaming (A)</h2>
+    <h2>WebRTC 1 Multi-Peer Streaming (A)</h2>
     
     <h3>Terima Stream</h3>
     <textarea id="sdpInput" placeholder="Tempel SDP dari peer di sini" rows="6" cols="50"></textarea>
@@ -24,15 +24,43 @@
             });
 
             pc.ontrack = event => {
-                let audioElement = document.getElementById(`audio-${peerId}`);
-                if (!audioElement) {
-                    audioElement = document.createElement("audio");
+                let existingAudio = document.getElementById(`audio-${peerId}`);
+                if (!existingAudio) {
+                    // Buat elemen audio
+                    let audioElement = document.createElement("audio");
                     audioElement.id = `audio-${peerId}`;
                     audioElement.autoplay = true;
-                    document.getElementById("audioContainer").appendChild(audioElement);
+                    audioElement.controls = true;
+                    audioElement.srcObject = event.streams[0];
+
+                    // Buat kontrol volume & mute
+                    let controlDiv = document.createElement("div");
+                    controlDiv.innerHTML = `<strong>${peerId}</strong><br>`;
+
+                    let volumeSlider = document.createElement("input");
+                    volumeSlider.type = "range";
+                    volumeSlider.min = "0";
+                    volumeSlider.max = "1";
+                    volumeSlider.step = "0.1";
+                    volumeSlider.value = "1";
+                    volumeSlider.oninput = () => {
+                        audioElement.volume = volumeSlider.value;
+                    };
+
+                    let muteButton = document.createElement("button");
+                    muteButton.innerText = "Mute";
+                    muteButton.onclick = () => {
+                        audioElement.muted = !audioElement.muted;
+                        muteButton.innerText = audioElement.muted ? "Unmute" : "Mute";
+                    };
+
+                    controlDiv.appendChild(audioElement);
+                    controlDiv.appendChild(document.createElement("br"));
+                    controlDiv.appendChild(volumeSlider);
+                    controlDiv.appendChild(muteButton);
+
+                    document.getElementById("audioContainer").appendChild(controlDiv);
                 }
-                audioElement.srcObject = event.streams[0];
-                console.log(`Stream dari ${peerId} diterima.`);
             };
 
             pc.onicecandidate = event => {
