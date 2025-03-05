@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Peer Streaming</title>
+</head>
+<body>
+    <h2>WebRTC Peer Streaming</h2>
+    <p>Peer B / C / D (Mengirim stream ke A)</p>
+    <button onclick="startStreaming()">Mulai Streaming</button>
+
+    <script>
+        let pc;
+        let peerId = prompt("Masukkan ID Anda (contoh: B, C, D)");
+
+        async function startStreaming() {
+            pc = new RTCPeerConnection({
+                iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+            });
+
+            let stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            stream.getTracks().forEach(track => pc.addTrack(track, stream));
+
+            pc.onicecandidate = event => {
+                if (event.candidate) {
+                    console.log(`Kirim SDP ke A:`, JSON.stringify(pc.localDescription));
+                }
+            };
+
+            let offer = await pc.createOffer();
+            await pc.setLocalDescription(offer);
+        }
+
+        function handleAnswer(answer) {
+            pc.setRemoteDescription(new RTCSessionDescription(answer));
+        }
+    </script>
+</body>
+</html>
