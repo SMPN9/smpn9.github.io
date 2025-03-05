@@ -6,7 +6,7 @@
     <title>WebRTC Streaming MP3 + Mic</title>
 </head>
 <body>
-    <h2>WebRTC Streaming MP3 + Mic</h2>
+    <h2>WebRTC verb4 Streaming MP3 + Mic</h2>
 
     <h3>Host (A)</h3>
     <input type="file" id="fileInput" />
@@ -23,25 +23,26 @@
     <audio id="remoteAudio" controls autoplay></audio>
 
     <script>
-        let peers = {}; 
+        let peers = {};
+        let audioContext = new AudioContext();
         let mixedStream = new MediaStream();
         let micStream = null;
         let mp3Stream = null;
-        let audioElement = document.getElementById('localAudio');
+        let silentTrack = audioContext.createMediaStreamDestination().stream.getAudioTracks()[0];
 
         document.getElementById('fileInput').addEventListener('change', function(event) {
             let file = event.target.files[0];
             if (file) {
                 let url = URL.createObjectURL(file);
-                audioElement.src = url;
+                document.getElementById('localAudio').src = url;
                 document.getElementById('startStream').disabled = false;
                 alert("File dipilih! Klik 'Mulai Streaming' setelah play.");
             }
         });
 
         async function startStreaming() {
-            if (audioElement.src) {
-                mp3Stream = audioElement.captureStream();
+            if (document.getElementById('localAudio').src) {
+                mp3Stream = document.getElementById('localAudio').captureStream();
                 updateMixedStream();
                 alert("Streaming MP3 siap!");
             } else {
@@ -56,16 +57,12 @@
         }
 
         function stopTalking() {
-            if (micStream) {
-                micStream.getTracks().forEach(track => track.stop());
-                micStream = null;
-                updateMixedStream();
-                alert("Mic dimatikan, MP3 tetap berjalan.");
-            }
+            micStream = new MediaStream([silentTrack]); // Menggunakan track kosong agar tidak terputus
+            updateMixedStream();
+            alert("Mic dimatikan, MP3 tetap berjalan.");
         }
 
         function updateMixedStream() {
-            let audioContext = new AudioContext();
             let dest = audioContext.createMediaStreamDestination();
 
             if (mp3Stream) {
@@ -75,10 +72,7 @@
 
             if (micStream) {
                 let micSource = audioContext.createMediaStreamSource(micStream);
-                let gainNode = audioContext.createGain();
-                gainNode.gain.value = 1.5; 
-                micSource.connect(gainNode);
-                gainNode.connect(dest);
+                micSource.connect(dest);
             }
 
             mixedStream = dest.stream;
@@ -86,11 +80,12 @@
             for (let peerId in peers) {
                 let pc = peers[peerId];
 
-                pc.getSenders().forEach(sender => pc.removeTrack(sender));
-
-                mixedStream.getTracks().forEach(track => pc.addTrack(track, mixedStream));
-
-                pc.createOffer().then(offer => pc.setLocalDescription(offer));
+                let sender = pc.getSenders().find(s => s.track.kind === "audio");
+                if (sender) {
+                    sender.replaceTrack(mixedStream.getAudioTracks()[0]); // Ganti track tanpa putus koneksi
+                } else {
+                    mixedStream.getTracks().forEach(track => pc.addTrack(track, mixedStream));
+                }
             }
         }
 
