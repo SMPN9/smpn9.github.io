@@ -6,7 +6,7 @@
     <title>WebRTC Multi-Peer Streaming</title>
 </head>
 <body>
-    <h2>WebRTC ok 0hhh Multi-Peer Streaming (A)</h2>
+    <h2>WebRTC 7k 0hhh Multi-Peer Streaming (A)</h2>
     
     <h3>Terima Stream</h3>
     <textarea id="sdpInput" placeholder="Tempel SDP dari peer di sini" rows="6" cols="50"></textarea>
@@ -105,7 +105,7 @@ function send1(isi){
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
      xhr.onload = function () {
           document.getElementById('sdpInput').value=xhr.responseText
-        
+        handleOffer()
           };
       var data = JSON.stringify({ kode: 11, isi: '-' });
       xhr.send(data);
