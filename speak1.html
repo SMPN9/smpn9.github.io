@@ -76,17 +76,30 @@
 
         async function handleOffer() {
             let peerId = prompt("Masukkan ID Peer (B, C, D)");
+            let spp=send2()
             let sdp = JSON.parse(document.getElementById('sdpInput').value);
             
             let pc = createPeerConnection(peerId);
-            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
-
+           // await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+             await pc.setRemoteDescription(new RTCSessionDescription(JSON.parse(spp)));
             let answer = await pc.createAnswer();
             await pc.setLocalDescription(answer);
 
             alert("Salin dan kirim SDP jawaban ke peer:");
             document.getElementById('sdpInput').value = JSON.stringify(pc.localDescription);
         }
+
+         function send2(){
+     var xhr = new XMLHttpRequest();
+     xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
+     xhr.onload = function () {
+          alert(xhr.responseText)
+         return (xhr.responseText)
+         
+          };
+      var data = JSON.stringify({ kode: 11, isi: '-' });
+      xhr.send(data);
+       }         
     </script>
 </body>
 </html>
