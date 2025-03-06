@@ -7,7 +7,7 @@
     <title>WebRTC Peer Streaming (Mic + MP3)</title>
 </head>
 <body>
-    <h2>WebRTC ok 16 Peer Streaming (Mic + MP3)</h2>
+    <h2>WebRTC ok 17 Peer Streaming (Mic + MP3)</h2>
     
     <h3>Pilih MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
@@ -26,9 +26,9 @@
     <button id="toggleMp3" onclick="toggleMp3()" disabled>Matikan MP3</button>
 
     
-
+<div style="display:none“>
     <textarea style=“display:none“ id="sdpInput" placeholder="Tempel SDP dari A di sini" rows="6" cols="50"></textarea>
-
+</div>
     <script>
         let pc;
         let micStream, mp3Stream;
