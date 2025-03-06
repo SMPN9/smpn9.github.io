@@ -90,7 +90,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
         if (!event.candidate) {
             alert("Salin dan kirim SDP ke A:");
             document.getElementById('sdpInput').value = JSON.stringify(pc.localDescription);
-            send1(pc.localDescription)
+            send1( JSON.stringify(pc.localDescription))
         }
     };
 
