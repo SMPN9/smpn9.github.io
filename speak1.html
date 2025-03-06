@@ -77,7 +77,8 @@
         async function handleOffer() {
             let peerId = prompt("Masukkan ID Peer (B, C, D)");
             let spp=send2()
-            let sdp = JSON.parse(document.getElementById('sdpInput').value);
+            alert(spp)
+          //  let sdp = JSON.parse(document.getElementById('sdpInput').value);
             
             let pc = createPeerConnection(peerId);
            // await pc.setRemoteDescription(new RTCSessionDescription(sdp));
