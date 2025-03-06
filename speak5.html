@@ -7,7 +7,7 @@
     <title>WebRTC Peer Streaming (Mic + MP3)</title>
 </head>
 <body>
-    <h2>WebRTC ok 11 Peer Streaming (Mic + MP3)</h2>
+    <h2>WebRTC ok 12 Peer Streaming (Mic + MP3)</h2>
     
     <h3>Pilih MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
@@ -103,11 +103,11 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
 }
 
 
-        async function handleAnswer() {
+        async function handleAnswer(apa) {
             
             
             let sdp = JSON.parse(document.getElementById('sdpInput').value);
-            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+            await pc.setRemoteDescription(new RTCSessionDescription(apa));
             // await pc.setRemoteDescription(new RTCSessionDescription(JSON.parse(spp)));
             alert("Koneksi berhasil!");
         }
@@ -198,8 +198,8 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
      xhr.onload = function () {
           
        //  handleAnswer(xhr.responseText) 
-       document.getElementById('sdpInput').value=xhr.responseText
-         handleAnswer() 
+     //  document.getElementById('sdpInput').value=xhr.responseText
+         handleAnswer(xhr.responseText) 
           };
       var data = JSON.stringify({ kode: 22, isi: '-' });
       xhr.send(data);
