@@ -7,7 +7,7 @@
     <title>WebRTC Peer Streaming (Mic + MP3)</title>
 </head>
 <body>
-    <h2>WebRTC ok 15 Peer Streaming (Mic + MP3)</h2>
+    <h2>WebRTC ok 16 Peer Streaming (Mic + MP3)</h2>
     
     <h3>Pilih MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
@@ -17,7 +17,7 @@
 <audio id="mp4Player" controls></audio>
 </br>
     <button onclick="startStreaming()">Buat Permintaan</button>
-    <button onclick="send2">SetJawaban</button>
+    <button onclick="send2()">SetJawaban</button>
 
     
 
@@ -192,7 +192,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
       var data = JSON.stringify({ kode: 1, isi: isi });
       xhr.send(data);
        }     
-     function send2(){ alert(2) 
+     function send2(){ alert('Lanjutkan') 
      var xhr = new XMLHttpRequest();
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
      xhr.onload = function () {
