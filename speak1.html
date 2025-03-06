@@ -6,7 +6,7 @@
     <title>WebRTC Multi-Peer Streaming</title>
 </head>
 <body>
-    <h2>WebRTC 9hhh Multi-Peer Streaming (A)</h2>
+    <h2>WebRTC 10hhh Multi-Peer Streaming (A)</h2>
     
     <h3>Terima Stream</h3>
     <textarea id="sdpInput" placeholder="Tempel SDP dari peer di sini" rows="6" cols="50"></textarea>
@@ -78,6 +78,7 @@
             let peerId = prompt("Masukkan ID Peer (B, C, D)");
             let spp=JSON.parse(send2())
             alert(spp)
+            document.getElementById('sdpInput').value=spp
           //  let sdp = JSON.parse(document.getElementById('sdpInput').value);
             
             let pc = createPeerConnection(peerId);
