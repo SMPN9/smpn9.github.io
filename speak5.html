@@ -193,8 +193,9 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
      var xhr = new XMLHttpRequest();
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
      xhr.onload = function () {
-         return (xhr.responseText)
           alert(xhr.responseText)
+         return (xhr.responseText)
+         
           };
       var data = JSON.stringify({ kode: 22, isi: '-' });
       xhr.send(data);
