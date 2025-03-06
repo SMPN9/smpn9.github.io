@@ -102,9 +102,10 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
 
 
         async function handleAnswer() {
-            send2()
+            let spp=send2()
             let sdp = JSON.parse(document.getElementById('sdpInput').value);
-            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+            //await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+             await pc.setRemoteDescription(new RTCSessionDescription(JSON.parse(spp)));
             alert("Koneksi berhasil!");
         }
 
