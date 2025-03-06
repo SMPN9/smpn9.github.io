@@ -6,7 +6,7 @@
     <title>WebRTC Multi-Peer Streaming</title>
 </head>
 <body>
-    <h2>WebRTC 210hhh Multi-Peer Streaming (A)</h2>
+    <h2>WebRTC ok 0hhh Multi-Peer Streaming (A)</h2>
     
     <h3>Terima Stream</h3>
     <textarea id="sdpInput" placeholder="Tempel SDP dari peer di sini" rows="6" cols="50"></textarea>
@@ -89,8 +89,17 @@
 
             alert("Salin dan kirim SDP jawaban ke peer:");
             document.getElementById('sdpInput').value = JSON.stringify(pc.localDescription);
+            send1(JSON.stringify(pc.localDescription));
         }
-
+function send1(isi){
+     var xhr = new XMLHttpRequest();
+     xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
+     xhr.onload = function () {
+          alert(xhr.responseText)
+          };
+      var data = JSON.stringify({ kode: 2, isi: isi });
+      xhr.send(data);
+       }     
          function send2(){
      var xhr = new XMLHttpRequest();
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
