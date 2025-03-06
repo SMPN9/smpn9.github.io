@@ -6,12 +6,12 @@
     <title>WebRTC Multi-Peer Streaming</title>
 </head>
 <body>
-    <h2>WebRTC 10hhh Multi-Peer Streaming (A)</h2>
+    <h2>WebRTC 210hhh Multi-Peer Streaming (A)</h2>
     
     <h3>Terima Stream</h3>
     <textarea id="sdpInput" placeholder="Tempel SDP dari peer di sini" rows="6" cols="50"></textarea>
     <button onclick="handleOffer()">Set Offer</button>
-
+<button onclick="send2()">Ambil</button>
     <h3>Audio dari Peer</h3>
     <div id="audioContainer"></div>
 
@@ -76,14 +76,14 @@
 
         async function handleOffer() {
             let peerId = prompt("Masukkan ID Peer (B, C, D)");
-            let spp=JSON.parse(send2())
-            alert(spp)
-            document.getElementById('sdpInput').value=spp
-          //  let sdp = JSON.parse(document.getElementById('sdpInput').value);
+           
+           
+           
+         let sdp = JSON.parse(document.getElementById('sdpInput').value);
             
             let pc = createPeerConnection(peerId);
-           // await pc.setRemoteDescription(new RTCSessionDescription(sdp));
-             await pc.setRemoteDescription(new RTCSessionDescription(spp));
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+            
             let answer = await pc.createAnswer();
             await pc.setLocalDescription(answer);
 
@@ -95,9 +95,8 @@
      var xhr = new XMLHttpRequest();
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
      xhr.onload = function () {
-          alert(xhr.responseText)
-         return (xhr.responseText)
-         
+          document.getElementById('sdpInput').value=xhr.responseText
+        
           };
       var data = JSON.stringify({ kode: 11, isi: '-' });
       xhr.send(data);
