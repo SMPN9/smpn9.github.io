@@ -7,7 +7,7 @@
     <title>WebRTC Peer Streaming (Mic + MP3)</title>
 </head>
 <body>
-    <h2>WebRTC ok 10 Peer Streaming (Mic + MP3)</h2>
+    <h2>WebRTC ok 11 Peer Streaming (Mic + MP3)</h2>
     
     <h3>Pilih MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
@@ -199,7 +199,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
           
        //  handleAnswer(xhr.responseText) 
        document.getElementById('sdpInput').value=xhr.responseText
-         
+         handleAnswer() 
           };
       var data = JSON.stringify({ kode: 22, isi: '-' });
       xhr.send(data);
