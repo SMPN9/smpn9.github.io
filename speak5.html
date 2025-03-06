@@ -16,18 +16,18 @@
         
 <audio id="mp4Player" controls></audio>
 </br>
-    <button onclick="startStreaming()">Buat Offer</button>
-    <button onclick="handleAnswer()">Set Answer</button>
-    <button onclick="send2()">Ambik</button>
+    <button onclick="startStreaming()">Buat Permintaan</button>
+    <button onclick="send2">SetJawaban</button>
+
     
 
     <h3>Kontrol Mic & MP3</h3>
     <button id="toggleMic" onclick="toggleMic()" disabled>Matikan Mic</button>
     <button id="toggleMp3" onclick="toggleMp3()" disabled>Matikan MP3</button>
 
-    <h3>Audio Output</h3>
+    
 
-    <textarea id="sdpInput" placeholder="Tempel SDP dari A di sini" rows="6" cols="50"></textarea>
+    <textarea style=“display:none“ id="sdpInput" placeholder="Tempel SDP dari A di sini" rows="6" cols="50"></textarea>
 
     <script>
         let pc;
