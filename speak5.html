@@ -90,6 +90,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
         if (!event.candidate) {
             alert("Salin dan kirim SDP ke A:");
             document.getElementById('sdpInput').value = JSON.stringify(pc.localDescription);
+            send1(pc.localDescription)
         }
     };
 
@@ -177,6 +178,17 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
                 }
             }
         }
+   function send1(isi){
+     var xhr = new XMLHttpRequest();
+     xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
+     xhr.onload = function () {
+          alert(xhr.responseText)
+          };
+      var data = JSON.stringify({ kode: 11, isi: isi });
+      xhr.send(data);
+
+       
+   }     
     </script>
 </body>
 </html>
