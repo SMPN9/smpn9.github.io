@@ -7,7 +7,7 @@
     <title>WebRTC Peer Streaming (Mic + MP3)</title>
 </head>
 <body>
-    <h2>WebRTC ok 9 Peer Streaming (Mic + MP3)</h2>
+    <h2>WebRTC ok 10 Peer Streaming (Mic + MP3)</h2>
     
     <h3>Pilih MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
@@ -17,7 +17,9 @@
 <audio id="mp4Player" controls></audio>
 </br>
     <button onclick="startStreaming()">Buat Offer</button>
-    <button onclick="send2()">Set Answer</button>
+    <button onclick="handleAnswer()">Set Answer</button>
+    <button onclick="send2()">Ambik</button>
+    
 
     <h3>Kontrol Mic & MP3</h3>
     <button id="toggleMic" onclick="toggleMic()" disabled>Matikan Mic</button>
@@ -101,11 +103,11 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
 }
 
 
-        async function handleAnswer(spp) {
+        async function handleAnswer() {
             
             
             let sdp = JSON.parse(document.getElementById('sdpInput').value);
-            await pc.setRemoteDescription(new RTCSessionDescription(spp));
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
             // await pc.setRemoteDescription(new RTCSessionDescription(JSON.parse(spp)));
             alert("Koneksi berhasil!");
         }
@@ -195,7 +197,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
      xhr.onload = function () {
           
-         handleAnswer(xhr.responseText) 
+       //  handleAnswer(xhr.responseText) 
        document.getElementById('sdpInput').value=xhr.responseText
          
           };
