@@ -31,7 +31,7 @@
                     audioElement.autoplay = true;
                     audioElement.controls = true;
                     audioElement.srcObject = event.streams[0];
-
+                    audioElement.muted = true;
                     // Buat kontrol volume & mute
                     let controlDiv = document.createElement("div");
                     controlDiv.innerHTML = `<strong>${peerId}</strong><br>`;
