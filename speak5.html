@@ -90,8 +90,26 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
     let micSource = audioContext.createMediaStreamSource(micStream);
     
     // Hanya menghubungkan ke `dest` tanpa `audioContext.destination`
-    micSource.connect(dest);
+ //   micSource.connect(dest);
 
+
+ // 🔽 Tambahkan GainNode untuk mengurangi volume mikrofon
+    let gainNode = audioContext.createGain();
+    gainNode.gain.value = 0.5;  // Kurangi volume mikrofon menjadi 50%
+
+    // 🔽 Hubungkan micSource ke gainNode lalu ke dest
+    micSource.connect(gainNode);
+    gainNode.connect(dest);
+
+
+
+
+
+
+
+
+
+            
     if (mp3Stream) {
         let mp3Source = audioContext.createMediaStreamSource(mp3Stream);
         mp3Source.connect(dest);
