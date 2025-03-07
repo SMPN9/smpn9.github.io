@@ -9,7 +9,7 @@
 <body>
     
     
-    <h3>Pilih 5 MP3 & Kirim Stream</h3>
+    <h3>Pilih 6 MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input" >
@@ -103,7 +103,7 @@ compressor.threshold.setValueAtTime(threshold, audioContext.currentTime);
 
 micSource.connect(compressor);
 compressor.connect(gainNode);
-gainNode.connect(audioContext.destination);
+gainNode.connect(dest);
 
 
 
