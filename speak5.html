@@ -147,7 +147,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
             }
-            mp3Player.muted = true; 
+            
             mp3Stream = mp3Player.captureStream();
             if (!mp3Stream.getAudioTracks().length) {
                 alert("MP3 tidak memiliki audio track. Coba play ulang.");
