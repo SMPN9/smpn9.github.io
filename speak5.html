@@ -71,16 +71,17 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
     // Ambil audio dari mic dengan echoCancellation     echoCancellation: true,  noiseSuppression: true, autoGainControl: true
     micStream = await navigator.mediaDevices.getUserMedia({ 
         audio: { 
-           deviceId: micDevices[0].deviceId,
+         
           echoCancellation: true,  
         noiseSuppression: true,
         autoGainControl: true,
+               suppressLocalAudioPlayback: true ,
         channelCount: 1,  // Pastikan mono channel untuk mengurangi efek dobling
         sampleRate: 16000, // Kurangi sample rate untuk menekan noise
         googEchoCancellation: true, // Google WebRTC fitur tambahan (hanya di Chrome)
         googNoiseSuppression: true,
         googAutoGainControl: true
-        
+     
         } 
     });
     micTrack = micStream.getAudioTracks()[0];
