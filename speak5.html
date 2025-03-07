@@ -9,7 +9,7 @@
 <body>
     
     
-    <h3>Pilih  MP3 & Kirim Stream</h3>
+    <h3>Pilih 5 MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input" >
@@ -93,13 +93,29 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
  //   micSource.connect(dest);
 
 
+const gainNode = audioContext.createGain();
+gainNode.gain.value = 1; // Normal volume
+
+// Buat Noise Gate
+const threshold = -50; // dB, sesuaikan dengan lingkungan
+const compressor = audioContext.createDynamicsCompressor();
+compressor.threshold.setValueAtTime(threshold, audioContext.currentTime);
+
+micSource.connect(compressor);
+compressor.connect(gainNode);
+gainNode.connect(audioContext.destination);
+
+
+
+            
+
  // 🔽 Tambahkan GainNode untuk mengurangi volume mikrofon
-    let gainNode = audioContext.createGain();
-    gainNode.gain.value = 0.5;  // Kurangi volume mikrofon menjadi 50%
+ //   let gainNode = audioContext.createGain();
+   // gainNode.gain.value = 0.5;  // Kurangi volume mikrofon menjadi 50%
 
     // 🔽 Hubungkan micSource ke gainNode lalu ke dest
-    micSource.connect(gainNode);
-    gainNode.connect(dest);
+  //  micSource.connect(gainNode);
+  //  gainNode.connect(dest);
 
 
 
