@@ -70,7 +70,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
 
     // Ambil audio dari mic dengan echoCancellation
     micStream = await navigator.mediaDevices.getUserMedia({ 
-        audio: { echoCancellation: true,  noiseSuppression: true  } 
+        audio: { echoCancellation: true,  noiseSuppression: true, autoGainControl: true  } 
     });
     micTrack = micStream.getAudioTracks()[0];
 
