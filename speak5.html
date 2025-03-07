@@ -9,7 +9,7 @@
 <body>
     
     
-    <h3>Pilih 7 MP3 & Kirim Stream</h3>
+    <h3>Pilih 8 MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input" >
@@ -94,7 +94,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
 
 
 const gainNode = audioContext.createGain();
-gainNode.gain.value = 1; // Normal volume
+gainNode.gain.value = 0.5; // Normal volume
 
 // Buat Noise Gate
 const threshold = -50; // dB, sesuaikan dengan lingkungan
