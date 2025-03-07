@@ -9,7 +9,7 @@
 <body>
     
     
-    <h3>Pilih 8 MP3 & Kirim Stream</h3>
+    <h3>Pilih 9 MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input" >
@@ -157,7 +157,18 @@ gainNode.connect(dest);
     await pc.setLocalDescription(offer);
 
     document.getElementById("toggleMic").disabled = false;
-}
+
+     pc.onconnectionstatechange = () => {
+     alerr("Connection state:", pc.connectionState);
+    if (pc.connectionState === "disconnected") {
+        alert("Koneksi terputus! Coba reconnect...");
+        //reconnect();
+    }
+};   
+        
+        
+        
+        }
 
 
         async function handleAnswer() {
