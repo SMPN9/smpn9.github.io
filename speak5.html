@@ -9,7 +9,7 @@
 <body>
     
     
-    <h3>Pilih 6 MP3 & Kirim Stream</h3>
+    <h3>Pilih 7 MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input" >
@@ -132,9 +132,20 @@ gainNode.connect(dest);
     }
 
     mixedStream = dest.stream;
-    sender = pc.addTrack(mixedStream.getAudioTracks()[0], mixedStream);
+   // sender = pc.addTrack(mixedStream.getAudioTracks()[0], mixedStream);
 
-    pc.onicecandidate = event => {
+        if (!sender) {
+    // Jika ini pertama kali, gunakan addTrack()
+    sender = pc.addTrack(mixedStream.getAudioTracks()[0], mixedStream);
+} else {
+    // Jika sender sudah ada, ganti tracknya saja
+    sender.replaceTrack(mixedStream.getAudioTracks()[0]);
+}    
+            
+            
+            
+            
+            pc.onicecandidate = event => {
         if (!event.candidate) {
             alert("Salin dan kirim SDP ke A:");
             document.getElementById('sdpInput').value = JSON.stringify(pc.localDescription);
