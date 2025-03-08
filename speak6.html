@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <h3>Pilih 6 MP3 & MP4 untuk Streaming</h3>
+    <h3>Pilih 7 MP3 & MP4 untuk Streaming</h3>
     <input type="file" id="mp3Input">
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input">
@@ -179,6 +179,27 @@
                 document.getElementById("toggleMp3").innerText = mp3Track.enabled ? "Matikan MP3" : "Nyalakan MP3";
             }
         }
+         function send1(isi){
+     var xhr = new XMLHttpRequest();
+     xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
+     xhr.onload = function () {
+          alert(xhr.responseText)
+          };
+      var data = JSON.stringify({ kode: 1, isi: isi });
+      xhr.send(data);
+       }     
+     function send2(){ alert('Lanjutkan') 
+     var xhr = new XMLHttpRequest();
+     xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
+     xhr.onload = function () {
+          
+       //  handleAnswer(xhr.responseText) 
+      document.getElementById('sdpInput').value=xhr.responseText
+         handleAnswer() 
+          };
+      var data = JSON.stringify({ kode: 22, isi: '-' });
+      xhr.send(data);
+       }         
     </script>
 </body>
 </html>
