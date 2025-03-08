@@ -86,7 +86,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
     let dest = audioContext.createMediaStreamDestination();
     let micSource = audioContext.createMediaStreamSource(micStream);
  const compressor = audioContext.createDynamicsCompressor();
-compressor.threshold.setValueAtTime(-30, audioContext.currentTime); // Lebih wajar dibanding -50 dB
+compressor.threshold.setValueAtTime(-20, audioContext.currentTime); // Lebih wajar dibanding -50 dB
 
 micSource.connect(compressor);
 compressor.connect(dest);
