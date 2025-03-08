@@ -9,7 +9,7 @@
 <body>
     
     
-    <h3>Pilih 11 MP3 & Kirim Stream</h3>
+    <h3>Pilih 13 MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input" >
@@ -69,8 +69,8 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
     });
 
     // Ambil audio dari mic dengan echoCancellation     echoCancellation: true,  noiseSuppression: true, autoGainControl: true
-  const audioContext = new AudioContext();
-const micStream = await navigator.mediaDevices.getUserMedia({ 
+   audioContext = new AudioContext();
+  micStream = await navigator.mediaDevices.getUserMedia({ 
     audio: { 
         echoCancellation: true,  
         noiseSuppression: true,
