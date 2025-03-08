@@ -112,8 +112,8 @@
                 }
             };
 
-            dataChannel.onclose = () => logMessage("DataChannel ditutup.");
-            dataChannel.onerror = (err) => logMessage("DataChannel Error: " + err);
+            dataChannel.onclose = () => logMessage("⚠ DataChannel ditutup.");
+            dataChannel.onerror = (err) => logMessage("⚠ DataChannel Error: " + err);
         }
 
         // Kirim file dalam potongan kecil
@@ -123,11 +123,21 @@
                 logMessage(`Mengirim file: ${file.name} (${file.size} bytes)`);
                 dataChannel.send(file.size.toString()); // Kirim ukuran file terlebih dahulu
                 
-                let chunkSize = 262144  //    16384; // 16 KB per potongan
+                let chunkSize = 262144; // 256 KB per potongan
                 let offset = 0;
 
                 function sendChunk() {
+                    if (pc.iceConnectionState !== "connected") {
+                        logMessage("⚠ Koneksi peer terputus! Pengiriman file dihentikan.");
+                        return;
+                    }
+
                     if (offset < file.size) {
+                        if (dataChannel.bufferedAmount > 8 * 1024 * 1024) { 
+                            setTimeout(sendChunk, 100);
+                            return;
+                        }
+
                         let reader = new FileReader();
                         let slice = file.slice(offset, offset + chunkSize);
                         
@@ -135,12 +145,13 @@
                             dataChannel.send(reader.result);
                             offset += chunkSize;
                             updateProgress(offset, file.size);
-                            setTimeout(sendChunk, 10); // Beri jeda agar tidak membanjiri channel
+                            setTimeout(sendChunk, 50);
                         };
 
                         reader.readAsArrayBuffer(slice);
                     } else {
                         logMessage("File berhasil dikirim!");
+                        updateProgress(file.size, file.size);
                     }
                 }
 
@@ -154,6 +165,13 @@
             document.getElementById("progressBar").value = percent;
             document.getElementById("progressText").innerText = percent + "%";
         }
+
+        // Deteksi jika koneksi peer terputus
+        pc.oniceconnectionstatechange = () => {
+            if (pc.iceConnectionState === "disconnected" || pc.iceConnectionState === "failed") {
+                logMessage("⚠ Koneksi ke peer terputus! Menghentikan pengiriman file.");
+            }
+        };
     </script>
 </body>
 </html>
