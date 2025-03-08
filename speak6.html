@@ -6,7 +6,7 @@
     <title>Streaming (Mic + MP3)</title>
 </head>
 <body>
-    <h3>Pilih 66 MP3/MP4 & Kirim Stream</h3>
+    <h3>Pilih 77 MP3/MP4 & Kirim Stream</h3>
     <input type="file" id="mp3Input">
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input">
@@ -49,6 +49,13 @@
             
             mixedStream = dest.stream;
             sender = pc.addTrack(mixedStream.getAudioTracks()[0], mixedStream);
+            
+            pc.ontrack = (event) => {
+                const remoteAudio = new Audio();
+                remoteAudio.srcObject = event.streams[0];
+                remoteAudio.autoplay = true;
+                document.body.appendChild(remoteAudio);
+            };
             
             pc.onicecandidate = event => {
                 if (!event.candidate) {
