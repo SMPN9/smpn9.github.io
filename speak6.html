@@ -9,7 +9,7 @@
 <body>
     
     
-    <h3>Pilih 9 MP3 & Kirim Stream</h3>
+    <h3>Pilih 11 MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input" >
@@ -69,77 +69,77 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
     });
 
     // Ambil audio dari mic dengan echoCancellation     echoCancellation: true,  noiseSuppression: true, autoGainControl: true
-    micStream = await navigator.mediaDevices.getUserMedia({ 
-        audio: { 
-         
-          echoCancellation: true,  
+  const audioContext = new AudioContext();
+const micStream = await navigator.mediaDevices.getUserMedia({ 
+    audio: { 
+        echoCancellation: true,  
         noiseSuppression: true,
         autoGainControl: true,
-               suppressLocalAudioPlayback: true ,
-        channelCount: 1,  // Pastikan mono channel untuk mengurangi efek dobling
-        sampleRate: 16000, // Kurangi sample rate untuk menekan noise
-        googEchoCancellation: true, // Google WebRTC fitur tambahan (hanya di Chrome)
-        googNoiseSuppression: true,
-        googAutoGainControl: true
-     
-        } 
-    });
-    micTrack = micStream.getAudioTracks()[0];
+        channelCount: 1,
+        sampleRate: 16000,
+    } 
+});
 
-    let dest = audioContext.createMediaStreamDestination();
-    let micSource = audioContext.createMediaStreamSource(micStream);
-    
-    // Hanya menghubungkan ke `dest` tanpa `audioContext.destination`
- //   micSource.connect(dest);
+// Ambil track audio dari stream asli
+const micTrack = micStream.getAudioTracks()[0];
 
+// Buat sumber audio dari mikrofon
+const micSource = audioContext.createMediaStreamSource(micStream);
 
+// Buat Noise Gate Manual dengan AnalyserNode dan ScriptProcessorNode
+const analyser = audioContext.createAnalyser();
+analyser.fftSize = 512;
+
+const scriptNode = audioContext.createScriptProcessor(256, 1, 1);
 const gainNode = audioContext.createGain();
-gainNode.gain.value = 0.5; // Normal volume
+gainNode.gain.value = 1.0; // Volume normal
 
-// Buat Noise Gate
-const threshold = -50; // dB, sesuaikan dengan lingkungan
-const compressor = audioContext.createDynamicsCompressor();
-compressor.threshold.setValueAtTime(threshold, audioContext.currentTime);
+const threshold = 0.05; // Ambang batas RMS, sesuaikan dengan lingkungan
 
-micSource.connect(compressor);
-compressor.connect(gainNode);
-gainNode.connect(dest);
+scriptNode.onaudioprocess = (event) => {
+    let inputData = event.inputBuffer.getChannelData(0);
+    let sum = 0;
 
-
-
-            
-
- // 🔽 Tambahkan GainNode untuk mengurangi volume mikrofon
- //   let gainNode = audioContext.createGain();
-   // gainNode.gain.value = 0.5;  // Kurangi volume mikrofon menjadi 50%
-
-    // 🔽 Hubungkan micSource ke gainNode lalu ke dest
-  //  micSource.connect(gainNode);
-  //  gainNode.connect(dest);
-
-
-
-
-
-
-
-
-
-            
-    if (mp3Stream) {
-        let mp3Source = audioContext.createMediaStreamSource(mp3Stream);
-        mp3Source.connect(dest);
+    for (let i = 0; i < inputData.length; i++) {
+        sum += inputData[i] * inputData[i]; // Hitung energi suara
     }
 
-    mixedStream = dest.stream;
-   // sender = pc.addTrack(mixedStream.getAudioTracks()[0], mixedStream);
+    let rms = Math.sqrt(sum / inputData.length); // Hitung Root Mean Square (RMS)
+
+    // Jika RMS di bawah threshold, mute suara
+    gainNode.gain.setValueAtTime(rms > threshold ? 1.0 : 0.0, audioContext.currentTime);
+};
+
+// Buat Compressor untuk menekan suara kecil agar tidak terlalu terdengar
+const compressor = audioContext.createDynamicsCompressor();
+compressor.threshold.setValueAtTime(-40, audioContext.currentTime); // Hanya suara besar yang lolos
+compressor.knee.setValueAtTime(20, audioContext.currentTime);
+compressor.ratio.setValueAtTime(12, audioContext.currentTime); // Kompres suara kecil lebih agresif
+compressor.attack.setValueAtTime(0.01, audioContext.currentTime);
+compressor.release.setValueAtTime(0.1, audioContext.currentTime);
+
+// Buat stream baru untuk dikirim
+const dest = audioContext.createMediaStreamDestination();
+
+// Hubungkan node dalam audio graph
+micSource.connect(analyser);
+analyser.connect(scriptNode);
+scriptNode.connect(compressor);
+compressor.connect(gainNode);
+gainNode.connect(dest); // Stream audio yang sudah diproses masuk ke dest
+
+// Buat stream yang sudah diproses
+const processedStream = dest.stream;
+
+// Kirim audio yang sudah diproses ke WebRTC
 
         if (!sender) {
     // Jika ini pertama kali, gunakan addTrack()
-    sender = pc.addTrack(mixedStream.getAudioTracks()[0], mixedStream);
+  sender = pc.addTrack(processedStream.getAudioTracks()[0], processedStream);
+
 } else {
     // Jika sender sudah ada, ganti tracknya saja
-    sender.replaceTrack(mixedStream.getAudioTracks()[0]);
+    sender.replaceTrack(processedStream.getAudioTracks()[0]);
 }    
             
             
