@@ -6,33 +6,26 @@
     <title>Streaming (Mic + MP3)</title>
 </head>
 <body>
-
-    <h3>Pilih 7 MP3 & MP4 untuk Streaming</h3>
+    <h3>Pilih 89 MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input">
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input">
     <audio id="mp4Player" controls></audio>
-
     <br>
     <button onclick="startStreaming()">Buat Permintaan</button>
     <button onclick="send2()">Set Jawaban</button>
-
+    
     <h3>Kontrol Mic & MP3</h3>
     <button id="toggleMic" onclick="toggleMic()" disabled>Matikan Mic</button>
     <button id="toggleMp3" onclick="toggleMp3()" disabled>Matikan MP3</button>
-
+    
     <textarea id="sdpInput" placeholder="Tempel SDP dari A di sini" rows="6" cols="50"></textarea>
-
+    
     <script>
-        let pc;
-        let micStream, mp3Stream;
-        let micTrack, mp3Track;
-        let sender;
-        let audioContext;
-        let processedStream;
+        let pc, micStream, mp3Stream, micTrack, mp3Track, sender, audioContext, mixedStream;
         let mp3Player = document.getElementById("mp3Player");
         let mp4Player = document.getElementById("mp4Player");
-
+        
         document.getElementById("mp3Input").addEventListener("change", function(event) {
             let file = event.target.files[0];
             if (file) {
@@ -46,7 +39,7 @@
                 mp4Player.src = URL.createObjectURL(file);
             }
         });
-
+        
         async function startStreaming() {
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -56,150 +49,98 @@
                 iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
             });
 
-            // Ambil audio dari mic
             micStream = await navigator.mediaDevices.getUserMedia({
                 audio: {
                     echoCancellation: true,
                     noiseSuppression: true,
                     autoGainControl: true,
                     channelCount: 1,
-                    sampleRate: 16000,
+                    sampleRate: 16000
                 }
             });
 
-            // Buat proses audio
-            const micSource = audioContext.createMediaStreamSource(micStream);
-            const analyser = audioContext.createAnalyser();
-            const scriptNode = audioContext.createScriptProcessor(256, 1, 1);
-            const gainNode = audioContext.createGain();
-            const compressor = audioContext.createDynamicsCompressor();
-            const dest = audioContext.createMediaStreamDestination();
-
-            // Konfigurasi Noise Gate & Compressor
+            micTrack = micStream.getAudioTracks()[0];
+            let micSource = audioContext.createMediaStreamSource(micStream);
+            
+            let analyser = audioContext.createAnalyser();
             analyser.fftSize = 512;
+            
+            let scriptNode = audioContext.createScriptProcessor(256, 1, 1);
+            let gainNode = audioContext.createGain();
             gainNode.gain.value = 1.0;
-            const threshold = 0.05;
+            
+            let threshold = 0.05;
             scriptNode.onaudioprocess = (event) => {
                 let inputData = event.inputBuffer.getChannelData(0);
                 let sum = inputData.reduce((acc, val) => acc + val * val, 0);
                 let rms = Math.sqrt(sum / inputData.length);
                 gainNode.gain.setValueAtTime(rms > threshold ? 1.0 : 0.0, audioContext.currentTime);
             };
-
+            
+            let compressor = audioContext.createDynamicsCompressor();
             compressor.threshold.setValueAtTime(-40, audioContext.currentTime);
             compressor.knee.setValueAtTime(20, audioContext.currentTime);
             compressor.ratio.setValueAtTime(12, audioContext.currentTime);
             compressor.attack.setValueAtTime(0.01, audioContext.currentTime);
             compressor.release.setValueAtTime(0.1, audioContext.currentTime);
-
-            // Hubungkan dalam audio graph
+            
+            let dest = audioContext.createMediaStreamDestination();
             micSource.connect(analyser);
             analyser.connect(scriptNode);
             scriptNode.connect(compressor);
             compressor.connect(gainNode);
             gainNode.connect(dest);
-
-            processedStream = dest.stream;
-            micTrack = processedStream.getAudioTracks()[0];
-
-            if (!sender) {
-                sender = pc.addTrack(micTrack, processedStream);
-            } else {
-                sender.replaceTrack(micTrack);
-            }
-
+            
+            let processedStream = dest.stream;
+            sender = pc.addTrack(processedStream.getAudioTracks()[0], processedStream);
+            
             pc.onicecandidate = event => {
                 if (!event.candidate) {
                     document.getElementById('sdpInput').value = JSON.stringify(pc.localDescription);
                     send1(JSON.stringify(pc.localDescription));
                 }
             };
-
+            
             let offer = await pc.createOffer();
             await pc.setLocalDescription(offer);
-
+            
             document.getElementById("toggleMic").disabled = false;
-
-            pc.onconnectionstatechange = () => {
-                alert(pc.connectionState);
-            };
         }
-
+        
         async function handleAnswer() {
             let sdp = JSON.parse(document.getElementById('sdpInput').value);
             await pc.setRemoteDescription(new RTCSessionDescription(sdp));
             alert("Koneksi berhasil!");
         }
-
-        function handleMp3Playback(player) {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-
-            mp3Stream = player.captureStream();
-            if (!mp3Stream.getAudioTracks().length) {
-                alert("File tidak memiliki audio track. Coba play ulang.");
-                return;
-            }
-
-            const mp3Source = audioContext.createMediaStreamSource(mp3Stream);
-            const dest = audioContext.createMediaStreamDestination();
-            mp3Source.connect(dest);
-
-            if (micStream) {
-                let micSource = audioContext.createMediaStreamSource(micStream);
-                micSource.connect(dest);
-            }
-
-            processedStream = dest.stream;
-            sender.replaceTrack(processedStream.getAudioTracks()[0]);
-
-            document.getElementById("toggleMp3").disabled = false;
-        }
-
-        mp3Player.onplay = () => {
-            mp4Player.pause();
-            handleMp3Playback(mp3Player);
-        };
-
-        mp4Player.onplay = () => {
-            mp3Player.pause();
-            handleMp3Playback(mp4Player);
-        };
-
+        
         function toggleMic() {
-            micTrack.enabled = !micTrack.enabled;
-            document.getElementById("toggleMic").innerText = micTrack.enabled ? "Matikan Mic" : "Nyalakan Mic";
-        }
-
-        function toggleMp3() {
-            mp3Track = mp3Stream.getAudioTracks()[0];
-            if (mp3Track) {
-                mp3Track.enabled = !mp3Track.enabled;
-                document.getElementById("toggleMp3").innerText = mp3Track.enabled ? "Matikan MP3" : "Nyalakan MP3";
+            if (micTrack) {
+                micTrack.enabled = !micTrack.enabled;
+                document.getElementById("toggleMic").innerText = micTrack.enabled ? "Matikan Mic" : "Nyalakan Mic";
             }
         }
-         function send1(isi){
-     var xhr = new XMLHttpRequest();
-     xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
-     xhr.onload = function () {
-          alert(xhr.responseText)
-          };
-      var data = JSON.stringify({ kode: 1, isi: isi });
-      xhr.send(data);
-       }     
-     function send2(){ alert('Lanjutkan') 
-     var xhr = new XMLHttpRequest();
-     xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
-     xhr.onload = function () {
-          
-       //  handleAnswer(xhr.responseText) 
-      document.getElementById('sdpInput').value=xhr.responseText
-         handleAnswer() 
-          };
-      var data = JSON.stringify({ kode: 22, isi: '-' });
-      xhr.send(data);
-       }         
+        
+        function send1(isi) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
+            xhr.onload = function () {
+                alert(xhr.responseText);
+            };
+            var data = JSON.stringify({ kode: 1, isi: isi });
+            xhr.send(data);
+        }
+        
+        function send2() {
+            alert('Lanjutkan');
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
+            xhr.onload = function () {
+                document.getElementById('sdpInput').value = xhr.responseText;
+                handleAnswer();
+            };
+            var data = JSON.stringify({ kode: 22, isi: '-' });
+            xhr.send(data);
+        }
     </script>
 </body>
 </html>
