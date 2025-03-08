@@ -1,0 +1,240 @@
+
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming (Mic + MP3)</title>
+</head>
+<body>
+    
+    
+    <h3>Pilih 3 MP3 & Kirim Stream</h3>
+    <input type="file" id="mp3Input" >
+    <audio id="mp3Player" controls></audio>
+    <input type="file" id="mp4Input" >
+        
+<audio id="mp4Player" controls></audio>
+</br>
+    <button onclick="startStreaming()">Buat Permintaan</button>
+    <button onclick="send2()">Set Jawaban</button>
+
+    
+
+    <h3>Kontrol Mic & MP3</h3>
+    <button id="toggleMic" onclick="toggleMic()" disabled>Matikan Mic</button>
+    <button id="toggleMp3" onclick="toggleMp3()" disabled>Matikan MP3</button>
+
+    
+
+    
+
+    <script>
+        let pc;
+		let sdpinput=""
+        let micStream, mp3Stream;
+        let micTrack, mp3Track;
+        let sender;
+        let audioContext;
+        let mixedStream;
+        let mp3Player = document.getElementById("mp3Player");
+let mp4Player = document.getElementById("mp4Player");
+
+        document.getElementById("mp3Input").addEventListener("change", function(event) {
+            let file = event.target.files[0];
+            if (file) {
+                let objectURL = URL.createObjectURL(file);
+                mp3Player.src = objectURL;
+            }
+        });
+
+
+document.getElementById("mp4Input").addEventListener("change", function(event) {
+            let file = event.target.files[0];
+            if (file) {
+                let objectURL = URL.createObjectURL(file);
+                mp4Player.src = objectURL;
+            }
+        });
+
+
+      
+
+        async function startStreaming() {
+    if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    pc = new RTCPeerConnection({
+        iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+    });
+
+    // Ambil audio dari mic dengan echoCancellation     echoCancellation: true,  noiseSuppression: true, autoGainControl: true
+    micStream = await navigator.mediaDevices.getUserMedia({ 
+        audio: { 
+         
+           echoCancellation: true,  
+        noiseSuppression: true,
+        autoGainControl: true,
+        channelCount: 1,  
+        sampleRate: 16000 
+     
+        } 
+    });
+    micTrack = micStream.getAudioTracks()[0];
+
+    let dest = audioContext.createMediaStreamDestination();
+    let micSource = audioContext.createMediaStreamSource(micStream);
+ const compressor = audioContext.createDynamicsCompressor();
+compressor.threshold.setValueAtTime(-10, audioContext.currentTime); // Lebih wajar dibanding -50 dB
+
+micSource.connect(compressor);
+compressor.connect(dest);
+
+let mixedStream = dest.stream;
+
+// Tambahkan track audio hanya jika belum ada
+if (!sender) {
+    sender = pc.addTrack(mixedStream.getAudioTracks()[0], mixedStream);
+} else {
+    sender.replaceTrack(mixedStream.getAudioTracks()[0]);
+}
+            
+            
+            
+            pc.onicecandidate = event => {
+        if (!event.candidate) {
+            sdpInput= JSON.stringify(pc.localDescription);
+            send1( JSON.stringify(pc.localDescription))
+        }
+    };
+
+    let offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+
+    document.getElementById("toggleMic").disabled = false;
+
+     pc.onconnectionstatechange = () => {
+     alerr("Connection state:", pc.connectionState);
+    if (pc.connectionState === "disconnected") {
+        alert("Koneksi terputus! Coba reconnect...");
+        //reconnect();
+    }
+};   
+        
+        
+        
+        }
+
+
+        async function handleAnswer() {
+            
+            
+            let sdp = JSON.parse(sdpInput);
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+            // await pc.setRemoteDescription(new RTCSessionDescription(JSON.parse(spp)));
+            alert("Koneksi berhasil!");
+        }
+
+        mp3Player.onplay = async () => {
+            mp4Player.pause() ;
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            
+            mp3Stream = mp3Player.captureStream();
+            if (!mp3Stream.getAudioTracks().length) {
+                alert("MP3 tidak memiliki audio track. Coba play ulang.");
+                return;
+            }
+
+            let mp3Source = audioContext.createMediaStreamSource(mp3Stream);
+            let dest = audioContext.createMediaStreamDestination();
+           mp3Source.connect(dest);
+           
+
+
+
+
+            
+
+            if (micStream) {
+                let micSource = audioContext.createMediaStreamSource(micStream);
+                micSource.connect(dest);
+            }
+
+            mixedStream = dest.stream;
+            sender.replaceTrack(mixedStream.getAudioTracks()[0]);
+
+            document.getElementById("toggleMp3").disabled = false;
+        };
+
+
+      mp4Player.onplay = async () => {
+          mp3Player.pause() ;
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            
+            mp3Stream = mp4Player.captureStream();
+            if (!mp3Stream.getAudioTracks().length) {
+                alert("MP3 tidak memiliki audio track. Coba play ulang.");
+                return;
+            }
+
+            let mp3Source = audioContext.createMediaStreamSource(mp3Stream);
+            let dest = audioContext.createMediaStreamDestination();
+            mp3Source.connect(dest);
+
+            if (micStream) {
+                let micSource = audioContext.createMediaStreamSource(micStream);
+                micSource.connect(dest);
+            }
+
+            mixedStream = dest.stream;
+            sender.replaceTrack(mixedStream.getAudioTracks()[0]);
+
+            document.getElementById("toggleMp3").disabled = false;
+        };
+
+        function toggleMic() {
+            if (micTrack) {
+                micTrack.enabled = !micTrack.enabled;
+                document.getElementById("toggleMic").innerText = micTrack.enabled ? "Matikan Mic" : "Nyalakan Mic";
+            }
+        }
+
+        function toggleMp3() {
+            if (mp3Stream) {
+                mp3Track = mp3Stream.getAudioTracks()[0];
+                if (mp3Track) {
+                    mp3Track.enabled = !mp3Track.enabled;
+                    document.getElementById("toggleMp3").innerText = mp3Track.enabled ? "Matikan MP3" : "Nyalakan MP3";
+                }
+            }
+        }
+   function send1(isi){
+     var xhr = new XMLHttpRequest();
+     xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
+     xhr.onload = function () {
+          alert('Klik tombol [Terima Permintaan] di Penerima ')
+          };
+      var data = JSON.stringify({ kode: 1, isi: isi });
+      xhr.send(data);
+       }     
+     function send2(){ alert('Lanjutkan') 
+     var xhr = new XMLHttpRequest();
+     xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
+     xhr.onload = function () {
+          
+       //  handleAnswer(xhr.responseText) 
+      sdpInput=xhr.responseText
+         handleAnswer() 
+          };
+      var data = JSON.stringify({ kode: 22, isi: '-' });
+      xhr.send(data);
+       }         
+    </script>
+</body>
+</html>
