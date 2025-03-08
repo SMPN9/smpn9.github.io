@@ -6,14 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Streaming (Mic + MP3)</title>
+<style>
+button {background:green;color:white;border:none;padding:7px;border-radius:5px}
+button:hover {background:orange;color:white;border:none;padding:8px;border-radius:5px}
+</style>	
 </head>
 <body>
     
     
-    <h3>Pilih 3 MP3 & Kirim Stream</h3>
-    <input type="file" id="mp3Input" >
-    <audio id="mp3Player" controls></audio>
-    <input type="file" id="mp4Input" >
+    <h3>Client (SMPN9 SINJAI)</h3>
+	 <button id="cari1" >Cari File MP3</button></br>
+    <input style='display:none' type="file" id="mp3Input" >
+	
+    <audio id="mp3Player" controls></audio></br>
+	<button id="cari2" >Cari File MP3</button></br>
+    <input  style='display:none'  type="file" id="mp4Input" ></br>
         
 <audio id="mp4Player" controls></audio>
 </br>
@@ -39,11 +46,18 @@
         let audioContext;
         let mixedStream;
         let mp3Player = document.getElementById("mp3Player");
-let mp4Player = document.getElementById("mp4Player");
+        let mp4Player = document.getElementById("mp4Player");
+		let cari1 = document.getElementById("cari1");
+		let cinput = document.getElementById("mp3Input");
+		let cari2 = document.getElementById("cari2");
+		let cinput2 = document.getElementById("mp4Input");
+		cari1.onclick=()=>{cinput.click();}
+		cari2.onclick=()=>{cinput2.click();}
 
         document.getElementById("mp3Input").addEventListener("change", function(event) {
             let file = event.target.files[0];
             if (file) {
+			     cari1.innerHTML='Cari File MP3 : '+file.name;
                 let objectURL = URL.createObjectURL(file);
                 mp3Player.src = objectURL;
             }
@@ -53,6 +67,7 @@ let mp4Player = document.getElementById("mp4Player");
 document.getElementById("mp4Input").addEventListener("change", function(event) {
             let file = event.target.files[0];
             if (file) {
+			cari2.innerHTML='Cari File MP3 : '+file.name;
                 let objectURL = URL.createObjectURL(file);
                 mp4Player.src = objectURL;
             }
