@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC File Transfer (Progress Bar)</title>
+</head>
+<body>
+    <h2>WebRTC File Transfer (Tanpa Internet)</h2>
+    
+    <button id="startBtn">Mulai Koneksi</button>
+    <input type="file" id="fileInput" disabled>
+    <button id="sendBtn" disabled>Kirim File</button>
+    
+    <p>Progress: <span id="progressText">0%</span></p>
+    <progress id="progressBar" value="0" max="100"></progress>
+    
+    <a id="downloadLink" style="display:none">Download File</a>
+    
+    <script>
+        let pc = new RTCPeerConnection();
+        let dataChannel;
+        let isCaller = false;
+        let receivedChunks = [];
+        let fileSize = 0, receivedSize = 0;
+
+        function logMessage(msg) {
+            console.log(msg);
+            alert(msg);
+        }
+
+        logMessage("Menunggu koneksi...");
+
+        // Cek perubahan LocalStorage (signaling otomatis)
+        window.addEventListener("storage", (event) => {
+            if (event.key === "webrtc_offer" && !pc.remoteDescription) {
+                logMessage("Offer diterima, memproses...");
+                receiveOffer(JSON.parse(event.newValue));
+            } else if (event.key === "webrtc_answer" && pc.localDescription) {
+                logMessage("Answer diterima, menyambungkan...");
+                receiveAnswer(JSON.parse(event.newValue));
+            }
+        });
+
+        // Kirim SDP ke LocalStorage
+        function sendSignaling(key, data) {
+            logMessage(`Mengirim ${key} ke LocalStorage`);
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        // Mulai koneksi WebRTC
+        document.getElementById("startBtn").onclick = async () => {
+            isCaller = true;
+            logMessage("Membuat koneksi sebagai Caller...");
+            dataChannel = pc.createDataChannel("fileTransfer");
+            setupDataChannel();
+            let offer = await pc.createOffer();
+            await pc.setLocalDescription(offer);
+            sendSignaling("webrtc_offer", offer);
+        };
+
+        // Terima SDP Offer dan buat Answer
+        async function receiveOffer(offer) {
+            if (pc.remoteDescription) return;
+            logMessage("Menetapkan Remote Description (Offer)...");
+            pc.ondatachannel = (event) => {
+                dataChannel = event.channel;
+                setupDataChannel();
+            };
+            await pc.setRemoteDescription(offer);
+            let answer = await pc.createAnswer();
+            await pc.setLocalDescription(answer);
+            sendSignaling("webrtc_answer", answer);
+        }
+
+        // Terima Answer dari peer
+        async function receiveAnswer(answer) {
+            if (!pc.localDescription) return;
+            logMessage("Menetapkan Remote Description (Answer)...");
+            await pc.setRemoteDescription(answer);
+        }
+
+        // Setup DataChannel
+        function setupDataChannel() {
+            dataChannel.onopen = () => {
+                logMessage("DataChannel terbuka! Siap kirim file.");
+                document.getElementById("fileInput").disabled = false;
+                document.getElementById("sendBtn").disabled = false;
+            };
+
+            dataChannel.onmessage = (event) => {
+                if (typeof event.data === "string") {
+                    fileSize = parseInt(event.data);
+                    receivedChunks = [];
+                    receivedSize = 0;
+                    logMessage(`Menerima file, ukuran: ${fileSize} bytes`);
+                } else {
+                    receivedChunks.push(event.data);
+                    receivedSize += event.data.byteLength;
+                    updateProgress(receivedSize, fileSize);
+
+                    if (receivedSize >= fileSize) {
+                        let receivedFile = new Blob(receivedChunks);
+                        let link = document.getElementById("downloadLink");
+                        link.href = URL.createObjectURL(receivedFile);
+                        link.download = "received_file";
+                        link.style.display = "block";
+                        link.innerText = "Download File";
+                        logMessage("File diterima sepenuhnya!");
+                    }
+                }
+            };
+
+            dataChannel.onclose = () => logMessage("DataChannel ditutup.");
+            dataChannel.onerror = (err) => logMessage("DataChannel Error: " + err);
+        }
+
+        // Kirim file dalam potongan kecil
+        document.getElementById("sendBtn").onclick = () => {
+            let file = document.getElementById("fileInput").files[0];
+            if (file) {
+                logMessage(`Mengirim file: ${file.name} (${file.size} bytes)`);
+                dataChannel.send(file.size.toString()); // Kirim ukuran file terlebih dahulu
+                
+                let chunkSize = 262144  //    16384; // 16 KB per potongan
+                let offset = 0;
+
+                function sendChunk() {
+                    if (offset < file.size) {
+                        let reader = new FileReader();
+                        let slice = file.slice(offset, offset + chunkSize);
+                        
+                        reader.onload = () => {
+                            dataChannel.send(reader.result);
+                            offset += chunkSize;
+                            updateProgress(offset, file.size);
+                            setTimeout(sendChunk, 10); // Beri jeda agar tidak membanjiri channel
+                        };
+
+                        reader.readAsArrayBuffer(slice);
+                    } else {
+                        logMessage("File berhasil dikirim!");
+                    }
+                }
+
+                sendChunk();
+            }
+        };
+
+        // Update Progress Bar
+        function updateProgress(current, total) {
+            let percent = Math.floor((current / total) * 100);
+            document.getElementById("progressBar").value = percent;
+            document.getElementById("progressText").innerText = percent + "%";
+        }
+    </script>
+</body>
+</html>
