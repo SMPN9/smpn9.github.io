@@ -116,7 +116,7 @@ if (!sender) {
     document.getElementById("toggleMic").disabled = false;
 
      pc.onconnectionstatechange = () => {
-     alert("Connection state:", pc.connectionState);
+     //alert("Connection state:", pc.connectionState);
     if (pc.connectionState === "disconnected") {
         alert("Koneksi terputus");
         //reconnect();
