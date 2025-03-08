@@ -73,15 +73,11 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
     micStream = await navigator.mediaDevices.getUserMedia({ 
         audio: { 
          
-          echoCancellation: true,  
+           echoCancellation: true,  
         noiseSuppression: true,
         autoGainControl: true,
-               suppressLocalAudioPlayback: true ,
-        channelCount: 1,  // Pastikan mono channel untuk mengurangi efek dobling
-        sampleRate: 16000, // Kurangi sample rate untuk menekan noise
-        googEchoCancellation: true, // Google WebRTC fitur tambahan (hanya di Chrome)
-        googNoiseSuppression: true,
-        googAutoGainControl: true
+        channelCount: 1,  
+        sampleRate: 16000 
      
         } 
     });
@@ -90,7 +86,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
     let dest = audioContext.createMediaStreamDestination();
     let micSource = audioContext.createMediaStreamSource(micStream);
  const compressor = audioContext.createDynamicsCompressor();
-compressor.threshold.setValueAtTime(-40, audioContext.currentTime); // Lebih wajar dibanding -50 dB
+compressor.threshold.setValueAtTime(-30, audioContext.currentTime); // Lebih wajar dibanding -50 dB
 
 micSource.connect(compressor);
 compressor.connect(dest);
