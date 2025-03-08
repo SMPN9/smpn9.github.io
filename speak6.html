@@ -6,93 +6,49 @@
     <title>Streaming (Mic + MP3)</title>
 </head>
 <body>
-    <h3>Pilih 89 MP3 & Kirim Stream</h3>
+    <h3>Pilih MP3/MP4 & Kirim Stream</h3>
     <input type="file" id="mp3Input">
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input">
     <audio id="mp4Player" controls></audio>
     <br>
     <button onclick="startStreaming()">Buat Permintaan</button>
-    <button onclick="send2()">Set Jawaban</button>
+    <button onclick="send2()">SetJawaban</button>
     
     <h3>Kontrol Mic & MP3</h3>
     <button id="toggleMic" onclick="toggleMic()" disabled>Matikan Mic</button>
     <button id="toggleMp3" onclick="toggleMp3()" disabled>Matikan MP3</button>
     
     <textarea id="sdpInput" placeholder="Tempel SDP dari A di sini" rows="6" cols="50"></textarea>
-    
-    <script>
-        let pc, micStream, mp3Stream, micTrack, mp3Track, sender, audioContext, mixedStream;
-        let mp3Player = document.getElementById("mp3Player");
-        let mp4Player = document.getElementById("mp4Player");
-        
-        document.getElementById("mp3Input").addEventListener("change", function(event) {
-            let file = event.target.files[0];
-            if (file) {
-                mp3Player.src = URL.createObjectURL(file);
-            }
-        });
 
-        document.getElementById("mp4Input").addEventListener("change", function(event) {
-            let file = event.target.files[0];
-            if (file) {
-                mp4Player.src = URL.createObjectURL(file);
-            }
-        });
+    <script>
+        let pc;
+        let micStream, mp3Stream;
+        let sender;
+        let audioContext = new AudioContext();
+        let mixedStream;
         
         async function startStreaming() {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-
             pc = new RTCPeerConnection({
                 iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
             });
-
-            micStream = await navigator.mediaDevices.getUserMedia({
-                audio: {
-                    echoCancellation: true,
+            
+            micStream = await navigator.mediaDevices.getUserMedia({ 
+                audio: { 
+                    echoCancellation: true,  
                     noiseSuppression: true,
                     autoGainControl: true,
                     channelCount: 1,
-                    sampleRate: 16000
-                }
+                    sampleRate: 16000,
+                } 
             });
-
-            micTrack = micStream.getAudioTracks()[0];
-            let micSource = audioContext.createMediaStreamSource(micStream);
             
-            let analyser = audioContext.createAnalyser();
-            analyser.fftSize = 512;
+            const micSource = audioContext.createMediaStreamSource(micStream);
+            const dest = audioContext.createMediaStreamDestination();
+            micSource.connect(dest);
             
-            let scriptNode = audioContext.createScriptProcessor(256, 1, 1);
-            let gainNode = audioContext.createGain();
-            gainNode.gain.value = 1.0;
-            
-            let threshold = 0.05;
-            scriptNode.onaudioprocess = (event) => {
-                let inputData = event.inputBuffer.getChannelData(0);
-                let sum = inputData.reduce((acc, val) => acc + val * val, 0);
-                let rms = Math.sqrt(sum / inputData.length);
-                gainNode.gain.setValueAtTime(rms > threshold ? 1.0 : 0.0, audioContext.currentTime);
-            };
-            
-            let compressor = audioContext.createDynamicsCompressor();
-            compressor.threshold.setValueAtTime(-40, audioContext.currentTime);
-            compressor.knee.setValueAtTime(20, audioContext.currentTime);
-            compressor.ratio.setValueAtTime(12, audioContext.currentTime);
-            compressor.attack.setValueAtTime(0.01, audioContext.currentTime);
-            compressor.release.setValueAtTime(0.1, audioContext.currentTime);
-            
-            let dest = audioContext.createMediaStreamDestination();
-            micSource.connect(analyser);
-            analyser.connect(scriptNode);
-            scriptNode.connect(compressor);
-            compressor.connect(gainNode);
-            gainNode.connect(dest);
-            
-            let processedStream = dest.stream;
-            sender = pc.addTrack(processedStream.getAudioTracks()[0], processedStream);
+            mixedStream = dest.stream;
+            sender = pc.addTrack(mixedStream.getAudioTracks()[0], mixedStream);
             
             pc.onicecandidate = event => {
                 if (!event.candidate) {
@@ -103,7 +59,6 @@
             
             let offer = await pc.createOffer();
             await pc.setLocalDescription(offer);
-            
             document.getElementById("toggleMic").disabled = false;
         }
         
@@ -114,9 +69,10 @@
         }
         
         function toggleMic() {
-            if (micTrack) {
-                micTrack.enabled = !micTrack.enabled;
-                document.getElementById("toggleMic").innerText = micTrack.enabled ? "Matikan Mic" : "Nyalakan Mic";
+            if (micStream) {
+                let track = micStream.getAudioTracks()[0];
+                track.enabled = !track.enabled;
+                document.getElementById("toggleMic").innerText = track.enabled ? "Matikan Mic" : "Nyalakan Mic";
             }
         }
         
@@ -131,7 +87,6 @@
         }
         
         function send2() {
-            alert('Lanjutkan');
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
             xhr.onload = function () {
