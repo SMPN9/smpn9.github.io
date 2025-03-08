@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Peer Streaming</title>
+</head>
+<body>
+    
+    <h3>Penerima [SMPN 9 SINJAI]</h3>
+   
+    <button onclick="send2()">Terima Permintaan </button>
+
+    <h3>Audio dari Client</h3>
+    <div id="audioContainer"></div>
+
+    <script>
+        let peerConnections = {};
+        let sdpInput="";
+        function createPeerConnection(peerId) {
+            let pc = new RTCPeerConnection({
+                iceServers: [{ urls: "stun:stun.l.google.com:19302" }]
+            });
+
+            pc.ontrack = event => {
+                let existingAudio = document.getElementById(`audio-${peerId}`);
+                if (!existingAudio) {
+                    // Buat elemen audio
+                    let audioElement = document.createElement("audio");
+                    audioElement.id = `audio-${peerId}`;
+                    audioElement.autoplay = true;
+                    audioElement.controls = true;
+                    audioElement.srcObject = event.streams[0];
+                   audioElement.volume = 0.5;
+                    // Buat kontrol volume & mute
+                    let controlDiv = document.createElement("div");
+                    controlDiv.innerHTML = `<strong>${peerId}</strong><br>`;
+
+                    let volumeSlider = document.createElement("input");
+                    volumeSlider.type = "range";
+                    volumeSlider.min = "0";
+                    volumeSlider.max = "1";
+                    volumeSlider.step = "0.1";
+                    volumeSlider.value = "0.5";
+                    volumeSlider.oninput = () => {
+                        audioElement.volume = volumeSlider.value;
+                    };
+
+                    let muteButton = document.createElement("button");
+                    muteButton.innerText = "Mute";
+                    muteButton.onclick = () => {
+                        audioElement.muted = !audioElement.muted;
+                        muteButton.innerText = audioElement.muted ? "Unmute" : "Mute";
+                    };
+
+                    controlDiv.appendChild(audioElement);
+                    controlDiv.appendChild(document.createElement("br"));
+                    controlDiv.appendChild(volumeSlider);
+                    controlDiv.appendChild(muteButton);
+
+                    document.getElementById("audioContainer").appendChild(controlDiv);
+                }
+            };
+
+            pc.onicecandidate = event => {
+                if (!event.candidate) {
+                    alert("Salin dan kirim SDP ke peer:");
+                     sdpInput= JSON.stringify(pc.localDescription);
+                }
+            };
+
+            peerConnections[peerId] = pc;
+            return pc;
+        }
+
+        async function handleOffer() {
+            let peerId = prompt("Masukkan ID Peer (B, C, D)");
+           
+           
+           
+         let sdp = JSON.parse(sdpInput);
+            
+            let pc = createPeerConnection(peerId);
+            await pc.setRemoteDescription(new RTCSessionDescription(sdp));
+            
+            let answer = await pc.createAnswer();
+            await pc.setLocalDescription(answer);
+
+            alert("Salin dan kirim SDP jawaban ke peer:");
+            sdpInput = JSON.stringify(pc.localDescription);
+            send1(JSON.stringify(pc.localDescription));
+        }
+function send1(isi){
+     var xhr = new XMLHttpRequest();
+     xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
+     xhr.onload = function () {
+          alert(xhr.responseText)
+          };
+      var data = JSON.stringify({ kode: 2, isi: isi });
+      xhr.send(data);
+       }     
+         function send2(){
+     var xhr = new XMLHttpRequest();
+     xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
+     xhr.onload = function () {
+         sdpInput=xhr.responseText
+        handleOffer()
+          };
+      var data = JSON.stringify({ kode: 11, isi: '-' });
+      xhr.send(data);
+       }         
+    </script>
+</body>
+</html>
