@@ -14,7 +14,7 @@ button:hover {background:orange;color:white;border:none;padding:8px;border-radiu
 <body>
     
     
-    <h3>Client (SMPN9 SINJAI)</h3>
+    <h3>Clientt (SMPN9 SINJAI)</h3>
 	 <button id="cari1" >Cari File MP3</button></br>
     <input style='display:none' type="file" id="mp3Input" >
 	
@@ -102,7 +102,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
     let dest = audioContext.createMediaStreamDestination();
     let micSource = audioContext.createMediaStreamSource(micStream);
  const compressor = audioContext.createDynamicsCompressor();
-compressor.threshold.setValueAtTime(-10, audioContext.currentTime); // Lebih wajar dibanding -50 dB
+compressor.threshold.setValueAtTime(-5, audioContext.currentTime); // Lebih wajar dibanding -50 dB
 
 micSource.connect(compressor);
 compressor.connect(dest);
