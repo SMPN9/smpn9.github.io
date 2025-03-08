@@ -10,7 +10,7 @@
 <body>
     
     
-    <h3>Pilih 5 MP3 & Kirim Stream</h3>
+    <h3>Pilih 3 MP3 & Kirim Stream</h3>
     <input type="file" id="mp3Input" >
     <audio id="mp3Player" controls></audio>
     <input type="file" id="mp4Input" >
@@ -86,7 +86,7 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
     let dest = audioContext.createMediaStreamDestination();
     let micSource = audioContext.createMediaStreamSource(micStream);
  const compressor = audioContext.createDynamicsCompressor();
-compressor.threshold.setValueAtTime(-20, audioContext.currentTime); // Lebih wajar dibanding -50 dB
+compressor.threshold.setValueAtTime(-10, audioContext.currentTime); // Lebih wajar dibanding -50 dB
 
 micSource.connect(compressor);
 compressor.connect(dest);
