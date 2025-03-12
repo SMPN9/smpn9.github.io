@@ -4,7 +4,7 @@
     <title>WebRTC Audio Peer Connection</title>
 </head>
 <body>
-    <h1>WebRTC 4 Audio Peer Connection</h1>
+    <h1>WebRTC Audio Peer Connection</h1>
 
     <audio id="localAudio" controls autoplay muted></audio>
     <audio id="remoteAudio" controls autoplay></audio>
@@ -40,8 +40,9 @@
             try {
                 localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 localAudio.srcObject = localStream;
+                alert('Akses mikrofon berhasil.');
             } catch (error) {
-                alert('Error accessing media devices: ' + error);
+                alert('Gagal mengakses mikrofon: ' + error);
             }
         }
 
@@ -63,7 +64,7 @@
                 localSdpTextarea.value = offer.sdp;
                 alert('Penawaran lokal dibuat: ' + offer.sdp);
             } catch (error) {
-                alert('Error in call function: ' + error);
+                alert('Gagal membuat penawaran: ' + error);
             }
         }
 
@@ -71,6 +72,7 @@
             if (peerConnection) {
                 peerConnection.close();
                 peerConnection = null;
+                alert('Panggilan diakhiri.');
             }
         }
 
@@ -87,7 +89,7 @@
                     remoteSdpTextarea.value = answer.sdp;
                     alert('Jawaban jarak jauh dibuat: ' + answer.sdp);
                 } catch (error) {
-                    alert('Error setting remote description: ' + error);
+                    alert('Gagal mengatur deskripsi jarak jauh: ' + error);
                 }
             }
         });
@@ -99,9 +101,8 @@
                     await peerConnection.setRemoteDescription(remoteSdp);
                     alert('Jawaban lokal diterima: ' + remoteSdp.sdp);
                 } catch (error) {
-                    alert('Error setting remote answer description: ' + error);
+                    alert('Gagal mengatur jawaban lokal: ' + error);
                 }
-
             }
         });
     </script>
