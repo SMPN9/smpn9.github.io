@@ -4,7 +4,7 @@
     <title>WebRTC Audio Peer Connection</title>
 </head>
 <body>
-    <h1>WebRTC Audio Peer Connection</h1>
+    <h1>WebRTC 4 Audio Peer Connection</h1>
 
     <audio id="localAudio" controls autoplay muted></audio>
     <audio id="remoteAudio" controls autoplay></audio>
@@ -41,25 +41,30 @@
                 localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 localAudio.srcObject = localStream;
             } catch (error) {
-                console.error('Error accessing media devices.', error);
+                alert('Error accessing media devices: ' + error);
             }
         }
 
         async function call() {
-            peerConnection = new RTCPeerConnection();
+            try {
+                peerConnection = new RTCPeerConnection();
 
-            localStream.getTracks().forEach(track => {
-                peerConnection.addTrack(track, localStream);
-            });
+                localStream.getTracks().forEach(track => {
+                    peerConnection.addTrack(track, localStream);
+                });
 
-            peerConnection.ontrack = event => {
-                remoteAudio.srcObject = event.streams[0];
-            };
+                peerConnection.ontrack = event => {
+                    remoteAudio.srcObject = event.streams[0];
+                };
 
-            const offer = await peerConnection.createOffer();
-            await peerConnection.setLocalDescription(offer);
+                const offer = await peerConnection.createOffer();
+                await peerConnection.setLocalDescription(offer);
 
-            localSdpTextarea.value = offer.sdp;
+                localSdpTextarea.value = offer.sdp;
+                alert('Penawaran lokal dibuat: ' + offer.sdp);
+            } catch (error) {
+                alert('Error in call function: ' + error);
+            }
         }
 
         async function hangUp() {
@@ -69,14 +74,8 @@
             }
         }
 
-        remoteSdpTextarea.addEventListener('change', async () => {
-            if (peerConnection && remoteSdpTextarea.value) {
-                const remoteSdp = new RTCSessionDescription({ type: 'answer', sdp: remoteSdpTextarea.value });
-                await peerConnection.setRemoteDescription(remoteSdp);
-            }
-        });
-
         localSdpTextarea.addEventListener('change', async () => {
+            alert('Local SDP changed: ' + localSdpTextarea.value);
             if (peerConnection && localSdpTextarea.value && peerConnection.remoteDescription === null) {
                 try {
                     const remoteOffer = new RTCSessionDescription({ type: 'offer', sdp: localSdpTextarea.value });
@@ -86,9 +85,23 @@
                     await peerConnection.setLocalDescription(answer);
 
                     remoteSdpTextarea.value = answer.sdp;
+                    alert('Jawaban jarak jauh dibuat: ' + answer.sdp);
                 } catch (error) {
-                    console.error('Error setting remote description.', error);
+                    alert('Error setting remote description: ' + error);
                 }
+            }
+        });
+
+        remoteSdpTextarea.addEventListener('change', async () => {
+            if (peerConnection && remoteSdpTextarea.value) {
+                try {
+                    const remoteSdp = new RTCSessionDescription({ type: 'answer', sdp: remoteSdpTextarea.value });
+                    await peerConnection.setRemoteDescription(remoteSdp);
+                    alert('Jawaban lokal diterima: ' + remoteSdp.sdp);
+                } catch (error) {
+                    alert('Error setting remote answer description: ' + error);
+                }
+
             }
         });
     </script>
