@@ -4,7 +4,7 @@
     <title>WebRTC Audio Peer Connection</title>
 </head>
 <body>
-    <h1>WebRTC 1Audio Peer Connection</h1>
+    <h1>WebRTC 7 Audio Peer Connection</h1>
 
     <audio id="localAudio" controls autoplay muted></audio>
     <audio id="remoteAudio" controls autoplay></audio>
@@ -56,6 +56,7 @@
 
                 peerConnection.ontrack = event => {
                     remoteAudio.srcObject = event.streams[0];
+                    alert('Aliran media diterima dari tab 2.');
                 };
 
                 const offer = await peerConnection.createOffer();
@@ -112,6 +113,14 @@
         // Inisialisasi peerConnection di tab kedua saat halaman dimuat
         if (window.location.href.indexOf('?') === -1) {
             peerConnection = new RTCPeerConnection();
+        }
+
+        // Penanganan aliran media di tab kedua
+        if (peerConnection) {
+            peerConnection.ontrack = event => {
+                remoteAudio.srcObject = event.streams[0];
+                alert('Aliran media diterima dari tab 1.');
+            };
         }
 
     </script>
