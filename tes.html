@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebRTC Audio Peer Connection</title>
+</head>
+<body>
+    <h1>WebRTC Audio Peer Connection</h1>
+
+    <audio id="localAudio" controls autoplay muted></audio>
+    <audio id="remoteAudio" controls autoplay></audio>
+
+    <br>
+
+    <button id="startButton">Start Call</button>
+    <button id="callButton">Call</button>
+    <button id="hangupButton">Hang Up</button>
+
+    <br><br>
+
+    <textarea id="localSdp" placeholder="Local SDP" rows="5" cols="50"></textarea>
+    <textarea id="remoteSdp" placeholder="Remote SDP" rows="5" cols="50"></textarea>
+
+    <script>
+        const localAudio = document.getElementById('localAudio');
+        const remoteAudio = document.getElementById('remoteAudio');
+        const startButton = document.getElementById('startButton');
+        const callButton = document.getElementById('callButton');
+        const hangupButton = document.getElementById('hangupButton');
+        const localSdpTextarea = document.getElementById('localSdp');
+        const remoteSdpTextarea = document.getElementById('remoteSdp');
+
+        let localStream;
+        let peerConnection;
+
+        startButton.addEventListener('click', startCall);
+        callButton.addEventListener('click', call);
+        hangupButton.addEventListener('click', hangUp);
+
+        async function startCall() {
+            try {
+                localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                localAudio.srcObject = localStream;
+            } catch (error) {
+                console.error('Error accessing media devices.', error);
+            }
+        }
+
+        async function call() {
+            peerConnection = new RTCPeerConnection();
+
+            localStream.getTracks().forEach(track => {
+                peerConnection.addTrack(track, localStream);
+            });
+
+            peerConnection.ontrack = event => {
+                remoteAudio.srcObject = event.streams[0];
+            };
+
+            const offer = await peerConnection.createOffer();
+            await peerConnection.setLocalDescription(offer);
+
+            localSdpTextarea.value = offer.sdp;
+        }
+
+        async function hangUp() {
+            if (peerConnection) {
+                peerConnection.close();
+                peerConnection = null;
+            }
+        }
+
+        remoteSdpTextarea.addEventListener('change', async () => {
+            if (peerConnection && remoteSdpTextarea.value) {
+                const remoteSdp = new RTCSessionDescription({ type: 'answer', sdp: remoteSdpTextarea.value });
+                await peerConnection.setRemoteDescription(remoteSdp);
+            }
+        });
+
+        localSdpTextarea.addEventListener('change', async () => {
+            if (peerConnection && localSdpTextarea.value && peerConnection.remoteDescription === null) {
+                try {
+                    const remoteOffer = new RTCSessionDescription({ type: 'offer', sdp: localSdpTextarea.value });
+                    await peerConnection.setRemoteDescription(remoteOffer);
+
+                    const answer = await peerConnection.createAnswer();
+                    await peerConnection.setLocalDescription(answer);
+
+                    remoteSdpTextarea.value = answer.sdp;
+                } catch (error) {
+                    console.error('Error setting remote description.', error);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
