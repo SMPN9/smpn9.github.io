@@ -4,7 +4,7 @@
     <title>WebRTC Audio Peer Connection</title>
 </head>
 <body>
-    <h1>WebRTC Audio Peer Connection</h1>
+    <h1>WebRTC 1Audio Peer Connection</h1>
 
     <audio id="localAudio" controls autoplay muted></audio>
     <audio id="remoteAudio" controls autoplay></audio>
@@ -83,11 +83,14 @@
                     const remoteOffer = new RTCSessionDescription({ type: 'offer', sdp: localSdpTextarea.value });
                     await peerConnection.setRemoteDescription(remoteOffer);
 
-                    const answer = await peerConnection.createAnswer();
-                    await peerConnection.setLocalDescription(answer);
-
-                    remoteSdpTextarea.value = answer.sdp;
-                    alert('Jawaban jarak jauh dibuat: ' + answer.sdp);
+                    try {
+                        const answer = await peerConnection.createAnswer();
+                        await peerConnection.setLocalDescription(answer);
+                        remoteSdpTextarea.value = answer.sdp;
+                        alert('Jawaban jarak jauh dibuat: ' + answer.sdp);
+                    } catch (error) {
+                        alert('Gagal membuat jawaban: ' + error);
+                    }
                 } catch (error) {
                     alert('Gagal mengatur deskripsi jarak jauh: ' + error);
                 }
@@ -105,6 +108,12 @@
                 }
             }
         });
+
+        // Inisialisasi peerConnection di tab kedua saat halaman dimuat
+        if (window.location.href.indexOf('?') === -1) {
+            peerConnection = new RTCPeerConnection();
+        }
+
     </script>
 </body>
 </html>
