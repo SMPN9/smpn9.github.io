@@ -6,7 +6,7 @@
     <title>WebRTC Rekam Suara dengan Noise Reduction</title>
 </head>
 <body>
-    <h2>Rekam 7 Suara dengan WebRTC + Noise Reduction</h2>
+    <h2>Rekam Suara dengan WebRTC + Noise Reduction</h2>
     <button id="startBtn">Mulai Rekam</button>
     <button id="stopBtn" disabled>Stop</button>
     <br><br>
@@ -21,36 +21,38 @@
         let mediaStreamSource;
         let gainNode;
         let compressor;
+        let filteredStream;
 
-        document.getElementById("startBtn").addEventListener("click", async () => {
+        async function startRecording() {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
-                // Membuat AudioContext
+                // Buat AudioContext
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 mediaStreamSource = audioContext.createMediaStreamSource(stream);
 
-                // Membuat Gain Node (volume control)
+                // Buat Gain Node untuk mengatur volume
                 gainNode = audioContext.createGain();
-                gainNode.gain.value = 1.2; // Mengurangi distorsi
+                gainNode.gain.value = 1.5; // Tingkatkan volume input
 
-                // Membuat Compressor (noise reduction)
+                // Buat Compressor untuk mengurangi noise
                 compressor = audioContext.createDynamicsCompressor();
-                compressor.threshold.setValueAtTime(-30, audioContext.currentTime); // Lebih fleksibel
-                compressor.knee.setValueAtTime(20, audioContext.currentTime);
-                compressor.ratio.setValueAtTime(6, audioContext.currentTime); 
-                compressor.attack.setValueAtTime(0.01, audioContext.currentTime);
-                compressor.release.setValueAtTime(0.3, audioContext.currentTime);
+                compressor.threshold.setValueAtTime(-40, audioContext.currentTime);
+                compressor.knee.setValueAtTime(30, audioContext.currentTime);
+                compressor.ratio.setValueAtTime(12, audioContext.currentTime);
+                compressor.attack.setValueAtTime(0.003, audioContext.currentTime);
+                compressor.release.setValueAtTime(0.25, audioContext.currentTime);
 
-                // Menghubungkan aliran audio
+                // Sambungkan komponen audio
                 mediaStreamSource.connect(compressor);
                 compressor.connect(gainNode);
-
-                // Buat MediaStreamDestination
-                const filteredStream = audioContext.createMediaStreamDestination();
+                
+                // Buat stream audio yang sudah difilter
+                filteredStream = audioContext.createMediaStreamDestination();
                 gainNode.connect(filteredStream);
 
-                mediaRecorder = new MediaRecorder(filteredStream.stream, { mimeType: "audio/ogg; codecs=opus" });
+                // Buat MediaRecorder
+                mediaRecorder = new MediaRecorder(filteredStream.stream);
                 audioChunks = [];
 
                 mediaRecorder.ondataavailable = event => {
@@ -60,15 +62,14 @@
                 };
 
                 mediaRecorder.onstop = () => {
-                    const audioBlob = new Blob(audioChunks, { type: "audio/ogg; codecs=opus" });
+                    const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
                     const audioUrl = URL.createObjectURL(audioBlob);
-                    const audio = document.getElementById("audioPlayback");
-                    audio.src = audioUrl;
-                    
-                    // Membuat link download
+                    document.getElementById("audioPlayback").src = audioUrl;
+
+                    // Tampilkan link download
                     const downloadLink = document.getElementById("downloadLink");
                     downloadLink.href = audioUrl;
-                    downloadLink.download = "rekaman_filtered.ogg";
+                    downloadLink.download = "rekaman_filtered.webm";
                     downloadLink.style.display = "block";
                     downloadLink.innerText = "Download Rekaman";
                 };
@@ -78,21 +79,28 @@
                 document.getElementById("stopBtn").disabled = false;
             } catch (error) {
                 console.error("Gagal mengakses mikrofon:", error);
+                alert("Pastikan Anda mengizinkan akses mikrofon.");
             }
-        });
+        }
 
-        document.getElementById("stopBtn").addEventListener("click", () => {
+        function stopRecording() {
             if (mediaRecorder) {
                 mediaRecorder.stop();
                 document.getElementById("startBtn").disabled = false;
                 document.getElementById("stopBtn").disabled = true;
 
-                // Matikan AudioContext untuk menghemat daya
+                // Tutup AudioContext setelah rekaman berhenti
                 setTimeout(() => {
-                    audioContext.close();
+                    if (audioContext) {
+                        audioContext.close();
+                    }
                 }, 1000);
             }
-        });
+        }
+
+        // Event listener untuk tombol
+        document.getElementById("startBtn").addEventListener("click", startRecording);
+        document.getElementById("stopBtn").addEventListener("click", stopRecording);
     </script>
 </body>
 </html>
