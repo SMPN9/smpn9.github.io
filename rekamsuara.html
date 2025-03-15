@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Rekam Suara</title>
+</head>
+<body>
+    <h2>Rekam Suara dengan WebRTC</h2>
+    <button id="startBtn">Mulai Rekam</button>
+    <button id="stopBtn" disabled>Stop</button>
+    <br><br>
+    <audio id="audioPlayback" controls></audio>
+    <br><br>
+    <a id="downloadLink" style="display: none;">Download Rekaman</a>
+
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+
+        document.getElementById("startBtn").addEventListener("click", async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = event => {
+                    if (event.data.size > 0) {
+                        audioChunks.push(event.data);
+                    }
+                };
+
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    const audio = document.getElementById("audioPlayback");
+                    audio.src = audioUrl;
+                    
+                    // Membuat link download
+                    const downloadLink = document.getElementById("downloadLink");
+                    downloadLink.href = audioUrl;
+                    downloadLink.download = "rekaman.webm";
+                    downloadLink.style.display = "block";
+                    downloadLink.innerText = "Download Rekaman";
+                };
+
+                mediaRecorder.start();
+                document.getElementById("startBtn").disabled = true;
+                document.getElementById("stopBtn").disabled = false;
+            } catch (error) {
+                console.error("Gagal mengakses mikrofon:", error);
+            }
+        });
+
+        document.getElementById("stopBtn").addEventListener("click", () => {
+            if (mediaRecorder) {
+                mediaRecorder.stop();
+                document.getElementById("startBtn").disabled = false;
+                document.getElementById("stopBtn").disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
