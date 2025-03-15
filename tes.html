@@ -1,128 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>WebRTC Audio Peer Connection</title>
+    <title>Mikrofon ke Speaker</title>
 </head>
 <body>
-    <h1>WebRTC 7 Audio Peer Connection</h1>
-
-    <audio id="localAudio" controls autoplay muted></audio>
-    <audio id="remoteAudio" controls autoplay></audio>
-
-    <br>
-
-    <button id="startButton">Start Call</button>
-    <button id="callButton">Call</button>
-    <button id="hangupButton">Hang Up</button>
-
-    <br><br>
-
-    <textarea id="localSdp" placeholder="Local SDP" rows="5" cols="50"></textarea>
-    <textarea id="remoteSdp" placeholder="Remote SDP" rows="5" cols="50"></textarea>
-
+    <h1>Mikrofon ke Speaker</h1>
+    <label for="gain">Gain:</label>
+    <input type="range" id="gain" min="0" max="2" step="0.1" value="1">
+    <label for="threshold">Threshold:</label>
+    <input type="range" id="threshold" min="-60" max="0" step="1" value="-20">
+    <label for="ratio">Ratio:</label>
+    <input type="range" id="ratio" min="1" max="20" step="1" value="4">
+    <label for="attack">Attack:</label>
+    <input type="range" id="attack" min="0" max="0.1" step="0.001" value="0.003">
+    <label for="release">Release:</label>
+    <input type="range" id="release" min="0" max="1" step="0.01" value="0.25">
     <script>
-        const localAudio = document.getElementById('localAudio');
-        const remoteAudio = document.getElementById('remoteAudio');
-        const startButton = document.getElementById('startButton');
-        const callButton = document.getElementById('callButton');
-        const hangupButton = document.getElementById('hangupButton');
-        const localSdpTextarea = document.getElementById('localSdp');
-        const remoteSdpTextarea = document.getElementById('remoteSdp');
-
-        let localStream;
-        let peerConnection;
-
-        startButton.addEventListener('click', startCall);
-        callButton.addEventListener('click', call);
-        hangupButton.addEventListener('click', hangUp);
-
-        async function startCall() {
-            try {
-                localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                localAudio.srcObject = localStream;
-                alert('Akses mikrofon berhasil.');
-            } catch (error) {
-                alert('Gagal mengakses mikrofon: ' + error);
-            }
-        }
-
-        async function call() {
-            try {
-                peerConnection = new RTCPeerConnection();
-
-                localStream.getTracks().forEach(track => {
-                    peerConnection.addTrack(track, localStream);
+        navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+            .then(function (stream) {
+                const audioContext = new AudioContext();
+                const source = audioContext.createMediaStreamSource(stream);
+                const gainNode = audioContext.createGain();
+                const compressor = audioContext.createDynamicsCompressor();
+                const destination = audioContext.destination;
+                const gainControl = document.getElementById("gain");
+                const thresholdControl = document.getElementById("threshold");
+                const ratioControl = document.getElementById("ratio");
+                const attackControl = document.getElementById("attack");
+                const releaseControl = document.getElementById("release");
+                gainNode.gain.value = gainControl.value;
+                compressor.threshold.value = thresholdControl.value;
+                compressor.ratio.value = ratioControl.value;
+                compressor.attack.value = attackControl.value;
+                compressor.release.value = releaseControl.value;
+                source.connect(gainNode);
+                gainNode.connect(compressor);
+                compressor.connect(destination);
+                gainControl.addEventListener("input", function () {
+                    gainNode.gain.value = this.value;
                 });
-
-                peerConnection.ontrack = event => {
-                    remoteAudio.srcObject = event.streams[0];
-                    alert('Aliran media diterima dari tab 2.');
-                };
-
-                const offer = await peerConnection.createOffer();
-                await peerConnection.setLocalDescription(offer);
-
-                localSdpTextarea.value = offer.sdp;
-                alert('Penawaran lokal dibuat: ' + offer.sdp);
-            } catch (error) {
-                alert('Gagal membuat penawaran: ' + error);
-            }
-        }
-
-        async function hangUp() {
-            if (peerConnection) {
-                peerConnection.close();
-                peerConnection = null;
-                alert('Panggilan diakhiri.');
-            }
-        }
-
-        localSdpTextarea.addEventListener('change', async () => {
-            alert('Local SDP changed: ' + localSdpTextarea.value);
-            if (peerConnection && localSdpTextarea.value && peerConnection.remoteDescription === null) {
-                try {
-                    const remoteOffer = new RTCSessionDescription({ type: 'offer', sdp: localSdpTextarea.value });
-                    await peerConnection.setRemoteDescription(remoteOffer);
-
-                    try {
-                        const answer = await peerConnection.createAnswer();
-                        await peerConnection.setLocalDescription(answer);
-                        remoteSdpTextarea.value = answer.sdp;
-                        alert('Jawaban jarak jauh dibuat: ' + answer.sdp);
-                    } catch (error) {
-                        alert('Gagal membuat jawaban: ' + error);
-                    }
-                } catch (error) {
-                    alert('Gagal mengatur deskripsi jarak jauh: ' + error);
-                }
-            }
-        });
-
-        remoteSdpTextarea.addEventListener('change', async () => {
-            if (peerConnection && remoteSdpTextarea.value) {
-                try {
-                    const remoteSdp = new RTCSessionDescription({ type: 'answer', sdp: remoteSdpTextarea.value });
-                    await peerConnection.setRemoteDescription(remoteSdp);
-                    alert('Jawaban lokal diterima: ' + remoteSdp.sdp);
-                } catch (error) {
-                    alert('Gagal mengatur jawaban lokal: ' + error);
-                }
-            }
-        });
-
-        // Inisialisasi peerConnection di tab kedua saat halaman dimuat
-        if (window.location.href.indexOf('?') === -1) {
-            peerConnection = new RTCPeerConnection();
-        }
-
-        // Penanganan aliran media di tab kedua
-        if (peerConnection) {
-            peerConnection.ontrack = event => {
-                remoteAudio.srcObject = event.streams[0];
-                alert('Aliran media diterima dari tab 1.');
-            };
-        }
-
+                thresholdControl.addEventListener("input", function () {
+                    compressor.threshold.value = this.value;
+                });
+                ratioControl.addEventListener("input", function () {
+                    compressor.ratio.value = this.value;
+                });
+                attackControl.addEventListener("input", function () {
+                    compressor.attack.value = this.value;
+                });
+                releaseControl.addEventListener("input", function () {
+                    compressor.release.value = this.value;
+                });
+            })
+            .catch(function (err) {
+                console.log("Error: " + err);
+            });
     </script>
 </body>
 </html>
