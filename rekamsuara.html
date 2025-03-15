@@ -6,7 +6,7 @@
     <title>WebRTC Rekam Suara dengan Noise Reduction</title>
 </head>
 <body>
-    <h2>Rekam Suara dengan WebRTC + Noise Reduction</h2>
+    <h2>Rekam 7 Suara dengan WebRTC + Noise Reduction</h2>
     <button id="startBtn">Mulai Rekam</button>
     <button id="stopBtn" disabled>Stop</button>
     <br><br>
@@ -33,7 +33,7 @@
 
                 // Buat Gain Node untuk mengatur volume
                 gainNode = audioContext.createGain();
-                gainNode.gain.value = 0.5; // Tingkatkan volume input
+                gainNode.gain.value = 1.5; // Tingkatkan volume input
 
                 // Buat Compressor untuk mengurangi noise
                 compressor = audioContext.createDynamicsCompressor();
