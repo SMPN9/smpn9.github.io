@@ -6,7 +6,7 @@
     <title>WebRTC Rekam Suara dengan Noise Reduction</title>
 </head>
 <body>
-    <h2>Rekam Suara dengan WebRTC + Noise Reduction</h2>
+    <h2>Rekam 5 Suara dengan WebRTC + Noise Reduction</h2>
     <button id="startBtn">Mulai Rekam</button>
     <button id="stopBtn" disabled>Stop</button>
     <br><br>
@@ -45,7 +45,7 @@
                 // Menghubungkan filter ke aliran audio
                 mediaStreamSource.connect(compressor);
                 compressor.connect(gainNode);
-                gainNode.connect(audioContext.destination);
+              //  gainNode.connect(audioContext.destination);
 
                 // Buat MediaRecorder dengan stream yang sudah difilter
                 const filteredStream = audioContext.createMediaStreamDestination();
