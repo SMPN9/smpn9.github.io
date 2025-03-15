@@ -6,7 +6,7 @@
     <title>WebRTC Rekam Suara dengan Noise Reduction</title>
 </head>
 <body>
-    <h2>Rekam 5 Suara dengan WebRTC + Noise Reduction</h2>
+    <h2>Rekam 7 Suara dengan WebRTC + Noise Reduction</h2>
     <button id="startBtn">Mulai Rekam</button>
     <button id="stopBtn" disabled>Stop</button>
     <br><br>
@@ -26,32 +26,31 @@
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
-                // Membuat AudioContext untuk memproses audio
+                // Membuat AudioContext
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 mediaStreamSource = audioContext.createMediaStreamSource(stream);
 
-                // Membuat Gain Node (untuk mengatur volume)
+                // Membuat Gain Node (volume control)
                 gainNode = audioContext.createGain();
-                gainNode.gain.value = 1.5; // Meningkatkan volume
+                gainNode.gain.value = 1.2; // Mengurangi distorsi
 
-                // Membuat Compressor (untuk menekan suara latar)
+                // Membuat Compressor (noise reduction)
                 compressor = audioContext.createDynamicsCompressor();
-                compressor.threshold.setValueAtTime(-40, audioContext.currentTime); // Mulai bekerja dari -40dB
-                compressor.knee.setValueAtTime(30, audioContext.currentTime); // Transisi lembut
-                compressor.ratio.setValueAtTime(12, audioContext.currentTime); // Kompresi kuat
-                compressor.attack.setValueAtTime(0.003, audioContext.currentTime); // Reaksi cepat
-                compressor.release.setValueAtTime(0.25, audioContext.currentTime); // Lepas cepat
+                compressor.threshold.setValueAtTime(-30, audioContext.currentTime); // Lebih fleksibel
+                compressor.knee.setValueAtTime(20, audioContext.currentTime);
+                compressor.ratio.setValueAtTime(6, audioContext.currentTime); 
+                compressor.attack.setValueAtTime(0.01, audioContext.currentTime);
+                compressor.release.setValueAtTime(0.3, audioContext.currentTime);
 
-                // Menghubungkan filter ke aliran audio
+                // Menghubungkan aliran audio
                 mediaStreamSource.connect(compressor);
                 compressor.connect(gainNode);
-              //  gainNode.connect(audioContext.destination);
 
-                // Buat MediaRecorder dengan stream yang sudah difilter
+                // Buat MediaStreamDestination
                 const filteredStream = audioContext.createMediaStreamDestination();
                 gainNode.connect(filteredStream);
 
-                mediaRecorder = new MediaRecorder(filteredStream.stream);
+                mediaRecorder = new MediaRecorder(filteredStream.stream, { mimeType: "audio/ogg; codecs=opus" });
                 audioChunks = [];
 
                 mediaRecorder.ondataavailable = event => {
@@ -61,7 +60,7 @@
                 };
 
                 mediaRecorder.onstop = () => {
-                    const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+                    const audioBlob = new Blob(audioChunks, { type: "audio/ogg; codecs=opus" });
                     const audioUrl = URL.createObjectURL(audioBlob);
                     const audio = document.getElementById("audioPlayback");
                     audio.src = audioUrl;
@@ -69,7 +68,7 @@
                     // Membuat link download
                     const downloadLink = document.getElementById("downloadLink");
                     downloadLink.href = audioUrl;
-                    downloadLink.download = "rekaman_filtered.webm";
+                    downloadLink.download = "rekaman_filtered.ogg";
                     downloadLink.style.display = "block";
                     downloadLink.innerText = "Download Rekaman";
                 };
