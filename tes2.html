@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Mikrofon TOA</title>
+</head>
+<body>
+    <h2>Filter Mikrofon untuk TOA</h2>
+    <button onclick="startMicrophone()">Mulai Mikrofon</button>
+    <button onclick="stopMicrophone()">Hentikan Mikrofon</button>
+    <p id="status">Status: Mikrofon belum aktif</p>
+
+    <script>
+        let audioContext, analyser, source, stream;
+
+        async function startMicrophone() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({
+                    audio: {
+                        echoCancellation: true,  // Mencegah suara dari speaker TOA masuk ke mic
+                        noiseSuppression: true,  // Mengurangi kebisingan latar belakang
+                        autoGainControl: true    // Menstabilkan volume suara manusia
+                    }
+                });
+
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                source = audioContext.createMediaStreamSource(stream);
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 512;
+
+                source.connect(analyser);
+                detectHumanVoice();
+                document.getElementById("status").innerText = "Status: Mikrofon aktif.";
+
+            } catch (error) {
+                console.error("Gagal mengakses mikrofon:", error);
+                document.getElementById("status").innerText = "Gagal mengakses mikrofon.";
+            }
+        }
+
+        function detectHumanVoice() {
+            let buffer = new Uint8Array(analyser.frequencyBinCount);
+
+            function checkSound() {
+                analyser.getByteFrequencyData(buffer);
+                let volume = buffer.reduce((a, b) => a + b, 0) / buffer.length;
+
+                if (volume > 30) { // Jika suara cukup kuat, dianggap suara manusia
+                    console.log("Mikrofon Aktif: Suara manusia terdeteksi!");
+                } else {
+                    console.log("Mikrofon Mati: Hanya suara dari TOA.");
+                }
+
+                requestAnimationFrame(checkSound);
+            }
+
+            checkSound();
+        }
+
+        function stopMicrophone() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            if (audioContext) {
+                audioContext.close();
+            }
+            document.getElementById("status").innerText = "Status: Mikrofon dihentikan.";
+        }
+    </script>
+</body>
+</html>
