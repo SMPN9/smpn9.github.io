@@ -6,12 +6,14 @@
     <title>Filter Mikrofon TOA</title>
 </head>
 <body>
-    <h2>Filter 65Mikrofon untuk TOA</h2>
+    <h2>Filter 6Mikrofon untuk TOA</h2>
     <button onclick="startMicrophone()">Mulai Mikrofon</button>
     <button onclick="stopMicrophone()">Hentikan Mikrofon</button>
-    <p id="status">Status: Mikrofon belum aktif</p>
-    <p id="sta“>pp</p>
+    <div id="sta“>pp</div>
 
+    
+    <p id="status">Status: Mikrofon belum aktif</p>
+    
     <script>
         let audioContext, analyser, source, stream;
         let st=document.getElementById("sta") 
