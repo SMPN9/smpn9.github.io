@@ -6,11 +6,11 @@
     <title>Filter Mikrofon TOA</title>
 </head>
 <body>
-    <h2>Filter 5Mikrofon untuk TOA</h2>
+    <h2>Filter 65Mikrofon untuk TOA</h2>
     <button onclick="startMicrophone()">Mulai Mikrofon</button>
     <button onclick="stopMicrophone()">Hentikan Mikrofon</button>
     <p id="status">Status: Mikrofon belum aktif</p>
-    <p id="sta“></p>
+    <p id="sta“>pp</p>
 
     <script>
         let audioContext, analyser, source, stream;
@@ -48,9 +48,9 @@
                 let volume = buffer.reduce((a, b) => a + b, 0) / buffer.length;
 
                 if (volume > 30) { // Jika suara cukup kuat, dianggap suara manusia
-                    st.innnerText=("Mikrofon Aktif: Suara manusia terdeteksi!");
+                    st.innerText=("Mikrofon Aktif: Suara manusia terdeteksi!");
                 } else {
-                  st.innnerText=  ("Mikrofon Mati: Hanya suara dari TOA.");
+                  st.innerText=("Mikrofon Mati: Hanya suara dari TOA.");
                 }
 
                 requestAnimationFrame(checkSound);
