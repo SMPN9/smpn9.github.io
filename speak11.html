@@ -4,12 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multi-Peer Streaming</title>
+    <style>
+#loader {
+display:block;
+ 
+  margin-left:100px;
+  border: 8px solid white;//#f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid lightblue;
+  border-bottom: 8px solid orange;
+  width: 10px;
+  height: 10px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+    
+    </style>
 </head>
 <body>
     
     <h3>Penerima [SMPN 9 SINJAI]</h3>
    
-    <button onclick="send2()">Terima Permintaan </button>
+    <button id="str1" onclick="send2()">Terima Permintaan </button>
 
     <h3>Audio dari Client</h3>
     <div id="audioContainer"></div>
@@ -91,21 +118,26 @@
             send1(JSON.stringify(pc.localDescription));
         }
 function send1(isi){
+   
      var xhr = new XMLHttpRequest();
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
      xhr.onload = function () {
+       
           alert(xhr.responseText)
           };
       var data = JSON.stringify({ kode: 2, isi: isi });
       xhr.send(data);
        }     
          function send2(){
+              document.getElementById("str1").innerHTML="<div id='loader'></div>"
      var xhr = new XMLHttpRequest();
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
      xhr.onload = function () {
+            document.getElementById("str1").innerHTML="Terima Permintaan"
          sdpInput=xhr.responseText
         handleOffer()
           };
+    xhr.onerror=function () {alert("tidak ada jaringan");    document.getElementById("str1").innerHTML="Terima Permintaan"}
       var data = JSON.stringify({ kode: 11, isi: '-' });
       xhr.send(data);
        }         
