@@ -315,14 +315,16 @@ if (!sender) {
 
      
      function send2(){ alert('Lanjutkan') 
+		        document.getElementById('str2').innerHTML="<div id='loader'></div>"
      var xhr = new XMLHttpRequest();
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
      xhr.onload = function () {
-          
+           document.getElementById('str1').innerHTML="Set Jawaban"
        //  handleAnswer(xhr.responseText) 
       sdpInput=xhr.responseText
          handleAnswer() 
           };
+      xhr.onerror=function(){ alert('tidak ada jaringan');document.getElementById('str2').innerHTML="Buat Permintaan"}
       var data = JSON.stringify({ kode: 22, isi: '-' });
       xhr.send(data);
        }         
