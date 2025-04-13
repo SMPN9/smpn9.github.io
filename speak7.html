@@ -9,6 +9,29 @@
 <style>
 button {background:green;color:white;border:none;padding:7px;border-radius:5px}
 button:hover {background:orange;color:white;border:none;padding:8px;border-radius:5px}
+#loader {
+display:block;
+ 
+  margin-left:100px;
+  border: 8px solid white;//#f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid lightblue;
+  border-bottom: 8px solid orange;
+  width: 10px;
+  height: 10px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 </style>	
 </head>
 <body>
@@ -27,8 +50,8 @@ button:hover {background:orange;color:white;border:none;padding:8px;border-radiu
 <input  style='display:none'  type="file" id="mp5Input" /></br>       
 <audio id="mp5Player" controls></audio>
 </br>
-    <button onclick="startStreaming()">Buat Permintaan</button>
-    <button onclick="send2()">Set Jawaban</button>
+    <button id"'str1"   onclick="startStreaming()">Buat Permintaan</button>
+    <button id"'str2"  onclick="send2()">Set Jawaban</button>
 
     
 
@@ -278,14 +301,18 @@ if (!sender) {
             }
         }
    function send1(isi){
+    document.getElementById('str1').innerHTML="<div id='loader'></div>"
      var xhr = new XMLHttpRequest();
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
      xhr.onload = function () {
+	   document.getElementById('str1').innerHTML="Buat Permintaan"
           alert('Klik tombol [Terima Permintaan] di Penerima ')
           };
       var data = JSON.stringify({ kode: 1, isi: isi });
       xhr.send(data);
        }     
+
+      xhr.oneror=function(){ alert('tidak ada jaringan');document.getElementById('str1').innerHTML="Buat Permintaan"}
      function send2(){ alert('Lanjutkan') 
      var xhr = new XMLHttpRequest();
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
