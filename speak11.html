@@ -118,13 +118,14 @@ display:block;
             send1(JSON.stringify(pc.localDescription));
         }
 function send1(isi){
-   
+    document.getElementById("str1").innerHTML="<div id='loader'></div>"
      var xhr = new XMLHttpRequest();
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
      xhr.onload = function () {
-       
-          alert(xhr.responseText)
+              document.getElementById("str1").innerHTML="Terima Permintaan"
+       //   alert(xhr.responseText)
           };
+     xhr.onerror=function () {alert("tidak ada jaringan");    document.getElementById("str1").innerHTML="Terima Permintaan"}
       var data = JSON.stringify({ kode: 2, isi: isi });
       xhr.send(data);
        }     
