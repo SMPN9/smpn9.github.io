@@ -34,7 +34,7 @@ display:block;
 </head>
 <body>
     
-    <h3>Penerima 9 [SMPN 9 SINJAI]</h3>
+    <h3>Penerima [SMPN 9 SINJAI]</h3>
    
     <button id="str1" onclick="send2()">Terima Permintaan </button>
 
@@ -113,7 +113,7 @@ display:block;
             let answer = await pc.createAnswer();
             await pc.setLocalDescription(answer);
 
-            alert("Salin dan kirim SDP jawaban ke peer:");
+          //  alert("Salin dan kirim SDP jawaban ke peer:");
             sdpInput = JSON.stringify(pc.localDescription);
             send1(JSON.stringify(pc.localDescription));
         }
@@ -123,7 +123,7 @@ function send1(isi){
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
      xhr.onload = function () {
               document.getElementById("str1").innerHTML="Terima Permintaan"
-       //   alert(xhr.responseText)
+          alert(xhr.responseText)
           };
      xhr.onerror=function () {alert("tidak ada jaringan");    document.getElementById("str1").innerHTML="Terima Permintaan"}
       var data = JSON.stringify({ kode: 2, isi: isi });
