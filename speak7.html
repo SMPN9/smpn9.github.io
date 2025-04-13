@@ -15,14 +15,17 @@ button:hover {background:orange;color:white;border:none;padding:8px;border-radiu
     
     
     <h3>Clientt (SMPN9 SINJAI)</h3>
-	 <button id="cari1" >Cari File MP3</button></br>
-    <input style='display:none' type="file" id="mp3Input" >
+<button id="cari1" >Cari File MP3</button></br>
+<input style='display:none' type="file" id="mp3Input"/>
+<audio id="mp3Player" controls></audio></br>
 	
-    <audio id="mp3Player" controls></audio></br>
-	<button id="cari2" >Cari File MP3</button></br>
-    <input  style='display:none'  type="file" id="mp4Input" ></br>
-        
+<button id="cari2" >Cari File MP3</button></br>
+<input  style='display:none'  type="file" id="mp4Input" /></br>       
 <audio id="mp4Player" controls></audio>
+
+<button id="cari3" >Cari File MP3</button></br>
+<input  style='display:none'  type="file" id="mp5Input" /></br>       
+<audio id="mp5Player" controls></audio>
 </br>
     <button onclick="startStreaming()">Buat Permintaan</button>
     <button onclick="send2()">Set Jawaban</button>
@@ -47,12 +50,16 @@ button:hover {background:orange;color:white;border:none;padding:8px;border-radiu
         let mixedStream;
         let mp3Player = document.getElementById("mp3Player");
         let mp4Player = document.getElementById("mp4Player");
+	 let mp5Player = document.getElementById("mp5Player");
 		let cari1 = document.getElementById("cari1");
 		let cinput = document.getElementById("mp3Input");
 		let cari2 = document.getElementById("cari2");
 		let cinput2 = document.getElementById("mp4Input");
+	        let cari3 = document.getElementById("cari3");
+		let cinput3 = document.getElementById("mp5Input");
 		cari1.onclick=()=>{cinput.click();}
 		cari2.onclick=()=>{cinput2.click();}
+	        cari3.onclick=()=>{cinput3.click();}
 
         document.getElementById("mp3Input").addEventListener("change", function(event) {
             let file = event.target.files[0];
@@ -70,6 +77,16 @@ document.getElementById("mp4Input").addEventListener("change", function(event) {
 			cari2.innerHTML='Cari File MP3 : '+file.name;
                 let objectURL = URL.createObjectURL(file);
                 mp4Player.src = objectURL;
+            }
+        });
+
+
+document.getElementById("mp5Input").addEventListener("change", function(event) {
+            let file = event.target.files[0];
+            if (file) {
+			cari3.innerHTML='Cari File MP3 : '+file.name;
+                let objectURL = URL.createObjectURL(file);
+                mp5Player.src = objectURL;
             }
         });
 
@@ -154,6 +171,7 @@ if (!sender) {
 
         mp3Player.onplay = async () => {
             mp4Player.pause() ;
+	     mp5Player.pause() ;
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
             }
@@ -188,6 +206,7 @@ if (!sender) {
 
       mp4Player.onplay = async () => {
           mp3Player.pause() ;
+	  mp5Player.pause() ;
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
             }
@@ -212,6 +231,35 @@ if (!sender) {
 
             document.getElementById("toggleMp3").disabled = false;
         };
+
+	 mp5Player.onplay = async () => {
+          mp3Player.pause() ;
+	   mp4Player.pause() ;
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            
+            mp3Stream = mp5Player.captureStream();
+            if (!mp3Stream.getAudioTracks().length) {
+                alert("MP3 tidak memiliki audio track. Coba play ulang.");
+                return;
+            }
+
+            let mp3Source = audioContext.createMediaStreamSource(mp3Stream);
+            let dest = audioContext.createMediaStreamDestination();
+            mp3Source.connect(dest);
+
+            if (micStream) {
+                let micSource = audioContext.createMediaStreamSource(micStream);
+                micSource.connect(dest);
+            }
+
+            mixedStream = dest.stream;
+            sender.replaceTrack(mixedStream.getAudioTracks()[0]);
+
+            document.getElementById("toggleMp3").disabled = false;
+        };
+
 
         function toggleMic() {
             if (micTrack) {
