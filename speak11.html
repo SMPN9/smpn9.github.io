@@ -34,7 +34,7 @@ display:block;
 </head>
 <body>
     
-    <h3>Penerima [SMPN 9 SINJAI]</h3>
+    <h3>Penerima 9 [SMPN 9 SINJAI]</h3>
    
     <button id="str1" onclick="send2()">Terima Permintaan </button>
 
@@ -91,7 +91,7 @@ display:block;
 
             pc.onicecandidate = event => {
                 if (!event.candidate) {
-                    alert("Salin dan kirim SDP ke peer:");
+                  //  alert("Salin dan kirim SDP ke peer:");
                      sdpInput= JSON.stringify(pc.localDescription);
                 }
             };
