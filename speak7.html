@@ -308,11 +308,12 @@ if (!sender) {
 	   document.getElementById('str1').innerHTML="Buat Permintaan"
           alert('Klik tombol [Terima Permintaan] di Penerima ')
           };
+      xhr.onerror=function(){ alert('tidak ada jaringan');document.getElementById('str1').innerHTML="Buat Permintaan"}
       var data = JSON.stringify({ kode: 1, isi: isi });
       xhr.send(data);
        }     
 
-      xhr.onerror=function(){ alert('tidak ada jaringan');document.getElementById('str1').innerHTML="Buat Permintaan"}
+     
      function send2(){ alert('Lanjutkan') 
      var xhr = new XMLHttpRequest();
      xhr.open("POST", "https://script.google.com/macros/s/AKfycbxLAmvC07Ri3CA37iNDt7XXIk317-gfCNuy4qtLYshUnQjGsVSqJ7FMzAeRh_USz8M6qg/exec?", true);
